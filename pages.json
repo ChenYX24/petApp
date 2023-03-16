@@ -1,0 +1,99 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+            "path" : "pages/notebook/notebook",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "备忘录"
+            }
+            
+        },
+		{
+		    "path" : "pages/planet/planet",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "我的星球"
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/activity/activity",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "活动"
+            }
+            
+        },
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+		
+        ,{
+            "path" : "pages/add/add",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+		"tabBar": {
+			"color":"#ffffff",
+			"selectColor":"rgb(252,165,71)",
+			"spacing":"-23px",
+			"borderStyle": "black",
+			"backgroundColor": "#ffffff",
+			"height":"80px",
+			"list": [{
+				"pagePath": "pages/notebook/notebook",
+				"iconPath": "static/tabbar/notebook.png",
+				"selectedIconPath": "static/tabbar/notebook.png",
+				"text": "·"
+			}, {
+				"pagePath": "pages/planet/planet",
+				"iconPath": "static/tabbar/planet.png",
+				"selectedIconPath": "static/tabbar/planet.png",
+				"text": "·"
+			},
+			 //#ifdef MP-WEIXIN
+			 {
+				"pagePath": "pages/add/add",
+				"iconPath": "static/tabbar/add.png",
+				"selectedIconPath": "static/tabbar/add.png",
+				"iconWidth":"60px",
+				"text": "·"
+			 },
+			 //#endif
+			 //#ifndef MP-WEIXIN
+			 {
+				"pagePath": "pages/add/add",
+				"iconPath": "static/tabbar/add.png",
+				"selectedIconPath": "static/tabbar/add.png"
+			 },
+			 //#endif
+			{
+				"pagePath": "pages/activity/activity",
+				"iconPath": "static/tabbar/activity.png",
+				"selectedIconPath": "static/tabbar/activity.png",
+				"text": "·"
+			},
+			{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home.png",
+				"text": "·"
+			}]
+		},
+			
+	"uniIdRouter": {}
+}
