@@ -22,27 +22,4 @@
 /* 水平间距 */
 /* 垂直间距 */
 /* 透明度 */
-/* 文章场景相关 */
-uni-tabbar .uni-tabbar {
-  background-image: linear-gradient(to top, #FAF8F8, #FFFFFF) !important;
-  border-top-left-radius: 30px !important;
-  border-top-right-radius: 30px !important;
-  box-shadow: 0px -12px 10px -10px rgba(252, 223, 205, 0.5) !important;
-}
-uni-tabbar .uni-tabbar .uni-tabbar-border {
-  background-color: #F7F4F4 !important;
-}
-uni-tabbar .uni-tabbar .uni-tabbar__bd .uni-tabbar__icon {
-  width: 48rpx !important;
-  height: 48rpx !important;
-}
-uni-tabbar .uni-tabbar .uni-tabbar__bd .uni-tabbar__icon:nth-child(3) {
-  width: 60rpx !important;
-  height: 60rpx !important;
-}
-uni-tabbar .uni-tabbar .uni-tabbar__bd .uni-tabbar__label {
-  font-size: 80rpx !important;
-}
-uni-tabbar .uni-tabbar .uni-tabbar__icon.uni-tabbar__icon__diff {
-  margin-top: 30px;
-}page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}
+/* 文章场景相关 */page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}

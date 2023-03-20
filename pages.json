@@ -4,7 +4,6 @@
             "path" : "pages/notebook/notebook",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "备忘录"
             }
             
         },
@@ -12,7 +11,6 @@
 		    "path" : "pages/planet/planet",
 		    "style" :                                                                                    
 		    {
-		        "navigationBarTitleText": "我的星球"
 		    }
 		    
 		}
@@ -20,14 +18,12 @@
             "path" : "pages/activity/activity",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "活动"
             }
             
         },
 		{
 			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "我的"
 			}
 		}
 		
@@ -35,65 +31,64 @@
             "path" : "pages/add/add",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
             }
             
         }
     ],
 	"globalStyle": {
+		//#ifndef MP-WEIXIN
+		"navigationBarHidden": true,
+		//#endif
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#ffb776",
+		"backgroundColor": "#ffb776"
+		
 	},
-		"tabBar": {
-			"color":"#ffffff",
-			"selectColor":"rgb(252,165,71)",
-			"spacing":"-23px",
-			"borderStyle": "black",
-			"backgroundColor": "#ffffff",
-			"height":"80px",
-			"list": [{
-				"pagePath": "pages/notebook/notebook",
-				"iconPath": "static/tabbar/notebook.png",
-				"selectedIconPath": "static/tabbar/notebook.png",
-				"text": "·"
-			}, {
-				"pagePath": "pages/planet/planet",
-				"iconPath": "static/tabbar/planet.png",
-				"selectedIconPath": "static/tabbar/planet.png",
-				"text": "·"
-			},
-			 //#ifdef MP-WEIXIN
-			 {
-				"pagePath": "pages/add/add",
-				"iconPath": "static/tabbar/add.png",
-				"selectedIconPath": "static/tabbar/add.png",
-				"iconWidth":"60px",
-				"text": "·"
-			 },
-			 //#endif
-			 //#ifndef MP-WEIXIN
-			 {
-				"pagePath": "pages/add/add",
-				"iconPath": "static/tabbar/add.png",
-				"selectedIconPath": "static/tabbar/add.png"
-			 },
-			 //#endif
-			{
-				"pagePath": "pages/activity/activity",
-				"iconPath": "static/tabbar/activity.png",
-				"selectedIconPath": "static/tabbar/activity.png",
-				"text": "·"
-			},
-			{
-				"pagePath": "pages/home/home",
-				"iconPath": "static/tabbar/home.png",
-				"selectedIconPath": "static/tabbar/home.png",
-				"text": "·"
-			}]
-		},
+		// "tabBar": {
+		// 	"color":"#ffffff",
+		// 	"selectedColor":"#FCA547",
+		// 	"spacing":"-23px",
+		// 	"borderStyle": "black",
+		// 	"backgroundColor": "#ffffff",
+		// 	"height":"80px",
+		// 	"list": [{
+		// 		"pagePath": "pages/notebook/notebook",
+		// 		"iconPath": "static/tabbar/notebook.png",
+		// 		"selectedIconPath": "static/tabbar/notebook.png",
+		// 		"text": "备忘录"
+		// 	}, {
+		// 		"pagePath": "pages/planet/planet",
+		// 		"iconPath": "static/tabbar/planet.png",
+		// 		"selectedIconPath": "static/tabbar/planet.png",
+		// 		"text": "我的星球"
+		// 	},
+		// 	 //#ifdef MP-WEIXIN
+		// 	 {
+		// 		"pagePath": "pages/add/add",
+		// 		"iconPath": "static/tabbar/add.png",
+		// 		"selectedIconPath": "static/tabbar/add.png",
+		// 	 },
+		// 	 //#endif
+		// 	 //#ifndef MP-WEIXIN
+		// 	 {
+		// 		"pagePath": "pages/add/add",
+		// 		"iconPath": "static/tabbar/add.png",
+		// 		"selectedIconPath": "static/tabbar/add.png"
+		// 	 },
+		// 	 //#endif
+		// 	{
+		// 		"pagePath": "pages/activity/activity",
+		// 		"iconPath": "static/tabbar/activity.png",
+		// 		"selectedIconPath": "static/tabbar/activity.png",
+		// 		"text": "活动"
+		// 	},
+		// 	{
+		// 		"pagePath": "pages/home/home",
+		// 		"iconPath": "static/tabbar/home.png",
+		// 		"selectedIconPath": "static/tabbar/home.png",
+		// 		"text": "主页"
+		// 	}]
+		// },
 			
 	"uniIdRouter": {}
 }

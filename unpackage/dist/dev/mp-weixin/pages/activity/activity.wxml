@@ -1,1 +1,1 @@
-<view class="page"></view>
+<view class="topBackground data-v-da48f91d"><view class="Background data-v-da48f91d">活动</view><tab-bar wx:if="{{a}}" class="data-v-da48f91d" u-i="da48f91d-0" bind:__l="__l" u-p="{{a}}"></tab-bar></view>
