@@ -4,44 +4,65 @@
             "path" : "pages/notebook/notebook",
             "style" :                                                                                    
             {
-            }
+				"navigationStyle": "custom"
+            },
+			"navigationBarHidden": true
             
         },
 		{
 		    "path" : "pages/planet/planet",
 		    "style" :                                                                                    
 		    {
-		    }
-		    
+				"navigationStyle": "custom"
+		    },
+		    "navigationBarHidden": true
 		}
         ,{
             "path" : "pages/activity/activity",
             "style" :                                                                                    
             {
-            }
-            
+				"navigationStyle": "custom"
+				
+            },
+			"navigationBarHidden": true
         },
 		{
 			"path": "pages/home/home",
-			"style": {
-			}
+			"style": 
+			{
+				"navigationStyle": "custom"
+			},
+			"navigationBarHidden": true
 		}
 		
         ,{
             "path" : "pages/add/add",
             "style" :                                                                                    
             {
+				"navigationStyle": "custom",
+				"navigationBarHidden": true
             }
             
         }
+		,{
+            "path" : "pages/IDCreate/IDCreate/IDCreate",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom",
+				"navigationBarHidden": true
+            }
+            
+        }
+		
     ],
 	"globalStyle": {
-		//#ifndef MP-WEIXIN
-		"navigationBarHidden": true,
-		//#endif
-		"navigationBarTextStyle": "black",
-		"navigationBarBackgroundColor": "#ffb776",
-		"backgroundColor": "#ffb776"
+		"navigationStyle": "custom"
+		// //#ifndef MP-WEIXIN
+		// "navigationBarHidden": true,
+		// //#endif
+		// "navigationBarTextStyle": "black",
+		// "navigationBarBackgroundColor": "#ffb776",
+		// "backgroundColor": "#ffb776"
 		
 	},
 		// "tabBar": {

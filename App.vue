@@ -10,10 +10,15 @@ export default {
     return {
     }
   },
-  async onShow() {
-  	uni.hideHomeButton()
-  },
-
+  // onLaunch: function() {
+  //   uni.getSystemInfo({
+  //     success: function (res) {
+  //       if (res.platform == 'devtools' || res.platform == 'ios') {
+  //         uni.setStorageSync('isCustomNavBar', true)
+  //       }
+  //     }
+  //   })
+  // },
 }
 </script>
 

@@ -4,12 +4,11 @@
     "pages/planet/planet",
     "pages/activity/activity",
     "pages/home/home",
-    "pages/add/add"
+    "pages/add/add",
+    "pages/IDCreate/IDCreate/IDCreate"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#ffb776",
-    "backgroundColor": "#ffb776"
+    "navigationStyle": "custom"
   },
   "usingComponents": {}
 }

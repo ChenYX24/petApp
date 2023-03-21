@@ -1,0 +1,80 @@
+.IDBG.data-v-99e14386 {
+  background-color: #fff4f2;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.pageContent.data-v-99e14386 {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 3rem;
+}
+.camera.data-v-99e14386 {
+  width: 33vw;
+  height: 33vw;
+}
+.inputBox.data-v-99e14386 {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 8vh;
+  background-color: #fdfcfa;
+  border-radius: 3vw;
+  /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+  box-shadow: 7px 11px 20px 1px #f9bd7d;
+}
+.inputBox .input.data-v-99e14386 {
+  width: 80%;
+  height: 80%;
+  color: #cea697;
+}
+.inputBox image.data-v-99e14386 {
+  width: 2rem;
+  height: 2rem;
+  z-index: 99;
+}
+.buttonBox.data-v-99e14386 {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 15rem;
+}
+.buttonBox .button1.data-v-99e14386 {
+  height: -webkit-fit-content;
+  height: fit-content;
+  border: solid #f4d29f;
+  box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttonBox .button2.data-v-99e14386 {
+  height: -webkit-fit-content;
+  height: fit-content;
+  background-color: #fca547;
+  box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}

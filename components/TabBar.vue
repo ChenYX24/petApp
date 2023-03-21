@@ -39,40 +39,79 @@ export default {
     },
   methods: {
 
-    switchTab(tab) {
-      if (tab === 'add') {
-        // 点击加号按钮跳转到相应页面
-        uni.redirectTo({
-          url: '/pages/add/add',
-        });
-      } else {
-        // 切换选中的tab
-        this.tab = tab;
-        // 根据选中的tab跳转到相应页面
-        switch (tab) {
-          case 'memo':
-            uni.redirectTo({
-              url: `/pages/notebook/notebook?tab=${tab}`,
-            });
-            break;
-          case 'planet':
-            uni.redirectTo({
-              url: `/pages/planet/planet?tab=${tab}`,
-            });
-            break;
-          case 'activity':
-            uni.redirectTo({
-              url: `/pages/activity/activity?tab=${tab}`,
-            });
-            break;
-          case 'home':
-            uni.redirectTo({
-              url: `/pages/home/home?tab=${tab}`,
-            });
-            break;
-        }
-      }
-    },
+	//#ifdef MP-WEIXIN
+	switchTab(tab) {
+	  if (tab === 'add') {
+	    // 点击加号按钮跳转到相应页面
+	    wx.redirectTo({
+	      url: '/pages/add/add',
+	    });
+	  } else {
+	    // 切换选中的tab
+	    this.tab = tab;
+	    // 根据选中的tab跳转到相应页面
+	    switch (tab) {
+	      case 'memo':
+	        wx.redirectTo({
+	          url: `/pages/notebook/notebook?tab=${tab}`,
+	        });
+	        break;
+	      case 'planet':
+	        wx.redirectTo({
+	          url: `/pages/planet/planet?tab=${tab}`,
+	        });
+	        break;
+	      case 'activity':
+	        wx.redirectTo({
+	          url: `/pages/activity/activity?tab=${tab}`,
+	        });
+	        break;
+	      case 'home':
+	        wx.redirectTo({
+	          url: `/pages/home/home?tab=${tab}`,
+	        });
+	        break;
+	    }
+	  }
+	},
+	//#endif
+	//#ifndef MP-WEIXIN
+	switchTab(tab) {
+	  if (tab === 'add') {
+	    // 点击加号按钮跳转到相应页面
+	    uni.redirectTo({
+	      url: '/pages/add/add',
+	    });
+	  } else {
+	    // 切换选中的tab
+	    this.tab = tab;
+	    // 根据选中的tab跳转到相应页面
+	    switch (tab) {
+	      case 'memo':
+	        uni.redirectTo({
+	          url: `/pages/notebook/notebook?tab=${tab}`,
+	        });
+	        break;
+	      case 'planet':
+	        uni.redirectTo({
+	          url: `/pages/planet/planet?tab=${tab}`,
+	        });
+	        break;
+	      case 'activity':
+	        uni.redirectTo({
+	          url: `/pages/activity/activity?tab=${tab}`,
+	        });
+	        break;
+	      case 'home':
+	        uni.redirectTo({
+	          url: `/pages/home/home?tab=${tab}`,
+	        });
+	        break;
+	    }
+	  }
+	},
+	//#endif
+
   },
 };
 </script>

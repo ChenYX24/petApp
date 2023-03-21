@@ -15,29 +15,29 @@ const _sfc_main = {
   methods: {
     switchTab(tab) {
       if (tab === "add") {
-        common_vendor.index.redirectTo({
+        common_vendor.wx$1.redirectTo({
           url: "/pages/add/add"
         });
       } else {
         this.tab = tab;
         switch (tab) {
           case "memo":
-            common_vendor.index.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/notebook/notebook?tab=${tab}`
             });
             break;
           case "planet":
-            common_vendor.index.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/planet/planet?tab=${tab}`
             });
             break;
           case "activity":
-            common_vendor.index.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/activity/activity?tab=${tab}`
             });
             break;
           case "home":
-            common_vendor.index.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/home/home?tab=${tab}`
             });
             break;

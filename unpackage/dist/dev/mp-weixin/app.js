@@ -7,14 +7,21 @@ if (!Math) {
   "./pages/activity/activity.js";
   "./pages/home/home.js";
   "./pages/add/add.js";
+  "./pages/IDCreate/IDCreate/IDCreate.js";
 }
 const _sfc_main = {
   data() {
     return {};
-  },
-  async onShow() {
-    common_vendor.index.hideHomeButton();
   }
+  // onLaunch: function() {
+  //   uni.getSystemInfo({
+  //     success: function (res) {
+  //       if (res.platform == 'devtools' || res.platform == 'ios') {
+  //         uni.setStorageSync('isCustomNavBar', true)
+  //       }
+  //     }
+  //   })
+  // },
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};

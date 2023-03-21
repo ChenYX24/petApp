@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarHidden": true,
+  "usingComponents": {
+    "nav-bar": "../../../components/navBar/navBar"
+  }
+}

@@ -16,12 +16,15 @@ export default {
   },
   onLoad: function (options) {
 	this.tab=options.tab;
+
   },
+
   data() {
   	return {
   		tab: ''
   	}
   },
+
 };
 </script>
 
@@ -35,7 +38,7 @@ export default {
     height: 80vh;
     background-color: #fffdf7;
     position: relative;
-    top: 10vh;
+    top: 20vh;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     box-shadow: 0px -20px 10px -4px rgb(229 163 119 / 50%);
