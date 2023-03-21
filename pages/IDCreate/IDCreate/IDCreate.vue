@@ -10,7 +10,7 @@
 
 			<view class="buttonBox">
 				<view class="button1">
-					跳过,暂不确定
+					跳过,暂
 				</view>
 				<view class="button2">
 					确认
