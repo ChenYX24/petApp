@@ -10,13 +10,18 @@ const _sfc_main = {
       Text: "照片和名字",
       placeholderText: "#cea697",
       inputValue: "",
-      imageSrc: ""
+      imageSrc: "",
+      nickName: "",
+      headerUrl: ""
     };
   },
   computed: {
     isActive() {
       return this.inputValue.trim() !== "";
     }
+  },
+  onLoad() {
+    this.login();
   },
   methods: {
     nextpage() {
@@ -37,6 +42,50 @@ const _sfc_main = {
         // 可以从相册选择或拍照
         success: (res) => {
           this.imageSrc = res.tempFilePaths[0];
+        }
+      });
+    },
+    getUserOpenId(userInfo) {
+      common_vendor.index.login({
+        provider: "weixin",
+        success(loginAuth) {
+          ({ "code": loginAuth.code });
+          console.log(loginAuth);
+        }
+      });
+    },
+    login() {
+      var that = this;
+      common_vendor.index.showModal({
+        mask: true,
+        title: "温馨提示",
+        content: "授权微信登录后才能正常使用",
+        success(res) {
+          if (res.confirm) {
+            common_vendor.index.getUserProfile({
+              desc: "获取您的昵称、头像",
+              success: (userRes) => {
+                if (userRes.errMsg == "getUserProfile:ok" && userRes.userInfo != void 0) {
+                  var userInfo = {
+                    avatarUrl: userRes.userInfo.avatarUrl,
+                    nickName: userRes.userInfo.nickName
+                  };
+                  that.nickName = userRes.userInfo.nickName;
+                  that.headerUrl = userRes.userInfo.avatarUrl;
+                  that.getUserOpenId(userInfo);
+                  console.log(that.nickName);
+                } else {
+                  common_vendor.index.showToast({
+                    icon: "none",
+                    title: "获取失败"
+                  });
+                }
+              },
+              fail: (error) => {
+              }
+            });
+          } else if (res.cancel)
+            ;
         }
       });
     }

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@dcloudio/uni-app-plus": "^2.0.2-3070320230222001",
+    "vue": "^3.2.47"
+  }
+}
