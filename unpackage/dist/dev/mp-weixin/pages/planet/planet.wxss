@@ -1,20 +1,48 @@
-
 .planet.data-v-d8c429a1 {
   position: relative;
   padding-bottom: 100px;
 }
-.Background.data-v-d8c429a1{
-	width: 100%;
-    height: 80vh;
-    background-color: #fffdf7;
-    position: relative;
-    top: 20vh;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    box-shadow: 0px -20px 10px -4px rgb(229 163 119 / 50%);
+.Background.data-v-d8c429a1 {
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  background-color: #fffdf7;
+  position: relative;
+  top: 20vh;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  box-shadow: 0px -20px 10px -4px rgb(229 163 2.38%);
+  flex-direction: column;
+  align-items: center;
 }
-.topBackground.data-v-d8c429a1{
-    width: 100vw;
-    height: 100vh;
-    background-color: #ffb776;
+.topBackground.data-v-d8c429a1 {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffb776;
+}
+.inputBox.data-v-d8c429a1 {
+  margin-top: 0px;
+  top: 2vh;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 8vh;
+  background-color: #fdfcfa;
+  border-radius: 3vw;
+  /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+  box-shadow: 7px 11px 20px 1px #f9bd7d;
+}
+.inputBox .input.data-v-d8c429a1 {
+  width: 80%;
+  height: 80%;
+  color: #cea697;
+}
+.inputBox image.data-v-d8c429a1 {
+  width: 2rem;
+  height: 2rem;
+  z-index: 99;
 }

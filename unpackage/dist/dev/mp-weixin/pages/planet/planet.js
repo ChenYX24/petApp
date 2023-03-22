@@ -20,10 +20,12 @@ if (!Array) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.p({
+    a: _ctx.inputValue,
+    b: common_vendor.o(($event) => _ctx.inputValue = $event.detail.value),
+    c: common_vendor.p({
       activeTab: $data.tab
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-d8c429a1"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/planet/planet.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-d8c429a1"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/planet/planet.vue"]]);
 wx.createPage(MiniProgramPage);
