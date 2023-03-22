@@ -16,7 +16,7 @@ const _sfc_main = {
     switchTab(tab) {
       if (tab === "add") {
         common_vendor.wx$1.redirectTo({
-          url: "/pages/add/add"
+          url: "/pages/IDCreate/IDCreate/IDCreate"
         });
       } else {
         this.tab = tab;

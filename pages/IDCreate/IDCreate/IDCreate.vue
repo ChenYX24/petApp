@@ -36,13 +36,20 @@
 				Text:"照片和名字",
 				placeholderText:"#cea697",
 				inputValue: '',
-				imageSrc: ''
+				imageSrc: '',
+				nickName:'',
+				headerUrl:'',
 			};
 		},
 		 computed: {
 		    isActive() {
 		      return this.inputValue.trim() !== '';
 		    }
+		  },
+		  onLoad() {
+			//#ifdef MP-WEIXIN
+		  	this.login()
+			//#endif
 		  },
 		  methods:{
 			  nextpage(){
@@ -67,7 +74,59 @@
 			            this.imageSrc = res.tempFilePaths[0]
 			          }
 			        })
-			      }
+			      },
+				  
+				  getUserOpenId(userInfo){
+				  	var that =this
+				  	uni.login({
+				  		provider:'weixin',
+				  		success(loginAuth){
+				  			var data={'code':loginAuth.code}
+				  			var path='/user/getOpenId'
+							console.log(loginAuth)
+				  			// that.$http(path,data).then((response)=>{
+				  			// 	userInfo['openid']=response
+				  			// 	console.log(userInfo)
+				  			// })
+				  		}
+				  	})
+				  },
+				  login(){
+				  	var that=this
+				  	uni.showModal({
+				  		mask:true,
+				  		title:'温馨提示',
+				  		content:'授权微信登录后才能正常使用',
+				  		success(res) {
+				  			if(res.confirm){
+				  				uni.getUserProfile({
+				  					desc:'获取您的昵称、头像',
+				  					success: (userRes) => {
+				  						if(userRes.errMsg=='getUserProfile:ok'&&userRes.userInfo!=undefined)
+				  						{
+				  							var userInfo={
+				  								avatarUrl:userRes.userInfo.avatarUrl,
+				  								nickName:userRes.userInfo.nickName
+				  							}
+				  							//对页面变量赋值
+				  							that.nickName=userRes.userInfo.nickName;
+				  							that.headerUrl=userRes.userInfo.avatarUrl;
+				  							//请求openid
+				  							that.getUserOpenId(userInfo)
+											console.log(that.nickName)
+				  						}else{
+				  							uni.showToast({
+				  								icon:"none",
+				  								title:"获取失败"
+				  							})
+				  						}
+				  					},
+				  					fail:error=>{}
+				  				});
+				  			}else if(res.cancel){}
+				  		}
+				  	})
+				  }
 		  }
 	}
 </script>
