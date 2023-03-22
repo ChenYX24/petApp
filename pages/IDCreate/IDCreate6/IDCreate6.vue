@@ -5,12 +5,14 @@
 			<view class="pictureInput">
 				
 				<view class="inputBox">
-					<input type="text" placeholder="请选择ta的到家日期" class="input" placeholder-style="color:#cea697;" v-model="inputValue"> 
+					<picker mode="date" :value="date" :start="startDate" :end="endDate" @change="bindDateChange">
+						<view class="input">{{date}}</view>
+					</picker>
 					<image src="/static/IDCreate/picture&name/pen.png" mode="aspectFill"></image>
 				</view>
 				<image :src="this.breed==1?'/static/IDCreate//selectTime/dogHome.png':this.breed==2?'/static/IDCreate//selectTime/catHome.png':'/static/IDCreate//selectTime/dogHome.png'" mode="widthFix" class="picture"></image>
 				<view class="text">
-					{{name}}已经来到这个世界xx天啦~
+					{{name}}已经来到这个家{{trueDate}}天啦~
 				</view>
 			</view>
 			
@@ -36,18 +38,30 @@
 		  navBar,
 		},
 		data() {
+			const currentDate = this.getDate({
+				format: true
+			})
 			return {
 				Text:"选择到家日期",
 				placeholderText:"#cea697",
 				inputValue: '',
 				imageSrc: '',
 				breed:'',
-				name:''
+				name:'',
+				date: '请选择ta的到家日期',
+				trueDate:'xx',
+				currentDate:currentDate
 			};
 		},
 		 computed: {
+			 startDate() {
+				 return this.getDate('start');
+			 },
+			 endDate() {
+				 return this.getDate('end');
+			 },
 		    isActive() {
-		      return this.inputValue.trim() !== '';
+		      return this.trueDate !== 'xx';
 		    }
 		  },
 		  onLoad() {
@@ -55,6 +69,32 @@
 			this.name=uni.getStorageSync('petName');
 		  },
 		  methods:{
+			  bindDateChange: function(e) {
+				  this.date = e.detail.value
+				  this.trueDate=this.getDaysSinceDate(e.detail.value,this.currentDate)
+			  },
+		   getDate(type) {
+					  const date = new Date();
+					  let year = date.getFullYear();
+					  let month = date.getMonth() + 1;
+					  let day = date.getDate();
+					  if (type === 'start') {
+						  year = year - 60;
+					  } else if (type === 'end') {
+						  //当天结束
+						  year = year;
+					  }
+					  month = month > 9 ? month : '0' + month;
+					  day = day > 9 ? day : '0' + day;
+					  return `${year}-${month}-${day}`;
+				  },
+				   getDaysSinceDate(dateString,nowDateString){
+				    const date = new Date(dateString); // 将字符串转换为Date对象
+				    const now = new Date(nowDateString); // 获取当前时间
+				    const diff = now.getTime() - date.getTime(); // 计算时间差的毫秒数
+				    const days = Math.floor(diff / 86400000); // 将时间差的毫秒数转换为天数
+				    return days;
+				  },
 			  nextpage(){
 				  if(this.isActive){
 					  uni.navigateTo({
@@ -119,10 +159,18 @@
 		border-radius: 3vw;
 		/* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
 		box-shadow: 7px 11px 20px 1px rgb(249, 189, 125, 0.7);
-		.input{
+		picker
+		{
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			justify-content: flex-start;
+			align-items: center;
 			width: 80%;
 			height: 80%;
+			.input{
 			color: #cea697;
+			}
 		}
 
 		image{

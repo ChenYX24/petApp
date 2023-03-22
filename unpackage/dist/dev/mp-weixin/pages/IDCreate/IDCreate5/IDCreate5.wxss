@@ -51,9 +51,16 @@
   /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
   box-shadow: 7px 11px 20px 1px #f9bd7d;
 }
-.inputBox .input.data-v-9c7ada79 {
+.inputBox picker.data-v-9c7ada79 {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
   width: 80%;
   height: 80%;
+}
+.inputBox picker .input.data-v-9c7ada79 {
   color: #cea697;
 }
 .inputBox image.data-v-9c7ada79 {
