@@ -37,23 +37,68 @@
 		
         ,{
             "path" : "pages/add/add",
-            "style" :                                                                                    
-            {
-				"navigationStyle": "custom",
-				"navigationBarHidden": true
-            }
+			"style": 
+			{
+				"navigationStyle": "custom"
+			},
+			"navigationBarHidden": true
             
         }
 		,{
             "path" : "pages/IDCreate/IDCreate/IDCreate",
-            "style" :                                                                                    
-            {
-				"navigationStyle": "custom",
-				"navigationBarHidden": true
-            }
+			"style": 
+			{
+				"navigationStyle": "custom"
+			},
+			"navigationBarHidden": true
             
         }
 		
+        ,{
+            "path" : "pages/IDCreate/IDCreate2/IDCreate2",
+			"style": 
+			{
+				"navigationStyle": "custom"
+			},
+			"navigationBarHidden": true
+            
+        }
+        ,{
+            "path" : "pages/IDCreate/IDCreate3/IDCreate3",
+			"style": 
+			{
+				"navigationStyle": "custom"
+			},
+			"navigationBarHidden": true
+            
+        }
+        ,{
+            "path" : "pages/IDCreate/IDCreate4/IDCreate4",
+			"style": 
+			{
+				"navigationStyle": "custom"
+			},
+			"navigationBarHidden": true
+            
+        }
+        ,{
+            "path" : "pages/IDCreate/IDCreate5/IDCreate5",
+			"style": 
+			{
+				"navigationStyle": "custom"
+			},
+			"navigationBarHidden": true
+            
+        },
+		{
+            "path" : "pages/IDCreate/IDCreate6/IDCreate6",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"

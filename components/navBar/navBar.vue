@@ -77,10 +77,12 @@
 		margin-right: 0.5rem;
 		color: #cea697;
 	    font-weight: bolder;
+		opacity: 0.7;
 	}
 	.text{
 		font-size: 20px;
 		color: #cea697;
+		opacity: 0.7;
 	}
 
 

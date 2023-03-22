@@ -2,17 +2,19 @@
 	<view class="IDBG">
 		<nav-bar :text="Text"></nav-bar>
 		<view class="pageContent">
-			<image src="/static/IDCreate/picture&name/camera.png" mode="aspectFit" class="camera"></image>
-			<view class="inputBox">
-				<input type="text" placeholder="请输入ta的名字" class="input" placeholder-style="color:#cea697;"> 
-				<image src="/static/IDCreate/picture&name/pen.png" mode="aspectFill"></image>
+			<view class="cameraInput">
+				<image :src="imageSrc?imageSrc:'/static/IDCreate/picture&name/camera.png'" mode="aspectFit" class="camera" @tap="chooseImage"></image>
+				<view class="inputBox">
+					<input type="text" placeholder="请输入ta的名字" class="input" placeholder-style="color:#cea697;" v-model="inputValue"> 
+					<image src="/static/IDCreate/picture&name/pen.png" mode="aspectFill"></image>
+				</view>
 			</view>
-
+			
 			<view class="buttonBox">
 				<view class="button1">
 					跳过,暂不确定
 				</view>
-				<view class="button2">
+				<view class="button2" :class="{ active: isActive }" @tap="nextpage">
 					确认
 				</view>
 			</view>
@@ -32,9 +34,41 @@
 		data() {
 			return {
 				Text:"照片和名字",
-				placeholderText:"#cea697"
+				placeholderText:"#cea697",
+				inputValue: '',
+				imageSrc: ''
 			};
-		}
+		},
+		 computed: {
+		    isActive() {
+		      return this.inputValue.trim() !== '';
+		    }
+		  },
+		  methods:{
+			  nextpage(){
+				  if(this.isActive){
+					  //#ifdef MP-WEIXIN
+					  wx.setStorageSync('petName', this.inputValue);
+					  //#endif
+					  //#ifndef MP-WEIXIN
+					  localStorage.setItem('petName', this.inputValue)
+					  //#endif
+					  uni.navigateTo({
+					  	 url: `/pages/IDCreate/IDCreate2/IDCreate2`,
+					  })
+				  }
+			  },
+			  chooseImage() {
+			        uni.chooseImage({
+			          count: 1, // 最多选择的图片数量，此处为1
+			          sizeType: ['compressed'], // 压缩图片
+			          sourceType: ['album', 'camera'], // 可以从相册选择或拍照
+			          success: (res) => {
+			            this.imageSrc = res.tempFilePaths[0]
+			          }
+			        })
+			      }
+		  }
 	}
 </script>
 
@@ -52,10 +86,20 @@
 		display: flex;
 		flex-direction: column;
 		align-content: center;
-		justify-content: center;
+		justify-content: flex-start;	
 		align-items: center;
 		position: relative;
+		top: 0rem;
+		height: 100%;
+	}
+	.cameraInput{
+		position: absolute;
 		top: 3rem;
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
 	}
 	.camera{
 		width: 33vw;
@@ -94,30 +138,39 @@
 		align-content: center;
 		justify-content: center;
 		align-items: center;
-		position: relative;
-		top: 15rem;
+		position: absolute;
+		bottom: 10rem;
 		.button1{
-			height: fit-content;
-			border: solid rgb(244,210,159);
-			box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
-			border-radius: 1rem;
+			height: 3rem;
+			border: solid #f4d29f;
+			box-shadow: 11px 15px 24px -9px rgb(249, 189, 125 , 70%);
+			border-radius: 2rem;
 			padding: 0.5rem;
-			width: 10rem;
+			width: 15rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			font-size: 12pt;
+			color: rgba(206,166,151,0.67);
 		}
 		.button2{
-			height: fit-content;
-			background-color:rgb(252,165,71) ;
-			box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
-			border-radius: 1rem;
+			height: 3rem;
+			background-color:rgba(221,221,221,1) ;
+			border-radius: 2rem;
 			padding: 0.5rem;
-			width: 10rem;
+			width: 15rem;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			margin-top: 1rem;
+			color: #fff;
+			font-weight: bold;
+			font-size: 18pt;
+
+		}
+		.button2.active{
+			background-color:rgba(252,165,71,0.67)!important ;
+			box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
 		}
 	}
 

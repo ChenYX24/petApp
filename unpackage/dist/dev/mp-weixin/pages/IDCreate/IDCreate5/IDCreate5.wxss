@@ -1,0 +1,103 @@
+.IDBG.data-v-9c7ada79 {
+  background-color: #fff4f2;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.pageContent.data-v-9c7ada79 {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  top: 0rem;
+  height: 100%;
+}
+.pictureInput.data-v-9c7ada79 {
+  position: absolute;
+  top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.picture.data-v-9c7ada79 {
+  width: 70vw;
+  height: 66vw;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.text.data-v-9c7ada79 {
+  font-size: 15pt;
+  color: #cea697;
+  opacity: 0.7;
+}
+.inputBox.data-v-9c7ada79 {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 8vh;
+  background-color: #fdfcfa;
+  border-radius: 3vw;
+  /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+  box-shadow: 7px 11px 20px 1px #f9bd7d;
+}
+.inputBox .input.data-v-9c7ada79 {
+  width: 80%;
+  height: 80%;
+  color: #cea697;
+}
+.inputBox image.data-v-9c7ada79 {
+  width: 2rem;
+  height: 2rem;
+  z-index: 99;
+}
+.buttonBox.data-v-9c7ada79 {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10rem;
+}
+.buttonBox .button1.data-v-9c7ada79 {
+  height: 3rem;
+  border: solid #f4d29f;
+  box-shadow: 11px 15px 24px -9px #f9bd7d;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12pt;
+  color: rgba(206, 166, 151, 0.67);
+}
+.buttonBox .button2.data-v-9c7ada79 {
+  height: 3rem;
+  background-color: #dddddd;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18pt;
+}
+.buttonBox .button2.active.data-v-9c7ada79 {
+  background-color: rgba(252, 165, 71, 0.67) !important;
+  box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
+}

@@ -8,20 +8,16 @@ if (!Math) {
   "./pages/home/home.js";
   "./pages/add/add.js";
   "./pages/IDCreate/IDCreate/IDCreate.js";
+  "./pages/IDCreate/IDCreate2/IDCreate2.js";
+  "./pages/IDCreate/IDCreate3/IDCreate3.js";
+  "./pages/IDCreate/IDCreate4/IDCreate4.js";
+  "./pages/IDCreate/IDCreate5/IDCreate5.js";
+  "./pages/IDCreate/IDCreate6/IDCreate6.js";
 }
 const _sfc_main = {
   data() {
     return {};
   }
-  // onLaunch: function() {
-  //   uni.getSystemInfo({
-  //     success: function (res) {
-  //       if (res.platform == 'devtools' || res.platform == 'ios') {
-  //         uni.setStorageSync('isCustomNavBar', true)
-  //       }
-  //     }
-  //   })
-  // },
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};
