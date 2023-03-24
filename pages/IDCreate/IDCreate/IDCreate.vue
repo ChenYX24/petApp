@@ -53,35 +53,35 @@
 		  },
 		  methods:{
 			  nextpage(){
-				  console.log(111)
-				  uni.request({
-				      url: 'https://mock.apifox.cn/m1/2440038-0-default/pet/info/', //仅为示例，并非真实接口地址。
-					  method:'GET',
-				      data: {
-						  petId:2
-				      },
-				      header: {
-				          Authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiJidzJlaWtpVFczNjlZeFNQOFBHZXZBPT0iLCJleHAiOjE2NzkzMDAxNzh9.ZtgHvMvGtTaf-bWFxRRKoBl1oqNUMTtGDLHazBkQgPY' //自定义请求头信息
-				      },
-				      success: (res) => {
-				          console.log(res.data);
-				          console.log(res);
-				      },
-					  fail:(res)=>{
-						  console.log(666)
-					  }
-				  });
-				  // if(this.isActive){
-					 //  //#ifdef MP-WEIXIN
-					 //  wx.setStorageSync('petName', this.inputValue);
-					 //  //#endif
-					 //  //#ifndef MP-WEIXIN
-					 //  localStorage.setItem('petName', this.inputValue)
-					 //  //#endif
-					 //  uni.navigateTo({
-					 //  	 url: `/pages/IDCreate/IDCreate2/IDCreate2`,
-					 //  })
-				  // }
+				  // console.log(111)
+				  // uni.request({
+				  //     url: 'https://mock.apifox.cn/m1/2440038-0-default/pet/info/', //仅为示例，并非真实接口地址。
+					 //  method:'GET',
+				  //     data: {
+						//   petId:2
+				  //     },
+				  //     header: {
+				  //         Authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiJidzJlaWtpVFczNjlZeFNQOFBHZXZBPT0iLCJleHAiOjE2NzkzMDAxNzh9.ZtgHvMvGtTaf-bWFxRRKoBl1oqNUMTtGDLHazBkQgPY' //自定义请求头信息
+				  //     },
+				  //     success: (res) => {
+				  //         console.log(res.data);
+				  //         console.log(res);
+				  //     },
+					 //  fail:(res)=>{
+						//   console.log(666)
+					 //  }
+				  // });
+				  if(this.isActive){
+					  //#ifdef MP-WEIXIN
+					  wx.setStorageSync('petName', this.inputValue);
+					  //#endif
+					  //#ifndef MP-WEIXIN
+					  localStorage.setItem('petName', this.inputValue)
+					  //#endif
+					  uni.navigateTo({
+					  	 url: `/pages/IDCreate/IDCreate2/IDCreate2`,
+					  })
+				  }
 			  },
 			  chooseImage() {
 			        uni.chooseImage({

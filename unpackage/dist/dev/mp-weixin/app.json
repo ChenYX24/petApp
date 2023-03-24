@@ -1,25 +1,16 @@
 {
   "pages": [
     "pages/notebook/notebook",
-    "pages/IDCreate/IDCreate/IDCreate"
-  ],
-  "subpackages": [
-    {
-      "root": "packageA",
-      "pages": [
-        
-        "pages/IDCreate/IDCreate2/IDCreate2",
-        "pages/IDCreate/IDCreate3/IDCreate3"
-      ]
-    }, {
-      "root": "packageB",
-      "name": "pack2",
-      "pages": [
-        "pages/IDCreate/IDCreate4/IDCreate4",
-        "pages/IDCreate/IDCreate5/IDCreate5",
-        "pages/IDCreate/IDCreate6/IDCreate6"
-      ]
-    }
+    "pages/planet/planet",
+    "pages/activity/activity",
+    "pages/home/home",
+    "pages/add/add",
+    "pages/IDCreate/IDCreate/IDCreate",
+    "pages/IDCreate/IDCreate2/IDCreate2",
+    "pages/IDCreate/IDCreate3/IDCreate3",
+    "pages/IDCreate/IDCreate4/IDCreate4",
+    "pages/IDCreate/IDCreate5/IDCreate5",
+    "pages/IDCreate/IDCreate6/IDCreate6"
   ],
   "window": {
     "navigationStyle": "custom"

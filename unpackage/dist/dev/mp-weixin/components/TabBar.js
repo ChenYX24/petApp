@@ -16,7 +16,7 @@ const _sfc_main = {
     switchTab(tab) {
       if (tab === "add") {
         common_vendor.wx$1.redirectTo({
-          url: "/pages/IDCreate/IDCreate/IDCreate"
+          url: "/pages/add/add"
         });
       } else {
         this.tab = tab;
@@ -59,5 +59,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o(($event) => $options.switchTab("home"))
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-89ca1f91"], ["__file", "C:/Users/fjh28/Desktop/petApp/components/TabBar.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-89ca1f91"], ["__file", "D:/school/团小萌/团小萌/petApp/components/TabBar.vue"]]);
 wx.createComponent(Component);

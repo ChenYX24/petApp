@@ -144,7 +144,8 @@
 	.text{
 		font-size: 15pt;
 		color: #cea697;
-		opacity: 0.7;
+		opacity: 1;
+		font-weight: bolder;
 	}
 	.inputBox{
 		margin-top: 3rem;
