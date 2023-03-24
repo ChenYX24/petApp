@@ -8,13 +8,19 @@
          </picker>
 		 <image src="/static/IDCreate/picture&name/pen.png" mode="aspectFill" ></image>
 		</view>
-		<view class="button2" :class="{ active: isActive }" @tap="nextpage">
-			<image src="/static/IDCreate/picture&name/cat.png" mode="aspectFill" ></image>
-			点击加入{{trueProvince}}星球
-			<image src="/static/IDCreate/picture&name/dog.png" mode="aspectFill" ></image>
+		<view class="button2" :class="{ active: isActive }" >
+			<image src="/static/IDCreate/picture&name/cat.png" mode="aspectFill" class="image"></image>
+			<view v-if="isActive" class="page2">
+				<text v-if="isActive">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扫描二维码</text><br />
+				<text v-if="isActive">立即加入{{trueProvince}}星球~</text>
+			</view>
+			    <text v-else>点击加入{{trueProvince}}星球</text>
+			<image src="/static/IDCreate/picture&name/dog.png" mode="aspectFill" class="image"></image>
+			<image src="/static/IDCreate/picture&name/code.jpg" mode="aspectFill" v-if="isActive"  class="code"> </image>
 		</view>
 		<view class="advantage">
-			<text>加入星球的四点好处~</text>
+			<text >加入星球的四点好处~
+			</text>
 			xxxxxxxxxxxxxxxxxxxxxx
 		</view>
 	</view>
@@ -99,7 +105,8 @@ export default {
     border-top-right-radius: 2rem;
     box-shadow: 0px -20px 10px -4px rgb(239 219 208 / 50%);
     flex-direction: column;
-       align-items: center;
+    align-items: center;
+
 }
 .inputBox{
 		margin-top: 0px;
@@ -126,6 +133,7 @@ export default {
 			height: 2rem;
 			z-index: 99;
 		}
+
 		.picker-text {
 
 		  font-size: 16px;
@@ -146,20 +154,30 @@ export default {
 		    top: 3vh;
 		    width: 85vw;
 		    height: 8vh;
-			background-color:rgba(221,221,221,1) ;
+			background-color:rgba(252,206,181,0.67) ;
 			border-radius: 5vw;
 			padding: 0.5rem;
             position: relative;
 			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
 			justify-content: center;
+			align-content: center;
 			margin-top: 1rem;
 			color: #cea697;
 			font-weight: bold;
 			font-size: 13pt;//字体
-		image{
+		.image{
 			width: 5rem;
 			height: 5rem;
+			z-index: 99;
+		}
+		.page2{
+			font-size: 11pt;//字体
+		}
+		.code{
+			width: 10rem;
+			height: 10rem;
 			z-index: 99;
 		}
 		}
@@ -167,6 +185,7 @@ export default {
 	height: 55vh!important;
 	background-color:rgba(252,206,181,0.67)!important ;
 	box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
+	align-items: flex-start
 }
 
 </style>
