@@ -1,7 +1,21 @@
 <template>
   <view class="topBackground">
+	  <view class="text">
+		  <text class="text1">XXX的提醒事项</text><br/>
+		  <text class="text2">不要忘记哦~</text>
+	  </view>
     <!-- 页面内容 -->
-    <view class="Background">备忘录</view>
+    <view class="Background">
+		<view class="tips"> 
+		  <text class="tipstext1">驱虫，就是今天</text>
+		</view>
+		<view class="tips">
+		  <text class="tipstext1">2天后</text>
+		</view>
+		<view class="tips">
+		  <text class="tipstext1">3天后</text>
+		</view>
+	</view>
     <!-- 引用自定义tabbar组件 -->
     <tab-bar :activeTab="tab"></tab-bar>
   </view>
@@ -26,20 +40,61 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .Background{
 	width: 100%;
     height: 80vh;
     background-color: #fffdf7;
     position: relative;
-    top: 20vh;
+	display: flex;
+    top: 14vh;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     box-shadow: 0px -20px 10px -4px rgb(229 163 119 / 50%);
+    flex-direction: column;
+    align-items: center;
 }
+.tips{
+	margin: 0.7rem;
+	width: 85%;
+	height: 20vh;
+	border-radius: 1.2rem;
+	background-color: #fff3cd;
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	align-content: center;
+    align-items: flex-start;
+	justify-content: flex-start;
+	top:2rem;
+	box-shadow: 7px 11px 20px 1px rgb(249, 189, 125, 0.7);
+	color: rgb(127, 112, 75) ;
+	font-size: 15pt;
+	
+}
+.tips:not(:first-of-type) {
+  color: rgb(166, 146, 96) ;
+}
+.tipstext1{
+	font-weight: bold;
+	margin-left: 2rem;
+	margin-top: 1rem;
+}
+.text{
+	font-weight: bold;
+	position: relative;
+	top: 8vh;
+	color: #fffdf7;
+	margin-left: 1rem;
+	.text1{
+			font-size: 17pt;//字体
+	}
+}
+
 .topBackground{
     width: 100vw;
     height: 100vh;
     background-color: #ffb776;
+
 }
 </style>

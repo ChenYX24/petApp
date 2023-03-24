@@ -3,8 +3,25 @@
     <!-- 页面内容 -->
     <view class="Background">
 		<view class="inputBox">
-			<input type="text" placeholder="请输入ta的名字" class="input" placeholder-style="color:#cea697;" v-model="inputValue">
-			<image src="/static/IDCreate/picture&name/pen.png" mode="aspectFill" ></image>
+         <picker mode="selector" :range="provinces" @change="onProvinceChange" class="picker">
+           <view class="picker-text">{{ currentProvince }}</view>
+         </picker>
+		 <image src="/static/IDCreate/picture&name/pen.png" mode="aspectFill" ></image>
+		</view>
+		<view class="button2" :class="{ active: isActive }" >
+			<image src="/static/IDCreate/picture&name/cat.png" mode="aspectFill" class="image"></image>
+			<view v-if="isActive" class="page2">
+				<text v-if="isActive">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扫描二维码</text><br />
+				<text v-if="isActive">立即加入{{trueProvince}}星球~</text>
+			</view>
+			    <text v-else>点击加入{{trueProvince}}星球</text>
+			<image src="/static/IDCreate/picture&name/dog.png" mode="aspectFill" class="image"></image>
+			<image src="/static/IDCreate/picture&name/code.jpg" mode="aspectFill" v-if="isActive"  class="code"> </image>
+		</view>
+		<view class="advantage">
+			<text >加入星球的四点好处~
+			</text>
+			xxxxxxxxxxxxxxxxxxxxxx
 		</view>
 	</view>
     <!-- 引用自定义tabbar组件 -->
@@ -26,10 +43,28 @@ export default {
 
   data() {
   	return {
-  		tab: ''
+  		tab: '',
+		inputValue: '',
+		trueProvince:'xx',
+		provinces: ['北京市', '天津市', '上海市', '重庆市', '河北省', '山西省', '辽宁省', '吉林省', '黑龙江省', '江苏省', '浙江省', '安徽省', '福建省', '江西省', '山东省', '河南省', '湖北省', '湖南省', '广东省', '海南省', '四川省', '贵州省', '云南省', '陕西省', '甘肃省', '青海省', '台湾省', '内蒙古自治区', '广西壮族自治区', '西藏自治区', '宁夏回族自治区', '新疆维吾尔自治区', '香港特别行政区', '澳门特别行政区'],
+	    currentProvince: '请选择省份'
+
   	}
   },
-
+		 computed: {
+		    isActive() {
+		      return this.currentProvince !== '请选择省份';
+		    }
+		  },
+		  methods: {
+		        onProvinceChange(event) {
+		          const provinceIndex = event.detail.value
+		          this.currentProvince = this.provinces[provinceIndex]
+				  if (this.currentProvince !== '请选择省份') {
+				      this.trueProvince = this.currentProvince
+				    }
+		        }
+		      }
 };
 </script>
 
@@ -57,6 +92,22 @@ export default {
     height: 100vh;
     background-color: #ffb776;
 }
+.advantage{
+	display: flex;
+	
+	width: 90%;
+    height: 80vh;
+    background-color: #efdbd0;
+    position: relative;
+    top: 5.5vh;
+	color: #cea697;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    box-shadow: 0px -20px 10px -4px rgb(239 219 208 / 50%);
+    flex-direction: column;
+    align-items: center;
+
+}
 .inputBox{
 		margin-top: 0px;
 		top: 2vh;
@@ -82,6 +133,59 @@ export default {
 			height: 2rem;
 			z-index: 99;
 		}
+
+		.picker-text {
+
+		  font-size: 16px;
+		  color: #cea697;
+		}
+		.picker{
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			justify-content: flex-start;
+			align-items: center;
+			width: 80%;
+			height: 80%;
+		}
+}
+.button2{
+	        margin-top: 0px;
+		    top: 3vh;
+		    width: 85vw;
+		    height: 8vh;
+			background-color:rgba(252,206,181,0.67) ;
+			border-radius: 5vw;
+			padding: 0.5rem;
+            position: relative;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+			margin-top: 1rem;
+			color: #cea697;
+			font-weight: bold;
+			font-size: 13pt;//字体
+		.image{
+			width: 5rem;
+			height: 5rem;
+			z-index: 99;
+		}
+		.page2{
+			font-size: 11pt;//字体
+		}
+		.code{
+			width: 10rem;
+			height: 10rem;
+			z-index: 99;
+		}
+		}
+.button2.active{
+	height: 55vh!important;
+	background-color:rgba(252,206,181,0.67)!important ;
+	box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
+	align-items: flex-start
 }
 
 </style>
