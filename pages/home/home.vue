@@ -35,7 +35,7 @@ export default {
     top: 20vh;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-    box-shadow: 0px -20px 10px -4px rgb(229 163 119 / 50%);
+	box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
 }
 .topBackground{
     width: 100vw;

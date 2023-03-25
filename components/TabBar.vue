@@ -20,15 +20,21 @@
 	  	<view class="dot" :class="{active: activeTab === 'home'}"></view>
     </view>
 	<!-- 底部橘色的小圆点 -->
-
+<!-- 	<add v-if="isAdd"></add> -->
+	<add :class="{show:isAdd}"></add>
   </view>
 </template>
 
 <script>
+import add from "/components/add//add.vue"
 export default {
+  components: {
+    add,
+  },
   data() {
     return {
-		tab:'memo'
+		tab:'memo',
+		isAdd:false,
     };
   },
    props: {
@@ -43,9 +49,10 @@ export default {
 	switchTab(tab) {
 	  if (tab === 'add') {
 	    // 点击加号按钮跳转到相应页面
-	    wx.redirectTo({
-	      url: '/pages/add/add',
-	    });
+	    // wx.redirectTo({
+	    //   url: '/pages/add/add',
+	    // });
+		this.isAdd=!this.isAdd
 	  } else {
 	    // 切换选中的tab
 	    this.tab = tab;
@@ -79,9 +86,10 @@ export default {
 	switchTab(tab) {
 	  if (tab === 'add') {
 	    // 点击加号按钮跳转到相应页面
-	    uni.redirectTo({
-	      url: '/pages/add/add',
-	    });
+	    // uni.redirectTo({
+	    //   url: '/pages/add/add',
+	    // });
+		this.isAdd=!this.isAdd
 	  } else {
 	    // 切换选中的tab
 	    this.tab = tab;
@@ -118,6 +126,7 @@ export default {
 
 <style scoped>
 .tab-bar {
+  z-index: 99;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -132,6 +141,7 @@ export default {
 }
 
 .tab-item {
+  z-index: 99;
   display: flex;
   flex-direction: column;
   align-items: center;
