@@ -1,4 +1,7 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "add": "../../components/add/add",
+    "tab-bar": "../../components/TabBar"
+  }
 }

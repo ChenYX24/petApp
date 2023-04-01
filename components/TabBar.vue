@@ -21,7 +21,7 @@
     </view>
 	<!-- 底部橘色的小圆点 -->
 <!-- 	<add v-if="isAdd"></add> -->
-	<add :class="{show:isAdd}"></add>
+	<add :class="{show:isAdd}" :isShow="isAdd" @updateAdd="changeAdd"></add>
   </view>
 </template>
 
@@ -44,6 +44,9 @@ export default {
       }
     },
   methods: {
+	  changeAdd(){
+		  this.isAdd=!this.isAdd;
+	  },
 
 	//#ifdef MP-WEIXIN
 	switchTab(tab) {

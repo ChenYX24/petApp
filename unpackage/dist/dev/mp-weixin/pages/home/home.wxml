@@ -1,1 +1,1 @@
-<view class="topBackground data-v-07e72d3c"><view class="Background data-v-07e72d3c">主页</view><tab-bar wx:if="{{a}}" class="data-v-07e72d3c" u-i="07e72d3c-0" bind:__l="__l" u-p="{{a}}"></tab-bar></view>
+<view class="topBackground data-v-07e72d3c"><view class="Background data-v-07e72d3c"><view class="login data-v-07e72d3c" bindtap="{{a}}"> 登陆 </view></view><tab-bar wx:if="{{b}}" class="data-v-07e72d3c" u-i="07e72d3c-0" bind:__l="__l" u-p="{{b}}"></tab-bar></view>

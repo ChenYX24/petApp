@@ -54,7 +54,10 @@
         "setting" : {
             "urlCheck" : false
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "secureNetwork" : {
+            "enable" : false
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true

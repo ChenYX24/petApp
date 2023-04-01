@@ -7,10 +7,22 @@
     top: 20vh;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-    box-shadow: 0px -20px 10px -4px rgb(229 163 119 / 50%);
+	box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
 }
 .topBackground.data-v-07e72d3c{
     width: 100vw;
     height: 100vh;
     background-color: #ffb776;
+}
+.login.data-v-07e72d3c{
+	height: 30vw;
+	width: 30vw;
+	display: flex;
+	background-color: aqua;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	float: none;
+	margin: 0 auto;
 }

@@ -10,8 +10,58 @@ const _sfc_main = {
   },
   data() {
     return {
-      tab: ""
+      tab: "",
+      token: ""
     };
+  },
+  methods: {
+    wxLogin() {
+      var that = this;
+      if (!this.token) {
+        common_vendor.index.showModal({
+          mask: true,
+          title: "温馨提示",
+          content: "授权微信登录后才能正常使用",
+          success(res) {
+            if (res.confirm) {
+              common_vendor.index.login({
+                provider: "weixin",
+                success: function(loginRes) {
+                  const code = loginRes.code;
+                  console.log(code);
+                  common_vendor.index.request({
+                    url: "https://mock.apifox.cn/m1/2440038-0-default/user/login/",
+                    method: "GET",
+                    data: {
+                      code
+                    },
+                    success: function(res2) {
+                      common_vendor.index.setStorageSync("token", res2.data.token);
+                      that.token = common_vendor.index.getStorageSync("token");
+                      console.log(that.token);
+                    },
+                    fail: function(res2) {
+                      common_vendor.index.showToast({
+                        title: "登录失败",
+                        icon: "none"
+                      });
+                    }
+                  });
+                },
+                fail: function(loginRes) {
+                  common_vendor.index.showToast({
+                    title: "登录失败",
+                    icon: "none"
+                  });
+                }
+              });
+            } else if (res.cancel)
+              ;
+          }
+        });
+      }
+      console.log("login");
+    }
   }
 };
 if (!Array) {
@@ -20,7 +70,8 @@ if (!Array) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.p({
+    a: common_vendor.o((...args) => $options.wxLogin && $options.wxLogin(...args)),
+    b: common_vendor.p({
       activeTab: $data.tab
     })
   };

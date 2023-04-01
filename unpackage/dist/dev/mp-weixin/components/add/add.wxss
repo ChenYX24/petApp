@@ -1,0 +1,39 @@
+.addContainer {
+  background-color: rgba(255, 255, 255, 0.3);
+  position: fixed;
+  display: flex;
+  bottom: -100%;
+  left: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  transition: bottom 0.5s ease-in-out;
+}
+.addContainer .imgAndText {
+  box-shadow: 5px 7px 8px -1px rgba(239, 219, 208, 0.5);
+  height: 40vw;
+  width: 40vw;
+  background-color: #fcceb5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5vw;
+  border-radius: 10%;
+}
+.addContainer .imgAndText .addImg {
+  height: 20vw;
+  width: 20vw;
+}
+.addContainer .imgAndText .addImg.imgNote {
+  margin-bottom: 0.5rem;
+}
+.addContainer .imgAndText .Text {
+  color: #ffffff;
+  font-family: SimHei;
+}
+.addContainer.show {
+  bottom: 0;
+}

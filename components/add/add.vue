@@ -1,7 +1,7 @@
 <template>
-	<view class="addContainer">
+	<view class="addContainer" :class="{show:isShow}">
 		<view class="imgAndText">
-			<image src="/static/add//addPetIDCard.png" mode="widthFix" class="addImg"></image>
+			<image src="/static/add//addPetIDCard.png" mode="widthFix" class="addImg" @tap="IDCreate"></image>
 			<text class="Text">新建宠物身份证</text>
 		</view>
 		<view class="imgAndText">
@@ -18,7 +18,21 @@
 			return {
 				
 			};
-		}
+		},
+		props: {
+			isShow: {
+				type: Boolean,
+				default: false,
+			},
+		},
+		methods: {
+			IDCreate() {
+				this.$emit('updateAdd');
+				uni.navigateTo({
+					 url: `/pages/IDCreate/IDCreate/IDCreate`,
+				})
+			}
+		},
 	}
 </script>
 
