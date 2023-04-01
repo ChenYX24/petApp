@@ -5,7 +5,8 @@
 		  <text class="text2">不要忘记哦~</text>
 	  </view>
     <!-- 页面内容 -->
-    <view class="Background">
+    <scroll-view class="Background" scroll-y="true">
+		<view class="scroll-view-content">
 		<view class="tips"> 
 		  <text class="tipstext1">驱虫，就是今天</text>
 		</view>
@@ -15,7 +16,17 @@
 		<view class="tips">
 		  <text class="tipstext1">3天后</text>
 		</view>
-	</view>
+		<view class="tips">
+		  <text class="tipstext1">4天后</text>
+		</view>
+		<view class="tips">
+		  <text class="tipstext1">5天后</text>
+		</view>
+		<view class="tips">
+		  <text class="tipstext1">6天后</text>
+		</view>
+		</view>
+	</scroll-view>
     <!-- 引用自定义tabbar组件 -->
     <tab-bar :activeTab="tab"></tab-bar>
   </view>
@@ -23,10 +34,11 @@
 
 <script>
 import TabBar from '/components//TabBar.vue';
-
+import  tip from '/components//tip.vue';
 export default {
   components: {
     TabBar,
+	tip,
   },
   onLoad: function (options) {
 	this.tab=options.tab;
@@ -47,12 +59,21 @@ export default {
     background-color: #fffdf7;
     position: relative;
 	display: flex;
+
     top: 14vh;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
 	box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
     flex-direction: column;
+	  justify-content: center;
     align-items: center;
+}
+.scroll-view-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .tips{
 	margin: 0.7rem;
