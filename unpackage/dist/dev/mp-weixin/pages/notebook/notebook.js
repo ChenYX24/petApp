@@ -1,9 +1,11 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const TabBar = () => "../../components/TabBar.js";
+const tip = () => "../../components/tip.js";
 const _sfc_main = {
   components: {
-    TabBar
+    TabBar,
+    tip
   },
   onLoad: function(options) {
     this.tab = options.tab;

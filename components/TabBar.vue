@@ -1,5 +1,6 @@
 <template>
   <view class="tab-bar">
+<!-- 	  <view class="blockBox"></view> -->
     <view class="tab-item"  @click="switchTab('memo')">
       <image class="imgGroup notebIcon leftIcon" src="/static/tabbar/notebook.png"></image>
 	  	<view class="dot" :class="{active: activeTab === 'memo'}"></view>
@@ -203,5 +204,11 @@ export default {
 	 bottom: 0.1rem;
  }
  
+ .blockBox{
+	 position: relative;
+	 bottom: 0;
+	 width: 100%;
+	 height: 100px;
+ }
  </style>
  
