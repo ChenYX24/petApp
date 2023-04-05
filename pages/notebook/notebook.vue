@@ -7,24 +7,15 @@
     <!-- 页面内容 -->
     <scroll-view class="Background" scroll-y="true">
 		<view class="scroll-view-content">
-		<view class="tips"> 
-		  <text class="tipstext1">驱虫，就是今天</text>
-		</view>
-		<view class="tips">
-		  <text class="tipstext1">2天后</text>
-		</view>
-		<view class="tips">
-		  <text class="tipstext1">3天后</text>
-		</view>
-		<view class="tips">
-		  <text class="tipstext1">4天后</text>
-		</view>
-		<view class="tips">
-		  <text class="tipstext1">5天后</text>
-		</view>
-		<view class="tips">
-		  <text class="tipstext1">6天后</text>
-		</view>
+		<tip class="tips"></tip>
+		<tip class="tips"></tip>
+		<tip class="tips"></tip>
+		<tip class="tips"></tip>
+		<tip class="tips"></tip>
+		<tip class="tips"></tip>
+		<tip class="tips"></tip>
+		<tip class="tips"></tip>
+		<tip class="tips"></tip>
 		</view>
 	</scroll-view>
     <!-- 引用自定义tabbar组件 -->
@@ -118,4 +109,5 @@ export default {
     background-color: #ffb776;
 
 }
+
 </style>

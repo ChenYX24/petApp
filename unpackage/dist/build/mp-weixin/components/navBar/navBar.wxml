@@ -1,0 +1,1 @@
+<view class="navBar"><view class="status_bar" style="{{'height:' + a}}"></view><view class="navFixed" style="{{'top:' + e}}"><view class="nav"><view class="back" bindtap="{{c}}">{{b}}</view><view class="text">{{d}}</view></view></view><view style="height:2rem"></view></view>

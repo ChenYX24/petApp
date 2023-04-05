@@ -1,6 +1,8 @@
 <template>
+<view class="tabContainer">
+	    <div class="placeholder"></div>
+
   <view class="tab-bar">
-<!-- 	  <view class="blockBox"></view> -->
     <view class="tab-item"  @click="switchTab('memo')">
       <image class="imgGroup notebIcon leftIcon" src="/static/tabbar/notebook.png"></image>
 	  	<view class="dot" :class="{active: activeTab === 'memo'}"></view>
@@ -22,7 +24,8 @@
     </view>
 	<!-- 底部橘色的小圆点 -->
 <!-- 	<add v-if="isAdd"></add> -->
-	<add :class="{show:isAdd}" :isShow="isAdd" @updateAdd="changeAdd"></add>
+  </view>
+  <add :class="{show:isAdd}" :isShow="isAdd" @updateAdd="changeAdd"></add>
   </view>
 </template>
 
@@ -142,6 +145,7 @@ export default {
   border-top-left-radius: 30px!important;
   border-top-right-radius: 30px!important;
   box-shadow: 0px -12px 10px -4px rgb(252 223 205 / 50%) !important;
+
 }
 
 .tab-item {
@@ -203,12 +207,16 @@ export default {
  .leftIcon{
 	 bottom: 0.1rem;
  }
- 
- .blockBox{
-	 position: relative;
-	 bottom: 0;
-	 width: 100%;
-	 height: 100px;
- }
+.tabContainer::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100px; /* 占位元素的高度 */
+}
+.placeholder {
+  display: block;
+  width: 100%;
+  height: 100px;
+}
  </style>
  

@@ -1,0 +1,1 @@
+.navFixed{position:fixed;left:0;z-index:99;width:100%;height:2rem}.nav{display:flex;flex-direction:row;align-items:flex-start;align-content:center;justify-content:flex-start}.status_bar{width:100%}.back{font-size:20px;margin-right:.5rem;color:#cea697;font-weight:bolder;opacity:.7}.text{font-size:20px;color:#cea697;opacity:.7}

@@ -1,0 +1,1 @@
+<view class="{{['addContainer', b && 'show']}}"><view class="imgAndText"><image src="/static/add//addPetIDCard.png" mode="widthFix" class="addImg" bindtap="{{a}}"></image><text class="Text">新建宠物身份证</text></view><view class="imgAndText"><image src="/static/add//addNotebook.png" mode="widthFix" class="addImg imgNote"></image><text class="Text notbookT">新建备忘事件</text></view></view>

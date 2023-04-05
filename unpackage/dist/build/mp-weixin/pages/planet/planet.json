@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "我的星球",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tab-bar": "../../components/TabBar"
+  }
 }

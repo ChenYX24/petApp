@@ -4,51 +4,16 @@
     "pages/planet/planet",
     "pages/activity/activity",
     "pages/home/home",
-    "pages/add/add"
+    "pages/add/add",
+    "pages/IDCreate/IDCreate/IDCreate",
+    "pages/IDCreate/IDCreate2/IDCreate2",
+    "pages/IDCreate/IDCreate3/IDCreate3",
+    "pages/IDCreate/IDCreate4/IDCreate4",
+    "pages/IDCreate/IDCreate5/IDCreate5",
+    "pages/IDCreate/IDCreate6/IDCreate6"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
-  },
-  "tabBar": {
-    "color": "#ffffff",
-    "selectedColor": "#FCA547",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/notebook/notebook",
-        "iconPath": "static/tabbar/notebook.png",
-        "selectedIconPath": "static/tabbar/notebook.png",
-        "text": "·"
-      },
-      {
-        "pagePath": "pages/planet/planet",
-        "iconPath": "static/tabbar/planet.png",
-        "selectedIconPath": "static/tabbar/planet.png",
-        "text": "·"
-      },
-      {
-        "pagePath": "pages/add/add",
-        "iconPath": "static/tabbar/add.png",
-        "selectedIconPath": "static/tabbar/add.png",
-        "text": "·"
-      },
-      {
-        "pagePath": "pages/activity/activity",
-        "iconPath": "static/tabbar/activity.png",
-        "selectedIconPath": "static/tabbar/activity.png",
-        "text": "·"
-      },
-      {
-        "pagePath": "pages/home/home",
-        "iconPath": "static/tabbar/home.png",
-        "selectedIconPath": "static/tabbar/home.png",
-        "text": "·"
-      }
-    ]
+    "navigationStyle": "custom"
   },
   "usingComponents": {}
 }

@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "活动",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tab-bar": "../../components/TabBar"
+  }
 }

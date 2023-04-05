@@ -1,1 +1,1 @@
-"use strict";const e={metaInfo:{title:"活动",tabBarIndex:2}};const t=require("../../common/vendor.js")._export_sfc(e,[["render",function(e,t,r,n,o,c){return{}}]]);wx.createPage(t);
+"use strict";const a=require("../../common/vendor.js"),t={components:{TabBar:()=>"../../components/TabBar.js"},onLoad:function(a){this.tab=a.tab},data:()=>({tab:""})};if(!Array){a.resolveComponent("tab-bar")()}const e=a._export_sfc(t,[["render",function(t,e,o,n,r,c){return{a:a.p({activeTab:r.tab})}}],["__scopeId","data-v-0c6e128e"]]);wx.createPage(e);

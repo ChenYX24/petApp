@@ -1,1 +1,1 @@
-"use strict";const e={data:()=>({}),metaInfo:{title:"add"}};const t=require("../../common/vendor.js")._export_sfc(e,[["render",function(e,t,r,n,o,c){return{}}]]);wx.createPage(t);
+"use strict";const e=require("../../common/vendor.js"),a={components:{add:()=>"../../components/add/add.js",TabBar:()=>"../../components/TabBar.js"},data:()=>({}),metaInfo:{title:"add"}};if(!Array){(e.resolveComponent("tab-bar")+e.resolveComponent("add"))()}Math;const t=e._export_sfc(a,[["render",function(a,t,o,n,r,d){return{a:e.p({activeTab:a.tab})}}]]);wx.createPage(t);

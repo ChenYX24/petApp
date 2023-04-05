@@ -1,4 +1,7 @@
 {
-  "navigationBarTitleText": "备忘录",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tab-bar": "../../components/TabBar",
+    "tip": "../../components/tip"
+  }
 }
