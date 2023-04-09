@@ -24,7 +24,7 @@
 <style lang="less">
 .tips{
 	margin: 0.7rem;
-	width: 85%;
+	width: 85vw;
 	height: 20vh;
 	border-radius: 1.2rem;
 	background-color: #fff3cd;

@@ -1,0 +1,25 @@
+.tips {
+  margin: 0.7rem;
+  width: 85vw;
+  height: 20vh;
+  border-radius: 1.2rem;
+  background-color: #fff3cd;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  top: 2rem;
+  box-shadow: 7px 11px 20px 1px #f9bd7d;
+  color: #7f704b;
+  font-size: 15pt;
+}
+.tips:not(:first-of-type) {
+  color: #a69260;
+}
+.text {
+  font-weight: bold;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}

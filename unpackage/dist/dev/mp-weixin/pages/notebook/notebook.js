@@ -24,6 +24,12 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
+      text: "驱虫,就是今天"
+    }),
+    b: common_vendor.p({
+      text: "第二天"
+    }),
+    c: common_vendor.p({
       activeTab: $data.tab
     })
   };

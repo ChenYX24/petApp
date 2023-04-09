@@ -60,11 +60,11 @@ export default {
     align-items: center;
 }
 .scroll-view-content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     width: 100%;
     height: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-items: center;
 }
 
 .text{

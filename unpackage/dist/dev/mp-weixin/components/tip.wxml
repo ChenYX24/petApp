@@ -1,1 +1,1 @@
-<view></view>
+<view class="tips"><text class="text">{{a}}</text></view>
