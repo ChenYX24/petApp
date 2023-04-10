@@ -2,6 +2,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "tab-bar": "../../components/TabBar",
-    "tip": "../../components/tip"
+    "tip": "../../components/tip",
+    "top-bar": "../../components/TopBar"
   }
 }

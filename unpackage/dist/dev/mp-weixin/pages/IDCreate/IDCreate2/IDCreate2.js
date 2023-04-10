@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "选择类型",
+      Text: "\u9009\u62E9\u7C7B\u578B",
       isActive: false,
       leftSelected: false,
       rightSelected: false,
@@ -21,11 +21,11 @@ const _sfc_main = {
     nextpage() {
       if (this.isActive) {
         if (this.leftSelected) {
-          common_vendor.wx$1.setStorageSync("breed", 1);
+          wx.setStorageSync("breed", 1);
         } else if (this.rightSelected) {
-          common_vendor.wx$1.setStorageSync("breed", 2);
+          wx.setStorageSync("breed", 2);
         } else {
-          common_vendor.wx$1.setStorageSync("breed", 3);
+          wx.setStorageSync("breed", 3);
         }
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate3/IDCreate3`
@@ -75,5 +75,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-decd52d9"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate2/IDCreate2.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-decd52d9"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate2/IDCreate2.vue"]]);
 wx.createPage(MiniProgramPage);
