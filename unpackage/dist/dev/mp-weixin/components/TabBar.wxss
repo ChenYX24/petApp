@@ -22,6 +22,9 @@
   color: #888;
   text-align: center;
 }
+.tab-item.data-v-89ca1f91:first-child{
+	padding-top: 0.3rem;
+}
 .dot.active.data-v-89ca1f91 {
   background-color: #fca547;
 }

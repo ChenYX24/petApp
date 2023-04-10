@@ -4,22 +4,22 @@
 
   <view class="tab-bar">
     <view class="tab-item"  @click="switchTab('memo')">
-      <image class="imgGroup notebIcon leftIcon" src="/static/tabbar/notebook.png"></image>
+      <image class="imgGroup notebIcon leftIcon" :src="activeTab === 'memo'?'/static/tabbar/notebook.png':'/static/tabbar/notebook2.png'"></image>
 	  	<view class="dot" :class="{active: activeTab === 'memo'}"></view>
     </view>
     <view class="tab-item"  @click="switchTab('planet')">
-      <image class="imgGroup leftIcon" src="/static/tabbar/planet.png"></image>
+      <image class="imgGroup leftIcon" :src="activeTab === 'planet'?'/static/tabbar/planet.png':'/static/tabbar/planet2.png'">></image>
 	  	<view class="dot" :class="{active: activeTab === 'planet'}"></view>
     </view>
     <view class="tab-item add" @click="switchTab('add')">
-      <image class="imgGroup addImg" src="/static/tabbar/add.png"></image>
+      <image class="imgGroup addImg" src="/static/tabbar/add.png" ></image>
     </view>
     <view class="tab-item"  @click="switchTab('activity')">
-      <image class="imgGroup" src="/static/tabbar/activity.png"></image>
+      <image class="imgGroup"  :src="activeTab === 'activity'?'/static/tabbar/activity.png':'/static/tabbar/activity2.png'"></image>
 	  	<view class="dot" :class="{active: activeTab === 'activity'}"></view>
     </view>
     <view class="tab-item"  @click="switchTab('home')">
-      <image class="imgGroup" src="/static/tabbar/home.png"></image>
+      <image class="imgGroup"  :src="activeTab === 'home'?'/static/tabbar/home.png':'/static/tabbar/home2.png'"></image>
 	  	<view class="dot" :class="{active: activeTab === 'home'}"></view>
     </view>
 	<!-- 底部橘色的小圆点 -->
@@ -59,6 +59,7 @@ export default {
 	    // wx.redirectTo({
 	    //   url: '/pages/add/add',
 	    // });
+		console.log(this.tab,this.activeTab)
 		this.isAdd=!this.isAdd
 	  } else {
 	    // 切换选中的tab
@@ -97,6 +98,7 @@ export default {
 	    //   url: '/pages/add/add',
 	    // });
 		this.isAdd=!this.isAdd
+		console.log(this.tab,this.activeTab)
 	  } else {
 	    // 切换选中的tab
 	    this.tab = tab;
@@ -157,11 +159,14 @@ export default {
   color: #888;
   text-align: center;
 }
-
+//#ifdef MP-WEIXIN
+.tab-item:first-child{
+	padding-top: 0.3rem;
+}
+//#endif
 .dot.active {
   background-color: #fca547;
 }
-
 .tab-item.add {
   position: relative;
 }
