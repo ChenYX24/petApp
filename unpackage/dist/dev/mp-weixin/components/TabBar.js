@@ -23,6 +23,7 @@ const _sfc_main = {
     },
     switchTab(tab) {
       if (tab === "add") {
+        console.log(this.tab, this.activeTab);
         this.isAdd = !this.isAdd;
       } else {
         this.tab = tab;
@@ -62,18 +63,22 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: $props.activeTab === "memo" ? 1 : "",
-    b: common_vendor.o(($event) => $options.switchTab("memo")),
-    c: $props.activeTab === "planet" ? 1 : "",
-    d: common_vendor.o(($event) => $options.switchTab("planet")),
-    e: common_vendor.o(($event) => $options.switchTab("add")),
-    f: $props.activeTab === "activity" ? 1 : "",
-    g: common_vendor.o(($event) => $options.switchTab("activity")),
-    h: $props.activeTab === "home" ? 1 : "",
-    i: common_vendor.o(($event) => $options.switchTab("home")),
-    j: $data.isAdd ? 1 : "",
-    k: common_vendor.o($options.changeAdd),
-    l: common_vendor.p({
+    a: $props.activeTab === "memo" ? "/static/tabbar/notebook.png" : "/static/tabbar/notebook2.png",
+    b: $props.activeTab === "memo" ? 1 : "",
+    c: common_vendor.o(($event) => $options.switchTab("memo")),
+    d: $props.activeTab === "planet" ? "/static/tabbar/planet.png" : "/static/tabbar/planet2.png",
+    e: $props.activeTab === "planet" ? 1 : "",
+    f: common_vendor.o(($event) => $options.switchTab("planet")),
+    g: common_vendor.o(($event) => $options.switchTab("add")),
+    h: $props.activeTab === "activity" ? "/static/tabbar/activity.png" : "/static/tabbar/activity2.png",
+    i: $props.activeTab === "activity" ? 1 : "",
+    j: common_vendor.o(($event) => $options.switchTab("activity")),
+    k: $props.activeTab === "home" ? "/static/tabbar/home.png" : "/static/tabbar/home2.png",
+    l: $props.activeTab === "home" ? 1 : "",
+    m: common_vendor.o(($event) => $options.switchTab("home")),
+    n: $data.isAdd ? 1 : "",
+    o: common_vendor.o($options.changeAdd),
+    p: common_vendor.p({
       isShow: $data.isAdd
     })
   };

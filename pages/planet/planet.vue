@@ -105,7 +105,7 @@ export default {
 .topBackground{
     width: 100vw;
     height: 100vh;
-    background-color: #ffb776;
+	background-image: linear-gradient(90deg, #ffb675, #ffd29e);
 }
 .advantage{
 	display: flex;
