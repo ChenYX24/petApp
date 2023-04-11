@@ -36,6 +36,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     top: 2rem;
+	    background: linear-gradient(90deg, #fcba73, #f8f8f8);
     box-shadow: 7px 11px 20px 1px rgb(249, 189, 125, 0.7);
     color: rgb(127, 112, 75);
     font-size: 15pt;

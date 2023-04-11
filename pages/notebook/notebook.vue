@@ -28,6 +28,13 @@
 		<view class="scroll-view-content">
 		<tip text="记录" ></tip>
 		<tip text="第二天"></tip>
+		<tip ></tip>
+		<tip ></tip>
+		<tip ></tip>
+		<tip ></tip>
+		<tip ></tip>
+		<tip ></tip>
+		<tip ></tip>
 		<view class="bottom-space"></view> <!-- 添加这个元素 -->
 		</view>
 		<!-- 引用自定义tabbar组件 -->
