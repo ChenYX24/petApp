@@ -92,7 +92,7 @@ export default {
 
 .Background {
     width: 100%;
-    height: calc(100vh - 14vh);
+    height: calc(100vh - 20vh);
     background-color: #fffdf7;
     position: relative;
     top: 14vh;
