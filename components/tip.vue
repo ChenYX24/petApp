@@ -1,5 +1,5 @@
 <template>
-	<view  class="tips">
+	<view  class="tips" :class="['tips', { 'bg-yellow': flag, 'bg-red': !flag }]">
 		<text class="text"> {{text}}</text>
 	</view>
 </template>
@@ -16,7 +16,12 @@
 		    text: {
 		      type: String,
 		      required: false,
-		    },
+			  },
+			flag: {
+			  type: Boolean,
+			  default: false,
+			},
+		    
 		},
 	}
 </script>
@@ -36,7 +41,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     top: 2rem;
-	    background: linear-gradient(90deg, #fcba73, #f8f8f8);
+	    background: linear-gradient(90deg, #fff3cc, #fffdf7);
     box-shadow: 7px 11px 20px 1px rgb(249, 189, 125, 0.7);
     color: rgb(127, 112, 75);
     font-size: 15pt;
@@ -48,5 +53,14 @@
 	font-weight: bold;
 	margin-left: 2rem;
 	margin-top: 1rem;
+}
+.bg-yellow {
+  z-index: 99;
+  background: linear-gradient(90deg, #fff3ca, #fffdf7);
+}
+
+.bg-red {
+  z-index: 99;
+  background: linear-gradient(90deg, #ffdac9, #fffdf7);
 }
 </style>

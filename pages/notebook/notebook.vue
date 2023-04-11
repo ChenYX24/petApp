@@ -9,9 +9,10 @@
     <!-- 页面内容 -->
     <view v-if="this.index===0" class="Background" scroll-y="true">
 		<view class="scroll-view-content">
-		<tip text="驱虫,就是今天" ></tip>
-		<tip text="第二天"></tip>
-		<tip ></tip>
+		
+		<tip text="驱虫,就是今天" :flag="true"></tip>
+		<tip text="第二天" :flag="false"/>
+		<tip :flag="true"></tip>
 		<tip ></tip>
 		<tip ></tip>
 		<tip ></tip>
@@ -27,7 +28,7 @@
 	<view v-else class="Background" scroll-y="true">
 		<view class="scroll-view-content">
 		<tip text="记录" ></tip>
-		<tip text="第二天"></tip>
+		<tip text="第二天" :flag="true"></tip>
 		<tip ></tip>
 		<tip ></tip>
 		<tip ></tip>
@@ -136,6 +137,7 @@ export default {
     width: 100%;
     height: 5rem;
 }
+
 .text{
 	font-weight: bold;
 	position: relative;
