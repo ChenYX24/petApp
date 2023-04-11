@@ -1,1 +1,1 @@
-<view class="topBackground"><view class="Background"></view><tab-bar wx:if="{{a}}" u-i="023b432e-0" bind:__l="__l" u-p="{{a}}"></tab-bar><add u-i="023b432e-1" bind:__l="__l"></add></view>
+<view class="topBackground"><view class="Background"></view><tab-bar wx:if="{{a}}" u-i="2af107eb-0" bind:__l="__l" u-p="{{a}}"></tab-bar><add u-i="2af107eb-1" bind:__l="__l"></add></view>

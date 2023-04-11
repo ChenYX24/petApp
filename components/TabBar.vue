@@ -1,6 +1,6 @@
 <template>
 <view class="tabContainer">
-	    <div class="placeholder"></div>
+	    <!-- <div class="placeholder"></div> -->
 
   <view class="tab-bar">
     <view class="tab-item"  @click="switchTab('memo')">
@@ -138,6 +138,7 @@ export default {
   z-index: 99;
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   height: 100px;
   background-color: #fff;

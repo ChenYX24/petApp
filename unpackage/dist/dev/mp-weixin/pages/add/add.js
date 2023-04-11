@@ -11,6 +11,7 @@ const _sfc_main = {
     return {};
   },
   metaInfo: {
+    // 页面标题
     title: "add"
   }
 };
@@ -30,5 +31,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/add/add.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/add/add.vue"]]);
 wx.createPage(MiniProgramPage);

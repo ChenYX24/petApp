@@ -7,12 +7,13 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u7167\u7247\u548C\u540D\u5B57",
+      Text: "照片和名字",
       placeholderText: "#cea697",
       inputValue: "",
       imageSrc: "",
       nickName: "",
       headerUrl: "",
+      //直传接收数据
       host: "",
       signature: "",
       ossAccessKeyId: "",
@@ -31,7 +32,7 @@ const _sfc_main = {
   methods: {
     nextpage() {
       if (this.isActive) {
-        wx.setStorageSync("petName", this.inputValue);
+        common_vendor.wx$1.setStorageSync("petName", this.inputValue);
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate2/IDCreate2`
         });
@@ -41,8 +42,11 @@ const _sfc_main = {
       const that = this;
       common_vendor.index.chooseImage({
         count: 1,
+        // 最多选择的图片数量，此处为1
         sizeType: ["compressed"],
+        // 压缩图片
         sourceType: ["album", "camera"],
+        // 可以从相册选择或拍照
         success: async (res) => {
           this.imageSrc = res.tempFilePaths[0];
           try {
@@ -60,7 +64,7 @@ const _sfc_main = {
             this.policy = signatureRes.data.data.policy;
             this.securityToken = signatureRes.data.data.securityToken;
           } catch (err) {
-            console.log("\u8BF7\u6C42\u7B7E\u540D\u5931\u8D25", err);
+            console.log("请求签名失败", err);
           }
           const filePath = res.tempFilePaths[0];
           const date = new Date();
@@ -72,6 +76,7 @@ const _sfc_main = {
           console.log(that.host + key);
           common_vendor.index.uploadFile({
             url: that.host,
+            //仅为示例，非真实的接口地址
             filePath,
             name: "file",
             formData: {
@@ -79,11 +84,12 @@ const _sfc_main = {
               policy: that.policy,
               OSSAccessKeyId: that.ossAccessKeyId,
               signature: that.signature
+              // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
             },
             success: (uploadFileRes) => {
               console.log(uploadFileRes);
               if (res.statusCode === 204) {
-                console.log("\u4E0A\u4F20\u6210\u529F");
+                console.log("上传成功");
               }
               console.log(111);
             },
@@ -107,12 +113,12 @@ const _sfc_main = {
       var that = this;
       common_vendor.index.showModal({
         mask: true,
-        title: "\u6E29\u99A8\u63D0\u793A",
-        content: "\u6388\u6743\u5FAE\u4FE1\u767B\u5F55\u540E\u624D\u80FD\u6B63\u5E38\u4F7F\u7528",
+        title: "温馨提示",
+        content: "授权微信登录后才能正常使用",
         success(res) {
           if (res.confirm) {
             common_vendor.index.getUserProfile({
-              desc: "\u83B7\u53D6\u60A8\u7684\u6635\u79F0\u3001\u5934\u50CF",
+              desc: "获取您的昵称、头像",
               success: (userRes) => {
                 if (userRes.errMsg == "getUserProfile:ok" && userRes.userInfo != void 0) {
                   var userInfo = {
@@ -126,7 +132,7 @@ const _sfc_main = {
                 } else {
                   common_vendor.index.showToast({
                     icon: "none",
-                    title: "\u83B7\u53D6\u5931\u8D25"
+                    title: "获取失败"
                   });
                 }
               },
@@ -157,5 +163,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     g: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-99e14386"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate/IDCreate.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-99e14386"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate/IDCreate.vue"]]);
 wx.createPage(MiniProgramPage);

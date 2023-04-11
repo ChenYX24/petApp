@@ -17,7 +17,7 @@
 			texts: {
 			 type: Array,
 		     required: false,
-			 default: ["提醒","记录"]
+			 default: ["提醒","记录"],
 			},
 			index:{
 				type: Number,

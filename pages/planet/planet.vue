@@ -32,10 +32,10 @@
 			xxxxxxxxxxxxxxxxxxxxxx
 		</view>
 
-
-	</view>
     <!-- 引用自定义tabbar组件 -->
     <tab-bar :activeTab="tab"></tab-bar><!--将 activeTab 绑定到 Vue 实例中的 tab 变量上，tab为true时-->
+	</view>
+
   </view>
 </template>
 
@@ -89,17 +89,19 @@ export default {
   position: relative;
   padding-bottom: 100px;
 }
-.Background{
-	display: flex;
-	width: 100%;
-    height: 80vh;
+
+.Background {
+    width: 100%;
+    height: calc(100vh - 14vh);
     background-color: #fffdf7;
     position: relative;
-    top: 20vh;
+    top: 14vh;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-	box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
+    box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 .topBackground{

@@ -3,11 +3,11 @@
 	  <view class="text">
 <!-- 		  <text class="text1">XXX的提醒事项</text><br/>
 		  <text class="text2">不要忘记哦~</text> -->
-		  <top-bar :texts="this.texts" @toWhere="toWhere" :index="this.index"></top-bar>
+		  <top-bar :texts="texts" @toWhere="toWhere" :index="index"></top-bar>
 	  </view>
 	  
     <!-- 页面内容 -->
-    <scroll-view v-if="this.index===0" class="Background" scroll-y="true">
+    <view v-if="this.index===0" class="Background" scroll-y="true">
 		<view class="scroll-view-content">
 		<tip text="驱虫,就是今天" ></tip>
 		<tip text="第二天"></tip>
@@ -18,19 +18,24 @@
 		<tip ></tip>
 		<tip ></tip>
 		<tip ></tip>
+		<view class="bottom-space"></view> <!-- 添加这个元素 -->
 		</view>
-	</scroll-view>
+		<!-- 引用自定义tabbar组件 -->
+		<tab-bar :activeTab="tab"></tab-bar>
+	</view>
 	
-	<scroll-view v-else class="Background" scroll-y="true">
+	<view v-else class="Background" scroll-y="true">
 		<view class="scroll-view-content">
 		<tip text="记录" ></tip>
 		<tip text="第二天"></tip>
+		<view class="bottom-space"></view> <!-- 添加这个元素 -->
 		</view>
-	</scroll-view>
+		<!-- 引用自定义tabbar组件 -->
+		<tab-bar :activeTab="tab"></tab-bar>
+	</view>
 	
 	
-    <!-- 引用自定义tabbar组件 -->
-    <tab-bar :activeTab="tab"></tab-bar>
+
   </view>
 </template>
 
@@ -98,19 +103,18 @@ export default {
 </script>
 
 <style scoped lang="less">
-.Background{
-	width: 100%;
-    height: 80vh;
+.Background {
+    width: 100%;
+    height: calc(100vh - 20vh);
     background-color: #fffdf7;
     position: relative;
-	display: flex;
-
     top: 14vh;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-	box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
+    box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
+    display: flex;
     flex-direction: column;
-	  justify-content: center;
+    justify-content: center;
     align-items: center;
 }
 .scroll-view-content {
@@ -118,9 +122,13 @@ export default {
     grid-template-columns: 1fr;
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
     justify-items: center;
 }
-
+.bottom-space {
+    width: 100%;
+    height: 5rem;
+}
 .text{
 	font-weight: bold;
 	position: relative;

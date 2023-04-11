@@ -20,8 +20,8 @@ const _sfc_main = {
       if (!this.token) {
         common_vendor.index.showModal({
           mask: true,
-          title: "\u6E29\u99A8\u63D0\u793A",
-          content: "\u6388\u6743\u5FAE\u4FE1\u767B\u5F55\u540E\u624D\u80FD\u6B63\u5E38\u4F7F\u7528",
+          title: "温馨提示",
+          content: "授权微信登录后才能正常使用",
           success(res) {
             if (res.confirm) {
               common_vendor.index.login({
@@ -42,7 +42,7 @@ const _sfc_main = {
                     },
                     fail: function(res2) {
                       common_vendor.index.showToast({
-                        title: "\u767B\u5F55\u5931\u8D25",
+                        title: "登录失败",
                         icon: "none"
                       });
                     }
@@ -50,7 +50,7 @@ const _sfc_main = {
                 },
                 fail: function(loginRes) {
                   common_vendor.index.showToast({
-                    title: "\u767B\u5F55\u5931\u8D25",
+                    title: "登录失败",
                     icon: "none"
                   });
                 }
@@ -76,5 +76,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-07e72d3c"], ["__file", "D:/uniapp/petApp/pages/home/home.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-07e72d3c"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/home/home.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -5,10 +5,11 @@
 		<view class="login" @tap="wxLogin">
 			登陆
 		</view>
+		<!-- 引用自定义tabbar组件 -->
+		<tab-bar :activeTab="tab"></tab-bar>
 	</view>
 
-    <!-- 引用自定义tabbar组件 -->
-    <tab-bar :activeTab="tab"></tab-bar>
+
   </view>
 </template>
 

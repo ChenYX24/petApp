@@ -12,11 +12,11 @@
 		<myActivity :imageSrc="src"></myActivity>
 		<myActivity :imageSrc="src"></myActivity>
 	</view>
-	
+	<!-- 引用自定义tabbar组件 -->
+	<tab-bar :activeTab="tab"></tab-bar>
 	</view>
 
-    <!-- 引用自定义tabbar组件 -->
-    <tab-bar :activeTab="tab"></tab-bar>
+
   </view>
 </template>
 

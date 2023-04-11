@@ -15,7 +15,7 @@ const _sfc_main = {
   data() {
     return {
       tab: "",
-      texts: ["\u63D0\u9192", "\u8BB0\u5F55"],
+      texts: ["提醒", "记录"],
       index: 0
     };
   },
@@ -23,10 +23,12 @@ const _sfc_main = {
     toWhere(key) {
       this.index = key;
     },
+    // 起点
     touchStart(event) {
       this.startTime = Date.now();
       this.startPosition = event.changedTouches[0].clientX;
     },
+    // 终点,计算移动距离
     touchEnd(event) {
       const endTime = Date.now();
       if (endTime - this.startTime > 2e3) {
@@ -59,31 +61,34 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.o($options.toWhere),
     b: common_vendor.p({
-      texts: this.texts,
-      index: this.index
+      texts: $data.texts,
+      index: $data.index
     }),
     c: this.index === 0
   }, this.index === 0 ? {
     d: common_vendor.p({
-      text: "\u9A71\u866B,\u5C31\u662F\u4ECA\u5929"
+      text: "驱虫,就是今天"
     }),
     e: common_vendor.p({
-      text: "\u7B2C\u4E8C\u5929"
+      text: "第二天"
+    }),
+    f: common_vendor.p({
+      activeTab: $data.tab
     })
   } : {
-    f: common_vendor.p({
-      text: "\u8BB0\u5F55"
-    }),
     g: common_vendor.p({
-      text: "\u7B2C\u4E8C\u5929"
+      text: "记录"
+    }),
+    h: common_vendor.p({
+      text: "第二天"
+    }),
+    i: common_vendor.p({
+      activeTab: $data.tab
     })
   }, {
-    h: common_vendor.p({
-      activeTab: $data.tab
-    }),
-    i: common_vendor.o((...args) => $options.touchStart && $options.touchStart(...args)),
-    j: common_vendor.o((...args) => $options.touchEnd && $options.touchEnd(...args))
+    j: common_vendor.o((...args) => $options.touchStart && $options.touchStart(...args)),
+    k: common_vendor.o((...args) => $options.touchEnd && $options.touchEnd(...args))
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/uniapp/petApp/pages/notebook/notebook.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/notebook/notebook.vue"]]);
 wx.createPage(MiniProgramPage);

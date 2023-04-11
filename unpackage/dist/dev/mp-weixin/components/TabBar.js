@@ -29,22 +29,22 @@ const _sfc_main = {
         this.tab = tab;
         switch (tab) {
           case "memo":
-            wx.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/notebook/notebook?tab=${tab}`
             });
             break;
           case "planet":
-            wx.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/planet/planet?tab=${tab}`
             });
             break;
           case "activity":
-            wx.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/activity/activity?tab=${tab}`
             });
             break;
           case "home":
-            wx.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/home/home?tab=${tab}`
             });
             break;
@@ -83,5 +83,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-89ca1f91"], ["__file", "D:/uniapp/petApp/components/TabBar.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-89ca1f91"], ["__file", "D:/school/团小萌/团小萌/petApp/components/TabBar.vue"]]);
 wx.createComponent(Component);

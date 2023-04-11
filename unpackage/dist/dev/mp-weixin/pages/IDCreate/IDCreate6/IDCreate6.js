@@ -10,13 +10,13 @@ const _sfc_main = {
       format: true
     });
     return {
-      Text: "\u9009\u62E9\u5230\u5BB6\u65E5\u671F",
+      Text: "选择到家日期",
       placeholderText: "#cea697",
       inputValue: "",
       imageSrc: "",
       breed: "",
       name: "",
-      date: "\u8BF7\u9009\u62E9ta\u7684\u5230\u5BB6\u65E5\u671F",
+      date: "请选择ta的到家日期",
       trueDate: "xx",
       currentDate
     };
@@ -92,5 +92,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     k: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9dcc425f"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate6/IDCreate6.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9dcc425f"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate6/IDCreate6.vue"]]);
 wx.createPage(MiniProgramPage);
