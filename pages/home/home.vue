@@ -5,20 +5,21 @@
 		<view class="login" @tap="wxLogin">
 			登陆
 		</view>
+		 <custom-album :bgColor="'#f5f5f5'" @selectedImages="handleSelectedImages"></custom-album>
+
 		<!-- 引用自定义tabbar组件 -->
 		<tab-bar :activeTab="tab"></tab-bar>
 	</view>
-
-
   </view>
 </template>
 
 <script>
 import TabBar from '/components//TabBar.vue';
-
+import CustomAlbum from '/components//CustomAlbum/CustomAlbum.vue'
 export default {
   components: {
     TabBar,
+	CustomAlbum
   },
   onLoad: function (options) {
 	this.tab=options.tab
@@ -30,6 +31,9 @@ export default {
   	}
   },
   methods:{
+	   handleSelectedImages(selectedImages) {
+	        console.log('Selected images:', selectedImages);
+	      },
 	wxLogin(){
 		var that=this;
 		if(!this.token){

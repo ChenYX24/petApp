@@ -1,9 +1,11 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const TabBar = () => "../../components/TabBar.js";
+const CustomAlbum = () => "../../components/CustomAlbum/CustomAlbum.js";
 const _sfc_main = {
   components: {
-    TabBar
+    TabBar,
+    CustomAlbum
   },
   onLoad: function(options) {
     this.tab = options.tab;
@@ -15,6 +17,9 @@ const _sfc_main = {
     };
   },
   methods: {
+    handleSelectedImages(selectedImages) {
+      console.log("Selected images:", selectedImages);
+    },
     wxLogin() {
       var that = this;
       if (!this.token) {
@@ -65,13 +70,18 @@ const _sfc_main = {
   }
 };
 if (!Array) {
+  const _component_custom_album = common_vendor.resolveComponent("custom-album");
   const _component_tab_bar = common_vendor.resolveComponent("tab-bar");
-  _component_tab_bar();
+  (_component_custom_album + _component_tab_bar)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.o((...args) => $options.wxLogin && $options.wxLogin(...args)),
-    b: common_vendor.p({
+    b: common_vendor.o($options.handleSelectedImages),
+    c: common_vendor.p({
+      bgColor: "#f5f5f5"
+    }),
+    d: common_vendor.p({
       activeTab: $data.tab
     })
   };

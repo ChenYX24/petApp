@@ -1,0 +1,1 @@
+<view class="container"><view class="album"><view wx:for="{{a}}" wx:for-item="item" wx:key="b" class="image-item"><image src="{{item.a}}" class="img"></image></view></view><button bindtap="{{b}}" class="load-button">加载更多图片</button></view>

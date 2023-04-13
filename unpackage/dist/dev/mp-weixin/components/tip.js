@@ -9,12 +9,20 @@ const _sfc_main = {
     text: {
       type: String,
       required: false
+    },
+    flag: {
+      type: Boolean,
+      default: false
     }
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.t($props.text)
+    a: common_vendor.t($props.text),
+    b: common_vendor.n({
+      "bg-yellow": $props.flag,
+      "bg-red": !$props.flag
+    })
   };
 }
 const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/tip.vue"]]);

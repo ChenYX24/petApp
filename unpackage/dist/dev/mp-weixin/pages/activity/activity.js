@@ -13,7 +13,7 @@ const _sfc_main = {
   data() {
     return {
       tab: "",
-      src: "https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/642d276b5a7e3f0310451545/642d27bc99e5b100119e7a73/16806809026616325675.png",
+      src: "/static//activity/dog.png",
       tag: ["春日派对", "夏日对派"]
     };
   }

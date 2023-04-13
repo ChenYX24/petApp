@@ -1,0 +1,1 @@
+<view class="container"><view class="album" style="{{'background-color:' + b}}"><view wx:for="{{a}}" wx:for-item="item" wx:key="c" class="image-item" bindtap="{{item.d}}"><image src="{{item.a}}" class="img"></image><view wx:if="{{item.b}}" class="selected-mask"><text class="selected-text">已选择</text></view></view></view></view>
