@@ -10,7 +10,8 @@
     "pages/IDCreate/IDCreate3/IDCreate3",
     "pages/IDCreate/IDCreate4/IDCreate4",
     "pages/IDCreate/IDCreate5/IDCreate5",
-    "pages/IDCreate/IDCreate6/IDCreate6"
+    "pages/IDCreate/IDCreate6/IDCreate6",
+    "pages/AlbumPage/AlbumPage"
   ],
   "window": {
     "navigationStyle": "custom"

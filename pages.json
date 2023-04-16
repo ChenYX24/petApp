@@ -99,6 +99,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/AlbumPage/AlbumPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"
