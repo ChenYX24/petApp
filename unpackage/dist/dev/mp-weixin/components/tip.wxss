@@ -12,6 +12,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   top: 2rem;
+  background: linear-gradient(90deg, #fff3cc, #fffdf7);
   box-shadow: 7px 11px 20px 1px #f9bd7d;
   color: #7f704b;
   font-size: 15pt;
@@ -23,4 +24,12 @@
   font-weight: bold;
   margin-left: 2rem;
   margin-top: 1rem;
+}
+.bg-yellow {
+  z-index: 99;
+  background: linear-gradient(90deg, #fff3ca, #fffdf7);
+}
+.bg-red {
+  z-index: 99;
+  background: linear-gradient(90deg, #ffdac9, #fffdf7);
 }

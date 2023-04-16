@@ -67,28 +67,34 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: this.index === 0
   }, this.index === 0 ? {
     d: common_vendor.p({
-      text: "驱虫,就是今天"
+      text: "驱虫,就是今天",
+      flag: true
     }),
     e: common_vendor.p({
-      text: "第二天"
+      text: "第二天",
+      flag: false
     }),
     f: common_vendor.p({
+      flag: true
+    }),
+    g: common_vendor.p({
       activeTab: $data.tab
     })
   } : {
-    g: common_vendor.p({
+    h: common_vendor.p({
       text: "记录"
     }),
-    h: common_vendor.p({
-      text: "第二天"
-    }),
     i: common_vendor.p({
+      text: "第二天",
+      flag: true
+    }),
+    j: common_vendor.p({
       activeTab: $data.tab
     })
   }, {
-    j: common_vendor.o((...args) => $options.touchStart && $options.touchStart(...args)),
-    k: common_vendor.o((...args) => $options.touchEnd && $options.touchEnd(...args))
+    k: common_vendor.o((...args) => $options.touchStart && $options.touchStart(...args)),
+    l: common_vendor.o((...args) => $options.touchEnd && $options.touchEnd(...args))
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/notebook/notebook.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/notebook/notebook.vue"]]);
 wx.createPage(MiniProgramPage);
