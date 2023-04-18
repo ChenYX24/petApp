@@ -108,6 +108,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/notebook/notebookForm",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"

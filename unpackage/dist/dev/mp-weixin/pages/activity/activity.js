@@ -14,8 +14,13 @@ const _sfc_main = {
     return {
       tab: "",
       src: "/static//activity/dog.png",
-      tag: ["春日派对", "夏日对派"]
+      tag: ["春日派对", "夏日对派"],
+      navH: null
     };
+  },
+  created() {
+    const menuButtonInfo = common_vendor.index.getMenuButtonBoundingClientRect();
+    this.navH = menuButtonInfo.top;
   }
 };
 if (!Array) {
@@ -29,22 +34,20 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.p({
+    a: $data.navH + "px",
+    b: common_vendor.p({
       imageSrc: $data.src,
       tag: $data.tag
-    }),
-    b: common_vendor.p({
-      imageSrc: $data.src
     }),
     c: common_vendor.p({
       imageSrc: $data.src
     }),
     d: common_vendor.p({
-      imageSrc: $data.src,
-      tag: $data.tag
+      imageSrc: $data.src
     }),
     e: common_vendor.p({
-      imageSrc: $data.src
+      imageSrc: $data.src,
+      tag: $data.tag
     }),
     f: common_vendor.p({
       imageSrc: $data.src
@@ -56,6 +59,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       imageSrc: $data.src
     }),
     i: common_vendor.p({
+      imageSrc: $data.src
+    }),
+    j: common_vendor.p({
       activeTab: $data.tab
     })
   };

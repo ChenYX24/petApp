@@ -14,6 +14,7 @@ if (!Math) {
   "./pages/IDCreate/IDCreate5/IDCreate5.js";
   "./pages/IDCreate/IDCreate6/IDCreate6.js";
   "./pages/AlbumPage/AlbumPage.js";
+  "./pages/notebook/notebookForm.js";
 }
 const _sfc_main = {
   data() {

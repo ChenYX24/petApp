@@ -11,7 +11,8 @@
     "pages/IDCreate/IDCreate4/IDCreate4",
     "pages/IDCreate/IDCreate5/IDCreate5",
     "pages/IDCreate/IDCreate6/IDCreate6",
-    "pages/AlbumPage/AlbumPage"
+    "pages/AlbumPage/AlbumPage",
+    "pages/notebook/notebookForm"
   ],
   "window": {
     "navigationStyle": "custom"

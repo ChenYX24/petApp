@@ -1,0 +1,243 @@
+<template>
+	<view class="notebookForm">
+		
+		<nav-bar :text="Text"></nav-bar>
+   <view class="form">
+       <view class="input-container">
+		<image class="icon" src="/static/notebook//宠物 .png" mode="aspectFill" />
+        <input v-model="text1" :class="{ 'active': text1 !== '' }" type="text" placeholder="小羽" placeholder-style="color:#cea697;"/>
+       </view>
+	
+    <view class="input-container">
+	 <image class="icon" src="/static/notebook//备忘录.png" mode="aspectFill" />
+      <input v-model="text2" :class="{ 'active': text2 !== '' }" type="text" placeholder="输入事件名称，如洗澡" placeholder-style="color:#cea697;" />
+    </view>
+	
+    <view class="input-container" >
+      <image class="icon" src="/static//notebook/时间.png"/>
+      <input v-model="text3" :class="{ 'active': text3 !== '' }" type="text" placeholder="时间" placeholder-style="color:#cea697;" />
+    </view>
+	
+    <view class="input-container">
+      <image class="icon" src="/static/planet/position.png" />
+      <input v-model="text4" :class="{ 'active': text4 !== '' }" type="text" placeholder="地点" placeholder-style="color:#cea697;"/>
+    </view>
+	
+	  <view class="radio-group">
+	    <radio name="option" value="reminder" :checked="selectedOption === 'reminder'" @change="onOptionChanged"></radio>
+	    <text class="option-label">提醒</text>
+	
+	    <view class="option-gap"></view>
+	
+	    <radio name="option" value="record" :checked="selectedOption === 'record'" @change="onOptionChanged"></radio>
+	    <text class="option-label">记录</text>
+	  </view>
+  </view>
+	
+	<view class="beizhu">
+		<image src="/static//notebook/提醒.png" mode="aspectFill"></image>
+		<input  type="text" placeholder="其他备注"  :class="{ 'active': inputValue||text1 !== '' }" class="input" placeholder-style="color:#cea697;" v-model="inputValue"/>
+	</view>
+		
+	<view class="buttonBox">
+		<view class="button2" :class="{ active: isActive }" @tap="nextpage">
+			发布
+		</view>
+	</view>
+	
+	</view>
+</template>
+
+<script>
+	import navBar from '/components//navBar/navBar.vue';
+	export default {
+		components: {
+		  navBar,
+		},
+		data() {
+			return {
+				Text:"新建提醒/记录",
+				inputValue: '',
+				text1:'',
+				text2:'',
+				text3:'',
+				text4:'',
+				selectedOption: 'reminder'
+			}
+		},
+		methods: {
+			onOptionChanged(event) {
+			      console.log(event.detail.value)
+			    }
+		},
+		computed: {
+		   isActive() {
+		     return (this.inputValue.trim() !== '')||(this.text1.trim() !== '')||(this.text2.trim() !== '')||(this.text3.trim() !== '')||(this.text4.trim() !== '');
+		   }
+		 },
+	}
+</script>
+
+<style lang="less">
+.notebookForm{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+    width: 100vw;
+    height: 100vh;
+	opacity: 1;
+	background: linear-gradient(90deg, rgba(255, 243, 202, 1) 0%, rgba(255, 253, 247, 1) 100%), rgba(255, 253, 247, 1);
+	box-shadow: 0px -10px 5px 0px rgba(247, 142, 72, 0.25);
+}
+.form{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	top: 8vh;
+	width: 90vw;
+	height: 30vh;
+	opacity: 1;
+	border-radius: 25px;
+	background: rgba(255, 253, 247, 1);
+	box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
+}
+.input-container {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-content: center;
+ align-items: center;
+  height: calc(16% - 5px);
+  margin: 5px 0;
+  margin-left: 4vw;
+  width: 90%;
+  border-bottom: 1px solid rgba(206, 166, 151, 0.15);
+  input {
+		margin-left: 2vw;
+		width: 80%;
+		height: 80%;
+		color: #cea697;
+  }
+  
+ .active {
+   color:rgba(130, 65, 0, 1);
+ }
+  .icon{
+		width: 2rem;
+		height: 2rem;
+		z-index: 99;
+  }
+
+}
+
+//单选框
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 5%;
+  width:100%;
+  height:15%;
+}
+
+.radio {
+  margin-right: 10px;
+}
+
+.option-label {
+  margin-right: 10px;
+  color: rgba(230, 209, 198, 1);
+}
+
+.option-gap {
+  width: 10px;
+}
+
+.radio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 209, 198, 1);
+  background-color: #fff;
+}
+
+.radio:checked + .radio-container {
+  background-color: rgba(230, 209, 198, 1);
+}
+
+//备注框
+.icon {
+  width: 20%;
+  margin-right: 5%;
+}
+
+.beizhu{
+    position: absolute;
+	display: flex;
+	left: 22px;
+	top: 50vh;
+	height: 9vh;
+	opacity: 1;
+	border-radius: 25px;
+	box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
+	font-size: 16px;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	width: 90vw;
+	height: 8vh;
+	background-color: #fdfcfa;
+	/* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+
+	input{
+		margin-left: 2vw;
+		width: 80%;
+		height: 80%;
+		color: #cea697;
+	}
+	.active {
+	  color:rgba(130, 65, 0, 1);
+	}
+	image{
+		width: 2rem;
+		height: 2rem;
+		z-index: 99;
+	}
+}
+.buttonBox{
+		display: flex;
+		flex-direction: column;
+		align-content: center;//交叉轴方向上居中对齐
+		justify-content: center;//水平方向上居中对齐
+		align-items: center;
+		position: absolute;
+		bottom: 10rem;
+
+		.button2{
+			height: 3rem;
+			background-color:rgba(221,221,221,1) ;
+			border-radius: 2rem;
+			padding: 0.5rem;
+			width: 15rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 1rem;
+			color: #fff;
+			font-weight: bold;
+			font-size: 18pt;//字体大小
+
+		}
+		.button2.active{
+			background-color:rgba(252,165,71,0.67)!important ;
+			box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
+		}
+	}
+</style>

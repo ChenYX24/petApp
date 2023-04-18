@@ -9,7 +9,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/activity/activity",
+          "pathName": "pages/notebook/notebookForm",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -17,6 +17,20 @@
         {
           "name": "",
           "pathName": "pages/AlbumPage/AlbumPage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages//activity/activity",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/activity/activity",
           "query": "",
           "launchMode": "default",
           "scene": null

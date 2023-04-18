@@ -2,7 +2,7 @@
 
     <!-- 页面内容 -->
  <view class="Background">
-    <view class="flex-col group space-y-27">
+    <view class="flex-col group space-y-27" :style="{height:navH + 'px' }">
         <view class="flex-row items-center">
           <image class="image" src="/static//activity/location.png"/>
           <text class="text">广东省</text>
@@ -79,9 +79,17 @@ export default {
   	return {
   		tab: '',
 		src:"/static//activity/dog.png",
-		tag:["春日派对","夏日对派"]
+		tag:["春日派对","夏日对派"],
+		navH:null
   	}
   },
+  created() {
+  	//#ifdef MP-WEIXIN
+  	//胶囊位置
+  	const menuButtonInfo=uni.getMenuButtonBoundingClientRect()
+  	this.navH=menuButtonInfo.top
+  	//#endif
+  }
 };
 </script>
 
