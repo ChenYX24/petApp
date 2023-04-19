@@ -4,8 +4,11 @@
 <!-- 		  <text class="text1">XXX的提醒事项</text><br/>
 		  <text class="text2">不要忘记哦~</text> -->
 		  <top-bar :texts="texts" @toWhere="toWhere" :index="index"></top-bar>
+	  <view class="add" @click="addNote">
+	    <image class="addImg" src="/static/tabbar/add.png" ></image>
 	  </view>
-	  
+	  </view>
+
     <!-- 页面内容 -->
     <view v-if="this.index===0" class="Background" scroll-y="true">
 		<view class="scroll-view-content">
@@ -72,6 +75,13 @@ export default {
 		  this.index=key
 		  //页面显示逻辑
 	  },
+	  addNote(){
+	     
+	  					  uni.navigateTo({
+	  					  	 url: `/pages/notebook/notebookForm`,
+	  					  })
+	  			
+	  },
 	  // 起点
 	  touchStart(event) {
 	    this.startTime = Date.now()
@@ -116,7 +126,7 @@ export default {
     height: calc(100vh - 20vh);
     background-color: #fffdf7;
     position: relative;
-    top: 14vh;
+    top: 10vh;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
@@ -139,14 +149,29 @@ export default {
 }
 
 .text{
+	display: flex;
+	flex-direction: column;
 	font-weight: bold;
 	position: relative;
-	top: 8vh;
+	height: 14vh;
+	top: 7vh;
 	color: #fffdf7;
 	margin-left: 1rem;
 	.text1{
 			font-size: 17pt;//字体
 	}
+	.add {
+		display: flex;
+		flex-direction: row-reverse;
+		margin-bottom: 1rem;
+		margin-right: 3vw;
+       .addImg{
+		   width: 4rem;
+		   height: 4rem;
+		   z-index: 99;
+	   }
+	  }
+	
 }
 
 .topBackground{

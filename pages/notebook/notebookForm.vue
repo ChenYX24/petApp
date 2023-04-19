@@ -62,19 +62,34 @@
 				text2:'',
 				text3:'',
 				text4:'',
-				selectedOption: 'reminder'
+				selectedOption: 'reminder',
+				dataList: []
 			}
 		},
+		onShow() {
+		    // 每次页面显示时清空之前的数据
+		    this.dataList = []
+		    // 重新加载页面数据
+
+		  },
 		methods: {
 			onOptionChanged(event) {
 			      console.log(event.detail.value)
-			    }
+			    },
+				nextpage(){
+				   if(this.isActive){
+									  uni.navigateTo({
+									  	 url: `/pages/notebook/notebook`,
+									  })
+								  }
+				},
 		},
 		computed: {
 		   isActive() {
 		     return (this.inputValue.trim() !== '')||(this.text1.trim() !== '')||(this.text2.trim() !== '')||(this.text3.trim() !== '')||(this.text4.trim() !== '');
 		   }
 		 },
+
 	}
 </script>
 

@@ -11,7 +11,6 @@
     "minified": true,
     "newFeature": true,
     "bigPackageSizeSupport": true,
-    "packNpmRelationList": [],
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -36,8 +35,15 @@
       "list": []
     },
     "miniprogram": {
-      "current": -1,
-      "list": []
+      "current": 0,
+      "list": [
+        {
+          "id": 0,
+          "name": "pages/activity/activity",
+          "pathName": "pages/activity/activity",
+          "query": ""
+        }
+      ]
     }
   },
   "editorSetting": {

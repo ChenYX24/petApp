@@ -1,103 +1,106 @@
-
-.Background.data-v-da48f91d{
-
-    background-color: #fffdf7;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-	box-shadow: 0px -20px 10px -8px rgba(247,142,72,0.5);
+.Background.data-v-da48f91d {
+  background-color: #fffdf7;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  box-shadow: 0px -20px 10px -8px rgba(247, 142, 72, 0.5);
 }
-.gridBox.data-v-da48f91d{
-	margin-top: 1vh;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	justify-items: center;
+.gridBox.data-v-da48f91d {
+  margin-top: 1vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
 }
 .group.data-v-da48f91d {
-	margin-top: 3vh;
-    padding: 0 58rpx;
+  margin-top: 3vh;
+  padding: 0 58rpx;
 }
 .space-y-27 > view.data-v-da48f91d:not(:first-child),
-  .space-y-27 > text.data-v-da48f91d:not(:first-child),
-  .space-y-27 > image.data-v-da48f91d:not(:first-child) {
-    margin-top: 54rpx;
+.space-y-27 > text.data-v-da48f91d:not(:first-child),
+.space-y-27 > image.data-v-da48f91d:not(:first-child) {
+  margin-top: 54rpx;
 }
 .image.data-v-da48f91d {
-    width: 54rpx;
-    height: 56rpx;
+  width: 54rpx;
+  height: 56rpx;
 }
 .text.data-v-da48f91d {
-    color: #cea697;
-    font-size: 36rpx;
-    font-family: HappyZcool;
-    line-height: 31rpx;
+  color: #cea697;
+  font-size: 36rpx;
+  font-family: HappyZcool;
+  line-height: 31rpx;
 }
 .search.data-v-da48f91d {
-    padding: 28rpx 0;
-    background-color: #ffffff;
-    border-radius: 24rpx;
-    box-shadow: 10rpx 10rpx 24rpx #edd8c880;
-	display: flex;
-	    justify-content: flex-end;
+  padding: 28rpx 0;
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 10rpx 10rpx 24rpx #edd8c880;
+  display: flex;
+  justify-content: flex-end;
+}
+.search input.data-v-da48f91d {
+  width: 80%;
+  height: 80%;
+  color: #cea697;
 }
 .image_2.data-v-da48f91d {
-    margin-right: 30rpx;
-    width: 40rpx;
-    height: 40rpx;
+  margin-right: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 .group_2.data-v-da48f91d {
-    margin-top: 54rpx;
+  margin-top: 54rpx;
 }
 .space-y-10 > view.data-v-da48f91d:not(:first-child),
-  .space-y-10 > text.data-v-da48f91d:not(:first-child),
-  .space-y-10 > image.data-v-da48f91d:not(:first-child) {
-    margin-top: 20rpx;
+.space-y-10 > text.data-v-da48f91d:not(:first-child),
+.space-y-10 > image.data-v-da48f91d:not(:first-child) {
+  margin-top: 20rpx;
 }
 .image_3.data-v-da48f91d {
-    margin: 0 38rpx;
-    border-radius: 56rpx;
-    width: 674rpx;
-    height: 286rpx;
+  margin: 0 38rpx;
+  border-radius: 56rpx;
+  width: 674rpx;
+  height: 286rpx;
 }
 .space-y-14 > view.data-v-da48f91d:not(:first-child),
-  .space-y-14 > text.data-v-da48f91d:not(:first-child),
-  .space-y-14 > image.data-v-da48f91d:not(:first-child) {
-    margin-top: 28rpx;
+.space-y-14 > text.data-v-da48f91d:not(:first-child),
+.space-y-14 > image.data-v-da48f91d:not(:first-child) {
+  margin-top: 28rpx;
 }
 .equal-division.data-v-da48f91d {
-    padding: 0 22rpx;
-	    display: flex;
-	    flex-direction: row;
+  padding: 0 22rpx;
+  display: flex;
+  flex-direction: row;
 }
 .space-x-8 > view.data-v-da48f91d:not(:first-child),
-  .space-x-8 > text.data-v-da48f91d:not(:first-child),
-  .space-x-8 > image.data-v-da48f91d:not(:first-child) {
-    margin-left: 16rpx;
+.space-x-8 > text.data-v-da48f91d:not(:first-child),
+.space-x-8 > image.data-v-da48f91d:not(:first-child) {
+  margin-left: 16rpx;
 }
 .equal-division-item.data-v-da48f91d {
-    flex: 1 1 176rpx;
-    padding: 8rpx 0;
-	    display: flex;
-	    flex-direction: column;
-	    align-items: center;
-	    justify-content: center;
+  flex: 1 1 176rpx;
+  padding: 8rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .space-y-8 > view.data-v-da48f91d:not(:first-child),
-  .space-y-8 > text.data-v-da48f91d:not(:first-child),
-  .space-y-8 > image.data-v-da48f91d:not(:first-child) {
-    margin-top: 16rpx;
-	display: flex;
-	 flex-direction: column;
+.space-y-8 > text.data-v-da48f91d:not(:first-child),
+.space-y-8 > image.data-v-da48f91d:not(:first-child) {
+  margin-top: 16rpx;
+  display: flex;
+  flex-direction: column;
 }
 .image_4.data-v-da48f91d {
-    width: 128rpx;
-    height: 128rpx;
+  width: 128rpx;
+  height: 128rpx;
 }
 .font_1.data-v-da48f91d {
-    font-size: 32rpx;
-    font-family: HappyZcool;
-    line-height: 27rpx;
-    color: #cea697;
+  font-size: 32rpx;
+  font-family: HappyZcool;
+  line-height: 27rpx;
+  color: #cea697;
 }

@@ -2,12 +2,14 @@
 
     <!-- 页面内容 -->
  <view class="Background">
-    <view class="flex-col group space-y-27" :style="{height:navH + 'px' }">
+	 
+    <view class="flex-col group space-y-27" :style="{marginTop:navH + 'px' }">
         <view class="flex-row items-center">
           <image class="image" src="/static//activity/location.png"/>
           <text class="text">广东省</text>
         </view>
         <view class="flex-col justify-start items-end search">
+			<input type="text" />
           <image mode="aspectFill" class="image_2" src="/static//activity//search.png"/>
         </view>
     </view>
@@ -93,7 +95,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 
 .Background{
 
@@ -136,7 +138,12 @@ export default {
     border-radius: 24rpx;
     box-shadow: 10rpx 10rpx 24rpx #edd8c880;
 	display: flex;
-	    justify-content: flex-end;
+	 justify-content: flex-end;
+	 input{
+		 width: 80%;
+		 height: 80%;
+		 color: #cea697;
+	 }
   }
   .image_2 {
     margin-right: 30rpx;

@@ -25,6 +25,13 @@ const _sfc_main = {
     isActive() {
       return this.inputValue.trim() !== "" || this.text1.trim() !== "" || this.text2.trim() !== "" || this.text3.trim() !== "" || this.text4.trim() !== "";
     }
+  },
+  nextpage() {
+    if (this.isActive) {
+      common_vendor.index.navigateTo({
+        url: `/pages/IDCreate/IDCreate6/IDCreate6`
+      });
+    }
   }
 };
 if (!Array) {
