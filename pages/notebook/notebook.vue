@@ -163,8 +163,8 @@ export default {
 	.add {
 		display: flex;
 		flex-direction: row-reverse;
-		margin-bottom: 1rem;
-		margin-right: 3vw;
+     
+		margin-right: 5vw;
        .addImg{
 		   width: 4rem;
 		   height: 4rem;

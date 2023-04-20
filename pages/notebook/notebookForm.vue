@@ -23,15 +23,20 @@
       <input v-model="text4" :class="{ 'active': text4 !== '' }" type="text" placeholder="地点" placeholder-style="color:#cea697;"/>
     </view>
 	
-	  <view class="radio-group">
-	    <radio name="option" value="reminder" :checked="selectedOption === 'reminder'" @change="onOptionChanged"></radio>
-	    <text class="option-label">提醒</text>
-	
-	    <view class="option-gap"></view>
-	
-	    <radio name="option" value="record" :checked="selectedOption === 'record'" @change="onOptionChanged"></radio>
-	    <text class="option-label">记录</text>
-	  </view>
+	 <view class="selectBox">
+		<view class="image-wrapper" @tap="selectLeft">
+		  <image :src="leftImageUrl" class="image" />
+		  <view class="text" :style="{color:leftSelected?'rgba(230, 209, 198, 1)':'#9f9f9f'}">
+		  	提醒
+		  </view>
+		</view>
+		<view class="image-wrapper" @tap="selectRight">
+		  <image :src="rightImageUrl" class="image" />
+		  <view class="text" :style="{color:rightSelected?'rgba(230, 209, 198, 1)':'#9f9f9f'}">
+		  	记录
+		  </view>
+		</view>
+	 </view>
   </view>
 	
 	<view class="beizhu">
@@ -40,7 +45,7 @@
 	</view>
 		
 	<view class="buttonBox">
-		<view class="button2" :class="{ active: isActive }" @tap="nextpage">
+		<view class="button2" :class="{ active: isActive }" @tap="buttonClicked">
 			发布
 		</view>
 	</view>
@@ -62,8 +67,12 @@
 				text2:'',
 				text3:'',
 				text4:'',
-				selectedOption: 'reminder',
-				dataList: []
+               leftSelected: true,
+			   rightSelected: false,
+			   leftImageUrl: '/static/notebook/选择_已选择.png',
+			   rightImageUrl: '/static/notebook/选择_未选择.png',
+			   thirdImageUrl: '/static/notebook/选择_已选择.png',
+			   fourthImageUrl: '/static/notebook/选择_已选择.png'
 			}
 		},
 		onShow() {
@@ -76,13 +85,39 @@
 			onOptionChanged(event) {
 			      console.log(event.detail.value)
 			    },
-				nextpage(){
+				buttonClicked(){
 				   if(this.isActive){
 									  uni.navigateTo({
 									  	 url: `/pages/notebook/notebook`,
 									  })
 								  }
 				},
+				selectLeft() {
+				      this.leftSelected = !this.leftSelected;
+				      this.rightSelected = false;
+				      this.isActive = this.leftSelected || this.rightSelected;
+				
+				      if (this.leftSelected) {
+				        this.leftImageUrl = this.thirdImageUrl;
+								  this.rightImageUrl = '/static/notebook/选择_未选择.png';
+				      } 
+								else{
+								  this.leftImageUrl='/static/notebook/选择_未选择.png';
+								}
+				    },
+				    selectRight() {
+				      this.rightSelected = !this.rightSelected;
+				      this.leftSelected = false;
+				      this.isActive = this.leftSelected || this.rightSelected;
+				
+				      if (this.rightSelected) {
+				        this.rightImageUrl = this.fourthImageUrl;
+								  this.leftImageUrl = '/static/notebook/选择_未选择.png';
+				      } 
+								else{
+								  this.rightImageUrl='/static/notebook/选择_未选择.png';
+								}
+				    },
 		},
 		computed: {
 		   isActive() {
@@ -134,6 +169,7 @@
 		width: 80%;
 		height: 80%;
 		color: #cea697;
+		font-weight: bold;
   }
   
  .active {
@@ -148,43 +184,31 @@
 }
 
 //单选框
-.radio-group {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 5%;
-  width:100%;
-  height:15%;
-}
-
-.radio {
-  margin-right: 10px;
-}
-
-.option-label {
-  margin-right: 10px;
-  color: rgba(230, 209, 198, 1);
-}
-
-.option-gap {
-  width: 10px;
-}
-
-.radio-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid rgba(230, 209, 198, 1);
-  background-color: #fff;
-}
-
-.radio:checked + .radio-container {
-  background-color: rgba(230, 209, 198, 1);
-}
+.selectBox{
+		display: flex;
+		flex-direction: row;
+		margin-left: 38vw;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		top: 1vh;
+		.image-wrapper{
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+			.image{
+			width:10vw;
+			height: 10vw;
+			margin-left: 1rem;
+			}
+			.text{
+				font-weight: bold;
+			}
+		}
+	}
 
 //备注框
 .icon {
@@ -216,6 +240,7 @@
 		width: 80%;
 		height: 80%;
 		color: #cea697;
+		font-weight: bold;
 	}
 	.active {
 	  color:rgba(130, 65, 0, 1);
