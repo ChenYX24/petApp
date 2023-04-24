@@ -10,42 +10,25 @@
 	  </view>
 
     <!-- 页面内容 -->
-    <view v-if="this.index===0" class="Background" scroll-y="true">
-		<view class="scroll-view-content">
+    <view v-if="this.index===0" class="Background" scroll-y="true" >
+		<view class="scroll-view-content" >
 		
-		<tip text="驱虫,就是今天" :flag="true"></tip>
-		<tip text="第二天" :flag="false"/>
-		<tip :flag="true"></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
+          <tip :list="listremind" :flag="false"></tip>
 		<view class="bottom-space"></view> <!-- 添加这个元素 -->
 		</view>
 		<!-- 引用自定义tabbar组件 -->
 		<tab-bar :activeTab="tab"></tab-bar>
 	</view>
 	
-	<view v-else class="Background" scroll-y="true">
-		<view class="scroll-view-content">
-		<tip text="记录" ></tip>
-		<tip text="第二天" :flag="true"></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
-		<tip ></tip>
+	<view v-else class="Background" scroll-y="true" >
+		<view class="scroll-view-content" >
+		<tip :list="list" :flag="true"></tip>
+
 		<view class="bottom-space"></view> <!-- 添加这个元素 -->
 		</view>
 		<!-- 引用自定义tabbar组件 -->
 		<tab-bar :activeTab="tab"></tab-bar>
 	</view>
-	
-	
 
   </view>
 </template>
@@ -67,8 +50,29 @@ export default {
   	return {
   		tab: '',
 		texts:["提醒","记录"],
-		index:0
+		index:0,
+		listremind:["写代码","吃饭","睡觉"],
+		list:["写代码","吃饭饭","睡觉觉"],
+		
   	}
+  },
+created() {
+	
+    uni.$on('buttonClicked', () => {
+      const query = this.$route.query
+	  
+      if (query ) {
+      const { data, leftSelected, rightSelected } = query
+      const dataStr = data.replace(/%0A/g, '\n')
+      if (leftSelected === '1') {
+        this.listremind.push(dataStr)
+      }
+      if (rightSelected === '1') {
+        this.list.push(dataStr)
+      }
+      }
+    })
+	
   },
   methods:{
 	  toWhere(key){
@@ -87,6 +91,10 @@ export default {
 	    this.startTime = Date.now()
 	    this.startPosition = event.changedTouches[0].clientX
 	  },
+	  // 终点,计算移动距离
+	
+
+
 	  // 终点,计算移动距离
 	  touchEnd(event) {
 	  	const endTime = Date.now()

@@ -1,6 +1,6 @@
 <template>
-	<view  class="tips" :class="['tips', { 'bg-yellow': flag, 'bg-red': !flag }]">
-		<text class="text"> {{text}}</text>
+	<view  class="tips"  :class="['tips', { 'bg-yellow': flag, 'bg-red': !flag }]" v-for="(item, index) in list" :key="index">
+		<text class="Text" > {{ item }}</text>
 	</view>
 </template>
 
@@ -9,20 +9,26 @@
 		name:"tip",
 		data() {
 			return {
-				
+				textValue: "", // 存储来自父组件的text属性的值
 			};
 		},
 		props: {
-		    text: {
+		    list: {
 		      type: String,
-		      required: false,
+		      required: true,
 			  },
+            
 			flag: {
 			  type: Boolean,
 			  default: false,
 			},
 		    
 		},
+		watch: {
+		    text(newValue) {
+		      this.textValue = newValue; // 监听text属性的变化，并将新值赋给textValue
+		    },
+		  },
 	}
 </script>
 
@@ -49,7 +55,7 @@
 .tips:not(:first-of-type) {
   color: rgb(166, 146, 96) ;
 }
-.text{
+.Text{
 	font-weight: bold;
 	margin-left: 2rem;
 	margin-top: 1rem;

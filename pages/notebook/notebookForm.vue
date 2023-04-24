@@ -85,13 +85,19 @@
 			onOptionChanged(event) {
 			      console.log(event.detail.value)
 			    },
-				buttonClicked(){
-				   if(this.isActive){
-									  uni.navigateTo({
-									  	 url: `/pages/notebook/notebook`,
-									  })
-								  }
-				},
+			buttonClicked(){
+            const data = `${this.text1}\n${this.text2}\n${this.text3}\n${this.text4}\n${this.inputValue}`         
+            const leftSelected = this.leftSelected ? '1' : '0'
+            const rightSelected = this.rightSelected ? '1' : '0'
+            if (this.isActive) {
+              uni.navigateTo({
+                  url: `/pages/notebook/notebook?data=${encodeURIComponent(data)}&leftSelected=${leftSelected}&rightSelected=${rightSelected}`,
+                  success: () => {
+                    uni.$emit('buttonClicked')
+                  }
+                })
+}
+    },
 				selectLeft() {
 				      this.leftSelected = !this.leftSelected;
 				      this.rightSelected = false;
