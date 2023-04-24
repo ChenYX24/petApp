@@ -29,7 +29,9 @@
 		<!-- 引用自定义tabbar组件 -->
 		<tab-bar :activeTab="tab"></tab-bar>
 	</view>
-
+    <view>
+		<notebookform v-show="isForm"></notebookform>
+	</view>
   </view>
 </template>
 
@@ -37,11 +39,13 @@
 import TabBar from '/components//TabBar.vue';
 import  tip from '/components//tip.vue';
 import TopBar from '/components//TopBar.vue';
+import notebookForm from '/components//notebookform.vue';
 export default {
   components: {
     TabBar,
 	tip,
-	TopBar
+	TopBar,
+	notebookform
   },
   onLoad: function (options) {
 	this.tab=options.tab;
@@ -53,7 +57,7 @@ export default {
 		index:0,
 		listremind:["写代码","吃饭","睡觉"],
 		list:["写代码","吃饭饭","睡觉觉"],
-		
+		isForm:"false",
   	}
   },
 created() {
@@ -80,11 +84,7 @@ created() {
 		  //页面显示逻辑
 	  },
 	  addNote(){
-	     
-	  					  uni.navigateTo({
-	  					  	 url: `/pages/notebook/notebookForm`,
-	  					  })
-	  			
+          this.isForm=true
 	  },
 	  // 起点
 	  touchStart(event) {
