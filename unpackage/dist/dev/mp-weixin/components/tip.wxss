@@ -20,7 +20,7 @@
 .tips:not(:first-of-type) {
   color: #a69260;
 }
-.text {
+.Text {
   font-weight: bold;
   margin-left: 2rem;
   margin-top: 1rem;

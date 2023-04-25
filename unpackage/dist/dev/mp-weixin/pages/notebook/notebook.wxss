@@ -3,7 +3,7 @@
   height: calc(100vh - 20vh);
   background-color: #fffdf7;
   position: relative;
-  top: 14vh;
+  top: 10vh;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
   box-shadow: 0px -20px 10px -8px rgba(247, 142, 72, 0.5);
@@ -25,14 +25,27 @@
   height: 5rem;
 }
 .text.data-v-17181d6d {
+  display: flex;
+  flex-direction: column;
   font-weight: bold;
   position: relative;
-  top: 8vh;
+  height: 14vh;
+  top: 7vh;
   color: #fffdf7;
   margin-left: 1rem;
 }
 .text .text1.data-v-17181d6d {
   font-size: 17pt;
+}
+.text .add.data-v-17181d6d {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 5vw;
+}
+.text .add .addImg.data-v-17181d6d {
+  width: 4rem;
+  height: 4rem;
+  z-index: 99;
 }
 .topBackground.data-v-17181d6d {
   width: 100vw;

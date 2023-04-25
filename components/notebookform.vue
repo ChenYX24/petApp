@@ -54,9 +54,9 @@
 </template>
 
 <script>
-    import navBar from '/components//navBar/navBar.vue';
+    import navBar from '/components//navBar/navBar.vue'
 	export default {
-		name:"notebookform,
+
 		components: {
 		  navBar,
 		},

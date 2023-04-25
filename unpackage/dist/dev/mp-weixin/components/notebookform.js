@@ -1,6 +1,6 @@
 "use strict";
-const common_vendor = require("../../common/vendor.js");
-const navBar = () => "../../components/navBar/navBar.js";
+const common_vendor = require("../common/vendor.js");
+const navBar = () => "./navBar/navBar.js";
 const _sfc_main = {
   components: {
     navBar
@@ -108,5 +108,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     y: common_vendor.o((...args) => $options.buttonClicked && $options.buttonClicked(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/notebook/notebookForm.vue"]]);
-wx.createPage(MiniProgramPage);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/components/notebookform.vue"]]);
+wx.createComponent(Component);

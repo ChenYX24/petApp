@@ -1,7 +1,8 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "add": "../../components/add/add",
-    "tab-bar": "../../components/TabBar"
+    "tab-bar": "../../components/TabBar",
+    "notebookform": "../../components/notebookform",
+    "add": "../../components/add/add"
   }
 }

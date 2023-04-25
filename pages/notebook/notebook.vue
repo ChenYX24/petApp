@@ -29,17 +29,18 @@
 		<!-- 引用自定义tabbar组件 -->
 		<tab-bar :activeTab="tab"></tab-bar>
 	</view>
-    <view>
-		<notebookform v-show="isForm"></notebookform>
-	</view>
+
   </view>
+       <notebookform v-show="isshow"></notebookform>
 </template>
 
 <script>
+	
 import TabBar from '/components//TabBar.vue';
 import  tip from '/components//tip.vue';
 import TopBar from '/components//TopBar.vue';
-import notebookForm from '/components//notebookform.vue';
+	import notebookform from '/components///notebookform.vue';
+	
 export default {
   components: {
     TabBar,
@@ -57,34 +58,30 @@ export default {
 		index:0,
 		listremind:["写代码","吃饭","睡觉"],
 		list:["写代码","吃饭饭","睡觉觉"],
-		isForm:"false",
+		 isshow:false
   	}
   },
-created() {
-	
-    uni.$on('buttonClicked', () => {
-      const query = this.$route.query
-	  
-      if (query ) {
-      const { data, leftSelected, rightSelected } = query
-      const dataStr = data.replace(/%0A/g, '\n')
-      if (leftSelected === '1') {
-        this.listremind.push(dataStr)
-      }
-      if (rightSelected === '1') {
-        this.list.push(dataStr)
-      }
-      }
-    })
-	
-  },
+onLoad(options) {
+  const { data, leftSelected, rightSelected } = options;
+  const decodedData = decodeURIComponent(data).replace(/%0A/g, '\n');
+  if (leftSelected === '1') {
+    this.listremind.push(decodedData)
+  }
+  if (rightSelected === '1') {
+    this.list.push(decodedData)
+  }
+},
   methods:{
 	  toWhere(key){
 		  this.index=key
 		  //页面显示逻辑
 	  },
 	  addNote(){
-          this.isForm=true
+	     
+        uni.navigateTo({
+        	 url: `/pages/notebook/notebookForm`,
+        })
+	  			
 	  },
 	  // 起点
 	  touchStart(event) {

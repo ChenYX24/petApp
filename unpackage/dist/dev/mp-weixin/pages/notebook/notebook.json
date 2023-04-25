@@ -3,6 +3,7 @@
   "usingComponents": {
     "tab-bar": "../../components/TabBar",
     "tip": "../../components/tip",
-    "top-bar": "../../components/TopBar"
+    "top-bar": "../../components/TopBar",
+    "notebookform": "../../components/notebookform"
   }
 }

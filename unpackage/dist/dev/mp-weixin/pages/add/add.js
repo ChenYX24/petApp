@@ -1,14 +1,21 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-const add = () => "../../components/add/add.js";
 const TabBar = () => "../../components/TabBar.js";
+const notebookform = () => "../../components/notebookform.js";
 const _sfc_main = {
   components: {
-    add,
+    notebookform,
     TabBar
   },
   data() {
-    return {};
+    return {
+      isshow: false
+    };
+  },
+  methods: {
+    addNote() {
+      this.isshow = true;
+    }
   },
   metaInfo: {
     // 页面标题
@@ -16,9 +23,10 @@ const _sfc_main = {
   }
 };
 if (!Array) {
+  const _component_notebookform = common_vendor.resolveComponent("notebookform");
   const _component_tab_bar = common_vendor.resolveComponent("tab-bar");
   const _easycom_add2 = common_vendor.resolveComponent("add");
-  (_component_tab_bar + _easycom_add2)();
+  (_component_notebookform + _component_tab_bar + _easycom_add2)();
 }
 const _easycom_add = () => "../../components/add/add.js";
 if (!Math) {
@@ -26,9 +34,12 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.p({
+    a: common_vendor.o((...args) => $options.addNote && $options.addNote(...args)),
+    b: $data.isshow,
+    c: common_vendor.p({
       activeTab: _ctx.tab
-    })
+    }),
+    d: $data.isshow
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/add/add.vue"]]);
