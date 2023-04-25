@@ -1,6 +1,6 @@
 
 .tab-bar.data-v-89ca1f91 {
-  z-index: 99;
+  z-index: 999;
   position: fixed;
   bottom: 0;
   left: 0;

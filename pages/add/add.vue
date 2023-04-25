@@ -51,7 +51,7 @@
 	.addImg{
 			   width: 4rem;
 			   height: 4rem;
-			   z-index: 99;
+			   z-index: 999;
 	}
 	.Background{
 		width: 100%;
