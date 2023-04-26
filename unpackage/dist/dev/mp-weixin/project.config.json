@@ -36,15 +36,8 @@
       "list": []
     },
     "miniprogram": {
-      "current": 0,
-      "list": [
-        {
-          "id": 0,
-          "name": "pages/activity/activity",
-          "pathName": "pages/activity/activity",
-          "query": ""
-        }
-      ]
+      "current": -1,
+      "list": []
     }
   },
   "editorSetting": {
