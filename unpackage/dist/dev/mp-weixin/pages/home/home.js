@@ -13,7 +13,8 @@ const _sfc_main = {
   data() {
     return {
       tab: "",
-      token: ""
+      token: "",
+      customNumberItems: ["宠物", "勋章", "喜欢"]
     };
   },
   methods: {
@@ -70,18 +71,19 @@ const _sfc_main = {
   }
 };
 if (!Array) {
-  const _component_custom_album = common_vendor.resolveComponent("custom-album");
   const _component_tab_bar = common_vendor.resolveComponent("tab-bar");
-  (_component_custom_album + _component_tab_bar)();
+  _component_tab_bar();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.o((...args) => $options.wxLogin && $options.wxLogin(...args)),
-    b: common_vendor.o($options.handleSelectedImages),
-    c: common_vendor.p({
-      bgColor: "#f5f5f5"
+    a: common_vendor.f(["宠物", "勋章", "喜欢"], (item, index, i0) => {
+      return {
+        a: common_vendor.t(index + 1),
+        b: common_vendor.t(item),
+        c: index
+      };
     }),
-    d: common_vendor.p({
+    b: common_vendor.p({
       activeTab: $data.tab
     })
   };

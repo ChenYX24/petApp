@@ -1,7 +1,6 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "tab-bar": "../../components/TabBar",
-    "custom-album": "../../components/CustomAlbum/CustomAlbum"
+    "tab-bar": "../../components/TabBar"
   }
 }
