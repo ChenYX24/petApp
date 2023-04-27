@@ -64,6 +64,7 @@ const _sfc_main = {
     },
     nextpage() {
       if (this.isActive) {
+        common_vendor.wx$1.setStorageSync("birthday", this.date);
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate6/IDCreate6`
         });

@@ -1,43 +1,46 @@
 <template>
 	
   <view class="topBackground">
-	  <view class="add" @click="addNote">
-	    <image class="addImg" src="/static/tabbar/add.png" ></image>
-	  </view>
     <!-- 页面内容 -->
     <view class="Background">
      
-    <notebookform v-show="isshow"></notebookform>
+     <button @click="createNewComponent">创建新组件</button>
+         <template v-for="(component, index) in components" :key="index">
+           <tip />
+         </template>
 
 	</view>
     <!-- 引用自定义tabbar组件 -->
     <tab-bar :activeTab="tab"></tab-bar>
-  
+
 	<add></add>
   </view>
-      <notebookform v-show="isshow"></notebookform>
 </template>
 
 <script >
-
+	import add from "/components/add/add.vue"
 	import TabBar from '/components//TabBar.vue';
-	import notebookform from '/components///notebookform.vue';
+	import  tip from '/components//tip.vue';
 	export default {
         components: {
-            notebookform,
+			add,
 			TabBar,
-
+			tip
 		},
 		data() {
-            return {
-         isshow:false
-         }
+            
+           return{
+			 tips: [] // 存储已经创建的组件实例
+		   };
+
 		},
 		methods: {
-           
-         addNote(){
-			 this.isshow=true;
-		 }
+          createNewComponent() {
+			  console.log('创建新组件')
+                 const newComponent = new tip()
+                 this.tips.push(newComponent.$mount()) // 将新创建的组件实例添加到 components 数组中
+               }
+
 	    },
 		metaInfo: {
 		  // 页面标题
@@ -48,11 +51,7 @@
 </script>
 
 <style lang="less">
-	.addImg{
-			   width: 4rem;
-			   height: 4rem;
-			   z-index: 999;
-	}
+	
 	.Background{
 		width: 100%;
 	    height: 80vh;
