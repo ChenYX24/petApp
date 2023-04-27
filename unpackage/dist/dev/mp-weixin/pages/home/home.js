@@ -21,6 +21,11 @@ const _sfc_main = {
     handleSelectedImages(selectedImages) {
       console.log("Selected images:", selectedImages);
     },
+    goSet() {
+      common_vendor.index.navigateTo({
+        url: `/pages/setting/setting`
+      });
+    },
     wxLogin() {
       var that = this;
       if (!this.token) {
@@ -77,14 +82,15 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.o((...args) => $options.wxLogin && $options.wxLogin(...args)),
-    b: common_vendor.f(["宠物", "勋章", "喜欢"], (item, index, i0) => {
+    b: common_vendor.o((...args) => $options.goSet && $options.goSet(...args)),
+    c: common_vendor.f(["宠物", "勋章", "喜欢"], (item, index, i0) => {
       return {
         a: common_vendor.t(index + 1),
         b: common_vendor.t(item),
         c: index
       };
     }),
-    c: common_vendor.p({
+    d: common_vendor.p({
       activeTab: $data.tab
     })
   };

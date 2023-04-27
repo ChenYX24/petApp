@@ -73,6 +73,12 @@ export default {
 				  if (this.currentProvince !== '请选择省份') {
 				      this.trueProvince = this.currentProvince
 				    }
+					//#ifdef MP-WEIXIN
+					wx.setStorageSync('city', this.currentProvince);
+					//#endif
+					//#ifndef MP-WEIXIN
+					localStorage.setItem('city', this.currentProvince);
+					//#endif
 		        },
 				canTap(){
 					if(this.isCanActive)

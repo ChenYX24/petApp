@@ -30,6 +30,7 @@ const _sfc_main = {
       if (this.currentProvince !== "请选择省份") {
         this.trueProvince = this.currentProvince;
       }
+      common_vendor.wx$1.setStorageSync("city", this.currentProvince);
     },
     canTap() {
       if (this.isCanActive) {

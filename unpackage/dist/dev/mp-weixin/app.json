@@ -13,7 +13,8 @@
     "pages/IDCreate/IDCreate6/IDCreate6",
     "pages/AlbumPage/AlbumPage",
     "pages/notebook/notebookForm",
-    "pages/IDCreate/IDCreate7/IDCreate7"
+    "pages/IDCreate/IDCreate7/IDCreate7",
+    "pages/setting/setting"
   ],
   "window": {
     "navigationStyle": "custom"

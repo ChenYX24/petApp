@@ -11,9 +11,6 @@ const _sfc_main = {
     TopBar,
     notebookform
   },
-  onLoad: function(options) {
-    this.tab = options.tab;
-  },
   data() {
     const storedList = common_vendor.index.getStorageSync("list");
     const storedListRemind = common_vendor.index.getStorageSync("listremind");
@@ -27,6 +24,7 @@ const _sfc_main = {
     };
   },
   onLoad(options) {
+    this.tab = options.tab;
     const { data, leftSelected, rightSelected } = options;
     const decodedData = decodeURIComponent(data).replace(/%0A/g, "\n");
     if (leftSelected === "1") {

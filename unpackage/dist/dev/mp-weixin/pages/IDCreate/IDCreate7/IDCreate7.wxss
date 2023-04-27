@@ -9,11 +9,30 @@
 }
 .pageContent.data-v-87750e9b {
   display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: flex-start;
-  align-items: center;
   position: relative;
   top: 0rem;
   height: 100%;
+}
+.IDCard.data-v-87750e9b {
+  background-size: cover;
+  /* 缩放图像以填满元素 */
+  background-position: center;
+  /* 将图像居中 */
+  width: 100%;
+  height: 60vw;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 10vw 50vw 32vw 8vw;
+}
+.IMG.data-v-87750e9b {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat-x;
+}
+.IDText.data-v-87750e9b {
+  grid-column-start: 2;
+  white-space: nowrap;
 }

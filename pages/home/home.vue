@@ -16,7 +16,7 @@
 		        </view>
 		        <view class="userNameWrapper">
 		          <view class="userName">用户名</view>
-		          <view class="settingsButton">设置></view>
+		          <view class="settingsButton" @tap="goSet">设置></view>
 		        </view>
 		      </view>
 		      
@@ -73,7 +73,12 @@ export default {
 	   handleSelectedImages(selectedImages) {
 	        console.log('Selected images:', selectedImages);
 	      },
-	wxLogin(){
+		  goSet(){
+				uni.navigateTo({
+					 url: `/pages/setting/setting`,
+				})
+		  },
+		wxLogin(){
 		var that=this;
 		if(!this.token){
 			uni.showModal({

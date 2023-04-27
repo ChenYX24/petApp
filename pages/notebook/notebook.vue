@@ -45,9 +45,6 @@ export default {
 	TopBar,
 	notebookform
   },
-  onLoad: function (options) {
-	this.tab=options.tab;
-  },
   data() {
 
   	 const storedList = uni.getStorageSync('list');
@@ -62,6 +59,7 @@ export default {
   	    }
   },
 onLoad(options) {
+	this.tab=options.tab;
   const { data, leftSelected, rightSelected } = options;
   const decodedData = decodeURIComponent(data).replace(/%0A/g, '\n');
   if (leftSelected === '1') {
@@ -87,6 +85,7 @@ onLoad(options) {
 	  toWhere(key){
 		  this.index=key
 		  //页面显示逻辑
+		
 	  },
 
 	  // 起点

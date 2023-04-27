@@ -6,7 +6,7 @@
     <view class="flex-col group space-y-27" :style="{marginTop:navH + 'px' }">
         <view class="flex-row items-center">
           <image class="image" src="/static//activity/location.png"/>
-          <text class="text">广东省</text>
+          <text class="text">{{city}}</text>
         </view>
         <view class="flex-col justify-start items-end search">
 			<input type="text" />
@@ -76,13 +76,18 @@ export default {
   },
   onLoad: function (options) {
 	this.tab=options.tab;
+	this.city=uni.getStorageSync('city')
+	if(!this.city){
+		this.city="未知"
+	}
   },
   data() {
   	return {
   		tab: '',
 		src:"/static//activity/dog.png",
 		tag:["春日派对","夏日对派"],
-		navH:null
+		navH:null,
+		city:"未知",
   	}
   },
   created() {

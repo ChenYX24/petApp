@@ -6,22 +6,29 @@ const _sfc_main = {
     navBar
   },
   onLoad: function() {
-    this.name = common_vendor.index.getStorageSync("petName");
+    this.name = "姓名 " + common_vendor.index.getStorageSync("petName");
     this.breed = common_vendor.index.getStorageSync("breed");
     this.sex = common_vendor.index.getStorageSync("sex");
     this.city = common_vendor.index.getStorageSync("city");
     if (!this.city) {
-      this.city = "未知";
+      this.city = "位置 未知";
+    } else {
+      this.city = "位置 " + this.city;
     }
     let birthday = new Date(common_vendor.index.getStorageSync("birthday"));
     if (this.sex == 1) {
-      this.sex = "/static/IDCreate/final/IDBOY.png";
+      this.sexImg = "/static/IDCreate/final/IDBOY.png";
+      this.ImgBackground = "/static/IDCreate/final/BIMG.png";
+      this.sex = "性别 弟弟";
     } else {
-      this.sex = "/static/IDCreate/final/IDGIRL.png";
+      this.sexImg = "/static/IDCreate/final/IDGIRL.png";
+      this.ImgBackground = "/static/IDCreate/final/GIMG.png";
+      this.sex = "性别 妹妹";
     }
     this.birthdayY = birthday.getFullYear();
     this.birthdayM = this.padZero(birthday.getMonth() + 1);
     this.birthdayD = this.padZero(birthday.getDate());
+    this.birthday = "生日 " + this.birthdayY + "年  " + this.birthdayM + "月  " + this.birthdayD + "日";
   },
   data() {
     return {
@@ -33,7 +40,8 @@ const _sfc_main = {
       birthdayM: "",
       birthdayD: "",
       city: "未知",
-      Image: ""
+      Image: "/static/home/cat.png",
+      ImgBackground: ""
     };
   },
   methods: {
@@ -58,12 +66,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: common_vendor.p({
       text: $data.Text
     }),
-    b: this.sex,
-    c: common_vendor.t($data.name),
-    d: common_vendor.t($data.city),
-    e: common_vendor.t($data.birthdayY),
-    f: common_vendor.t($data.birthdayM),
-    g: common_vendor.t($data.birthdayD)
+    b: common_vendor.t($data.name),
+    c: common_vendor.t($data.sex),
+    d: common_vendor.t(_ctx.birthday),
+    e: common_vendor.t($data.city),
+    f: $data.Image,
+    g: `url(${this.ImgBackground})`,
+    h: `url(${this.sexImg})`
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-87750e9b"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate7/IDCreate7.vue"]]);
