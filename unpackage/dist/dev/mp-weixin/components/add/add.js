@@ -17,13 +17,20 @@ const _sfc_main = {
       common_vendor.index.navigateTo({
         url: `/pages/IDCreate/IDCreate/IDCreate`
       });
+    },
+    addNote() {
+      this.$emit("updateAdd");
+      common_vendor.index.navigateTo({
+        url: `/pages/notebook/notebookForm`
+      });
     }
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.o((...args) => $options.IDCreate && $options.IDCreate(...args)),
-    b: $props.isShow ? 1 : ""
+    a: common_vendor.o((...args) => $options.addNote && $options.addNote(...args)),
+    b: common_vendor.o((...args) => $options.IDCreate && $options.IDCreate(...args)),
+    c: $props.isShow ? 1 : ""
   };
 }
 const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/add/add.vue"]]);

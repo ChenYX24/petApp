@@ -4,9 +4,6 @@
 <!-- 		  <text class="text1">XXX的提醒事项</text><br/>
 		  <text class="text2">不要忘记哦~</text> -->
 		  <top-bar :texts="texts" @toWhere="toWhere" :index="index"></top-bar>
-	  <view class="add" @click="addNote">
-	    <image class="addImg" src="/static/tabbar/add.png" ></image>
-	  </view>
 	  </view>
 
     <!-- 页面内容 -->
@@ -91,13 +88,7 @@ onLoad(options) {
 		  this.index=key
 		  //页面显示逻辑
 	  },
-	  addNote(){
-	     
-        uni.navigateTo({
-        	 url: `/pages/notebook/notebookForm`,
-        })
-	  			
-	  },
+
 	  // 起点
 	  touchStart(event) {
 	    this.startTime = Date.now()

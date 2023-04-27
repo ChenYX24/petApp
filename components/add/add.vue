@@ -1,7 +1,7 @@
 <template>
 	<view class="addContainer" :class="{show:isShow}">
 		<view class="imgAndText">
-			<image src="/static/add/addNotebook.png" mode="widthFix" class="addImg imgNote"></image>
+			<image src="/static/add/addNotebook.png" mode="widthFix" class="addImg imgNote" @tap="addNote"></image>
 			<text class="Text notbookT">新建备忘事件</text>
 		</view>
 		<view class="imgAndText">
@@ -38,6 +38,12 @@
 				this.$emit('updateAdd');
 				uni.navigateTo({
 					 url: `/pages/IDCreate/IDCreate/IDCreate`,
+				})
+			},
+			addNote(){
+				this.$emit('updateAdd');
+				uni.navigateTo({
+					 url: `/pages/notebook/notebookForm`,
 				})
 			}
 		},

@@ -41,11 +41,6 @@ const _sfc_main = {
     toWhere(key) {
       this.index = key;
     },
-    addNote() {
-      common_vendor.index.navigateTo({
-        url: `/pages/notebook/notebookForm`
-      });
-    },
     // 起点
     touchStart(event) {
       this.startTime = Date.now();
@@ -89,28 +84,27 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       texts: $data.texts,
       index: $data.index
     }),
-    c: common_vendor.o((...args) => $options.addNote && $options.addNote(...args)),
-    d: this.index === 0
+    c: this.index === 0
   }, this.index === 0 ? {
-    e: common_vendor.p({
+    d: common_vendor.p({
       list: $data.listremind,
       flag: false
     }),
-    f: common_vendor.p({
+    e: common_vendor.p({
       activeTab: $data.tab
     })
   } : {
-    g: common_vendor.p({
+    f: common_vendor.p({
       list: $data.list,
       flag: true
     }),
-    h: common_vendor.p({
+    g: common_vendor.p({
       activeTab: $data.tab
     })
   }, {
-    i: common_vendor.o((...args) => $options.touchStart && $options.touchStart(...args)),
-    j: common_vendor.o((...args) => $options.touchEnd && $options.touchEnd(...args)),
-    k: $data.isshow
+    h: common_vendor.o((...args) => $options.touchStart && $options.touchStart(...args)),
+    i: common_vendor.o((...args) => $options.touchEnd && $options.touchEnd(...args)),
+    j: $data.isshow
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/notebook/notebook.vue"]]);
