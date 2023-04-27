@@ -64,8 +64,10 @@ const _sfc_main = {
     },
     nextpage() {
       if (this.isActive) {
+        console.log(this.date);
+        common_vendor.wx$1.setStorageSync("homeday", this.date);
         common_vendor.index.navigateTo({
-          url: `/pages/IDCreate/IDCreate6/IDCreate6`
+          url: `/pages/IDCreate/IDCreate7/IDCreate7`
         });
       }
     }
@@ -92,5 +94,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     k: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9dcc425f"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/IDCreate/IDCreate6/IDCreate6.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9dcc425f"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate6/IDCreate6.vue"]]);
 wx.createPage(MiniProgramPage);

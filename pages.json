@@ -118,6 +118,15 @@
             
         }
        
+        ,{
+            "path" : "pages/IDCreate/IDCreate7/IDCreate7",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"

@@ -97,8 +97,15 @@
 				  },
 			  nextpage(){
 				  if(this.isActive){
+					  console.log(this.date)
+					  //#ifdef MP-WEIXIN
+					  wx.setStorageSync('homeday', this.date);
+					  //#endif
+					  //#ifndef MP-WEIXIN
+					  localStorage.setItem('homeday', this.date);
+					  //#endif
 					  uni.navigateTo({
-					  	 url: `/pages/IDCreate/IDCreate6/IDCreate6`,
+					  	 url: `/pages/IDCreate/IDCreate7/IDCreate7`,
 					  })
 				  }
 			  },

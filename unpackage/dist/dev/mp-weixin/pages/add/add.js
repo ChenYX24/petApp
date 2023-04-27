@@ -1,20 +1,25 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const add = () => "../../components/add/add.js";
 const TabBar = () => "../../components/TabBar.js";
-const notebookform = () => "../../components/notebookform.js";
+const tip = () => "../../components/tip.js";
 const _sfc_main = {
   components: {
-    notebookform,
-    TabBar
+    add,
+    TabBar,
+    tip
   },
   data() {
     return {
-      isshow: false
+      tips: []
+      // 存储已经创建的组件实例
     };
   },
   methods: {
-    addNote() {
-      this.isshow = true;
+    createNewComponent() {
+      console.log("创建新组件");
+      const newComponent = new tip();
+      this.tips.push(newComponent.$mount());
     }
   },
   metaInfo: {
@@ -23,10 +28,10 @@ const _sfc_main = {
   }
 };
 if (!Array) {
-  const _component_notebookform = common_vendor.resolveComponent("notebookform");
+  const _component_tip = common_vendor.resolveComponent("tip");
   const _component_tab_bar = common_vendor.resolveComponent("tab-bar");
   const _easycom_add2 = common_vendor.resolveComponent("add");
-  (_component_notebookform + _component_tab_bar + _easycom_add2)();
+  (_component_tip + _component_tab_bar + _easycom_add2)();
 }
 const _easycom_add = () => "../../components/add/add.js";
 if (!Math) {
@@ -34,13 +39,17 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.o((...args) => $options.addNote && $options.addNote(...args)),
-    b: $data.isshow,
+    a: common_vendor.o((...args) => $options.createNewComponent && $options.createNewComponent(...args)),
+    b: common_vendor.f(_ctx.components, (component, index, i0) => {
+      return {
+        a: "2af107eb-0-" + i0,
+        b: index
+      };
+    }),
     c: common_vendor.p({
       activeTab: _ctx.tab
-    }),
-    d: $data.isshow
+    })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/add/add.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/add/add.vue"]]);
 wx.createPage(MiniProgramPage);

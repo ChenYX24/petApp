@@ -1,0 +1,19 @@
+.IDBG.data-v-87750e9b {
+  background-color: #fff4f2;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.pageContent.data-v-87750e9b {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  top: 0rem;
+  height: 100%;
+}

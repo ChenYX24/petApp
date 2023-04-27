@@ -97,6 +97,12 @@
 				  },
 			  nextpage(){
 				  if(this.isActive){
+					  //#ifdef MP-WEIXIN
+					  wx.setStorageSync('birthday', this.date);
+					  //#endif
+					  //#ifndef MP-WEIXIN
+					  localStorage.setItem('birthday', this.date);
+					  //#endif
 					  uni.navigateTo({
 					  	 url: `/pages/IDCreate/IDCreate6/IDCreate6`,
 					  })
