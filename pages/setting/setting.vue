@@ -7,33 +7,25 @@
 					<view class="setText">
 						消息通知
 					</view>
-					<view class="setD">
-						
-					</view>
+				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
 				<view class="setBox">
 					<view class="setText">
 						隐私
 					</view>
-					<view class="setD">
-						
-					</view>
+				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
 				<view class="setBox">
 					<view class="setText">
 						权限
 					</view>
-					<view class="setD">
-						
-					</view>
+				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
 				<view class="setBox">
 					<view class="setText">
 						语言
 					</view>
-					<view class="setD">
-						
-					</view>
+				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
 			</view>
 		</view>
@@ -90,7 +82,19 @@
 
 	}
 	.setD{
-		
+		width: 25px;
+		height: 25px;
+		transform: rotate(180deg);
+	}
+	.setBox{
+		    display: flex;
+		    flex-direction: row;
+		    justify-content: space-between;
+		    align-items: center;
+		    padding: 15px;
+	}
+	.setBox:not(:last-child){
+		    border-bottom: 2px solid;
 	}
 
 </style>

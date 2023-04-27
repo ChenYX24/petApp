@@ -27,6 +27,22 @@ const _sfc_main = {
       } else {
         return [0, 99, 4];
       }
+    },
+    customTapFunctions() {
+      return [
+        () => {
+          console.log("customTap0");
+          common_vendor.index.navigateTo({
+            url: `/pages/petList/petList`
+          });
+        },
+        () => {
+          console.log("customTap1");
+        },
+        () => {
+          console.log("customTap2");
+        }
+      ];
     }
   },
   methods: {
@@ -37,6 +53,9 @@ const _sfc_main = {
       common_vendor.index.navigateTo({
         url: `/pages/setting/setting`
       });
+    },
+    customTap(index) {
+      this.customTapFunctions[index]();
     },
     wxLogin() {
       var that = this;
@@ -99,7 +118,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       return {
         a: common_vendor.t($options.custom[index]),
         b: common_vendor.t(item),
-        c: index
+        c: index,
+        d: common_vendor.o(($event) => $options.customTap(index), index)
       };
     }),
     d: common_vendor.p({

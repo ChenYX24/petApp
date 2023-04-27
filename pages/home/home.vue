@@ -22,8 +22,8 @@
 		      
 		      <!-- 新增的view -->
 		      <view class="customNumbers">
-		        <view class="numberWrapper" v-for="(item, index) in ['宠物', '勋章', '喜欢']" :key="index">
-		          <view class="customNumber">{{ custom[index] }}</view>
+		        <view class="numberWrapper" v-for="(item, index) in ['宠物', '勋章', '喜欢']" :key="index" @tap="customTap(index)">
+		          <view class="customNumber" >{{ custom[index] }}</view>
 		          <view class="customNumberText">{{ item }}</view>
 		        </view>
 		      </view>
@@ -82,6 +82,23 @@ export default {
 			 return [0,99,4]
 		 }
 	  },
+	   customTapFunctions() {
+	      // 返回一个函数数组，每个函数接收一个参数 index
+	      return [
+	        () => {
+	          console.log('customTap0');
+			  uni.navigateTo({
+			  	 url: `/pages/petList/petList`,
+			  })
+	        },
+	        () => {
+	          console.log('customTap1');
+	        },
+	        () => {
+	          console.log('customTap2');
+	        }
+	      ];
+	    }
 
   },
   methods:{
@@ -92,6 +109,9 @@ export default {
 				uni.navigateTo({
 					 url: `/pages/setting/setting`,
 				})
+		  },
+		  customTap(index){
+			      this.customTapFunctions[index]();
 		  },
 		wxLogin(){
 		var that=this;

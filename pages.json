@@ -136,6 +136,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/petList/petList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"

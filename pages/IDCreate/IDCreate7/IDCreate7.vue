@@ -70,7 +70,7 @@
 				  localStorage.setItem('idCardList', this.idCardList);
 				  //#endif
 					  uni.navigateTo({
-					   url: `/pages/home/home`,
+					   url: `/pages/petList/petList`,
 					  })  
 			  },
 			  share(){

@@ -17,6 +17,7 @@ if (!Math) {
   "./pages/notebook/notebookForm.js";
   "./pages/IDCreate/IDCreate7/IDCreate7.js";
   "./pages/setting/setting.js";
+  "./pages/petList/petList.js";
 }
 const _sfc_main = {
   data() {

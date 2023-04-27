@@ -43,7 +43,7 @@ const _sfc_main = {
       }
       common_vendor.wx$1.setStorageSync("idCardList", this.idCardList);
       common_vendor.index.navigateTo({
-        url: `/pages/home/home`
+        url: `/pages/petList/petList`
       });
     },
     share() {

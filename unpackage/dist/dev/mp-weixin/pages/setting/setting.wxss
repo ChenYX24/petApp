@@ -26,3 +26,18 @@
   background: #fffdf7;
   box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
 }
+.setD.data-v-018cdf56 {
+  width: 25px;
+  height: 25px;
+  transform: rotate(180deg);
+}
+.setBox.data-v-018cdf56 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+.setBox.data-v-018cdf56:not(:last-child) {
+  border-bottom: 2px solid;
+}
