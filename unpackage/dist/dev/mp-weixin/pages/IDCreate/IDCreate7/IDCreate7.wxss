@@ -8,31 +8,36 @@
   left: 0;
 }
 .pageContent.data-v-87750e9b {
-  display: flex;
   position: relative;
   top: 0rem;
   height: 100%;
+  display: flex;
+  justify-content: center;
 }
-.IDCard.data-v-87750e9b {
-  background-size: cover;
-  /* 缩放图像以填满元素 */
-  background-position: center;
-  /* 将图像居中 */
-  width: 100%;
-  height: 60vw;
-  display: grid;
+.buttonBox.data-v-87750e9b {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
   align-items: center;
-  justify-items: center;
-  grid-template-columns: 10vw 50vw 32vw 8vw;
+  position: absolute;
+  bottom: 10rem;
 }
-.IMG.data-v-87750e9b {
-  width: 100%;
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: repeat-x;
+.buttonBox .button2.data-v-87750e9b {
+  height: 3rem;
+  background-color: #dddddd;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18pt;
 }
-.IDText.data-v-87750e9b {
-  grid-column-start: 2;
-  white-space: nowrap;
+.buttonBox .button2.active.data-v-87750e9b {
+  background-color: rgba(252, 165, 71, 0.67) !important;
+  box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
 }

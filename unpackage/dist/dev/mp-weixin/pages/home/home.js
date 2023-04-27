@@ -17,6 +17,18 @@ const _sfc_main = {
       customNumberItems: ["宠物", "勋章", "喜欢"]
     };
   },
+  computed: {
+    idCardList() {
+      return common_vendor.index.getStorageSync("idCardList");
+    },
+    custom() {
+      if (this.idCardList) {
+        return [this.idCardList.length, 99, 4];
+      } else {
+        return [0, 99, 4];
+      }
+    }
+  },
   methods: {
     handleSelectedImages(selectedImages) {
       console.log("Selected images:", selectedImages);
@@ -85,7 +97,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_vendor.o((...args) => $options.goSet && $options.goSet(...args)),
     c: common_vendor.f(["宠物", "勋章", "喜欢"], (item, index, i0) => {
       return {
-        a: common_vendor.t(index + 1),
+        a: common_vendor.t($options.custom[index]),
         b: common_vendor.t(item),
         c: index
       };

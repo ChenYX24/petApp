@@ -23,7 +23,7 @@
 		      <!-- 新增的view -->
 		      <view class="customNumbers">
 		        <view class="numberWrapper" v-for="(item, index) in ['宠物', '勋章', '喜欢']" :key="index">
-		          <view class="customNumber">{{ index + 1 }}</view>
+		          <view class="customNumber">{{ custom[index] }}</view>
 		          <view class="customNumberText">{{ item }}</view>
 		        </view>
 		      </view>
@@ -68,6 +68,21 @@ export default {
 		token:'',
 		customNumberItems: ['宠物', '勋章', '喜欢']
   	}
+  },
+  computed:{
+	  idCardList(){
+		  return uni.getStorageSync('idCardList')
+	  },
+	  custom(){
+		  if(this.idCardList)
+		  {
+			  return [this.idCardList.length,99,4]
+		  }
+		 else{
+			 return [0,99,4]
+		 }
+	  },
+
   },
   methods:{
 	   handleSelectedImages(selectedImages) {
