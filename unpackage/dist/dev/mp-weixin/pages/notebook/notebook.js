@@ -15,12 +15,14 @@ const _sfc_main = {
     this.tab = options.tab;
   },
   data() {
+    const storedList = common_vendor.index.getStorageSync("list");
+    const storedListRemind = common_vendor.index.getStorageSync("listremind");
     return {
       tab: "",
       texts: ["提醒", "记录"],
       index: 0,
-      listremind: ["写代码", "吃饭", "睡觉"],
-      list: ["写代码", "吃饭饭", "睡觉觉"],
+      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
+      list: storedList ? JSON.parse(storedList) : ["写代码", "吃饭饭", "睡觉觉"],
       isshow: false
     };
   },
@@ -29,9 +31,10 @@ const _sfc_main = {
     const decodedData = decodeURIComponent(data).replace(/%0A/g, "\n");
     if (leftSelected === "1") {
       this.listremind.push(decodedData);
+      common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.listremind));
     }
     if (rightSelected === "1") {
-      this.list.push(decodedData);
+      this.list.push(decodedData), common_vendor.wx$1.setStorageSync("list", JSON.stringify(this.list));
     }
   },
   methods: {

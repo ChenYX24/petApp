@@ -76,14 +76,15 @@ if (!Array) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.f(["宠物", "勋章", "喜欢"], (item, index, i0) => {
+    a: common_vendor.o((...args) => $options.wxLogin && $options.wxLogin(...args)),
+    b: common_vendor.f(["宠物", "勋章", "喜欢"], (item, index, i0) => {
       return {
         a: common_vendor.t(index + 1),
         b: common_vendor.t(item),
         c: index
       };
     }),
-    b: common_vendor.p({
+    c: common_vendor.p({
       activeTab: $data.tab
     })
   };

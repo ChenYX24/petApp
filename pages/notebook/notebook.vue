@@ -52,23 +52,38 @@ export default {
 	this.tab=options.tab;
   },
   data() {
-  	return {
-  		tab: '',
-		texts:["提醒","记录"],
-		index:0,
-		listremind:["写代码","吃饭","睡觉"],
-		list:["写代码","吃饭饭","睡觉觉"],
-		 isshow:false
-  	}
+
+  	 const storedList = uni.getStorageSync('list');
+  	    const storedListRemind = uni.getStorageSync('listremind');
+  	    return {
+  	      tab: '',
+  	      texts: ["提醒", "记录"],
+  	      index: 0,
+  	      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
+  	      list: storedList ? JSON.parse(storedList) : ["写代码", "吃饭饭", "睡觉觉"],
+  	      isshow: false
+  	    }
   },
 onLoad(options) {
   const { data, leftSelected, rightSelected } = options;
   const decodedData = decodeURIComponent(data).replace(/%0A/g, '\n');
   if (leftSelected === '1') {
-    this.listremind.push(decodedData)
+    this.listremind.push(decodedData);
+	//#ifdef MP-WEIXIN
+	wx.setStorageSync('listremind', JSON.stringify(this.listremind));
+	//#endif
+	//#ifndef MP-WEIXIN
+	localStorage.setItem('listremind', JSON.stringify(this.listremind))
+	//#endif
   }
   if (rightSelected === '1') {
-    this.list.push(decodedData)
+    this.list.push(decodedData),
+	//#ifdef MP-WEIXIN
+	wx.setStorageSync('list', JSON.stringify(this.list));
+	//#endif
+	//#ifndef MP-WEIXIN
+	localStorage.setItem('list', JSON.stringify(this.list))
+	//#endif
   }
 },
   methods:{
