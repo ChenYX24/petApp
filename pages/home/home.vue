@@ -11,19 +11,19 @@
 		    
 		      <!-- 新增的view -->
 		      <view class="userInfo">
-		        <view class="wechatImageWrapper"  @tap="wxLogin">
+		        <view class="wechatImageWrapper" @tap="wxLogin">
 		          <image src="../../static/home/cat.png" class="wechatImage"></image>
 		        </view>
 		        <view class="userNameWrapper">
 		          <view class="userName">用户名</view>
-		          <view class="settingsButton">设置></view>
+		          <view class="settingsButton" @tap="goSet">设置></view>
 		        </view>
 		      </view>
 		      
 		      <!-- 新增的view -->
 		      <view class="customNumbers">
-		        <view class="numberWrapper" v-for="(item, index) in ['宠物', '勋章', '喜欢']" :key="index">
-		          <view class="customNumber">{{ index + 1 }}</view>
+		        <view class="numberWrapper" v-for="(item, index) in ['宠物', '勋章', '喜欢']" :key="index" @tap="customTap(index)">
+		          <view class="customNumber" >{{ custom[index] }}</view>
 		          <view class="customNumberText">{{ item }}</view>
 		        </view>
 		      </view>
@@ -69,11 +69,51 @@ export default {
 		customNumberItems: ['宠物', '勋章', '喜欢']
   	}
   },
+  computed:{
+	  idCardList(){
+		  return uni.getStorageSync('idCardList')
+	  },
+	  custom(){
+		  if(this.idCardList)
+		  {
+			  return [this.idCardList.length,99,4]
+		  }
+		 else{
+			 return [0,99,4]
+		 }
+	  },
+	   customTapFunctions() {
+	      // 返回一个函数数组，每个函数接收一个参数 index
+	      return [
+	        () => {
+	          console.log('customTap0');
+			  uni.navigateTo({
+			  	 url: `/pages/petList/petList`,
+			  })
+	        },
+	        () => {
+	          console.log('customTap1');
+	        },
+	        () => {
+	          console.log('customTap2');
+	        }
+	      ];
+	    }
+
+  },
   methods:{
 	   handleSelectedImages(selectedImages) {
 	        console.log('Selected images:', selectedImages);
 	      },
-	wxLogin(){
+		  goSet(){
+				uni.navigateTo({
+					 url: `/pages/setting/setting`,
+				})
+		  },
+		  customTap(index){
+			      this.customTapFunctions[index]();
+		  },
+		wxLogin(){
 		var that=this;
 		if(!this.token){
 			uni.showModal({

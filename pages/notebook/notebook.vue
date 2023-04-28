@@ -4,9 +4,6 @@
 <!-- 		  <text class="text1">XXX的提醒事项</text><br/>
 		  <text class="text2">不要忘记哦~</text> -->
 		  <top-bar :texts="texts" @toWhere="toWhere" :index="index"></top-bar>
-	  <view class="add" @click="addNote">
-	    <image class="addImg" src="/static/tabbar/add.png" ></image>
-	  </view>
 	  </view>
 
     <!-- 页面内容 -->
@@ -48,41 +45,49 @@ export default {
 	TopBar,
 	notebookform
   },
-  onLoad: function (options) {
-	this.tab=options.tab;
-  },
   data() {
-  	return {
-  		tab: '',
-		texts:["提醒","记录"],
-		index:0,
-		listremind:["写代码","吃饭","睡觉"],
-		list:["写代码","吃饭饭","睡觉觉"],
-		 isshow:false
-  	}
+
+  	 const storedList = uni.getStorageSync('list');
+  	    const storedListRemind = uni.getStorageSync('listremind');
+  	    return {
+  	      tab: '',
+  	      texts: ["提醒", "记录"],
+  	      index: 0,
+  	      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
+  	      list: storedList ? JSON.parse(storedList) : ["写代码", "吃饭饭", "睡觉觉"],
+  	      isshow: false
+  	    }
   },
 onLoad(options) {
+	this.tab=options.tab;
   const { data, leftSelected, rightSelected } = options;
   const decodedData = decodeURIComponent(data).replace(/%0A/g, '\n');
   if (leftSelected === '1') {
-    this.listremind.push(decodedData)
+    this.listremind.push(decodedData);
+	//#ifdef MP-WEIXIN
+	wx.setStorageSync('listremind', JSON.stringify(this.listremind));
+	//#endif
+	//#ifndef MP-WEIXIN
+	localStorage.setItem('listremind', JSON.stringify(this.listremind))
+	//#endif
   }
   if (rightSelected === '1') {
-    this.list.push(decodedData)
+    this.list.push(decodedData),
+	//#ifdef MP-WEIXIN
+	wx.setStorageSync('list', JSON.stringify(this.list));
+	//#endif
+	//#ifndef MP-WEIXIN
+	localStorage.setItem('list', JSON.stringify(this.list))
+	//#endif
   }
 },
   methods:{
 	  toWhere(key){
 		  this.index=key
 		  //页面显示逻辑
+		
 	  },
-	  addNote(){
-	     
-        uni.navigateTo({
-        	 url: `/pages/notebook/notebookForm`,
-        })
-	  			
-	  },
+
 	  // 起点
 	  touchStart(event) {
 	    this.startTime = Date.now()

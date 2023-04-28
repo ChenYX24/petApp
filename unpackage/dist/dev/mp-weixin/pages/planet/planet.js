@@ -30,6 +30,7 @@ const _sfc_main = {
       if (this.currentProvince !== "\u8BF7\u9009\u62E9\u7701\u4EFD") {
         this.trueProvince = this.currentProvince;
       }
+      common_vendor.wx$1.setStorageSync("city", this.currentProvince);
     },
     canTap() {
       if (this.isCanActive) {

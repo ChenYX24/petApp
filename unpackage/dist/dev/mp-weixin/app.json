@@ -13,22 +13,12 @@
     "pages/IDCreate/IDCreate6/IDCreate6",
     "pages/AlbumPage/AlbumPage",
     "pages/notebook/notebookForm",
-    "pages/activity/ActivityThoughtCreate",
-    "components/chooseLocation"
+    "pages/IDCreate/IDCreate7/IDCreate7",
+    "pages/setting/setting",
+    "pages/petList/petList"
   ],
   "window": {
     "navigationStyle": "custom"
   },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "获取用户当前位置"
-    }
-  },
-  "requiredPrivateInfos": [
-    "getLocation",
-    "onLocationChange",
-    "startLocationUpdateBackground",
-    "chooseAddress"
-  ],
   "usingComponents": {}
 }

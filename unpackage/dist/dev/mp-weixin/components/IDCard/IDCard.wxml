@@ -1,0 +1,1 @@
+<view class="IDCard" style="{{'background-image:' + h}}" bindtap="{{i}}"><view class="IDText" style="{{'color:' + e}}"><view class="name">{{a}}</view><view class="sex">{{b}}</view><view class="birthday">{{c}}</view><view class="city">{{d}}</view></view><image src="{{f}}" class="IMG" mode="aspectFit" style="{{'background-image:' + g}}"></image></view>

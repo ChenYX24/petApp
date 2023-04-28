@@ -37,7 +37,7 @@
     margin: 0.7rem;
     width: 85vw;
     min-height: 20vh;
-    max-height: 20vh;
+    overflow-wrap: anywhere;
     border-radius: 1.2rem;
     background-color: #fff3cd;
     display: flex;
@@ -59,6 +59,7 @@
 	font-weight: bold;
 	margin-left: 2rem;
 	margin-top: 1rem;
+	margin-right: 1rem;
 }
 .bg-yellow {
   z-index: 99;

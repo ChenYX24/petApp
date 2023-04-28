@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "nav-bar": "../../components/navBar/navBar",
+    "id-card": "../../components/IDCard/IDCard"
+  }
+}

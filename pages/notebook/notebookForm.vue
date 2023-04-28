@@ -96,7 +96,7 @@
                     uni.$emit('buttonClicked')
                   }
                 })
-}
+     }
     },
 				selectLeft() {
 				      this.leftSelected = !this.leftSelected;
