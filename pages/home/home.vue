@@ -11,7 +11,7 @@
 		    
 		      <!-- 新增的view -->
 		      <view class="userInfo">
-		        <view class="wechatImageWrapper">
+		        <view class="wechatImageWrapper"  @tap="wxLogin">
 		          <image src="../../static/home/cat.png" class="wechatImage"></image>
 		        </view>
 		        <view class="userNameWrapper">

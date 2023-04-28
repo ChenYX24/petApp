@@ -6,7 +6,7 @@ const _sfc_main = {
     texts: {
       type: Array,
       required: false,
-      default: ["提醒", "记录"]
+      default: ["\u63D0\u9192", "\u8BB0\u5F55"]
     },
     index: {
       type: Number,
@@ -38,5 +38,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/TopBar.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/TopBar.vue"]]);
 wx.createComponent(Component);

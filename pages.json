@@ -117,6 +117,23 @@
             }
             
         }
+		,{
+			"path" : "pages/activity/ActivityThoughtCreate",
+			"style" :                                                                                    
+			{
+			    "navigationBarTitleText": "",
+			    "enablePullDownRefresh": false
+			}
+			
+		}
+		,{
+			"path" : "components/chooseLocation",
+			"style" :                                                                                    
+			{
+			    "navigationBarTitleText": "",
+			    "enablePullDownRefresh": false
+			}
+		}
        
     ],
 	"globalStyle": {

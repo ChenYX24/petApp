@@ -14,7 +14,7 @@ const _sfc_main = {
     return {
       tab: "",
       token: "",
-      customNumberItems: ["宠物", "勋章", "喜欢"]
+      customNumberItems: ["\u5BA0\u7269", "\u52CB\u7AE0", "\u559C\u6B22"]
     };
   },
   methods: {
@@ -26,8 +26,8 @@ const _sfc_main = {
       if (!this.token) {
         common_vendor.index.showModal({
           mask: true,
-          title: "温馨提示",
-          content: "授权微信登录后才能正常使用",
+          title: "\u6E29\u99A8\u63D0\u793A",
+          content: "\u6388\u6743\u5FAE\u4FE1\u767B\u5F55\u540E\u624D\u80FD\u6B63\u5E38\u4F7F\u7528",
           success(res) {
             if (res.confirm) {
               common_vendor.index.login({
@@ -48,7 +48,7 @@ const _sfc_main = {
                     },
                     fail: function(res2) {
                       common_vendor.index.showToast({
-                        title: "登录失败",
+                        title: "\u767B\u5F55\u5931\u8D25",
                         icon: "none"
                       });
                     }
@@ -56,7 +56,7 @@ const _sfc_main = {
                 },
                 fail: function(loginRes) {
                   common_vendor.index.showToast({
-                    title: "登录失败",
+                    title: "\u767B\u5F55\u5931\u8D25",
                     icon: "none"
                   });
                 }
@@ -76,17 +76,18 @@ if (!Array) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.f(["宠物", "勋章", "喜欢"], (item, index, i0) => {
+    a: common_vendor.o((...args) => $options.wxLogin && $options.wxLogin(...args)),
+    b: common_vendor.f(["\u5BA0\u7269", "\u52CB\u7AE0", "\u559C\u6B22"], (item, index, i0) => {
       return {
         a: common_vendor.t(index + 1),
         b: common_vendor.t(item),
         c: index
       };
     }),
-    b: common_vendor.p({
+    c: common_vendor.p({
       activeTab: $data.tab
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-07e72d3c"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/home/home.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-07e72d3c"], ["__file", "D:/uniapp/petApp/pages/home/home.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -5,7 +5,7 @@
 			<text class="Text notbookT">新建备忘事件</text>
 		</view>
 		<view class="imgAndText">
-			<image src="/static/add/addActivityNote.png" mode="widthFix" class="addImg"></image>
+			<image src="/static/add/addActivityNote.png" mode="widthFix" class="addImg"  @tap="ActivityThoughtCreate"></image>
 			<text class="Text notbookT">新建活动笔记</text>
 		</view>
 		<view class="imgAndText">
@@ -38,6 +38,12 @@
 				this.$emit('updateAdd');
 				uni.navigateTo({
 					 url: `/pages/IDCreate/IDCreate/IDCreate`,
+				})
+			},
+			ActivityThoughtCreate() {
+				this.$emit('updateAdd');
+				uni.navigateTo({
+					 url: `/pages/activity/ActivityThoughtCreate`,
 				})
 			}
 		},

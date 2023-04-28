@@ -17,10 +17,10 @@ const _sfc_main = {
   data() {
     return {
       tab: "",
-      texts: ["提醒", "记录"],
+      texts: ["\u63D0\u9192", "\u8BB0\u5F55"],
       index: 0,
-      listremind: ["写代码", "吃饭", "睡觉"],
-      list: ["写代码", "吃饭饭", "睡觉觉"],
+      listremind: ["\u5199\u4EE3\u7801", "\u5403\u996D", "\u7761\u89C9"],
+      list: ["\u5199\u4EE3\u7801", "\u5403\u996D\u996D", "\u7761\u89C9\u89C9"],
       isshow: false
     };
   },
@@ -43,13 +43,10 @@ const _sfc_main = {
         url: `/pages/notebook/notebookForm`
       });
     },
-    // 起点
     touchStart(event) {
       this.startTime = Date.now();
       this.startPosition = event.changedTouches[0].clientX;
     },
-    // 终点,计算移动距离
-    // 终点,计算移动距离
     touchEnd(event) {
       const endTime = Date.now();
       if (endTime - this.startTime > 2e3) {
@@ -110,5 +107,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     k: $data.isshow
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/notebook/notebook.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/uniapp/petApp/pages/notebook/notebook.vue"]]);
 wx.createPage(MiniProgramPage);

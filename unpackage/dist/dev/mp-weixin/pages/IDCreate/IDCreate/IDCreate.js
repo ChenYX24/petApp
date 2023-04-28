@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "照片和名字",
+      Text: "\u7167\u7247\u548C\u540D\u5B57",
       placeholderText: "#cea697",
       inputValue: "",
       imageSrc: ""
@@ -21,7 +21,7 @@ const _sfc_main = {
   methods: {
     nextpage() {
       if (this.isActive) {
-        common_vendor.wx$1.setStorageSync("petName", this.inputValue);
+        wx.setStorageSync("petName", this.inputValue);
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate2/IDCreate2`
         });
@@ -30,11 +30,8 @@ const _sfc_main = {
     chooseImage() {
       common_vendor.index.chooseImage({
         count: 1,
-        // 最多选择的图片数量，此处为1
         sizeType: ["compressed"],
-        // 压缩图片
         sourceType: ["album", "camera"],
-        // 可以从相册选择或拍照
         success: (res) => {
           this.imageSrc = res.tempFilePaths[0];
         }
@@ -59,5 +56,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     g: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-99e14386"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate/IDCreate.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-99e14386"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate/IDCreate.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,0 +1,159 @@
+.ActivityThoughtCreate {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  background: #fffdf7;
+  box-shadow: 0px -10px 5px 0px rgba(247, 142, 72, 0.25);
+}
+.ActivityImage {
+  left: 15px;
+  top: 101px;
+  width: 145px;
+  height: 145px;
+  opacity: 1;
+  background: #cccccc;
+}
+.Separator {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 93.3%;
+  border-bottom: 3px solid rgba(206, 166, 151, 0.23);
+}
+.inputBox {
+  margin-top: 0px;
+  top: 2vh;
+  display: flex;
+  position: static;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 4vh;
+  background-color: #fdfcfa;
+  border-radius: 3vw;
+  /* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+}
+.inputBox .input {
+  width: 80%;
+  height: 80%;
+  color: #cea697;
+}
+.inputBox image {
+  width: 2rem;
+  height: 2rem;
+  z-index: 99;
+}
+.inputBox .picker-text {
+  font-size: 16px;
+  color: #cea697;
+}
+.inputBox .picker {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+}
+.S0 {
+  align-items: center;
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(3, 30vw);
+  place-items: center;
+  gap: 5px;
+}
+.S1 {
+  align-items: center;
+  height: 46px;
+}
+.S2 {
+  align-items: flex-start;
+  height: 225px;
+}
+.delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.textActivity {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 0px;
+  color: rgba(206, 166, 151, 0.5);
+  text-align: left;
+  vertical-align: top;
+}
+.text {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 35.6px;
+  color: rgba(206, 166, 151, 0.5);
+  text-align: left;
+  vertical-align: top;
+  align-self: flex-end;
+}
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  position: static;
+  bottom: 10rem;
+}
+.buttonBox .button2 {
+  height: 3rem;
+  background-color: #dddddd;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18pt;
+}
+.buttonBox .button2.active {
+  background-color: rgba(252, 165, 71, 0.67) !important;
+  box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
+}
+.camera {
+  width: 100px;
+  height: 100px;
+}
+.image {
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+}
+.imageGPS {
+  width: 36px;
+  height: 36px;
+  opacity: 1;
+  z-index: 2;
+}
+.imageDelete {
+  width: 36px;
+  height: 36px;
+  opacity: 1;
+  z-index: 2;
+}
+.Location {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}

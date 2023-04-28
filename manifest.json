@@ -43,7 +43,10 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {},
+            "splashscreen" : {
+                "useOriginalMsgbox" : true
+            }
         }
     },
     /* 快应用特有相关 */
@@ -64,7 +67,18 @@
         },
         "optimization" : {
             "subPackages" : true
-        }
+        },
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "获取用户当前位置"
+            }
+        },
+	   "requiredPrivateInfos": [
+		  "getLocation",
+		  "onLocationChange",
+		  "startLocationUpdateBackground",
+		  "chooseAddress"
+		]
     },
     "mp-alipay" : {
         "usingComponents" : true

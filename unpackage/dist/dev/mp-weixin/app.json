@@ -12,10 +12,23 @@
     "pages/IDCreate/IDCreate5/IDCreate5",
     "pages/IDCreate/IDCreate6/IDCreate6",
     "pages/AlbumPage/AlbumPage",
-    "pages/notebook/notebookForm"
+    "pages/notebook/notebookForm",
+    "pages/activity/ActivityThoughtCreate",
+    "components/chooseLocation"
   ],
   "window": {
     "navigationStyle": "custom"
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取用户当前位置"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "onLocationChange",
+    "startLocationUpdateBackground",
+    "chooseAddress"
+  ],
   "usingComponents": {}
 }
