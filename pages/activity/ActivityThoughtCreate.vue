@@ -53,7 +53,7 @@
 	
 <script>
 	import navBar from '/components//navBar/navBar.vue';
-	import chooseLocation from '../../components/chooseLocation.vue';
+	import chooseLocation from '/components/chooseLocation.vue';
 	export default {
 		components: {
 		  navBar,
@@ -107,12 +107,31 @@
 			},
 			pushActivityThought(){
 				//上传活动任务，并返回首页
-				
-				uni.navigateTo({
-					 url: `/pages/notebook/notebook`,
-				})
-				
-				
+				uni.request({
+				    url: 'http://localhost:88/activityThought/save',
+					method:'POST',
+				    data: {
+				        content: this.inputValue,
+						data: 'asdasdasd',
+						location: this.trueLocation,
+						activityName: this.currentActivity,
+						userId: 1
+				    },
+					params: {interfaceState:'state'},
+				    header: {
+						"Content-Type": 'application/json',
+						"Authorization": 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc'
+				    },
+				    success: (res) => {
+				        console.log(res.data);
+				    },
+					  complete: () => {
+						uni.navigateTo({
+							 url: `/pages/notebook/notebook`,
+						})
+					  }
+				});
+
 			},
 			onActivityChange(event){
 				const activityIndex = event.detail.value

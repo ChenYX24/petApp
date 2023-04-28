@@ -54,8 +54,29 @@ const _sfc_main = {
       });
     },
     pushActivityThought() {
-      common_vendor.index.navigateTo({
-        url: `/pages/notebook/notebook`
+      common_vendor.index.request({
+        url: "http://localhost:88/activityThought/save",
+        method: "POST",
+        data: {
+          content: this.inputValue,
+          data: "asdasdasd",
+          location: this.trueLocation,
+          activityName: this.currentActivity,
+          userId: 1
+        },
+        params: { interfaceState: "state" },
+        header: {
+          "Content-Type": "application/json",
+          "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc"
+        },
+        success: (res) => {
+          console.log(res.data);
+        },
+        complete: () => {
+          common_vendor.index.navigateTo({
+            url: `/pages/notebook/notebook`
+          });
+        }
       });
     },
     onActivityChange(event) {
