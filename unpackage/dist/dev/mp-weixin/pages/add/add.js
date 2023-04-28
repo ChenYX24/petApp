@@ -12,12 +12,11 @@ const _sfc_main = {
   data() {
     return {
       tips: []
-      // 存储已经创建的组件实例
     };
   },
   methods: {
     createNewComponent() {
-      console.log("创建新组件");
+      console.log("\u521B\u5EFA\u65B0\u7EC4\u4EF6");
       const newComponent = new tip();
       this.tips.push(newComponent.$mount());
     }
@@ -41,7 +40,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: common_vendor.o((...args) => $options.createNewComponent && $options.createNewComponent(...args)),
     b: common_vendor.f(_ctx.components, (component, index, i0) => {
       return {
-        a: "2af107eb-0-" + i0,
+        a: "023b432e-0-" + i0,
         b: index
       };
     }),

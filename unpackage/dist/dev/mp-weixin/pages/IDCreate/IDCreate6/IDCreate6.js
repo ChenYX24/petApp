@@ -65,7 +65,7 @@ const _sfc_main = {
     nextpage() {
       if (this.isActive) {
         console.log(this.date);
-        common_vendor.wx$1.setStorageSync("homeday", this.date);
+        wx.setStorageSync("homeday", this.date);
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate7/IDCreate7`
         });

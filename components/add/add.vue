@@ -39,13 +39,13 @@
 				uni.navigateTo({
 					 url: `/pages/IDCreate/IDCreate/IDCreate`,
 				})
-			}，
+			},
 			addNote(){
 				this.$emit('updateAdd');
 				uni.navigateTo({
 					 url: `/pages/notebook/notebookForm`,
 				})
-			}，
+			},
 			ActivityThoughtCreate() {
 				this.$emit('updateAdd');
 				uni.navigateTo({
