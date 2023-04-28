@@ -20,6 +20,8 @@ if (!Math) {
   "./pages/IDCreate/IDCreate7/IDCreate7.js";
   "./pages/setting/setting.js";
   "./pages/petList/petList.js";
+  "./pages/makeIcon/makeIcon.js";
+  "./pages/fovIcon/fovIcon.js";
 }
 const _sfc_main = {
   data() {

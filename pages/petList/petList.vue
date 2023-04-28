@@ -2,13 +2,18 @@
 <view class="IDBG">
 		<nav-bar :text="Text"></nav-bar>
 		<view class="cardContainer">
-
+		<view class="cardScroll">
 			<idCard v-for="(item, index) in idCardList" :key="index" :dataList="item"></idCard>
 			<view class="icon make" @tap="addCard">
 				<view class="makeText">
 					+
 				</view>
 			</view>
+			<view class="block">
+				
+			</view>
+		</view>
+
 		</view>
 
 	</view>
@@ -46,20 +51,15 @@
 .IDBG {
   background-color: #fff4f2;
   height: 100%;
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
 }
+
 	.cardContainer{
-		position: relative;
-		top: 2%;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
+    height: calc(100vh - 10vh);
 	}
 .icon.make {
   width: 332px;
@@ -78,6 +78,14 @@
   justify-content: center;
   align-items: center;
 }
+.cardScroll{
+	    display: grid;
+	    grid-template-columns: 1fr;
+	    width: 100%;
+	    height: 100%;
+	    overflow-y: scroll;
+	    justify-items: center;
+}
 	.makeText{
 	opacity: 1;
     font-size: 80pt;
@@ -85,5 +93,10 @@
     color: #e6d1c6;
 	position: relative;
 	top: -4%;
+}
+.block
+{
+	width: 332px;
+	height: 5vh;
 }
 </style>

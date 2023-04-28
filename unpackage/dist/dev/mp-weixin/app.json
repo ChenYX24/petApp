@@ -17,7 +17,9 @@
     "components/chooseLocation",
     "pages/IDCreate/IDCreate7/IDCreate7",
     "pages/setting/setting",
-    "pages/petList/petList"
+    "pages/petList/petList",
+    "pages/makeIcon/makeIcon",
+    "pages/fovIcon/fovIcon"
   ],
   "window": {
     "navigationStyle": "custom"

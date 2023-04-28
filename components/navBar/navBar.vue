@@ -28,7 +28,10 @@
    props: {
       text: {
         type: String,
-      }
+      },
+	  Nav:{
+		  type:String
+	  }
     },
 	data() {
 		return {

@@ -5,6 +5,9 @@ const _sfc_main = {
   props: {
     text: {
       type: String
+    },
+    Nav: {
+      type: String
     }
   },
   data() {
