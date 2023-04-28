@@ -29,7 +29,7 @@
 		      </view>
 		      
 		    </view>
-		<view class="icon make">
+		<view class="icon make" @tap="goMake">
 			<image src="../../static/home/dog.png" class="makeImg"></image>
 			  <view class="makeText">
 			    <view class="line1">制作</view>
@@ -37,7 +37,7 @@
 			    <view class="line1">》</view>
 			  </view>
 		</view>
-		<view class="icon collect">
+		<view class="icon collect" @tap="goCollect">
 			<image src="../../static/home/cat.png" class="collectImg"></image>
 			<view class="collectText">
 				<view class="line2">查看</view>
@@ -167,7 +167,16 @@ export default {
 		console.log('login')
 		
 	},
-
+	goMake(){
+		uni.navigateTo({
+			url:"/pages/makeIcon/makeIcon"
+		})
+	},
+	goCollect(){
+		uni.navigateTo({
+			url:"/pages/fovIcon/fovIcon"
+		})
+	}
   }
 
 };

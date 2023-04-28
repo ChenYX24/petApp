@@ -41,9 +41,17 @@
 	},
 	methods: {
 		backClick() {
-			uni.navigateBack({
-				delta: 1
-			});
+			if(this.Nav)
+			{
+				uni.navigateTo({
+					url:`${this.Nav}`
+				})
+			}
+			else{
+				uni.navigateBack({
+					delta: 1
+				});
+			}
 		}
 	},
 	created() {
