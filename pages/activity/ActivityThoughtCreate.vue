@@ -7,8 +7,7 @@
 				<div>
 					<image :src="item" class="image" mode="aspectFit"></image>
 <!-- 						<image 
-						src="../..
-https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png" 
+						src="../../static/planet/position.png" 
 						@click="deleteImage(index)"
 						class="imageDelete Location">
 						</image> -->
