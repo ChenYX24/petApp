@@ -47,7 +47,7 @@
 				Text:"编辑资料",
 				inputValue: '',
 				text1:'',
-				Nav:"/pages/home/home",
+				Nav:"/pages/home/home?tab=home",
 				text2:'',
 				text3:'',
 				text4:'',

@@ -8,7 +8,7 @@ const _sfc_main = {
   data() {
     return {
       Text: "已收藏",
-      Nav: "/pages/home/home",
+      Nav: "/pages/home/home?tab=home",
       isHeartActive: false,
       isAnimation: false,
       selectedImage: "",
@@ -20,7 +20,13 @@ const _sfc_main = {
     this.emoticons = common_vendor.index.getStorageSync("likeIcon");
   },
   mounted() {
-    this.likeIcon = common_vendor.index.getStorageSync("likeIcon");
+    let temp = common_vendor.index.getStorageSync("likeIcon");
+    if (!temp) {
+      this.likeIcon = [];
+      common_vendor.wx$1.setStorageSync("likeIcon", this.likeIcon);
+    } else {
+      this.likeIcon = temp;
+    }
     if (this.likeIcon) {
       this.selectedImage = this.likeIcon[0];
     }

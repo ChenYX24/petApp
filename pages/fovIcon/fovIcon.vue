@@ -32,7 +32,7 @@
 		data() {
 			return {
 				Text:"已收藏",
-				Nav:"/pages/home/home",
+				Nav:"/pages/home/home?tab=home",
 				isHeartActive:false,
 				isAnimation:false,
 				selectedImage: '', 
@@ -50,19 +50,33 @@
 		},
 		mounted() {
 		    // 之后要在服务端动态获取图片
-			//#ifdef MP-WEIXIN
-			this.likeIcon=uni.getStorageSync('likeIcon')
-			//#endif
-			//#ifndef MP-WEIXIN
-			var likeIconT = uni.getStorageSync('likeIcon');
-			if (likeIconT) {
-			    try {
-				this.likeIcon=JSON.parse(uni.getStorageSync('likeIcon'))
-			    } catch (e) {
-			        console.error(e); // 输出错误信息
-			    }
+			let temp=uni.getStorageSync('likeIcon')
+			if(!temp)
+			{
+			  this.likeIcon=[]
+			  //#ifdef MP-WEIXIN
+			  wx.setStorageSync('likeIcon', this.likeIcon);
+			  //#endif
+			  //#ifndef MP-WEIXIN
+			  localStorage.setItem('likeIcon', this.likeIcon);
+			  //#endif
 			}
-			//#endif
+			else
+			{
+			  //#ifdef MP-WEIXIN
+			  this.likeIcon=temp
+			  //#endif
+			  //#ifndef MP-WEIXIN
+			  var likeIconT = uni.getStorageSync('likeIcon');
+			  if (likeIconT) {
+			      try {
+			  	this.likeIcon=JSON.parse(uni.getStorageSync('likeIcon'))
+			      } catch (e) {
+			          console.error(e); // 输出错误信息
+			      }
+			  }
+			  //#endif
+			}
 			if(this.likeIcon)
 			{
 				this.selectedImage=this.likeIcon[0]

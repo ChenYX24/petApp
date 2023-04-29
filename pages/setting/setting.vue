@@ -50,7 +50,7 @@
 		data() {
 			return {
 				Text:"设置",
-				Nav:"/pages/home/home"
+				Nav:"/pages/home/home?tab=home"
 			};
 		},
 		  methods: {

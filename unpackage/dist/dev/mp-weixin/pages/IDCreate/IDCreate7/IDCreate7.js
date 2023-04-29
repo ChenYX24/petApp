@@ -37,6 +37,7 @@ const _sfc_main = {
       let temp = common_vendor.index.getStorageSync("idCardList");
       if (!temp) {
         this.idCardList = [];
+        this.idCardList.push(this.dataOb);
       } else {
         this.idCardList = temp;
         this.idCardList.push(this.dataOb);

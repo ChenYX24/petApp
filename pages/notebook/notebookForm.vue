@@ -66,7 +66,7 @@
 				items: [],
 				inputValue: '',
 				text1:'',
-				Nav:"/pages/notebook/notebook",
+				Nav:"/pages/notebook/notebook?tab=memo",
 				text2:'',
 				text3:'',
 				text4:'',

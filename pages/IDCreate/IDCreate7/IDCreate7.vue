@@ -56,6 +56,7 @@
 				  if(!temp)
 				  {
 					  this.idCardList=[]
+					  this.idCardList.push(this.dataOb)
 				  }
 				  else
 				  {

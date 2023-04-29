@@ -30,7 +30,13 @@ const _sfc_main = {
     if (this.emoticons) {
       this.selectedImage = this.emoticons[0].src;
     }
-    this.likeIcon = common_vendor.index.getStorageSync("likeIcon");
+    let temp = common_vendor.index.getStorageSync("likeIcon");
+    if (!temp) {
+      this.likeIcon = [];
+      common_vendor.wx$1.setStorageSync("likeIcon", this.likeIcon);
+    } else {
+      this.likeIcon = temp;
+    }
     const index = this.likeIcon.findIndex((item) => item == this.selectedImage);
     if (index > -1) {
       this.isHeartActive = true;
