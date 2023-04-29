@@ -14,12 +14,11 @@ const _sfc_main = {
     return {
       tab: "",
       token: "",
-      nickName: "用户名",
+      nickName: "\u7528\u6237\u540D",
       avatarUrl: "../../static/home/cat.png",
       userInfo: {},
       hasUserInfo: false,
-      //建议存在本机的缓存中
-      customNumberItems: ["宠物", "勋章", "喜欢"]
+      customNumberItems: ["\u5BA0\u7269", "\u52CB\u7AE0", "\u559C\u6B22"]
     };
   },
   computed: {
@@ -78,9 +77,8 @@ const _sfc_main = {
           url: "/pages/infoEdit/infoEdit"
         });
       } else {
-        common_vendor.wx$1.getUserProfile({
-          desc: "用于显示用户资料",
-          // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        wx.getUserProfile({
+          desc: "\u7528\u4E8E\u663E\u793A\u7528\u6237\u8D44\u6599",
           success: (res) => {
             console.log(res);
             this.userInfo = res.userInfo;
@@ -122,8 +120,8 @@ const _sfc_main = {
       if (!this.token) {
         common_vendor.index.showModal({
           mask: true,
-          title: "温馨提示",
-          content: "授权微信登录后才能正常使用",
+          title: "\u6E29\u99A8\u63D0\u793A",
+          content: "\u6388\u6743\u5FAE\u4FE1\u767B\u5F55\u540E\u624D\u80FD\u6B63\u5E38\u4F7F\u7528",
           success(res) {
             if (res.confirm) {
               common_vendor.index.login({
@@ -146,7 +144,7 @@ const _sfc_main = {
                     },
                     fail: function(res2) {
                       common_vendor.index.showToast({
-                        title: "登录失败",
+                        title: "\u767B\u5F55\u5931\u8D25",
                         icon: "none"
                       });
                     }
@@ -154,7 +152,7 @@ const _sfc_main = {
                 },
                 fail: function(loginRes) {
                   common_vendor.index.showToast({
-                    title: "登录失败",
+                    title: "\u767B\u5F55\u5931\u8D25",
                     icon: "none"
                   });
                 }
@@ -187,7 +185,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_vendor.o((...args) => $options.getUserProfile && $options.getUserProfile(...args)),
     c: common_vendor.t($data.nickName),
     d: common_vendor.o((...args) => $options.goSet && $options.goSet(...args)),
-    e: common_vendor.f(["宠物", "勋章", "喜欢"], (item, index, i0) => {
+    e: common_vendor.f(["\u5BA0\u7269", "\u52CB\u7AE0", "\u559C\u6B22"], (item, index, i0) => {
       return {
         a: common_vendor.t($options.custom[index]),
         b: common_vendor.t(item),
@@ -202,5 +200,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-07e72d3c"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/home/home.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-07e72d3c"], ["__file", "D:/uniapp/petApp/pages/home/home.vue"]]);
 wx.createPage(MiniProgramPage);

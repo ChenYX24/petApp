@@ -42,7 +42,9 @@
 		        this.amapPlugin = new amap.AMapWX({  
 		            key: this.key  
 		        });  
-				this.getNowLocation();
+		},
+		created() {
+			this.getNowLocation();
 		},
 		watch: {
 			keywords(newVal){

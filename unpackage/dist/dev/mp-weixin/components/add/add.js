@@ -21,7 +21,7 @@ const _sfc_main = {
     addNote() {
       const item = ["", "", "", "", ""];
       const index = -1;
-      common_vendor.wx$1.setStorageSync("myData", { item, index });
+      wx.setStorageSync("myData", { item, index });
       this.$emit("updateAdd");
       common_vendor.index.navigateTo({
         url: `/pages/notebook/notebookForm`
@@ -43,5 +43,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     d: $props.isShow ? 1 : ""
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/add/add.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/add/add.vue"]]);
 wx.createComponent(Component);

@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "制作表情包",
+      Text: "\u5236\u4F5C\u8868\u60C5\u5305",
       Nav: "/pages/home/home",
       selectedTab: "template",
       isHeartActive: false,
@@ -75,7 +75,7 @@ const _sfc_main = {
       } else {
         this.likeIcon.push(this.selectedImage);
       }
-      common_vendor.wx$1.setStorageSync("likeIcon", this.likeIcon);
+      wx.setStorageSync("likeIcon", this.likeIcon);
     },
     showImage(image) {
       this.selectedImage = image.src;
@@ -149,5 +149,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     C: common_vendor.o(($event) => $data.isEdit = false)
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9a8299cf"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/makeIcon/makeIcon.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9a8299cf"], ["__file", "D:/uniapp/petApp/pages/makeIcon/makeIcon.vue"]]);
 wx.createPage(MiniProgramPage);

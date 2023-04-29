@@ -20,7 +20,8 @@ const _sfc_main = {
       inputValue: "",
       imageSrc: [],
       isChooseLocation: false,
-      trueLocation: "您所在位置"
+      trueLocation: "\u60A8\u6240\u5728\u4F4D\u7F6E",
+      imageUrls: []
     };
   },
   mounted() {
@@ -53,13 +54,72 @@ const _sfc_main = {
         }
       });
     },
-    pushActivityThought() {
+    async pushActivityThought() {
+      async function request(url, data) {
+        return new Promise((resolve, reject) => {
+          common_vendor.index.request({
+            url,
+            data,
+            header: {
+              Authorization: common_vendor.index.getStorageSync("token")
+            },
+            success: (res) => {
+              resolve(res.data);
+            },
+            fail: (error) => {
+              reject(error);
+            }
+          });
+        });
+      }
+      var signatureRes = {};
+      try {
+        const a = await request("http://localhost:88/thirdParty/getUploadSignature/", {});
+        signatureRes = a;
+      } catch (err) {
+        console.error(err);
+      }
+      console.log(signatureRes);
+      console.log(signatureRes.data);
+      var host = signatureRes.data.host;
+      var signature = signatureRes.data.signature;
+      var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
+      var policy = signatureRes.data.policy;
+      const filePath = this.imageSrc;
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, "0");
+      const day = date.getDate().toString().padStart(2, "0");
+      const formattedDate = `${year}-${month}-${day}`;
+      for (var i = 0; i < filePath.length; i++) {
+        const key = `${formattedDate}/nanoid.jpg`;
+        console.log(host + key);
+        common_vendor.index.uploadFile({
+          url: host,
+          filePath: filePath[i],
+          name: "file",
+          formData: {
+            key,
+            policy,
+            OSSAccessKeyId: ossAccessKeyId,
+            signature
+          },
+          success: (uploadFileRes) => {
+            this.imageUrls.push(host + key);
+            console.log(uploadFileRes);
+            console.log(111);
+          },
+          fail: function(err) {
+            console.log(that.filePath);
+          }
+        });
+      }
       common_vendor.index.request({
         url: "http://localhost:88/activityThought/save",
         method: "POST",
         data: {
           content: this.inputValue,
-          data: ["图片", "图片"],
+          data: this.imageUrls,
           location: this.trueLocation,
           activityName: this.currentActivity,
           userId: 1
