@@ -106,13 +106,13 @@
 			      })
 			},
 			pushActivityThought(){
-				//上传活动任务，并返回首页
+				//上传活动任务，并返回首页   图片还没可以上传
 				uni.request({
 				    url: 'http://localhost:88/activityThought/save',
 					method:'POST',
 				    data: {
 				        content: this.inputValue,
-						data: 'asdasdasd',
+						data: ['图片','图片'],
 						location: this.trueLocation,
 						activityName: this.currentActivity,
 						userId: 1

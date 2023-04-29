@@ -16,10 +16,10 @@ const _sfc_main = {
     const storedListRemind = common_vendor.index.getStorageSync("listremind");
     return {
       tab: "",
-      texts: ["提醒", "记录"],
+      texts: ["\u63D0\u9192", "\u8BB0\u5F55"],
       index: 0,
-      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
-      list: storedList ? JSON.parse(storedList) : ["写代码", "吃饭饭", "睡觉觉"],
+      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["\u5199\u4EE3\u7801", "\u5403\u996D", "\u7761\u89C9", "\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A"],
+      list: storedList ? JSON.parse(storedList) : ["\u5199\u4EE3\u7801", "\u5403\u996D\u996D", "\u7761\u89C9\u89C9"],
       isshow: false
     };
   },
@@ -29,6 +29,7 @@ const _sfc_main = {
     const decodedData = decodeURIComponent(data).replace(/%0A/g, "\n");
     console.log(indexInForm);
     if (leftSelected === "1") {
+
       if (indexInForm != -1) {
         this.listremind[indexInForm] = decodedData;
         common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.listremind));
@@ -44,19 +45,17 @@ const _sfc_main = {
       } else if (indexInForm == -1) {
         this.list.push(decodedData), common_vendor.wx$1.setStorageSync("list", JSON.stringify(this.list));
       }
+
     }
   },
   methods: {
     toWhere(key) {
       this.index = key;
     },
-    // 起点
     touchStart(event) {
       this.startTime = Date.now();
       this.startPosition = event.changedTouches[0].clientX;
     },
-    // 终点,计算移动距离
-    // 终点,计算移动距离
     touchEnd(event) {
       const endTime = Date.now();
       if (endTime - this.startTime > 2e3) {
@@ -116,5 +115,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     j: $data.isshow
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/notebook/notebook.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/uniapp/petApp/pages/notebook/notebook.vue"]]);
 wx.createPage(MiniProgramPage);

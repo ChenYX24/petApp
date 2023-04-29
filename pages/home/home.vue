@@ -1,7 +1,7 @@
 <template>
   <view class="topBackground">
     <!-- 页面内容 -->
-	        
+
     <view class="Background">
 <!-- 		<view class="login" @tap="wxLogin">
 			登陆
@@ -11,11 +11,11 @@
 		    
 		      <!-- 新增的view -->
 		      <view class="userInfo">
-		        <view class="wechatImageWrapper" @tap="wxLogin">
-		          <image src="../../static/home/cat.png" class="wechatImage"></image>
+		        <view class="wechatImageWrapper" @tap="getUserProfile">
+		          <image :src="avatarUrl" class="wechatImage"></image>
 		        </view>
 		        <view class="userNameWrapper">
-		          <view class="userName">用户名</view>
+		          <view class="userName">{{nickName}}</view>
 		          <view class="settingsButton" @tap="goSet">设置></view>
 		        </view>
 		      </view>
@@ -66,6 +66,10 @@ export default {
   	return {
   		tab: '',
 		token:'',
+		nickName: '用户名',
+		avatarUrl: '../../static/home/cat.png',
+		userInfo:{},
+		hasUserInfo:false,//建议存在本机的缓存中
 		customNumberItems: ['宠物', '勋章', '喜欢']
   	}
   },
@@ -101,6 +105,21 @@ export default {
 	    }
 
   },
+  created:function(){
+	  
+	  //获取之前请求获取到的信息
+	  if(uni.getStorageSync('avatarUrl')!==''){
+			this.avatarUrl=uni.getStorageSync('avatarUrl');
+	  }
+	  if(uni.getStorageSync('nickName')!==''){
+		  	this.nickName=uni.getStorageSync('nickName');
+	  }
+	  		this.hasUserInfo=uni.getStorageSync('hasUserInfo');
+
+
+​	  
+	  console.log(this.hasUserInfo);
+  },
   methods:{
 	   handleSelectedImages(selectedImages) {
 	        console.log('Selected images:', selectedImages);
@@ -113,6 +132,64 @@ export default {
 		  customTap(index){
 			      this.customTapFunctions[index]();
 		  },
+		  getUserProfile(){
+			 //判断是否已经获取过了用户头像等信息
+			  if(this.hasUserInfo){
+			//如果已经获取信息过了
+			//就不再获取了 否则会频繁获取  不太合适 
+			
+				  
+			  }
+			  else{
+				  wx.getUserProfile({
+				    desc: '用于显示用户资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+				    success: (res) => {
+				  	  console.log(res);
+				  	  this.userInfo=res.userInfo;
+				  	  this.hasUserInfo=true;
+					  this.avatarUrl=this.userInfo.avatarUrl;
+					  this.nickName=this.userInfo.nickName;
+					  uni.setStorageSync('avatarUrl', this.avatarUrl);
+					  uni.setStorageSync('nickName', this.nickName);
+					  uni.setStorageSync('hasUserInfo',this.hasUserInfo);
+					  
+					  //将获取的信息上传到后端的服务器中
+					  
+					  uni.request({
+					      url: 'http://localhost:88/user/update/',
+					  	  method:'POST',
+					      data: {
+					        userId: uni.getStorageSync('userId'),
+					  		nickname: this.nickName,
+					  		backgroundImage: this.avatarUrl
+					      },
+					      header: {
+					  		"Content-Type": 'application/json',
+					  		"Authorization": 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc'
+					      },
+					      success: (res) => {
+					          console.log(res.data);
+					      },
+						  fail: (res) => {
+							  console.log(res.data);
+						  }
+					  });
+
+
+​					  
+				    },
+				    fail: (res) => {
+				  	  console.log(res);
+				  	  that.hasUserInfo=false;
+				    },
+					
+				  });
+
+
+​				  
+			  }
+		  }
+		  ,
 		wxLogin(){
 		var that=this;
 		if(!this.token){
@@ -137,9 +214,14 @@ export default {
 						      success: function(res) {
 						        // 登录成功，将自定义登录态存储在本地
 								//#ifdef MP-WEIXIN
+								console.log(res);
 						        uni.setStorageSync('token', res.data.token);
 								that.token=uni.getStorageSync('token');
 								console.log(that.token);
+
+								//除了token，userId也要保存，方便后面请求
+								uni.setStorageSync('token', res.data.userId);
+								
 								//#endif
 						      },
 						      fail: function(res) {

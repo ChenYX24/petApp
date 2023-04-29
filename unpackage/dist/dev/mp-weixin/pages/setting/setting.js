@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "设置"
+      Text: "\u8BBE\u7F6E"
     };
   },
   methods: {}
@@ -23,5 +23,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-018cdf56"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/setting/setting.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-018cdf56"], ["__file", "D:/uniapp/petApp/pages/setting/setting.vue"]]);
 wx.createPage(MiniProgramPage);
