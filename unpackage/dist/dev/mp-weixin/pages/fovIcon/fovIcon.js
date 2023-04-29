@@ -8,7 +8,7 @@ const _sfc_main = {
   data() {
     return {
       Text: "\u5DF2\u6536\u85CF",
-      Nav: "/pages/home/home",
+      Nav: "/pages/home/home?tab=home",
       isHeartActive: false,
       isAnimation: false,
       selectedImage: "",
@@ -20,7 +20,13 @@ const _sfc_main = {
     this.emoticons = common_vendor.index.getStorageSync("likeIcon");
   },
   mounted() {
-    this.likeIcon = common_vendor.index.getStorageSync("likeIcon");
+    let temp = common_vendor.index.getStorageSync("likeIcon");
+    if (!temp) {
+      this.likeIcon = [];
+      wx.setStorageSync("likeIcon", this.likeIcon);
+    } else {
+      this.likeIcon = temp;
+    }
     if (this.likeIcon) {
       this.selectedImage = this.likeIcon[0];
     }
@@ -28,7 +34,7 @@ const _sfc_main = {
   },
   computed: {
     heartIcon() {
-      return this.isHeartActive ? "../../static/myActivity/redHeart.png" : "/static/activity/\u70B9\u8D5E.png";
+      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/\u70B9\u8D5E.png";
     }
   },
   methods: {

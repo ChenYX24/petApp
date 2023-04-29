@@ -8,6 +8,7 @@ const _sfc_main = {
   data() {
     return {
       Text: "\u7167\u7247\u548C\u540D\u5B57",
+      Nav: "/pages/home/home?tab=home",
       placeholderText: "#cea697",
       inputValue: "",
       imageSrc: ""
@@ -46,9 +47,10 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
-      text: $data.Text
+      text: $data.Text,
+      Nav: $data.Nav
     }),
-    b: $data.imageSrc ? $data.imageSrc : "/static/IDCreate/picture&name/camera.png",
+    b: $data.imageSrc ? $data.imageSrc : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png",
     c: common_vendor.o((...args) => $options.chooseImage && $options.chooseImage(...args)),
     d: $data.inputValue,
     e: common_vendor.o(($event) => $data.inputValue = $event.detail.value),

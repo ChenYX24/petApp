@@ -7,13 +7,14 @@
 				<div>
 					<image :src="item" class="image" mode="aspectFit"></image>
 <!-- 						<image 
-						src="../../static/planet/position.png" 
+						src="../..
+https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png" 
 						@click="deleteImage(index)"
 						class="imageDelete Location">
 						</image> -->
 				</div>	
 			</view>
-			<image src='/static/IDCreate/picture&name/camera.png' class="camera" v-if="imageSrc.length!==9" @tap="chooseImage"></image>
+			<image src='https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png' class="camera" v-if="imageSrc.length!==9" @tap="chooseImage"></image>
 			
 			<!-- <image class="ActivityImage"  src="https://img.js.design/assets/smartFill/img211164da6ef470.jpg" ></image> -->
 		</view>
@@ -23,7 +24,7 @@
 		 <picker mode="selector" :range="activities" @change="onActivityChange" class="picker">
 		   <view class="text">{{ currentActivity }}</view>
 		 </picker>
-		 <image src="/static/planet/position.png" mode="aspectFill" ></image>
+		 <image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png" mode="aspectFill" ></image>
 		</view>
 		</view>
 		
@@ -38,7 +39,7 @@
 		</span>
 		
 		<view class="Location Separator" @tap="toChooseLocation">
-			<image src="../../static/planet/position.png" class="imageGPS Location"></image>
+			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png" class="imageGPS Location"></image>
 			<text class="text" >{{trueLocation}}</text>
 		</view>
 		

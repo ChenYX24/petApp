@@ -12,16 +12,16 @@ const _sfc_main = {
       items: [],
       inputValue: "",
       text1: "",
-      Nav: "/pages/notebook/notebook",
+      Nav: "/pages/notebook/notebook?tab=memo",
       text2: "",
       text3: "",
       text4: "",
       leftSelected: true,
       rightSelected: false,
-      leftImageUrl: "/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
-      rightImageUrl: "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png",
-      thirdImageUrl: "/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
-      fourthImageUrl: "/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
+      leftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
+      rightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png",
+      thirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
+      fourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
       indexInForm: -1
     };
   },
@@ -81,9 +81,9 @@ ${this.inputValue}`;
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.leftSelected) {
         this.leftImageUrl = this.thirdImageUrl;
-        this.rightImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       } else {
-        this.leftImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       }
     },
     selectRight() {
@@ -92,9 +92,9 @@ ${this.inputValue}`;
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.rightSelected) {
         this.rightImageUrl = this.fourthImageUrl;
-        this.leftImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       } else {
-        this.rightImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       }
     }
   },

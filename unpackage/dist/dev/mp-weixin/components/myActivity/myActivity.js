@@ -14,7 +14,7 @@ const _sfc_main = {
   },
   computed: {
     heartIcon() {
-      return this.isHeartActive ? "../../static/myActivity/redHeart.png" : "/static/activity/\u70B9\u8D5E.png";
+      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/\u70B9\u8D5E.png";
     }
   },
   methods: {

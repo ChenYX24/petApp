@@ -30,7 +30,7 @@
 		data() {
 			return {
 				Text:"宠物身份证",
-				Nav:"/pages/home/home"
+				Nav:"/pages/home/home?tab=home"
 			};
 		},
 		computed:{

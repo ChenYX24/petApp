@@ -7,25 +7,25 @@
 					<view class="setText">
 						消息通知
 					</view>
-				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
+				<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
 				<view class="setBox">
 					<view class="setText">
 						隐私
 					</view>
-				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
+				<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
 				<view class="setBox">
 					<view class="setText">
 						权限
 					</view>
-				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
+				<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
 				<view class="setBox" @tap="goLanguage">
 					<view class="setText">
 						语言
 					</view>
-				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
+				<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
 			</view>
 			<view class="buttonGroup">
@@ -50,7 +50,7 @@
 		data() {
 			return {
 				Text:"设置",
-				Nav:"/pages/home/home"
+				Nav:"/pages/home/home?tab=home"
 			};
 		},
 		  methods: {

@@ -1,6 +1,6 @@
 <template>
 	<view  class="tips"  :class="['tips', { 'bg-yellow': flag, 'bg-red': !flag }]" v-for="(item, index) in list" :key="index" @click="tipchange(item,index)">
-		<image src="/static/notebook//删除.png" class="img" @click.stop="remove(index)"></image>
+		<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/删除.png" class="img" @click.stop="remove(index)"></image>
 		<text class="Text" > {{ item }}</text>
 	</view>
 </template>

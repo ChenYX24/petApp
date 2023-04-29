@@ -30,7 +30,7 @@
 		      
 		    </view>
 		<view class="icon make" @tap="goMake">
-			<image src="../../static/home/dog.png" class="makeImg"></image>
+			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/dog.png" class="makeImg"></image>
 			  <view class="makeText">
 			    <view class="line1">制作</view>
 			    <view class="line1">萌宠表情包</view>
@@ -38,7 +38,7 @@
 			  </view>
 		</view>
 		<view class="icon collect" @tap="goCollect">
-			<image src="../../static/home/cat.png" class="collectImg"></image>
+			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png" class="collectImg"></image>
 			<view class="collectText">
 				<view class="line2">查看</view>
 				<view class="line2">收藏表情包</view>
@@ -67,7 +67,7 @@ export default {
   		tab: '',
 		token:'',
 		nickName: '用户名',
-		avatarUrl: '../../static/home/cat.png',
+		avatarUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png',
 		userInfo:{},
 		hasUserInfo:false,
 		//建议存在本机的缓存中

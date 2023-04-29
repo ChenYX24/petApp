@@ -72,6 +72,24 @@
   position: relative;
   top: 5%;
 }
+.contextBox.C.data-v-9a8299cf {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  z-index: 2;
+  background-color: #ffffff;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+.contextBox.C .color-block.data-v-9a8299cf {
+  width: 100px;
+  height: 100px;
+}
 .triangle.data-v-9a8299cf {
   position: absolute;
   top: 0;
@@ -192,4 +210,73 @@
 .placeholder.data-v-9a8299cf {
   height: 30%;
   width: 100%;
+}
+.Hcontrol.data-v-9a8299cf {
+  margin: 5%;
+  width: 90vw;
+  height: 5vw;
+  border: 4px solid #edd8c8;
+  opacity: 1;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #ff0000 0%, #f7ff00 16.76%, #0dff00 33.89%, #00fff2 49.45%, #0026ff 63.33%, #d000ff 83.33%, #ff0000 100%);
+}
+.Scontrol.data-v-9a8299cf {
+  margin: 5%;
+  width: 90vw;
+  height: 5vw;
+  opacity: 1;
+  border-radius: 9999px;
+  border: 4px solid #edd8c8;
+}
+.Bcontrol.data-v-9a8299cf {
+  margin: 5%;
+  width: 90vw;
+  height: 5vw;
+  border: 4px solid #edd8c8;
+  opacity: 1;
+  border-radius: 9999px;
+  transform: rotate(180deg);
+}
+.Bcontrol slider.data-v-9a8299cf {
+  transform: rotate(180deg);
+}
+slider.data-v-9a8299cf {
+  margin: 0;
+}
+.viewBox.data-v-9a8299cf {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 20px;
+}
+.pen.data-v-9a8299cf,
+.eraser.data-v-9a8299cf {
+  width: 54px;
+  height: 54px;
+}
+.Outpen.data-v-9a8299cf,
+.Outeraser.data-v-9a8299cf {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 75px;
+  height: 75px;
+}
+.active.data-v-9a8299cf {
+  width: 85px;
+  height: 85px;
+  border-radius: 11px;
+  background: #fffcf5;
+  box-shadow: 5px 5px 12px 0px rgba(237, 216, 200, 0.5);
+}
+.pen.data-v-9a8299cf,
+.eraser.data-v-9a8299cf {
+  width: 20vw;
+  height: 20vw;
+}
+.iconGroup.data-v-9a8299cf {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }

@@ -8,9 +8,9 @@
 					<picker mode="date" :value="date" :start="startDate" :end="endDate" @change="bindDateChange">
 						<view class="input">{{date}}</view>
 					</picker>
-					<image src="/static/IDCreate/picture&name/pen.png" mode="aspectFill"></image>
+					<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/pen.png" mode="aspectFill"></image>
 				</view>
-				<image :src="this.breed==1?'/static/IDCreate//selectTime/dogHome.png':this.breed==2?'/static/IDCreate//selectTime/catHome.png':'/static/IDCreate//selectTime/dogHome.png'" mode="widthFix" class="picture"></image>
+				<image :src="this.breed==1?'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectTime/dogHome.png':this.breed==2?'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate//selectTime/catHome.png':'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate//selectTime/dogHome.png'" mode="widthFix" class="picture"></image>
 				<view class="text">
 					{{name}}已经来到这个家{{trueDate}}天啦~
 				</view>

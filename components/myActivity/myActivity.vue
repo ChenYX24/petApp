@@ -27,8 +27,8 @@ export default {
   computed: {
     heartIcon() {
       return this.isHeartActive
-        ? "../../static/myActivity/redHeart.png"
-        : "/static/activity/点赞.png";
+        ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png"
+        : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/点赞.png";
     },
   },
   methods: {

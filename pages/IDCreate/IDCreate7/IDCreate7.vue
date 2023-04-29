@@ -43,7 +43,7 @@
 				birthdayM:"",
 				birthdayD:"",
 				city:"未知",
-				Image:"/static/home/cat.png",
+				Image:"https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png",
 				ImgBackground:"",
 				textColor:"",
 				dataOb:{},
@@ -56,6 +56,7 @@
 				  if(!temp)
 				  {
 					  this.idCardList=[]
+					  this.idCardList.push(this.dataOb)
 				  }
 				  else
 				  {
@@ -69,7 +70,7 @@
 				  //#ifndef MP-WEIXIN
 				  localStorage.setItem('idCardList', this.idCardList);
 				  //#endif
-					  uni.navigateTo({
+					  uni.reLaunch({
 					   url: `/pages/petList/petList`,
 					  })  
 			  },

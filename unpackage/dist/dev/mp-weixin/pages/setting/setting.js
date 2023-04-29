@@ -8,7 +8,7 @@ const _sfc_main = {
   data() {
     return {
       Text: "\u8BBE\u7F6E",
-      Nav: "/pages/home/home"
+      Nav: "/pages/home/home?tab=home"
     };
   },
   methods: {

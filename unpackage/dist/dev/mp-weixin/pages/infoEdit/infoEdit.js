@@ -10,7 +10,7 @@ const _sfc_main = {
       Text: "\u7F16\u8F91\u8D44\u6599",
       inputValue: "",
       text1: "",
-      Nav: "/pages/home/home",
+      Nav: "/pages/home/home?tab=home",
       text2: "",
       text3: "",
       text4: ""
@@ -46,7 +46,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       text: $data.Text,
       Nav: $data.Nav
     }),
-    b: _ctx.imageSrc ? _ctx.imageSrc : "/static/IDCreate/picture&name/camera.png",
+    b: _ctx.imageSrc ? _ctx.imageSrc : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png",
     c: common_vendor.o((...args) => $options.chooseImage && $options.chooseImage(...args)),
     d: $data.inputValue,
     e: common_vendor.o(($event) => $data.inputValue = $event.detail.value),

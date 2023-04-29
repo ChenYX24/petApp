@@ -1,19 +1,19 @@
 <template>
 	<view class="addContainer" :class="{show:isShow}">
 		<view class="imgAndText">
-			<image src="/static/add/addNotebook.png" mode="widthFix" class="addImg imgNote" @tap="addNote"></image>
+			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/add/addNotebook.png" mode="widthFix" class="addImg imgNote" @tap="addNote"></image>
 			<text class="Text notbookT">新建备忘事件</text>
 		</view>
 		<view class="imgAndText">
-			<image src="/static/add/addActivityNote.png" mode="widthFix" class="addImg"  @tap="ActivityThoughtCreate"></image>
+			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/add/addActivityNote.png" mode="widthFix" class="addImg"  @tap="ActivityThoughtCreate"></image>
 			<text class="Text notbookT">新建活动笔记</text>
 		</view>
 		<view class="imgAndText">
-			<image src="/static/add/addPetIDCard.png" mode="widthFix" class="addImg" @tap="IDCreate"></image>
+			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/add/addPetIDCard.png" mode="widthFix" class="addImg" @tap="IDCreate"></image>
 			<text class="Text">新建宠物身份证</text>
 		</view>
 		<view class="imgAndText">
-			<image src="/static/add/addPetIcon.png" mode="widthFix" class="addImg face imgNote"></image>
+			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/add/addPetIcon.png" mode="widthFix" class="addImg face imgNote"></image>
 			<text class="Text notbookT">新建萌宠表情</text>
 		</view>
 	</view>

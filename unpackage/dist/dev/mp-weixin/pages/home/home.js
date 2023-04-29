@@ -15,7 +15,7 @@ const _sfc_main = {
       tab: "",
       token: "",
       nickName: "\u7528\u6237\u540D",
-      avatarUrl: "../../static/home/cat.png",
+      avatarUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png",
       userInfo: {},
       hasUserInfo: false,
       customNumberItems: ["\u5BA0\u7269", "\u52CB\u7AE0", "\u559C\u6B22"]

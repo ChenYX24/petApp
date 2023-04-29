@@ -10,7 +10,7 @@ const _sfc_main = {
   data() {
     return {
       Text: "\u5BA0\u7269\u8EAB\u4EFD\u8BC1",
-      Nav: "/pages/home/home"
+      Nav: "/pages/home/home?tab=home"
     };
   },
   computed: {

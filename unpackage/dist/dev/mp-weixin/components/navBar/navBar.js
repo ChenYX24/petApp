@@ -19,7 +19,7 @@ const _sfc_main = {
   methods: {
     backClick() {
       if (this.Nav) {
-        common_vendor.index.navigateTo({
+        common_vendor.index.redirectTo({
           url: `${this.Nav}`
         });
       } else {

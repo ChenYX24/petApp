@@ -3,7 +3,7 @@
 		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
 		
 		<view class="cameraInput">
-			<image :src="imageSrc?imageSrc:'/static/IDCreate/picture&name/camera.png'" mode="aspectFit" class="camera" @tap="chooseImage"></image><!--@tap是点击事件，一旦点击则将chooseimage进行响应-->
+			<image :src="imageSrc?imageSrc:'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png'" mode="aspectFit" class="camera" @tap="chooseImage"></image><!--@tap是点击事件，一旦点击则将chooseimage进行响应-->
 			<view class="inputBox">
 				<input type="text" placeholder="昵称" class="input" placeholder-style="color:#cea697;" v-model="inputValue"> <!--v-model是双向绑定，将文本框的值与inputvalue绑定-->
 			</view>
@@ -47,7 +47,7 @@
 				Text:"编辑资料",
 				inputValue: '',
 				text1:'',
-				Nav:"/pages/home/home",
+				Nav:"/pages/home/home?tab=home",
 				text2:'',
 				text3:'',
 				text4:'',

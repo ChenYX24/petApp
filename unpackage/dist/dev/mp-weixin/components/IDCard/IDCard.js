@@ -19,16 +19,16 @@ const _sfc_main = {
     },
     sexImg() {
       if (this.dataList.sex == 1) {
-        return "/static/IDCreate/final/IDBOY.png";
+        return "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/final/IDBOY.png";
       } else {
-        return "/static/IDCreate/final/IDGIRL.png";
+        return "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/final/IDGIRL.png";
       }
     },
     ImgBackground() {
       if (this.dataList.sex == 1) {
-        return "/static/IDCreate/final/BIMG.png";
+        return "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/final/BIMG.png";
       } else {
-        return "/static/IDCreate/final/GIMG.png";
+        return "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/final/GIMG.png";
       }
     },
     sex() {

@@ -17,7 +17,7 @@ const _sfc_main = {
   data() {
     return {
       tab: "",
-      src: "/static//activity/dog.png",
+      src: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/dog.png",
       tag: ["\u6625\u65E5\u6D3E\u5BF9", "\u590F\u65E5\u5BF9\u6D3E"],
       navH: null,
       city: "\u672A\u77E5"

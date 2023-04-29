@@ -25,7 +25,7 @@ const _sfc_main = {
       birthdayM: "",
       birthdayD: "",
       city: "\u672A\u77E5",
-      Image: "/static/home/cat.png",
+      Image: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png",
       ImgBackground: "",
       textColor: "",
       dataOb: {},
@@ -37,12 +37,13 @@ const _sfc_main = {
       let temp = common_vendor.index.getStorageSync("idCardList");
       if (!temp) {
         this.idCardList = [];
+        this.idCardList.push(this.dataOb);
       } else {
         this.idCardList = temp;
         this.idCardList.push(this.dataOb);
       }
       wx.setStorageSync("idCardList", this.idCardList);
-      common_vendor.index.navigateTo({
+      common_vendor.index.reLaunch({
         url: `/pages/petList/petList`
       });
     },

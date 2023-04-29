@@ -86,7 +86,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     d: $options.startDate,
     e: $options.endDate,
     f: common_vendor.o((...args) => $options.bindDateChange && $options.bindDateChange(...args)),
-    g: this.breed == 1 ? "/static/IDCreate//selectTime/dogBirthday.png" : this.breed == 2 ? "/static/IDCreate//selectTime/catBirthday.png" : "/static/IDCreate//selectTime/dogBirthday.png",
+    g: this.breed == 1 ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectTime/dogBirthday.png" : this.breed == 2 ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate//selectTime/catBirthday.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate//selectTime/dogBirthday.png",
     h: common_vendor.t($data.name),
     i: common_vendor.t($data.trueDate),
     j: $options.isActive ? 1 : "",
