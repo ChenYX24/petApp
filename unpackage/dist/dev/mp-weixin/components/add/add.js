@@ -19,6 +19,9 @@ const _sfc_main = {
       });
     },
     addNote() {
+      const item = ["", "", "", "", ""];
+      const index = -1;
+      wx.setStorageSync("myData", { item, index });
       this.$emit("updateAdd");
       common_vendor.index.navigateTo({
         url: `/pages/notebook/notebookForm`

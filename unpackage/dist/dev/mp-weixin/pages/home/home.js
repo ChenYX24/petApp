@@ -72,9 +72,11 @@ const _sfc_main = {
       this.customTapFunctions[index]();
     },
     getUserProfile() {
-      if (this.hasUserInfo)
-        ;
-      else {
+      if (this.hasUserInfo) {
+        common_vendor.index.navigateTo({
+          url: "/pages/infoEdit/infoEdit"
+        });
+      } else {
         wx.getUserProfile({
           desc: "\u7528\u4E8E\u663E\u793A\u7528\u6237\u8D44\u6599",
           success: (res) => {
@@ -128,7 +130,7 @@ const _sfc_main = {
                   const code = loginRes.code;
                   console.log(code);
                   common_vendor.index.request({
-                    url: "http://localhost:88/user/login",
+                    url: "https://mock.apifox.cn/m1/2440038-0-default/user/login",
                     method: "GET",
                     data: {
                       code
@@ -160,7 +162,6 @@ const _sfc_main = {
           }
         });
       }
-      console.log("login");
     },
     goMake() {
       common_vendor.index.navigateTo({

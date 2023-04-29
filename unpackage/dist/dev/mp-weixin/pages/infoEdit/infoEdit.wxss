@@ -1,0 +1,109 @@
+.editData {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  background: #fcf2e3;
+  box-shadow: 0px -10px 5px 0px rgba(247, 142, 72, 0.25);
+}
+.Text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #824100;
+}
+.cameraInput {
+  position: absolute;
+  top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.camera {
+  width: 33vw;
+  height: 33vw;
+}
+.inputBox {
+  font-weight: bold;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 340px;
+  height: 61px;
+  border-radius: 25px;
+  background: #fffdf7;
+  box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
+}
+.inputBox input {
+  margin-left: 2vw;
+  width: 80%;
+  height: 80%;
+  color: #cea697;
+}
+.form {
+  position: relative;
+  margin-top: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 8vh;
+  width: 90vw;
+  height: 30vh;
+  opacity: 1;
+  border-radius: 25px;
+  background: #fffdf7;
+  box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
+}
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: calc(25% - 5px);
+  margin: 5px 0;
+  margin-left: 4vw;
+  width: 90%;
+  border-bottom: 2px solid rgba(206, 166, 151, 0.15);
+}
+.input-container input {
+  margin-left: 2vw;
+  width: 80%;
+  height: 80%;
+  color: #cea697;
+  font-weight: bold;
+}
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 8rem;
+}
+.buttonBox .button {
+  height: 3rem;
+  background-color: #dddddd;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18pt;
+}
+.buttonBox .button.active {
+  background-color: rgba(252, 165, 71, 0.67) !important;
+  box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
+}

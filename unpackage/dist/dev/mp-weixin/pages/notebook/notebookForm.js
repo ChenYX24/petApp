@@ -7,10 +7,12 @@ const _sfc_main = {
   },
   data() {
     return {
+      tapchangeReceived: false,
       Text: "\u65B0\u5EFA\u63D0\u9192/\u8BB0\u5F55",
-      Nav: "/pages/notebook/notebook",
+      items: [],
       inputValue: "",
       text1: "",
+      Nav: "/pages/notebook/notebook",
       text2: "",
       text3: "",
       text4: "",
@@ -19,7 +21,8 @@ const _sfc_main = {
       leftImageUrl: "/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
       rightImageUrl: "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png",
       thirdImageUrl: "/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
-      fourthImageUrl: "/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png"
+      fourthImageUrl: "/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
+      indexInForm: -1
     };
   },
   onShow() {
@@ -37,9 +40,35 @@ ${this.text4}
 ${this.inputValue}`;
       const leftSelected = this.leftSelected ? "1" : "0";
       const rightSelected = this.rightSelected ? "1" : "0";
+      const indexInForm = this.indexInForm;
+      common_vendor.index.request({
+        url: "http://43.140.198.154:88/reminder/save/",
+        method: "POST",
+        data: {
+          "reminderId": 0,
+          "petId": 0,
+          "userId": 0,
+          "reminderName": "string",
+          "type": "string",
+          "content": data,
+          "plannedDate": "string",
+          "period": "string",
+          "isDone": "string",
+          "advanceDay": "string",
+          "reminderTimeMoment": "string"
+        },
+        params: { interfaceState: "state" },
+        header: {
+          "Content-Type": "application/json",
+          "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc"
+        },
+        success: (res) => {
+          console.log(res.data);
+        }
+      });
       if (this.isActive) {
         common_vendor.index.navigateTo({
-          url: `/pages/notebook/notebook?data=${encodeURIComponent(data)}&leftSelected=${leftSelected}&rightSelected=${rightSelected}`,
+          url: `/pages/notebook/notebook?data=${encodeURIComponent(data)}&leftSelected=${leftSelected}&rightSelected=${rightSelected}&indexInForm=${indexInForm}`,
           success: () => {
             common_vendor.index.$emit("buttonClicked");
           }
@@ -68,6 +97,21 @@ ${this.inputValue}`;
         this.rightImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       }
     }
+  },
+  mounted() {
+    common_vendor.index.$on("tapchange", () => {
+      this.tapchangeReceived = true;
+    });
+  },
+  onLoad() {
+    const data = wx.getStorageSync("myData");
+    this.indexInForm = data.index;
+    const items = data.item.split("\n");
+    this.text1 = items[0] || "";
+    this.text2 = items[1] || "";
+    this.text3 = items[2] || "";
+    this.text4 = items[3] || "";
+    this.inputValue = items[4] || "";
   },
   computed: {
     isActive() {

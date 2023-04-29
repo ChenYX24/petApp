@@ -60,34 +60,56 @@ export default {
   },
 onLoad(options) {
 	this.tab=options.tab;
-  const { data, leftSelected, rightSelected } = options;
+  const { data, leftSelected, rightSelected, indexInForm } = options;
   const decodedData = decodeURIComponent(data).replace(/%0A/g, '\n');
+  console.log(indexInForm);
   if (leftSelected === '1') {
-    this.listremind.push(decodedData);
-	//#ifdef MP-WEIXIN
-	wx.setStorageSync('listremind', JSON.stringify(this.listremind));
-	//#endif
-	//#ifndef MP-WEIXIN
-	localStorage.setItem('listremind', JSON.stringify(this.listremind))
-	//#endif
+	if(indexInForm!=-1){
+		this.listremind[indexInForm] = decodedData;
+		//#ifdef MP-WEIXIN
+		wx.setStorageSync('listremind', JSON.stringify(this.listremind));
+		//#endif
+		//#ifndef MP-WEIXIN
+		localStorage.setItem('listremind', JSON.stringify(this.listremind))
+		//#endif
+	}else if(indexInForm==-1){
+		this.listremind.push(decodedData);
+		//#ifdef MP-WEIXIN
+		wx.setStorageSync('listremind', JSON.stringify(this.listremind));
+		//#endif
+		//#ifndef MP-WEIXIN
+		localStorage.setItem('listremind', JSON.stringify(this.listremind))
+		//#endif
+	}
+
+	
   }
   if (rightSelected === '1') {
-    this.list.push(decodedData),
-	//#ifdef MP-WEIXIN
-	wx.setStorageSync('list', JSON.stringify(this.list));
-	//#endif
-	//#ifndef MP-WEIXIN
-	localStorage.setItem('list', JSON.stringify(this.list))
-	//#endif
+	  if(indexInForm!=-1){
+	  	this.list[indexInForm] = decodedData;
+	  	//#ifdef MP-WEIXIN
+	  	wx.setStorageSync('listremind', JSON.stringify(this.list));
+	  	//#endif
+	  	//#ifndef MP-WEIXIN
+	  	localStorage.setItem('listremind', JSON.stringify(this.list))
+	  	//#endif
+	  } else if(indexInForm==-1){
+		  this.list.push(decodedData),
+		  //#ifdef MP-WEIXIN
+		  wx.setStorageSync('list', JSON.stringify(this.list));
+		  //#endif
+		  //#ifndef MP-WEIXIN
+		  localStorage.setItem('list', JSON.stringify(this.list))
+		  //#endif
+	  }
+
   }
 },
   methods:{
 	  toWhere(key){
 		  this.index=key
 		  //页面显示逻辑
-		
 	  },
-
 	  // 起点
 	  touchStart(event) {
 	    this.startTime = Date.now()

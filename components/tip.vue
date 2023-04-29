@@ -1,5 +1,6 @@
 <template>
-	<view  class="tips"  :class="['tips', { 'bg-yellow': flag, 'bg-red': !flag }]" v-for="(item, index) in list" :key="index">
+	<view  class="tips"  :class="['tips', { 'bg-yellow': flag, 'bg-red': !flag }]" v-for="(item, index) in list" :key="index" @click="tipchange(item,index)">
+		<image src="/static/notebook//删除.png" class="img" @click.stop="remove(index)"></image>
 		<text class="Text" > {{ item }}</text>
 	</view>
 </template>
@@ -12,6 +13,19 @@
 				textValue: "", // 存储来自父组件的text属性的值
 			};
 		},
+		methods:{
+     tipchange(item, index) 
+     {   wx.setStorageSync('myData', { item, index });
+		 uni.navigateTo({ url: `/pages/notebook/notebookForm`, // 传递参数 
+    success: function() { uni.$emit("tipchange", { item, index }); 
+	  }, }); 
+	    },
+		remove(index){
+				  console.log(index);
+				    this.list.splice(index, 1); // 删除对应的提示信息
+		},
+      },
+
 		props: {
 		    list: {
 		      type: String,
@@ -47,7 +61,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     top: 2rem;
-	    background: linear-gradient(90deg, #fff3cc, #fffdf7);
+	background: linear-gradient(90deg, #fff3cc, #fffdf7);
     box-shadow: 7px 11px 20px 1px rgb(249, 189, 125, 0.7);
     color: rgb(127, 112, 75);
     font-size: 15pt;
@@ -65,7 +79,14 @@
   z-index: 99;
   background: linear-gradient(90deg, #fff3ca, #fffdf7);
 }
-
+.img{
+	position: absolute;
+	width:3rem;
+	height:3rem;
+	right:0;
+	top:0;
+	z-index: 99;
+}
 .bg-red {
   z-index: 99;
   background: linear-gradient(90deg, #ffdac9, #fffdf7);

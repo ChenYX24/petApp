@@ -73,13 +73,27 @@
 			{
 				this.selectedImage=this.emoticons[0].src
 			}
-			var likeIconT = localStorage.getItem('likeIcon');
+			//#ifdef MP-WEIXIN
+			this.likeIcon=uni.getStorageSync('likeIcon')
+			//#endif
+			//#ifndef MP-WEIXIN
+			var likeIconT = uni.getStorageSync('likeIcon');
 			if (likeIconT) {
 			    try {
 				this.likeIcon=JSON.parse(uni.getStorageSync('likeIcon'))
 			    } catch (e) {
 			        console.error(e); // 输出错误信息
 			    }
+			}
+			//#endif
+			// 检查图片是否已经在 likeIcon 数组中
+			const index = this.likeIcon.findIndex(item => item == this.selectedImage);
+			if (index > -1) {
+				// 如果图片已经在数组中，已收藏
+				this.isHeartActive=true
+			} else {
+				// 如果图片不在数组中，未收藏
+				this.isHeartActive=false
 			}
 		},
 		computed: {

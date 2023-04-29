@@ -1,7 +1,7 @@
 <template>
   <view class="topBackground">
     <!-- 页面内容 -->
-	        
+
     <view class="Background">
 <!-- 		<view class="login" @tap="wxLogin">
 			登陆
@@ -69,7 +69,8 @@ export default {
 		nickName: '用户名',
 		avatarUrl: '../../static/home/cat.png',
 		userInfo:{},
-		hasUserInfo:false,//建议存在本机的缓存中
+		hasUserInfo:false,
+		//建议存在本机的缓存中
 		customNumberItems: ['宠物', '勋章', '喜欢']
   	}
   },
@@ -106,7 +107,6 @@ export default {
 
   },
   created:function(){
-	  
 	  //获取之前请求获取到的信息
 	  if(uni.getStorageSync('avatarUrl')!==''){
 			this.avatarUrl=uni.getStorageSync('avatarUrl');
@@ -114,9 +114,7 @@ export default {
 	  if(uni.getStorageSync('nickName')!==''){
 		  	this.nickName=uni.getStorageSync('nickName');
 	  }
-	  		this.hasUserInfo=uni.getStorageSync('hasUserInfo');
-	  
-	  
+	  this.hasUserInfo=uni.getStorageSync('hasUserInfo');
 	  console.log(this.hasUserInfo);
   },
   methods:{
@@ -136,8 +134,9 @@ export default {
 			  if(this.hasUserInfo){
 			//如果已经获取信息过了
 			//就不再获取了 否则会频繁获取  不太合适 
-			
-				  
+			uni.navigateTo({
+				url:'/pages/infoEdit/infoEdit'
+			})
 			  }
 			  else{
 				  wx.getUserProfile({
@@ -173,21 +172,14 @@ export default {
 							  console.log(res.data);
 						  }
 					  });
-					  
-					  
 				    },
 				    fail: (res) => {
 				  	  console.log(res);
 				  	  that.hasUserInfo=false;
 				    },
-					
 				  });
-				  
-
-				  
 			  }
-		  }
-		  ,
+		  },
 		wxLogin(){
 		var that=this;
 		if(!this.token){
@@ -204,7 +196,7 @@ export default {
 							console.log(code);
 						    // 将登录凭证发送到后端服务器进行验证和处理
 						    uni.request({
-						      url: 'http://localhost:88/user/login',
+						      url: 'https://mock.apifox.cn/m1/2440038-0-default/user/login',
 						      method: 'GET',
 						      data: {
 						        code: code
@@ -216,7 +208,7 @@ export default {
 						        uni.setStorageSync('token', res.data.token);
 								that.token=uni.getStorageSync('token');
 								console.log(that.token);
-								
+
 								//除了token，userId也要保存，方便后面请求
 								uni.setStorageSync('token', res.data.userId);
 								
@@ -243,8 +235,6 @@ export default {
 				}
 			})
 		}
-
-		console.log('login')
 		
 	},
 	goMake(){

@@ -61,10 +61,12 @@
 		},
 		data() {
 			return {
+				tapchangeReceived: false,
 				Text:"新建提醒/记录",
-				Nav:"/pages/notebook/notebook",
+				items: [],
 				inputValue: '',
 				text1:'',
+				Nav:"/pages/notebook/notebook",
 				text2:'',
 				text3:'',
 				text4:'',
@@ -73,7 +75,8 @@
 			   leftImageUrl: '/static/notebook/选择_已选择.png',
 			   rightImageUrl: '/static/notebook/选择_未选择.png',
 			   thirdImageUrl: '/static/notebook/选择_已选择.png',
-			   fourthImageUrl: '/static/notebook/选择_已选择.png'
+			   fourthImageUrl: '/static/notebook/选择_已选择.png',
+			   indexInForm:-1,
 			}
 		},
 		onShow() {
@@ -82,23 +85,56 @@
 		    // 重新加载页面数据
 
 		  },
+		  
 		methods: {
 			onOptionChanged(event) {
 			      console.log(event.detail.value)
 			    },
 			buttonClicked(){
+			
             const data = `${this.text1}\n${this.text2}\n${this.text3}\n${this.text4}\n${this.inputValue}`         
             const leftSelected = this.leftSelected ? '1' : '0'
             const rightSelected = this.rightSelected ? '1' : '0'
+			const indexInForm=this.indexInForm
+			
+			uni.request({
+			     url: 'http://43.140.198.154:88/reminder/save/',
+			     method:'POST',
+			        data: {
+			           
+			             "reminderId": 0,
+			             "petId": 0,
+			             "userId": 0,
+			             "reminderName": "string",
+			             "type": "string",
+			             "content": data,
+			             "plannedDate": "string",
+			             "period": "string",
+			             "isDone": "string",
+			             "advanceDay": "string",
+			             "reminderTimeMoment": "string"
+			           
+			        },
+			     params: {interfaceState:'state'},
+			        header: {
+			      "Content-Type": 'application/json',
+			      "Authorization": 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc'
+			        },
+			        success: (res) => {
+			            console.log(res.data);
+			        },
+         
+			    });
+			
             if (this.isActive) {
               uni.navigateTo({
-                  url: `/pages/notebook/notebook?data=${encodeURIComponent(data)}&leftSelected=${leftSelected}&rightSelected=${rightSelected}`,
+                  url: `/pages/notebook/notebook?data=${encodeURIComponent(data)}&leftSelected=${leftSelected}&rightSelected=${rightSelected}&indexInForm=${indexInForm}`,
                   success: () => {
                     uni.$emit('buttonClicked')
                   }
                 })
-     }
-    },
+             }
+         },
 				selectLeft() {
 				      this.leftSelected = !this.leftSelected;
 				      this.rightSelected = false;
@@ -126,6 +162,23 @@
 								}
 				    },
 		},
+		mounted() {
+		  uni.$on("tapchange", () => {
+		    this.tapchangeReceived = true;
+		  });
+		},
+		onLoad() {
+			
+		    const data = wx.getStorageSync('myData');
+		    this.indexInForm = data.index;
+		    const items = data.item.split('\n');
+		    this.text1 = items[0] || '';
+		    this.text2 = items[1] || '';
+		    this.text3 = items[2] || '';
+		    this.text4 = items[3] || '';
+		    this.inputValue = items[4] || '';
+		  },
+
 		computed: {
 		   isActive() {
 		     return (this.inputValue.trim() !== '')||(this.text1.trim() !== '')||(this.text2.trim() !== '')||(this.text3.trim() !== '')||(this.text4.trim() !== '');

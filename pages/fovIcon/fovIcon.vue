@@ -41,11 +41,20 @@
 			};
 		},
 		onLoad(){
+			//#ifdef MP-WEIXIN
+			this.emoticons=uni.getStorageSync('likeIcon')
+			//#endif
+			//#ifndef MP-WEIXIN
 			this.emoticons=JSON.parse(uni.getStorageSync('likeIcon'))
+			//#endif
 		},
 		mounted() {
 		    // 之后要在服务端动态获取图片
-			var likeIconT = localStorage.getItem('likeIcon');
+			//#ifdef MP-WEIXIN
+			this.likeIcon=uni.getStorageSync('likeIcon')
+			//#endif
+			//#ifndef MP-WEIXIN
+			var likeIconT = uni.getStorageSync('likeIcon');
 			if (likeIconT) {
 			    try {
 				this.likeIcon=JSON.parse(uni.getStorageSync('likeIcon'))
@@ -53,7 +62,7 @@
 			        console.error(e); // 输出错误信息
 			    }
 			}
-			this.likeIcon=JSON.parse(uni.getStorageSync('likeIcon'))
+			//#endif
 			if(this.likeIcon)
 			{
 				this.selectedImage=this.likeIcon[0]

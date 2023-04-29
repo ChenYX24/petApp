@@ -1,4 +1,4 @@
-.IDBG.data-v-018cdf56 {
+.IDBG.data-v-a1fcc329 {
   background-color: #fff4f2;
   height: 100%;
   position: fixed;
@@ -7,7 +7,7 @@
   bottom: 0;
   left: 0;
 }
-.pageContent.data-v-018cdf56 {
+.pageContent.data-v-a1fcc329 {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -17,7 +17,7 @@
   top: 0rem;
   height: 100%;
 }
-.settingContainer.data-v-018cdf56 {
+.settingContainer.data-v-a1fcc329 {
   margin-top: 2rem;
   width: 80vw;
   opacity: 1;
@@ -25,12 +25,20 @@
   background: #fffdf7;
   box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
 }
-.setD.data-v-018cdf56 {
+.last-item > .setBox.data-v-a1fcc329 {
+  margin-bottom: 12px!important;
+}
+:not(.last-item) > .setBox.data-v-a1fcc329 {
+  border-bottom: 2px solid rgba(206, 166, 151, 0.15);
+}
+.setD.data-v-a1fcc329 {
   width: 25px;
   height: 25px;
-  transform: rotate(180deg);
+  color: #e6d1c6;
+  font-size: 18px;
+  font-weight: 700;
 }
-.setBox.data-v-018cdf56 {
+.setBox.data-v-a1fcc329 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,13 +46,7 @@
   padding-bottom: 5px;
   margin: 15px;
 }
-.setBox.data-v-018cdf56:not(:last-child) {
-  border-bottom: 2px solid rgba(206, 166, 151, 0.15);
-}
-.setBox.data-v-018cdf56:last-child {
-  margin-bottom: 12px!important;
-}
-.setText.data-v-018cdf56 {
+.setText.data-v-a1fcc329 {
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0px;
@@ -54,25 +56,25 @@
   vertical-align: top;
   margin-left: 5px;
 }
-.button.data-v-018cdf56 {
-  width: 332px;
-  height: 75px;
-  opacity: 1;
-  border-radius: 25px;
-  background: #fffdf7;
-  box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
-  font-size: 20px;
-  font-weight: 700;
-  color: #e6d1c6;
-  text-align: center;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-.button.data-v-018cdf56:last-child {
-  margin-top: 1rem;
-}
-.buttonGroup.data-v-018cdf56 {
+.buttonGroup.data-v-a1fcc329 {
   position: absolute;
   bottom: 10rem;
+}
+.button2.data-v-a1fcc329 {
+  height: 3rem;
+  background-color: #dddddd;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18pt;
+}
+.button2.active.data-v-a1fcc329 {
+  background-color: rgba(252, 165, 71, 0.67) !important;
+  box-shadow: 11px 15px 24px -9px rgba(249, 189, 125, 0.7);
 }
