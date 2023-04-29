@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const ThirdPartySDK_myApi = require("../../ThirdPartySDK/myApi.js");
 const navBar = () => "../../components/navBar/navBar.js";
 const chooseLocation = () => "../../components/chooseLocation2.js";
 const _sfc_main = {
@@ -9,25 +10,42 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "新建朋友圈",
+      Nav: "/pages/notebook/notebook",
+      Text: "\u65B0\u5EFA\u670B\u53CB\u5708",
       activities: [
         "coding",
         "coding",
         "coding"
       ],
-      currentActivity: "请选择你参加的活动",
+      currentActivity: "\u8BF7\u9009\u62E9\u4F60\u53C2\u52A0\u7684\u6D3B\u52A8",
       tureActivity: "xx",
       inputValue: "",
       imageSrc: [],
       isChooseLocation: false,
       trueLocation: "\u60A8\u6240\u5728\u4F4D\u7F6E",
-      imageUrls: []
+      imageUrls: [],
+      uuid: ""
     };
   },
   mounted() {
     this.activities = ["code"];
   },
   methods: {
+    generateUUID() {
+      let d = new Date().getTime();
+      if (typeof performance !== "undefined" && typeof performance.now === "function") {
+        d += performance.now();
+      }
+      const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+        const r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c === "x" ? r : r & 3 | 8).toString(16);
+      });
+      this.uuid = uuid;
+    },
+    generateNewUUID() {
+      this.generateUUID();
+    },
     radioChange: function(evt) {
       for (let i = 0; i < this.items.length; i++) {
         if (this.items[i].value === evt.detail.value) {
@@ -44,47 +62,14 @@ const _sfc_main = {
     chooseImage() {
       common_vendor.index.chooseImage({
         count: 9,
-        // 最多选择的图片数量，此处为1
         sizeType: ["compressed"],
-        // 压缩图片
         sourceType: ["album", "camera"],
-        // 可以从相册选择或拍照
         success: (res) => {
           this.imageSrc.push(...res.tempFilePaths);
         }
       });
     },
-    async pushActivityThought() {
-      async function request(url, data) {
-        return new Promise((resolve, reject) => {
-          common_vendor.index.request({
-            url,
-            data,
-            header: {
-              Authorization: common_vendor.index.getStorageSync("token")
-            },
-            success: (res) => {
-              resolve(res.data);
-            },
-            fail: (error) => {
-              reject(error);
-            }
-          });
-        });
-      }
-      var signatureRes = {};
-      try {
-        const a = await request("http://localhost:88/thirdParty/getUploadSignature/", {});
-        signatureRes = a;
-      } catch (err) {
-        console.error(err);
-      }
-      console.log(signatureRes);
-      console.log(signatureRes.data);
-      var host = signatureRes.data.host;
-      var signature = signatureRes.data.signature;
-      var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
-      var policy = signatureRes.data.policy;
+    awaitUploadFile(host, signature, ossAccessKeyId, policy) {
       const filePath = this.imageSrc;
       const date = new Date();
       const year = date.getFullYear();
@@ -92,8 +77,8 @@ const _sfc_main = {
       const day = date.getDate().toString().padStart(2, "0");
       const formattedDate = `${year}-${month}-${day}`;
       for (var i = 0; i < filePath.length; i++) {
-        const key = `${formattedDate}/nanoid.jpg`;
-        console.log(host + key);
+        this.generateNewUUID();
+        const key = `${formattedDate}/` + this.uuid + ".jpg";
         common_vendor.index.uploadFile({
           url: host,
           filePath: filePath[i],
@@ -105,44 +90,65 @@ const _sfc_main = {
             signature
           },
           success: (uploadFileRes) => {
-            this.imageUrls.push(host + key);
+            this.imageUrls.push(host + "/" + key);
+            console.log(host + key);
             console.log(uploadFileRes);
-            console.log(111);
           },
           fail: function(err) {
-            console.log(that.filePath);
+            console.log(err);
           }
         });
       }
-      common_vendor.index.request({
-        url: "http://localhost:88/activityThought/save",
-        method: "POST",
-        data: {
-          content: this.inputValue,
-          data: this.imageUrls,
-          location: this.trueLocation,
-          activityName: this.currentActivity,
-          userId: 1
-        },
-        params: { interfaceState: "state" },
-        header: {
-          "Content-Type": "application/json",
-          "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc"
-        },
-        success: (res) => {
-          console.log(res.data);
-        },
-        complete: () => {
-          common_vendor.index.navigateTo({
-            url: `/pages/notebook/notebook`
-          });
-        }
-      });
+    },
+    async pushActivityThought() {
+      var signatureRes = {};
+      try {
+        const a = await ThirdPartySDK_myApi.request("http://localhost:88/thirdParty/getUploadSignature/", {});
+        signatureRes = a;
+      } catch (err) {
+        console.error(err);
+        return;
+      }
+      console.log(signatureRes);
+      console.log(signatureRes.data);
+      var host = signatureRes.data.host;
+      var signature = signatureRes.data.signature;
+      var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
+      var policy = signatureRes.data.policy;
+      try {
+        const bs = await this.awaitUploadFile(host, signature, ossAccessKeyId, policy);
+        common_vendor.index.request({
+          url: "http://localhost:88/activityThought/save",
+          method: "POST",
+          data: {
+            content: this.inputValue,
+            data: this.imageUrls,
+            location: this.trueLocation,
+            activityName: this.currentActivity,
+            userId: 1
+          },
+          params: { interfaceState: "state" },
+          header: {
+            "Content-Type": "application/json",
+            "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc"
+          },
+          success: (res) => {
+            console.log(res.data);
+          },
+          complete: () => {
+            common_vendor.index.navigateTo({
+              url: `/pages/notebook/notebook`
+            });
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
     },
     onActivityChange(event) {
       const activityIndex = event.detail.value;
       this.currentActivity = this.activities[activityIndex];
-      if (this.currentActivity !== "请选择你参加的活动") {
+      if (this.currentActivity !== "\u8BF7\u9009\u62E9\u4F60\u53C2\u52A0\u7684\u6D3B\u52A8") {
         this.trueActivity = this.currentActivity;
       }
     },
@@ -182,7 +188,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: !$data.isChooseLocation
   }, !$data.isChooseLocation ? common_vendor.e({
     b: common_vendor.p({
-      text: $data.Text
+      text: $data.Text,
+      Nav: $data.Nav
     }),
     c: common_vendor.f($data.imageSrc, (item, index, i0) => {
       return {
@@ -211,5 +218,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     r: common_vendor.o($options.getTrueLocation)
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/activity/ActivityThoughtCreate.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/activity/ActivityThoughtCreate.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,12 +1,16 @@
 "use strict";
 const common_vendor = require("./common/vendor.js");
 const ThirdPartySDK_amapWx_130 = require("./ThirdPartySDK/amap-wx.130.js");
+const navBar = () => "./components/navBar/navBar.js";
 const _sfc_main = {
   name: "chooseLocation",
-  props: {},
+  components: {
+    navBar
+  },
   data() {
     return {
-      NowLocation: "\u534E\u5357\u7406\u5DE5\u5927\u5B66C10",
+      Text: "\u8FD4\u56DE\u65B0\u5EFA",
+      Nav: "/pages/activity/ActivityThoughtCreate",
       amapPlugin: null,
       key: "53142a6ebba0f0d52481e81910658876",
       keywords: "",
@@ -74,12 +78,20 @@ const _sfc_main = {
     }
   }
 };
+if (!Array) {
+  const _component_nav_bar = common_vendor.resolveComponent("nav-bar");
+  _component_nav_bar();
+}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: $data.keywords === "" ? 1 : "",
-    b: $data.keywords,
-    c: common_vendor.o(($event) => $data.keywords = $event.detail.value),
-    d: common_vendor.f($data.tipLocations, (item, k0, i0) => {
+    a: common_vendor.p({
+      text: $data.Text,
+      Nav: $data.Nav
+    }),
+    b: $data.keywords === "" ? 1 : "",
+    c: $data.keywords,
+    d: common_vendor.o(($event) => $data.keywords = $event.detail.value),
+    e: common_vendor.f($data.tipLocations, (item, k0, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: common_vendor.o(($event) => $options.chooseWhat(item.name))

@@ -1,6 +1,7 @@
 <template>
 	<view class="chooseLocation">
-
+		
+		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
 		<view class="section">
 		<view class="inputBox">
 		<input v-model="keywords"
@@ -22,14 +23,16 @@
 
 <script>
 	import amap from '../ThirdPartySDK/amap-wx.130.js'; 
+	import navBar from '../components/navBar/navBar.vue';
 	export default {
 		name:"chooseLocation",
-		props:{
-			
+		components:{
+			navBar,
 		},
 		data() {
 			return {
-				NowLocation:'华南理工大学C10',
+				Text:'返回新建',
+				Nav:'/pages/activity/ActivityThoughtCreate',
 				amapPlugin: null,
 				key: '53142a6ebba0f0d52481e81910658876',//高德key
 				keywords: '',
