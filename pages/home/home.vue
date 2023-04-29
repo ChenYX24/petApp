@@ -69,7 +69,8 @@ export default {
 		nickName: '用户名',
 		avatarUrl: '../../static/home/cat.png',
 		userInfo:{},
-		hasUserInfo:false,//建议存在本机的缓存中
+		hasUserInfo:false,
+		//建议存在本机的缓存中
 		customNumberItems: ['宠物', '勋章', '喜欢']
   	}
   },
@@ -106,7 +107,6 @@ export default {
 
   },
   created:function(){
-	  
 	  //获取之前请求获取到的信息
 	  if(uni.getStorageSync('avatarUrl')!==''){
 			this.avatarUrl=uni.getStorageSync('avatarUrl');
@@ -114,10 +114,7 @@ export default {
 	  if(uni.getStorageSync('nickName')!==''){
 		  	this.nickName=uni.getStorageSync('nickName');
 	  }
-	  		this.hasUserInfo=uni.getStorageSync('hasUserInfo');
-
-
-​	  
+	  this.hasUserInfo=uni.getStorageSync('hasUserInfo');
 	  console.log(this.hasUserInfo);
   },
   methods:{
@@ -137,8 +134,6 @@ export default {
 			  if(this.hasUserInfo){
 			//如果已经获取信息过了
 			//就不再获取了 否则会频繁获取  不太合适 
-			
-				  
 			  }
 			  else{
 				  wx.getUserProfile({
@@ -174,22 +169,14 @@ export default {
 							  console.log(res.data);
 						  }
 					  });
-
-
-​					  
 				    },
 				    fail: (res) => {
 				  	  console.log(res);
 				  	  that.hasUserInfo=false;
 				    },
-					
 				  });
-
-
-​				  
 			  }
-		  }
-		  ,
+		  },
 		wxLogin(){
 		var that=this;
 		if(!this.token){

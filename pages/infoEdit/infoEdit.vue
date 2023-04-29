@@ -1,6 +1,6 @@
 <template>
 	<view class="editData">
-		<nav-bar :text="Text"></nav-bar>
+		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
 		
 		<view class="cameraInput">
 			<image :src="imageSrc?imageSrc:'/static/IDCreate/picture&name/camera.png'" mode="aspectFit" class="camera" @tap="chooseImage"></image><!--@tap是点击事件，一旦点击则将chooseimage进行响应-->
@@ -47,7 +47,7 @@
 				Text:"编辑资料",
 				inputValue: '',
 				text1:'',
-				
+				Nav:"/pages/home/home",
 				text2:'',
 				text3:'',
 				text4:'',

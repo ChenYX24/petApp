@@ -7,11 +7,9 @@ const _sfc_main = {
   },
   data() {
     return {
-
       tapchangeReceived: false,
       Text: "新建提醒/记录",
       items: [],
-
       inputValue: "",
       text1: "",
       Nav: "/pages/notebook/notebook",
@@ -20,7 +18,6 @@ const _sfc_main = {
       text4: "",
       leftSelected: true,
       rightSelected: false,
-
       leftImageUrl: "/static/notebook/选择_已选择.png",
       rightImageUrl: "/static/notebook/选择_未选择.png",
       thirdImageUrl: "/static/notebook/选择_已选择.png",
@@ -84,9 +81,9 @@ ${this.inputValue}`;
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.leftSelected) {
         this.leftImageUrl = this.thirdImageUrl;
-        this.rightImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
+        this.rightImageUrl = "/static/notebook/选择_未选择.png";
       } else {
-        this.leftImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
+        this.leftImageUrl = "/static/notebook/选择_未选择.png";
       }
     },
     selectRight() {
@@ -95,9 +92,9 @@ ${this.inputValue}`;
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.rightSelected) {
         this.rightImageUrl = this.fourthImageUrl;
-        this.leftImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
+        this.leftImageUrl = "/static/notebook/选择_未选择.png";
       } else {
-        this.rightImageUrl = "/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
+        this.rightImageUrl = "/static/notebook/选择_未选择.png";
       }
     }
   },
@@ -157,5 +154,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     y: common_vendor.o((...args) => $options.buttonClicked && $options.buttonClicked(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/notebook/notebookForm.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/notebook/notebookForm.vue"]]);
 wx.createPage(MiniProgramPage);

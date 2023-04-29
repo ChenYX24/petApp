@@ -10,6 +10,7 @@ const _sfc_main = {
       Text: "编辑资料",
       inputValue: "",
       text1: "",
+      Nav: "/pages/home/home",
       text2: "",
       text3: "",
       text4: ""
@@ -45,7 +46,8 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
-      text: $data.Text
+      text: $data.Text,
+      Nav: $data.Nav
     }),
     b: _ctx.imageSrc ? _ctx.imageSrc : "/static/IDCreate/picture&name/camera.png",
     c: common_vendor.o((...args) => $options.chooseImage && $options.chooseImage(...args)),
