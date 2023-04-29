@@ -37,10 +37,31 @@
 					<view class="placeholder"></view>
 				</view>
 			  <view v-if="selectedTab === 'creation'" class="contextBox C">
-			  	222
-			  </view>
-		</view>
 
+				<view class="Hcontrol">
+					<slider :value="H" min="0" max="360" color="rgba(0,0,0,0)" selected-color="rgba(0,0,0,0)" @change="updateH"/>
+				</view>
+				<view class="Scontrol" :style="gradientStyleS">
+					<slider :value="S" min="0" max="100" color="rgba(0,0,0,0)" selected-color="rgba(0,0,0,0)" @change="updateS"/>
+				</view>
+				<view class="Bcontrol" :style="gradientStyleB">
+					<slider :value="B" min="0" max="100" color="rgba(0,0,0,0)" selected-color="rgba(0,0,0,0)" @change="updateB"/>
+				</view>
+				<view class="viewBox">
+					<view class="outerBlock">
+						<view class="color-block" :style="{ backgroundColor: finalColor }"></view>
+					</view>
+					<view class="iconGroup">
+						<view class="Outpen" :class="{active:isEdit}" @tap="isEdit=true">
+							<image class="pen" src="/static/emoticonIcon/edit.png" mode="widthFix"></image>
+						</view>
+						<view class="Outeraser" :class="{active:!isEdit}" @tap="isEdit=false">
+							<image class="eraser" src="/static/emoticonIcon/eraser.png" mode="widthFix"></image>
+						</view>
+					</view>
+				</view>
+			  </view>
+			</view>
 	</view>
 </template>
 
@@ -59,7 +80,11 @@
 				isAnimation:false,
 				emoticons: [], 
 				selectedImage: '', 
-				likeIcon:[]
+				likeIcon:[],
+				H:180,
+				S:50,
+				B:50,
+				isEdit:true,
 			};
 		},
 		mounted() {
@@ -102,6 +127,22 @@
 		      ? "../../static/myActivity/redHeart.png"
 		      : "/static/activity/点赞.png";
 		  },
+			finalColor() {
+				  return `hsl(${this.H},${this.S}%, ${this.realB}%)`;
+				},
+		gradientStyleS() {
+		  return {
+			background: `linear-gradient(90deg, hsl(${this.H}, 0%, ${this.realB}%) 0%, hsl(${this.H}, 100%, ${this.realB}%) 100%)`
+		  }
+		  },
+		  gradientStyleB() {
+		    return {
+		  	"background":`linear-gradient(90deg,hsl(${this.H},${this.S}%,0%) 0%, hsl(${this.H},${this.S}%,100%) 100%)`
+		    };
+		},
+		realB(){
+			return 100-this.B
+		}
 		},
 		  methods: {
 			  async toggleHeart() {
@@ -141,7 +182,17 @@
 					  	this.isHeartActive=false
 					  }
 			      },
-			},
+				  updateH(e){
+					this.H = e.detail.value;
+				  },
+				  updateS(e){
+				  	this.S = e.detail.value;
+				  },
+				  updateB(e){
+				  	this.B = e.detail.value;
+				  }
+
+		},
 		}
 		     
 </script>
@@ -150,11 +201,11 @@
 	.IDBG{
 		background-color: #fff4f2;
 		height: 100%;
-		  position: fixed;
-		  top: 0;
-		  right: 0;
-		  bottom: 0;
-		  left: 0;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 	}
 	.pageContent{
     display: flex;
@@ -225,7 +276,27 @@
 		background-color:  #ffffff;
 		position: relative;
 		top: 5%;
+
 	}
+	.contextBox.C{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    z-index: 2;
+    background-color: #ffffff;
+    position: relative;
+    top: 5%;
+    overflow-y: scroll;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+		.color-block {
+		  width: 100px;
+		  height: 100px;
+		}
+	}
+	
 	.triangle {
 	position: absolute;
     top: 0;
@@ -358,4 +429,72 @@
 		width: 100%;
 	  }
 	  //#endif
+	  .Hcontrol{
+		margin: 5%;
+		width: 90vw;
+		height: 5vw;
+	    border: 4px solid rgb(237, 216, 200);
+		opacity: 1;
+		border-radius: 9999px;
+		background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(247, 255, 0, 1) 16.76%, rgba(13, 255, 0, 1) 33.89%, rgba(0, 255, 242, 1) 49.45%, rgba(0, 38, 255, 1) 63.33%, rgba(208, 0, 255, 1) 83.33%, rgba(255, 0, 0, 1) 100%);  
+	  }
+	  .Scontrol{
+			margin: 5%;
+			width: 90vw;
+			height: 5vw;
+	  		opacity: 1;
+	  		border-radius: 9999px;
+			border: 4px solid rgb(237, 216, 200);
+	  }
+	  .Bcontrol{
+			margin: 5%;
+			width: 90vw;
+			height: 5vw;
+			border: 4px solid rgb(237, 216, 200);
+	  		opacity: 1;
+	  		border-radius: 9999px;
+			transform: rotate(180deg);
+			slider{
+				transform: rotate(180deg);
+			}
+	  }
+	  slider{
+		      margin: 0;
+	  }
+	  .viewBox{
+		  display: flex;
+		  flex-direction: row;
+		  align-items: center;
+		  justify-content: space-between;
+		  width: 80%;
+		  margin-top: 20px;
+	  }
+	  .pen,.eraser{
+		  width: 54px;
+		  height: 54px;
+	  }
+	  .Outpen,.Outeraser{
+		margin-left: 5%;
+		margin-right: 5%;
+	  	width: 75px;
+	  	height: 75px;
+	  }
+	  .active{
+	  	width: 85px;
+	  	height: 85px;
+	  	border-radius: 11px;
+	  	background: rgba(255, 252, 245, 1);
+	  	box-shadow: 5px 5px 12px 0px rgba(237, 216, 200, 0.5);
+	  }
+
+	  .pen,.eraser{
+		  width: 20vw;
+		  height: 20vw;
+	  }	  .iconGroup{
+		  display: flex;
+		  align-items: center;
+		  flex-direction: row;
+		  
+	  }
+
 </style>

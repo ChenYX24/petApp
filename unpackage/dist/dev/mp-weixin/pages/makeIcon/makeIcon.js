@@ -14,7 +14,11 @@ const _sfc_main = {
       isAnimation: false,
       emoticons: [],
       selectedImage: "",
-      likeIcon: []
+      likeIcon: [],
+      H: 180,
+      S: 50,
+      B: 50,
+      isEdit: true
     };
   },
   mounted() {
@@ -37,6 +41,22 @@ const _sfc_main = {
   computed: {
     heartIcon() {
       return this.isHeartActive ? "../../static/myActivity/redHeart.png" : "/static/activity/点赞.png";
+    },
+    finalColor() {
+      return `hsl(${this.H},${this.S}%, ${this.realB}%)`;
+    },
+    gradientStyleS() {
+      return {
+        background: `linear-gradient(90deg, hsl(${this.H}, 0%, ${this.realB}%) 0%, hsl(${this.H}, 100%, ${this.realB}%) 100%)`
+      };
+    },
+    gradientStyleB() {
+      return {
+        "background": `linear-gradient(90deg,hsl(${this.H},${this.S}%,0%) 0%, hsl(${this.H},${this.S}%,100%) 100%)`
+      };
+    },
+    realB() {
+      return 100 - this.B;
     }
   },
   methods: {
@@ -65,6 +85,15 @@ const _sfc_main = {
       } else {
         this.isHeartActive = false;
       }
+    },
+    updateH(e) {
+      this.H = e.detail.value;
+    },
+    updateS(e) {
+      this.S = e.detail.value;
+    },
+    updateB(e) {
+      this.B = e.detail.value;
     }
   }
 };
@@ -104,7 +133,21 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {}, {
     o: $data.selectedTab === "creation"
-  }, $data.selectedTab === "creation" ? {} : {});
+  }, $data.selectedTab === "creation" ? {
+    p: $data.H,
+    q: common_vendor.o((...args) => $options.updateH && $options.updateH(...args)),
+    r: $data.S,
+    s: common_vendor.o((...args) => $options.updateS && $options.updateS(...args)),
+    t: common_vendor.s($options.gradientStyleS),
+    v: $data.B,
+    w: common_vendor.o((...args) => $options.updateB && $options.updateB(...args)),
+    x: common_vendor.s($options.gradientStyleB),
+    y: $options.finalColor,
+    z: $data.isEdit ? 1 : "",
+    A: common_vendor.o(($event) => $data.isEdit = true),
+    B: !$data.isEdit ? 1 : "",
+    C: common_vendor.o(($event) => $data.isEdit = false)
+  } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9a8299cf"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/makeIcon/makeIcon.vue"]]);
 wx.createPage(MiniProgramPage);
