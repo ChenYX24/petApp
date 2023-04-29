@@ -189,6 +189,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/settingLanguage/settingLanguage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"

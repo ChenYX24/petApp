@@ -23,6 +23,7 @@ if (!Math) {
   "./pages/makeIcon/makeIcon.js";
   "./pages/fovIcon/fovIcon.js";
   "./pages/infoEdit/infoEdit.js";
+  "./pages/settingLanguage/settingLanguage.js";
 }
 const _sfc_main = {
   data() {

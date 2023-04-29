@@ -20,7 +20,8 @@
     "pages/petList/petList",
     "pages/makeIcon/makeIcon",
     "pages/fovIcon/fovIcon",
-    "pages/infoEdit/infoEdit"
+    "pages/infoEdit/infoEdit",
+    "pages/settingLanguage/settingLanguage"
   ],
   "window": {
     "navigationStyle": "custom"

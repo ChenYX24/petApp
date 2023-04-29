@@ -1,6 +1,6 @@
 <template>
 	<view class="IDBG">
-		<nav-bar :text="Text"></nav-bar>
+		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
 		<view class="pageContent">
 			<view class="settingContainer">
 				<view class="setBox">
@@ -21,11 +21,19 @@
 					</view>
 				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
 				</view>
-				<view class="setBox">
+				<view class="setBox" @tap="goLanguage">
 					<view class="setText">
 						语言
 					</view>
 				<image src="/static/setting/D.png" mode="aspectFit" class="setD"></image>
+				</view>
+			</view>
+			<view class="buttonGroup">
+				<view class="button">
+					切换账号
+				</view>
+				<view class="button">
+					退出登陆
 				</view>
 			</view>
 		</view>
@@ -42,10 +50,15 @@
 		data() {
 			return {
 				Text:"设置",
+				Nav:"/pages/home/home"
 			};
 		},
 		  methods: {
-			  
+			  goLanguage(){
+				  uni.navigateTo({
+				  	url:'/pages/settingLanguage/settingLanguage'
+				  })
+			  }
 			},
 		}
 		     
@@ -73,8 +86,8 @@
 	}
 	.settingContainer{
 		margin-top: 2rem;
-		width: 332px;
-		height: 199px;
+		width: 80vw;
+		// height: 199px;
 		opacity: 1;
 		border-radius: 25px;
 		background: rgba(255, 253, 247, 1);
@@ -91,10 +104,49 @@
 		    flex-direction: row;
 		    justify-content: space-between;
 		    align-items: center;
-		    padding: 15px;
+		    padding-bottom: 5px;
+			margin: 15px;
 	}
 	.setBox:not(:last-child){
-		    border-bottom: 2px solid;
+		border-bottom: 2px solid rgba(206, 166, 151, 0.15);
+		
+	}
+	.setBox:last-child{
+		margin-bottom: 12px!important;
+	}
+	.setText{
+		font-size: 18px;
+		font-weight: 700;
+		letter-spacing: 0px;
+		line-height: 26.06px;
+		color: rgba(230, 209, 198, 1);
+		text-align: left;
+		vertical-align: top;
+		margin-left: 5px;
+	}
+	.button{
+    width: 332px;
+    height: 75px;
+    opacity: 1;
+    border-radius: 25px;
+    background: #fffdf7;
+    box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
+    font-size: 20px;
+    font-weight: 700;
+    color: #e6d1c6;
+    text-align: center;
+    align-items: center;
+    display: flex;
+	justify-content: center;		
+	}
+	.button:last-child
+	{
+		margin-top: 1rem;
+	}
+	.buttonGroup
+	{
+		position: absolute;
+		bottom:10rem;
 	}
 
 </style>
