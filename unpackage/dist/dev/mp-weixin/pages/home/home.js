@@ -14,6 +14,10 @@ const _sfc_main = {
     return {
       tab: "",
       token: "",
+      nickName: "\u7528\u6237\u540D",
+      avatarUrl: "../../static/home/cat.png",
+      userInfo: {},
+      hasUserInfo: false,
       customNumberItems: ["\u5BA0\u7269", "\u52CB\u7AE0", "\u559C\u6B22"]
     };
   },
@@ -45,6 +49,16 @@ const _sfc_main = {
       ];
     }
   },
+  created: function() {
+    if (common_vendor.index.getStorageSync("avatarUrl") !== "") {
+      this.avatarUrl = common_vendor.index.getStorageSync("avatarUrl");
+    }
+    if (common_vendor.index.getStorageSync("nickName") !== "") {
+      this.nickName = common_vendor.index.getStorageSync("nickName");
+    }
+    this.hasUserInfo = common_vendor.index.getStorageSync("hasUserInfo");
+    console.log(this.hasUserInfo);
+  },
   methods: {
     handleSelectedImages(selectedImages) {
       console.log("Selected images:", selectedImages);
@@ -57,8 +71,50 @@ const _sfc_main = {
     customTap(index) {
       this.customTapFunctions[index]();
     },
+    getUserProfile() {
+      if (this.hasUserInfo)
+        ;
+      else {
+        wx.getUserProfile({
+          desc: "\u7528\u4E8E\u663E\u793A\u7528\u6237\u8D44\u6599",
+          success: (res) => {
+            console.log(res);
+            this.userInfo = res.userInfo;
+            this.hasUserInfo = true;
+            this.avatarUrl = this.userInfo.avatarUrl;
+            this.nickName = this.userInfo.nickName;
+            common_vendor.index.setStorageSync("avatarUrl", this.avatarUrl);
+            common_vendor.index.setStorageSync("nickName", this.nickName);
+            common_vendor.index.setStorageSync("hasUserInfo", this.hasUserInfo);
+            common_vendor.index.request({
+              url: "http://localhost:88/user/update/",
+              method: "POST",
+              data: {
+                userId: common_vendor.index.getStorageSync("userId"),
+                nickname: this.nickName,
+                backgroundImage: this.avatarUrl
+              },
+              header: {
+                "Content-Type": "application/json",
+                "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc"
+              },
+              success: (res2) => {
+                console.log(res2.data);
+              },
+              fail: (res2) => {
+                console.log(res2.data);
+              }
+            });
+          },
+          fail: (res) => {
+            console.log(res);
+            that.hasUserInfo = false;
+          }
+        });
+      }
+    },
     wxLogin() {
-      var that = this;
+      var that2 = this;
       if (!this.token) {
         common_vendor.index.showModal({
           mask: true,
@@ -72,15 +128,17 @@ const _sfc_main = {
                   const code = loginRes.code;
                   console.log(code);
                   common_vendor.index.request({
-                    url: "https://mock.apifox.cn/m1/2440038-0-default/user/login/",
+                    url: "http://localhost:88/user/login",
                     method: "GET",
                     data: {
                       code
                     },
                     success: function(res2) {
+                      console.log(res2);
                       common_vendor.index.setStorageSync("token", res2.data.token);
-                      that.token = common_vendor.index.getStorageSync("token");
-                      console.log(that.token);
+                      that2.token = common_vendor.index.getStorageSync("token");
+                      console.log(that2.token);
+                      common_vendor.index.setStorageSync("token", res2.data.userId);
                     },
                     fail: function(res2) {
                       common_vendor.index.showToast({
@@ -112,9 +170,11 @@ if (!Array) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.o((...args) => $options.wxLogin && $options.wxLogin(...args)),
-    b: common_vendor.o((...args) => $options.goSet && $options.goSet(...args)),
-    c: common_vendor.f(["\u5BA0\u7269", "\u52CB\u7AE0", "\u559C\u6B22"], (item, index, i0) => {
+    a: $data.avatarUrl,
+    b: common_vendor.o((...args) => $options.getUserProfile && $options.getUserProfile(...args)),
+    c: common_vendor.t($data.nickName),
+    d: common_vendor.o((...args) => $options.goSet && $options.goSet(...args)),
+    e: common_vendor.f(["\u5BA0\u7269", "\u52CB\u7AE0", "\u559C\u6B22"], (item, index, i0) => {
       return {
         a: common_vendor.t($options.custom[index]),
         b: common_vendor.t(item),
@@ -122,7 +182,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.o(($event) => $options.customTap(index), index)
       };
     }),
-    d: common_vendor.p({
+    f: common_vendor.p({
       activeTab: $data.tab
     })
   };

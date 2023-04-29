@@ -56,7 +56,7 @@ const _sfc_main = {
         method: "POST",
         data: {
           content: this.inputValue,
-          data: "asdasdasd",
+          data: ["\u56FE\u7247", "\u56FE\u7247"],
           location: this.trueLocation,
           activityName: this.currentActivity,
           userId: 1
