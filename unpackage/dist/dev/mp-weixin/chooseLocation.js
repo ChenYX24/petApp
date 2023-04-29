@@ -17,6 +17,8 @@ const _sfc_main = {
     this.amapPlugin = new ThirdPartySDK_amapWx_130.amap.AMapWX({
       key: this.key
     });
+  },
+  created() {
     this.getNowLocation();
   },
   watch: {

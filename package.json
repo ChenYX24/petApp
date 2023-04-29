@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@dcloudio/uni-app-plus": "^2.0.2-3070320230222001",
+    "crypto-js": "^4.1.1",
+    "nanoid": "^4.0.2",
     "vue": "^3.2.47"
   }
 }

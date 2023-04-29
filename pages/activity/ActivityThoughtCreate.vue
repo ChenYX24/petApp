@@ -53,7 +53,7 @@
 	
 <script>
 	import navBar from '/components//navBar/navBar.vue';
-	import chooseLocation from '/components/chooseLocation.vue';
+	import chooseLocation from '../../components/chooseLocation.vue';
 	export default {
 		components: {
 		  navBar,
@@ -72,20 +72,22 @@
 				inputValue: '',
 				imageSrc: [],
 				isChooseLocation: false,
-				trueLocation: '您所在位置'
+				trueLocation: '您所在位置',
+				imageUrls: []
 			}
 		},
 		mounted(){
 				//钩子函数
 				//在页面加载完成的时候，获取后端的活动
 				this.activities=['code'];
+				
 		},
 		methods:{
 			 radioChange: function(evt) {
 						for (let i = 0; i < this.items.length; i++) {
 							if (this.items[i].value === evt.detail.value) {
-								this.current = i;
-								break;
+								this.current = i; 
+								break; 
 							}
 						}
 			},
@@ -105,14 +107,89 @@
 			        }
 			      })
 			},
-			pushActivityThought(){
-				//上传活动任务，并返回首页   图片还没可以上传
+
+			async pushActivityThought(){
+				//上传活动任务，并返回首页   
+				//先把用户已经确定的图片遍历上传到服务器中  将服务器回调的URL存在data中
+				
+				//获取签名数据
+				
+				async function request(url, data) {
+					//异步请求的封装
+				  return new Promise((resolve, reject) => {
+					uni.request({
+					  url,
+					  data,
+					  header:{
+						  Authorization: uni.getStorageSync('token'),//请求的token
+					  },
+					  success: (res) => {
+						resolve(res.data);
+					  },
+					  fail: (error) => {
+						  //请求签名错误   提示用户服务器异常
+						reject(error);
+					  }
+					})
+				  })
+				};
+				
+
+					var signatureRes= {};
+					try{
+						const a=await request('http://localhost:88/thirdParty/getUploadSignature/',{});
+						signatureRes=a;
+					}catch(err){
+						console.error(err);
+					}
+					console.log(signatureRes);
+					console.log(signatureRes.data);
+					var host = signatureRes.data.host;
+					var signature = signatureRes.data.signature;
+					var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
+					var policy = signatureRes.data.policy;
+					// var securityToken = signatureRes.data.data.securityToken;
+					const filePath = this.imageSrc;
+					const date = new Date();
+					const year = date.getFullYear();
+					const month = (date.getMonth() + 1).toString().padStart(2, "0");
+					const day = date.getDate().toString().padStart(2, "0");
+					const formattedDate = `${year}-${month}-${day}`;
+					
+					
+					for (var i = 0; i < filePath.length; i++) {
+						const key = `${formattedDate}/`+'nanoid'+'.jpg';
+						console.log(host + key);
+						uni.uploadFile({
+						  url: host,
+						  filePath: filePath[i],
+						  name: "file",
+						  formData: {
+						    key,
+						    policy: policy,
+						    OSSAccessKeyId: ossAccessKeyId,
+						    signature: signature
+						    // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
+						  },
+						  success: (uploadFileRes) => {
+							this.imageUrls.push(host + key);
+						    console.log(uploadFileRes);
+						    console.log(111);
+						  },
+						  fail: function(err) {
+						    console.log(that.filePath);
+						  }
+						});
+					}
+
+				
+				//再上传图片路径
 				uni.request({
 				    url: 'http://localhost:88/activityThought/save',
 					method:'POST',
 				    data: {
 				        content: this.inputValue,
-						data: ['图片','图片'],
+						data: this.imageUrls,
 						location: this.trueLocation,
 						activityName: this.currentActivity,
 						userId: 1
@@ -131,7 +208,6 @@
 						})
 					  }
 				});
-
 			},
 			onActivityChange(event){
 				const activityIndex = event.detail.value
