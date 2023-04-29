@@ -17,18 +17,10 @@ const _sfc_main = {
     };
   },
   onLoad() {
-    this.emoticons = JSON.parse(common_vendor.index.getStorageSync("likeIcon"));
+    this.emoticons = common_vendor.index.getStorageSync("likeIcon");
   },
   mounted() {
-    var likeIconT = localStorage.getItem("likeIcon");
-    if (likeIconT) {
-      try {
-        this.likeIcon = JSON.parse(common_vendor.index.getStorageSync("likeIcon"));
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    this.likeIcon = JSON.parse(common_vendor.index.getStorageSync("likeIcon"));
+    this.likeIcon = common_vendor.index.getStorageSync("likeIcon");
     if (this.likeIcon) {
       this.selectedImage = this.likeIcon[0];
     }

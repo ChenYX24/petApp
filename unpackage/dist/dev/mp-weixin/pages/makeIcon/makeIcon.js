@@ -26,13 +26,12 @@ const _sfc_main = {
     if (this.emoticons) {
       this.selectedImage = this.emoticons[0].src;
     }
-    var likeIconT = localStorage.getItem("likeIcon");
-    if (likeIconT) {
-      try {
-        this.likeIcon = JSON.parse(common_vendor.index.getStorageSync("likeIcon"));
-      } catch (e) {
-        console.error(e);
-      }
+    this.likeIcon = common_vendor.index.getStorageSync("likeIcon");
+    const index = this.likeIcon.findIndex((item) => item == this.selectedImage);
+    if (index > -1) {
+      this.isHeartActive = true;
+    } else {
+      this.isHeartActive = false;
     }
   },
   computed: {
