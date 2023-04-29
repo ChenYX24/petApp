@@ -18,9 +18,15 @@ const _sfc_main = {
   },
   methods: {
     backClick() {
-      common_vendor.index.navigateBack({
-        delta: 1
-      });
+      if (this.Nav) {
+        common_vendor.index.navigateTo({
+          url: `${this.Nav}`
+        });
+      } else {
+        common_vendor.index.navigateBack({
+          delta: 1
+        });
+      }
     }
   },
   created() {

@@ -161,6 +161,16 @@ const _sfc_main = {
         });
       }
       console.log("login");
+    },
+    goMake() {
+      common_vendor.index.navigateTo({
+        url: "/pages/makeIcon/makeIcon"
+      });
+    },
+    goCollect() {
+      common_vendor.index.navigateTo({
+        url: "/pages/fovIcon/fovIcon"
+      });
     }
   }
 };
@@ -182,7 +192,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.o(($event) => $options.customTap(index), index)
       };
     }),
-    f: common_vendor.p({
+    f: common_vendor.o((...args) => $options.goMake && $options.goMake(...args)),
+    g: common_vendor.o((...args) => $options.goCollect && $options.goCollect(...args)),
+    h: common_vendor.p({
       activeTab: $data.tab
     })
   };

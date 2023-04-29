@@ -1,12 +1,98 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const navBar = () => "../../components/navBar/navBar.js";
 const _sfc_main = {
+  components: {
+    navBar
+  },
   data() {
-    return {};
+    return {
+      Text: "\u5DF2\u6536\u85CF",
+      Nav: "/pages/home/home",
+      isHeartActive: false,
+      isAnimation: false,
+      selectedImage: "",
+      likeIcon: [],
+      emoticons: []
+    };
+  },
+  onLoad() {
+    this.emoticons = JSON.parse(common_vendor.index.getStorageSync("likeIcon"));
+  },
+  mounted() {
+    var likeIconT = localStorage.getItem("likeIcon");
+    if (likeIconT) {
+      try {
+        this.likeIcon = JSON.parse(common_vendor.index.getStorageSync("likeIcon"));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    this.likeIcon = JSON.parse(common_vendor.index.getStorageSync("likeIcon"));
+    if (this.likeIcon) {
+      this.selectedImage = this.likeIcon[0];
+    }
+    this.isHeartActive = true;
+  },
+  computed: {
+    heartIcon() {
+      return this.isHeartActive ? "../../static/myActivity/redHeart.png" : "/static/activity/\u70B9\u8D5E.png";
+    }
+  },
+  methods: {
+    async toggleHeart() {
+      this.isHeartActive = !this.isHeartActive;
+      if (this.isHeartActive) {
+        await this.$nextTick();
+        this.isAnimation = true;
+        setTimeout(() => {
+          this.isAnimation = false;
+        }, 1e3);
+      }
+      const index = this.likeIcon.findIndex((item) => item === this.selectedImage);
+      if (index > -1) {
+        this.likeIcon.splice(index, 1);
+      } else {
+        this.likeIcon.push(this.selectedImage);
+      }
+      wx.setStorageSync("likeIcon", this.likeIcon);
+    },
+    showImage(image) {
+      this.selectedImage = image;
+      const index = this.likeIcon.findIndex((item) => item == this.selectedImage);
+      if (index > -1) {
+        this.isHeartActive = true;
+      } else {
+        this.isHeartActive = false;
+      }
+    }
   }
 };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {};
+if (!Array) {
+  const _component_nav_bar = common_vendor.resolveComponent("nav-bar");
+  _component_nav_bar();
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/fovIcon/fovIcon.vue"]]);
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return common_vendor.e({
+    a: common_vendor.p({
+      text: $data.Text,
+      Nav: $data.Nav
+    }),
+    b: $data.selectedImage
+  }, $data.selectedImage ? {
+    c: $data.selectedImage
+  } : {}, {
+    d: $options.heartIcon,
+    e: common_vendor.o((...args) => $options.toggleHeart && $options.toggleHeart(...args)),
+    f: $data.isAnimation ? 1 : "",
+    g: common_vendor.f($data.emoticons, (image, index, i0) => {
+      return {
+        a: index,
+        b: image,
+        c: common_vendor.o(($event) => $options.showImage(image), index)
+      };
+    })
+  });
+}
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-f5798b04"], ["__file", "D:/uniapp/petApp/pages/fovIcon/fovIcon.vue"]]);
 wx.createPage(MiniProgramPage);

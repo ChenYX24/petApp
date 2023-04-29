@@ -8,6 +8,7 @@ const _sfc_main = {
   data() {
     return {
       Text: "\u65B0\u5EFA\u63D0\u9192/\u8BB0\u5F55",
+      Nav: "/pages/notebook/notebook",
       inputValue: "",
       text1: "",
       text2: "",
@@ -81,7 +82,8 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
-      text: $data.Text
+      text: $data.Text,
+      Nav: $data.Nav
     }),
     b: $data.text1 !== "" ? 1 : "",
     c: $data.text1,

@@ -9,7 +9,8 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u5BA0\u7269\u8EAB\u4EFD\u8BC1"
+      Text: "\u5BA0\u7269\u8EAB\u4EFD\u8BC1",
+      Nav: "/pages/home/home"
     };
   },
   computed: {
@@ -33,7 +34,8 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
-      text: $data.Text
+      text: $data.Text,
+      Nav: $data.Nav
     }),
     b: common_vendor.f($options.idCardList, (item, index, i0) => {
       return {

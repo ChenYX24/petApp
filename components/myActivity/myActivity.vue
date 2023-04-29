@@ -28,7 +28,7 @@ export default {
     heartIcon() {
       return this.isHeartActive
         ? "../../static/myActivity/redHeart.png"
-        : "https://codefun-proj-user-res-1256085488.cos.ap-guangzhou.myqcloud.com/642d276b5a7e3f0310451545/642d27bc99e5b100119e7a73/16806809028252187363.png";
+        : "/static/activity/点赞.png";
     },
   },
   methods: {

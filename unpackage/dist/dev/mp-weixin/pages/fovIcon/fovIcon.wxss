@@ -1,0 +1,124 @@
+.IDBG.data-v-f5798b04 {
+  background-color: #fff4f2;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.pageContent.data-v-f5798b04 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 0rem;
+  height: 100%;
+  padding-top: 10%;
+}
+.imgContainer.data-v-f5798b04 {
+  width: 85vw;
+  height: 130vw;
+  opacity: 1;
+  border-radius: 11px;
+  background: #ffffff;
+  box-shadow: 5px 5px 12px 0px rgba(237, 216, 200, 0.5);
+  position: relative;
+}
+.heart_animation.data-v-f5798b04 {
+  transform: scale(1);
+  animation: heartPulse-f5798b04 0.6s linear;
+}
+@keyframes heartPulse-f5798b04 {
+0% {
+    transform: scale(1);
+    transform: rotate(0deg);
+}
+8.3% {
+    transform: scale(0.804);
+    transform: rotate(17deg);
+}
+16.6% {
+    transform: scale(1.186);
+    transform: rotate(3.2deg);
+}
+25% {
+    transform: scale(1.292);
+    transform: rotate(-7.8deg);
+}
+33.3% {
+    transform: scale(1.309);
+    transform: rotate(-12deg);
+}
+41.6% {
+    transform: scale(1.22);
+    transform: rotate(-7.2deg);
+}
+50% {
+    transform: scale(0.942);
+    transform: rotate(0.8deg);
+}
+58.3% {
+    transform: scale(0.8);
+    transform: rotate(2.8deg);
+}
+66.6% {
+    transform: scale(0.886);
+    transform: rotate(1.7deg);
+}
+75% {
+    transform: scale(0.954);
+    transform: rotate(0.6deg);
+}
+83.3% {
+    transform: scale(0.984);
+    transform: rotate(0.1deg);
+}
+91.6% {
+    transform: scale(0.997);
+    transform: rotate(0deg);
+}
+100% {
+    transform: scale(1);
+    transform: rotate(0deg);
+}
+}
+.like.data-v-f5798b04 {
+  width: 80rpx;
+  height: 80rpx;
+  transition: all 0.3s;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+.contextBox.data-v-f5798b04 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  /* 视口高度 */
+  z-index: 2;
+  background-color: #ffffff;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  /* 允许垂直滚动 */
+}
+.emoticon.data-v-f5798b04 {
+  width: calc(100% / 3);
+  max-height: 34vw;
+}
+.selectedImage.data-v-f5798b04 {
+  position: relative;
+  width: 80%;
+  max-height: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.placeholder.data-v-f5798b04 {
+  height: 30%;
+  width: 100%;
+}

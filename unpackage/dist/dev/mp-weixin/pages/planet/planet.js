@@ -7,6 +7,10 @@ const _sfc_main = {
   },
   onLoad: function(options) {
     this.tab = options.tab;
+    this.currentProvince = common_vendor.index.getStorageSync("city");
+    if (!this.currentProvince) {
+      this.currentProvince = "\u8BF7\u9009\u62E9\u7701\u4EFD";
+    }
   },
   data() {
     return {

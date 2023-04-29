@@ -1,0 +1,195 @@
+.IDBG.data-v-9a8299cf {
+  background-color: #fff4f2;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.pageContent.data-v-9a8299cf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 0rem;
+  height: 100%;
+  padding-top: 10%;
+}
+.imgContainer.data-v-9a8299cf {
+  width: 85vw;
+  height: 130vw;
+  opacity: 1;
+  border-radius: 11px;
+  background: #ffffff;
+  box-shadow: 5px 5px 12px 0px rgba(237, 216, 200, 0.5);
+  position: relative;
+}
+.container.data-v-9a8299cf {
+  display: flex;
+  width: 100vw;
+  position: relative;
+  top: 5%;
+}
+.tab.data-v-9a8299cf {
+  flex: 1;
+  background: #f5f1e6;
+  text-align: left;
+  vertical-align: top;
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-align: center;
+  position: relative;
+}
+.tab.data-v-9a8299cf:not(.rightTab) {
+  border-top-left-radius: 50px;
+}
+.rightTab.data-v-9a8299cf {
+  border-top-right-radius: 50px;
+}
+.tab.selected.data-v-9a8299cf {
+  background: #ffffff;
+  box-shadow: 10px -5px 9px -4px rgba(237, 216, 200, 0.5);
+  z-index: 3;
+  font-size: 24px;
+  line-height: 54.75px;
+  color: rgba(130, 65, 0, 0.5);
+  height: 100%;
+}
+.tab.data-v-9a8299cf:not(.selected) {
+  z-index: 0;
+  font-size: 20px;
+  line-height: 28.96px;
+  color: rgba(130, 65, 0, 0.3);
+  position: relative;
+  top: 35%;
+}
+.contextBox.data-v-9a8299cf {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #ffffff;
+  position: relative;
+  top: 5%;
+}
+.triangle.data-v-9a8299cf {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  z-index: 1;
+  width: 20px;
+  height: 59px;
+  background: #ffffff;
+  transform-origin: left;
+  transform: skew(20deg);
+  box-shadow: 10px -5px 9px -4px rgba(237, 216, 200, 0.5);
+}
+.triangleR.data-v-9a8299cf {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  z-index: 1;
+  width: 20px;
+  height: 59px;
+  background: #ffffff;
+  transform-origin: left;
+  transform: skew(-20deg);
+  box-shadow: -10px -5px 9px -4px rgba(237, 216, 200, 0.5);
+}
+.heart_animation.data-v-9a8299cf {
+  transform: scale(1);
+  animation: heartPulse-9a8299cf 0.6s linear;
+}
+@keyframes heartPulse-9a8299cf {
+0% {
+    transform: scale(1);
+    transform: rotate(0deg);
+}
+8.3% {
+    transform: scale(0.804);
+    transform: rotate(17deg);
+}
+16.6% {
+    transform: scale(1.186);
+    transform: rotate(3.2deg);
+}
+25% {
+    transform: scale(1.292);
+    transform: rotate(-7.8deg);
+}
+33.3% {
+    transform: scale(1.309);
+    transform: rotate(-12deg);
+}
+41.6% {
+    transform: scale(1.22);
+    transform: rotate(-7.2deg);
+}
+50% {
+    transform: scale(0.942);
+    transform: rotate(0.8deg);
+}
+58.3% {
+    transform: scale(0.8);
+    transform: rotate(2.8deg);
+}
+66.6% {
+    transform: scale(0.886);
+    transform: rotate(1.7deg);
+}
+75% {
+    transform: scale(0.954);
+    transform: rotate(0.6deg);
+}
+83.3% {
+    transform: scale(0.984);
+    transform: rotate(0.1deg);
+}
+91.6% {
+    transform: scale(0.997);
+    transform: rotate(0deg);
+}
+100% {
+    transform: scale(1);
+    transform: rotate(0deg);
+}
+}
+.like.data-v-9a8299cf {
+  width: 80rpx;
+  height: 80rpx;
+  transition: all 0.3s;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+.contextBox.data-v-9a8299cf {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  /* 视口高度 */
+  z-index: 2;
+  background-color: #ffffff;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  /* 允许垂直滚动 */
+}
+.emoticon.data-v-9a8299cf {
+  width: calc(100% / 3);
+  max-height: 34vw;
+}
+.selectedImage.data-v-9a8299cf {
+  position: relative;
+  width: 80%;
+  max-height: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.placeholder.data-v-9a8299cf {
+  height: 30%;
+  width: 100%;
+}

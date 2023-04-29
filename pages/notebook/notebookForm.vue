@@ -1,7 +1,7 @@
 <template>
 	<view class="notebookForm">
 		
-		<nav-bar :text="Text"></nav-bar>
+		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
    <view class="form">
        <view class="input-container">
 		<image class="icon" src="/static/notebook//宠物 .png" mode="aspectFill" />
@@ -62,6 +62,7 @@
 		data() {
 			return {
 				Text:"新建提醒/记录",
+				Nav:"/pages/notebook/notebook",
 				inputValue: '',
 				text1:'',
 				text2:'',

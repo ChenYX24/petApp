@@ -1,6 +1,6 @@
 <template>
 <view class="IDBG">
-		<nav-bar :text="Text"></nav-bar>
+		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
 		<view class="cardContainer">
 		<view class="cardScroll">
 			<idCard v-for="(item, index) in idCardList" :key="index" :dataList="item"></idCard>
@@ -29,7 +29,8 @@
 		},
 		data() {
 			return {
-				Text:"宠物身份证"
+				Text:"宠物身份证",
+				Nav:"/pages/home/home"
 			};
 		},
 		computed:{
