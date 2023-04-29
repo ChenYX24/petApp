@@ -134,6 +134,9 @@ export default {
 			  if(this.hasUserInfo){
 			//如果已经获取信息过了
 			//就不再获取了 否则会频繁获取  不太合适 
+			uni.navigateTo({
+				url:'/pages/infoEdit/infoEdit'
+			})
 			  }
 			  else{
 				  wx.getUserProfile({
@@ -230,12 +233,6 @@ export default {
 						});
 				}else if(res.cancel){}
 				}
-			})
-		}
-		else
-		{
-			uni.navigateTo({
-				url:'/pages/infoEdit/infoEdit'
 			})
 		}
 		

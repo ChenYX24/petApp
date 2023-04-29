@@ -73,9 +73,11 @@ const _sfc_main = {
       this.customTapFunctions[index]();
     },
     getUserProfile() {
-      if (this.hasUserInfo)
-        ;
-      else {
+      if (this.hasUserInfo) {
+        common_vendor.index.navigateTo({
+          url: "/pages/infoEdit/infoEdit"
+        });
+      } else {
         common_vendor.wx$1.getUserProfile({
           desc: "用于显示用户资料",
           // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
@@ -160,10 +162,6 @@ const _sfc_main = {
             } else if (res.cancel)
               ;
           }
-        });
-      } else {
-        common_vendor.index.navigateTo({
-          url: "/pages/infoEdit/infoEdit"
         });
       }
     },
