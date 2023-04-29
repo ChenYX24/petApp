@@ -7,7 +7,7 @@
 		:class="{ 'active': keywords === ''}" 
 		type="text" placeholder="输入关键字" 
 		placeholder-class="text" focus="true"/>
-		 <image src="/static/planet/position.png" mode="aspectFill" ></image>
+		 <image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png" mode="aspectFill" ></image>
 		</view>
 		</view>
 

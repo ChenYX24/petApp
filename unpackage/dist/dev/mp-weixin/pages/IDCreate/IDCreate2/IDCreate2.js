@@ -7,25 +7,25 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u9009\u62E9\u7C7B\u578B",
+      Text: "选择类型",
       isActive: false,
       leftSelected: false,
       rightSelected: false,
-      leftImageUrl: "/static/IDCreate/selectDogOrCat/leftNS.png",
-      rightImageUrl: "/static/IDCreate/selectDogOrCat/rightNS.png",
-      thirdImageUrl: "/static/IDCreate/selectDogOrCat/leftS.png",
-      fourthImageUrl: "/static/IDCreate/selectDogOrCat/rightS.png"
+      leftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/leftNS.png",
+      rightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/rightNS.png",
+      thirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/leftS.png",
+      fourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/rightS.png"
     };
   },
   methods: {
     nextpage() {
       if (this.isActive) {
         if (this.leftSelected) {
-          wx.setStorageSync("breed", 1);
+          common_vendor.wx$1.setStorageSync("breed", 1);
         } else if (this.rightSelected) {
-          wx.setStorageSync("breed", 2);
+          common_vendor.wx$1.setStorageSync("breed", 2);
         } else {
-          wx.setStorageSync("breed", 3);
+          common_vendor.wx$1.setStorageSync("breed", 3);
         }
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate3/IDCreate3`
@@ -38,9 +38,9 @@ const _sfc_main = {
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.leftSelected) {
         this.leftImageUrl = this.thirdImageUrl;
-        this.rightImageUrl = "/static/IDCreate/selectDogOrCat/rightNS.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/rightNS.png";
       } else {
-        this.leftImageUrl = "/static/IDCreate/selectDogOrCat/leftNS.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/leftNS.png";
       }
     },
     selectRight() {
@@ -49,9 +49,9 @@ const _sfc_main = {
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.rightSelected) {
         this.rightImageUrl = this.fourthImageUrl;
-        this.leftImageUrl = "/static/IDCreate/selectDogOrCat/leftNS.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/leftNS.png";
       } else {
-        this.rightImageUrl = "/static/IDCreate/selectDogOrCat/rightNS.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/rightNS.png";
       }
     }
   }
@@ -75,5 +75,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-decd52d9"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate2/IDCreate2.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-decd52d9"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate2/IDCreate2.vue"]]);
 wx.createPage(MiniProgramPage);

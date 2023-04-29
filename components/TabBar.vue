@@ -4,22 +4,22 @@
 
   <view class="tab-bar">
     <view class="tab-item"  @click="switchTab('memo')">
-      <image class="imgGroup notebIcon leftIcon" :src="activeTab === 'memo'?'/static/tabbar/notebook.png':'/static/tabbar/notebook2.png'"></image>
+      <image class="imgGroup notebIcon leftIcon" :src="activeTab === 'memo'?'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/notebook.png':'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/notebook2.png'"></image>
 	  	<view class="dot" :class="{active: activeTab === 'memo'}"></view>
     </view>
     <view class="tab-item"  @click="switchTab('planet')">
-      <image class="imgGroup leftIcon" :src="activeTab === 'planet'?'/static/tabbar/planet.png':'/static/tabbar/planet2.png'">></image>
+      <image class="imgGroup leftIcon" :src="activeTab === 'planet'?'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/planet.png':'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/planet2.png'">></image>
 	  	<view class="dot" :class="{active: activeTab === 'planet'}"></view>
     </view>
     <view class="tab-item add" @click="switchTab('add')">
-      <image class="imgGroup addImg" src="/static/tabbar/add.png" ></image>
+      <image class="imgGroup addImg" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/add.png" ></image>
     </view>
     <view class="tab-item"  @click="switchTab('activity')">
-      <image class="imgGroup"  :src="activeTab === 'activity'?'/static/tabbar/activity.png':'/static/tabbar/activity2.png'"></image>
+      <image class="imgGroup"  :src="activeTab === 'activity'?'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/activity.png':'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/activity2.png'"></image>
 	  	<view class="dot" :class="{active: activeTab === 'activity'}"></view>
     </view>
     <view class="tab-item"  @click="switchTab('home')">
-      <image class="imgGroup"  :src="activeTab === 'home'?'/static/tabbar/home.png':'/static/tabbar/home2.png'"></image>
+      <image class="imgGroup"  :src="activeTab === 'home'?'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/home.png':'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/home2.png'"></image>
 	  	<view class="dot" :class="{active: activeTab === 'home'}"></view>
     </view>
 	<!-- 底部橘色的小圆点 -->

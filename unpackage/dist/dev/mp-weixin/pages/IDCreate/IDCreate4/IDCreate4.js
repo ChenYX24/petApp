@@ -7,18 +7,18 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u9009\u62E9\u7EDD\u80B2\u72B6\u51B5",
+      Text: "选择绝育状况",
       isActive: false,
       leftSelected: false,
       rightSelected: false,
-      leftImageUrl: "/static/IDCreate/selectXX/DNxx.png",
-      rightImageUrl: "/static/IDCreate/selectXX/Dxx.png",
-      thirdImageUrl: "/static/IDCreate/selectXX/DNxxY.png",
-      fourthImageUrl: "/static/IDCreate/selectXX/DxxY.png",
-      CleftImageUrl: "/static/IDCreate/selectXX/CNxx.png",
-      CrightImageUrl: "/static/IDCreate/selectXX/Cxx.png",
-      CthirdImageUrl: "/static/IDCreate/selectXX/CNxxY.png",
-      CfourthImageUrl: "/static/IDCreate/selectXX/CxxY.png",
+      leftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/DNxx.png",
+      rightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/Dxx.png",
+      thirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/DNxxY.png",
+      fourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/DxxY.png",
+      CleftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/CNxx.png",
+      CrightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/Cxx.png",
+      CthirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/CNxxY.png",
+      CfourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/CxxY.png",
       breed: ""
     };
   },
@@ -29,9 +29,9 @@ const _sfc_main = {
     nextpage() {
       if (this.isActive) {
         if (this.leftSelected) {
-          wx.setStorageSync("xx", 1);
+          common_vendor.wx$1.setStorageSync("xx", 1);
         } else if (this.rightSelected) {
-          wx.setStorageSync("xx", 2);
+          common_vendor.wx$1.setStorageSync("xx", 2);
         }
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate5/IDCreate5`
@@ -44,12 +44,12 @@ const _sfc_main = {
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.leftSelected) {
         this.leftImageUrl = this.thirdImageUrl;
-        this.rightImageUrl = "/static/IDCreate/selectXX/Dxx.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/Dxx.png";
         this.CleftImageUrl = this.CthirdImageUrl;
-        this.CrightImageUrl = "/static/IDCreate/selectXX/Cxx.png";
+        this.CrightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/Cxx.png";
       } else {
-        this.leftImageUrl = "/static/IDCreate/selectXX/DNxx.png";
-        this.CleftImageUrl = "/static/IDCreate/selectXX/CNxx.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/DNxx.png";
+        this.CleftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/CNxx.png";
       }
     },
     selectRight() {
@@ -58,12 +58,12 @@ const _sfc_main = {
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.rightSelected) {
         this.rightImageUrl = this.fourthImageUrl;
-        this.leftImageUrl = "/static/IDCreate/selectXX/DNxx.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/DNxx.png";
         this.CrightImageUrl = this.CfourthImageUrl;
-        this.CleftImageUrl = "/static/IDCreate/selectXX/CNxx.png";
+        this.CleftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/CNxx.png";
       } else {
-        this.rightImageUrl = "/static/IDCreate/selectXX/Dxx.png";
-        this.CrightImageUrl = "/static/IDCreate/selectXX/Cxx.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/Dxx.png";
+        this.CrightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectXX/Cxx.png";
       }
     }
   }
@@ -87,5 +87,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9f89f8c9"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate4/IDCreate4.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9f89f8c9"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate4/IDCreate4.vue"]]);
 wx.createPage(MiniProgramPage);

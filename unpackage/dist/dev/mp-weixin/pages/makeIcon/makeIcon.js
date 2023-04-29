@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u5236\u4F5C\u8868\u60C5\u5305",
+      Text: "制作表情包",
       Nav: "/pages/home/home",
       selectedTab: "template",
       isHeartActive: false,
@@ -24,7 +24,7 @@ const _sfc_main = {
   mounted() {
     for (let i = 1; i <= 12; i++) {
       this.emoticons.push({
-        src: `/static/emoticon/${i}.png`
+        src: `https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/emoticon/${i}.png`
       });
     }
     if (this.emoticons) {
@@ -40,7 +40,7 @@ const _sfc_main = {
   },
   computed: {
     heartIcon() {
-      return this.isHeartActive ? "../../static/myActivity/redHeart.png" : "/static/activity/点赞.png";
+      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/点赞.png";
     },
     finalColor() {
       return `hsl(${this.H},${this.S}%, ${this.realB}%)`;
@@ -75,7 +75,7 @@ const _sfc_main = {
       } else {
         this.likeIcon.push(this.selectedImage);
       }
-      wx.setStorageSync("likeIcon", this.likeIcon);
+      common_vendor.wx$1.setStorageSync("likeIcon", this.likeIcon);
     },
     showImage(image) {
       this.selectedImage = image.src;
@@ -149,5 +149,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     C: common_vendor.o(($event) => $data.isEdit = false)
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9a8299cf"], ["__file", "D:/uniapp/petApp/pages/makeIcon/makeIcon.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9a8299cf"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/makeIcon/makeIcon.vue"]]);
 wx.createPage(MiniProgramPage);

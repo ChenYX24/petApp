@@ -20,7 +20,7 @@ const _sfc_main = {
       inputValue: "",
       imageSrc: [],
       isChooseLocation: false,
-      trueLocation: "\u60A8\u6240\u5728\u4F4D\u7F6E",
+      trueLocation: "您所在位置",
       imageUrls: []
     };
   },
@@ -62,6 +62,7 @@ const _sfc_main = {
             data,
             header: {
               Authorization: common_vendor.index.getStorageSync("token")
+              //请求的token
             },
             success: (res) => {
               resolve(res.data);
@@ -103,6 +104,7 @@ const _sfc_main = {
             policy,
             OSSAccessKeyId: ossAccessKeyId,
             signature
+            // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
           },
           success: (uploadFileRes) => {
             this.imageUrls.push(host + key);

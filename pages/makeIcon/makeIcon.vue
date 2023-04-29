@@ -53,10 +53,10 @@
 					</view>
 					<view class="iconGroup">
 						<view class="Outpen" :class="{active:isEdit}" @tap="isEdit=true">
-							<image class="pen" src="/static/emoticonIcon/edit.png" mode="widthFix"></image>
+							<image class="pen" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/emoticonIcon/edit.png" mode="widthFix"></image>
 						</view>
 						<view class="Outeraser" :class="{active:!isEdit}" @tap="isEdit=false">
-							<image class="eraser" src="/static/emoticonIcon/eraser.png" mode="widthFix"></image>
+							<image class="eraser" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/emoticonIcon/eraser.png" mode="widthFix"></image>
 						</view>
 					</view>
 				</view>
@@ -91,7 +91,7 @@
 		    // 之后要在服务端动态获取图片
 		    for (let i = 1; i <= 12; i++) {
 		        this.emoticons.push({
-		            src: `/static/emoticon/${i}.png`,
+		            src: `https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/emoticon/${i}.png`,
 		        });
 		    }
 			if(this.emoticons)
@@ -124,8 +124,8 @@
 		computed: {
 		  heartIcon() {
 		    return this.isHeartActive
-		      ? "../../static/myActivity/redHeart.png"
-		      : "/static/activity/点赞.png";
+		      ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png"
+		      : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/点赞.png";
 		  },
 			finalColor() {
 				  return `hsl(${this.H},${this.S}%, ${this.realB}%)`;

@@ -4,22 +4,22 @@
 		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
    <view class="form">
        <view class="input-container">
-		<image class="icon" src="/static/notebook//宠物 .png" mode="aspectFill" />
+		<image class="icon" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/pet.png" mode="aspectFill" />
         <input v-model="text1" :class="{ 'active': text1 !== '' }" type="text" placeholder="小羽" placeholder-style="color:#cea697;"/>
        </view>
 	
     <view class="input-container">
-	 <image class="icon" src="/static/notebook//备忘录.png" mode="aspectFill" />
+	 <image class="icon" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/notebook.png" mode="aspectFill" />
       <input v-model="text2" :class="{ 'active': text2 !== '' }" type="text" placeholder="输入事件名称，如洗澡" placeholder-style="color:#cea697;" />
     </view>
 	
     <view class="input-container" >
-      <image class="icon" src="/static//notebook/时间.png"/>
+      <image class="icon" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/time.png"/>
       <input v-model="text3" :class="{ 'active': text3 !== '' }" type="text" placeholder="时间" placeholder-style="color:#cea697;" />
     </view>
 	
     <view class="input-container">
-      <image class="icon" src="/static/planet/position.png" />
+      <image class="icon" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png" />
       <input v-model="text4" :class="{ 'active': text4 !== '' }" type="text" placeholder="地点" placeholder-style="color:#cea697;"/>
     </view>
 	
@@ -40,7 +40,7 @@
   </view>
 	
 	<view class="beizhu">
-		<image src="/static//notebook/提醒.png" mode="aspectFill"></image>
+		<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/note.png" mode="aspectFill"></image>
 		<input  type="text" placeholder="其他备注"  :class="{ 'active': inputValue||text1 !== '' }" class="input" placeholder-style="color:#cea697;" v-model="inputValue"/>
 	</view>
 		
@@ -72,10 +72,10 @@
 				text4:'',
                leftSelected: true,
 			   rightSelected: false,
-			   leftImageUrl: '/static/notebook/选择_已选择.png',
-			   rightImageUrl: '/static/notebook/选择_未选择.png',
-			   thirdImageUrl: '/static/notebook/选择_已选择.png',
-			   fourthImageUrl: '/static/notebook/选择_已选择.png',
+			   leftImageUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png',
+			   rightImageUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png',
+			   thirdImageUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png',
+			   fourthImageUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png',
 			   indexInForm:-1,
 			}
 		},
@@ -142,10 +142,10 @@
 				
 				      if (this.leftSelected) {
 				        this.leftImageUrl = this.thirdImageUrl;
-								  this.rightImageUrl = '/static/notebook/选择_未选择.png';
+								  this.rightImageUrl = 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png';
 				      } 
 								else{
-								  this.leftImageUrl='/static/notebook/选择_未选择.png';
+								  this.leftImageUrl='https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png';
 								}
 				    },
 				    selectRight() {
@@ -155,10 +155,10 @@
 				
 				      if (this.rightSelected) {
 				        this.rightImageUrl = this.fourthImageUrl;
-								  this.leftImageUrl = '/static/notebook/选择_未选择.png';
+								  this.leftImageUrl = 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png';
 				      } 
 								else{
-								  this.rightImageUrl='/static/notebook/选择_未选择.png';
+								  this.rightImageUrl='https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png';
 								}
 				    },
 		},

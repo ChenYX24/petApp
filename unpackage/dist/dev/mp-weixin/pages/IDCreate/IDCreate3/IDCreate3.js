@@ -7,18 +7,18 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u9009\u62E9\u6027\u522B",
+      Text: "选择性别",
       isActive: false,
       leftSelected: false,
       rightSelected: false,
-      leftImageUrl: "/static/IDCreate/selectSex/dogBoy.png",
-      rightImageUrl: "/static/IDCreate/selectSex/dogGirl.png",
-      thirdImageUrl: "/static/IDCreate/selectSex/dogBoyY.png",
-      fourthImageUrl: "/static/IDCreate/selectSex/dogGirlY.png",
-      CleftImageUrl: "/static/IDCreate/selectSex/catBoy.png",
-      CrightImageUrl: "/static/IDCreate/selectSex/catGirl.png",
-      CthirdImageUrl: "/static/IDCreate/selectSex/catBoyY.png",
-      CfourthImageUrl: "/static/IDCreate/selectSex/catGirlY.png",
+      leftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/dogBoy.png",
+      rightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/dogGirl.png",
+      thirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/dogBoyY.png",
+      fourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/dogGirlY.png",
+      CleftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/catBoy.png",
+      CrightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/catGirl.png",
+      CthirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/catBoyY.png",
+      CfourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/catGirlY.png",
       breed: ""
     };
   },
@@ -29,9 +29,9 @@ const _sfc_main = {
     nextpage() {
       if (this.isActive) {
         if (this.leftSelected) {
-          wx.setStorageSync("sex", 1);
+          common_vendor.wx$1.setStorageSync("sex", 1);
         } else if (this.rightSelected) {
-          wx.setStorageSync("sex", 2);
+          common_vendor.wx$1.setStorageSync("sex", 2);
         }
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate4/IDCreate4`
@@ -44,12 +44,12 @@ const _sfc_main = {
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.leftSelected) {
         this.leftImageUrl = this.thirdImageUrl;
-        this.rightImageUrl = "/static/IDCreate/selectSex/dogGirl.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/dogGirl.png";
         this.CleftImageUrl = this.CthirdImageUrl;
-        this.CrightImageUrl = "/static/IDCreate/selectSex/catGirl.png";
+        this.CrightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/catGirl.png";
       } else {
-        this.leftImageUrl = "/static/IDCreate/selectSex/dogBoy.png";
-        this.CleftImageUrl = "/static/IDCreate/selectSex/catBoy.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/dogBoy.png";
+        this.CleftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/catBoy.png";
       }
     },
     selectRight() {
@@ -58,12 +58,12 @@ const _sfc_main = {
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.rightSelected) {
         this.rightImageUrl = this.fourthImageUrl;
-        this.leftImageUrl = "/static/IDCreate/selectSex/dogBoy.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/dogBoy.png";
         this.CrightImageUrl = this.CfourthImageUrl;
-        this.CleftImageUrl = "/static/IDCreate/selectSex/catBoy.png";
+        this.CleftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/catBoy.png";
       } else {
-        this.rightImageUrl = "/static/IDCreate/selectSex/dogGirl.png";
-        this.CrightImageUrl = "/static/IDCreate/selectSex/catGirl.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/dogGirl.png";
+        this.CrightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectSex/catGirl.png";
       }
     }
   }
@@ -87,5 +87,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-61e445bc"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate3/IDCreate3.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-61e445bc"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate3/IDCreate3.vue"]]);
 wx.createPage(MiniProgramPage);

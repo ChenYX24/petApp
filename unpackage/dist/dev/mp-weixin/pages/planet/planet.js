@@ -9,7 +9,7 @@ const _sfc_main = {
     this.tab = options.tab;
     this.currentProvince = common_vendor.index.getStorageSync("city");
     if (!this.currentProvince) {
-      this.currentProvince = "\u8BF7\u9009\u62E9\u7701\u4EFD";
+      this.currentProvince = "请选择省份";
     }
   },
   data() {
@@ -17,24 +17,24 @@ const _sfc_main = {
       tab: "",
       inputValue: "",
       trueProvince: "xx",
-      provinces: ["\u5317\u4EAC\u5E02", "\u5929\u6D25\u5E02", "\u4E0A\u6D77\u5E02", "\u91CD\u5E86\u5E02", "\u6CB3\u5317\u7701", "\u5C71\u897F\u7701", "\u8FBD\u5B81\u7701", "\u5409\u6797\u7701", "\u9ED1\u9F99\u6C5F\u7701", "\u6C5F\u82CF\u7701", "\u6D59\u6C5F\u7701", "\u5B89\u5FBD\u7701", "\u798F\u5EFA\u7701", "\u6C5F\u897F\u7701", "\u5C71\u4E1C\u7701", "\u6CB3\u5357\u7701", "\u6E56\u5317\u7701", "\u6E56\u5357\u7701", "\u5E7F\u4E1C\u7701", "\u6D77\u5357\u7701", "\u56DB\u5DDD\u7701", "\u8D35\u5DDE\u7701", "\u4E91\u5357\u7701", "\u9655\u897F\u7701", "\u7518\u8083\u7701", "\u9752\u6D77\u7701", "\u53F0\u6E7E\u7701", "\u5185\u8499\u53E4\u81EA\u6CBB\u533A", "\u5E7F\u897F\u58EE\u65CF\u81EA\u6CBB\u533A", "\u897F\u85CF\u81EA\u6CBB\u533A", "\u5B81\u590F\u56DE\u65CF\u81EA\u6CBB\u533A", "\u65B0\u7586\u7EF4\u543E\u5C14\u81EA\u6CBB\u533A", "\u9999\u6E2F\u7279\u522B\u884C\u653F\u533A", "\u6FB3\u95E8\u7279\u522B\u884C\u653F\u533A"],
-      currentProvince: "\u8BF7\u9009\u62E9\u7701\u4EFD",
+      provinces: ["北京市", "天津市", "上海市", "重庆市", "河北省", "山西省", "辽宁省", "吉林省", "黑龙江省", "江苏省", "浙江省", "安徽省", "福建省", "江西省", "山东省", "河南省", "湖北省", "湖南省", "广东省", "海南省", "四川省", "贵州省", "云南省", "陕西省", "甘肃省", "青海省", "台湾省", "内蒙古自治区", "广西壮族自治区", "西藏自治区", "宁夏回族自治区", "新疆维吾尔自治区", "香港特别行政区", "澳门特别行政区"],
+      currentProvince: "请选择省份",
       isActive: false
     };
   },
   computed: {
     isCanActive() {
-      return this.currentProvince !== "\u8BF7\u9009\u62E9\u7701\u4EFD";
+      return this.currentProvince !== "请选择省份";
     }
   },
   methods: {
     onProvinceChange(event) {
       const provinceIndex = event.detail.value;
       this.currentProvince = this.provinces[provinceIndex];
-      if (this.currentProvince !== "\u8BF7\u9009\u62E9\u7701\u4EFD") {
+      if (this.currentProvince !== "请选择省份") {
         this.trueProvince = this.currentProvince;
       }
-      wx.setStorageSync("city", this.currentProvince);
+      common_vendor.wx$1.setStorageSync("city", this.currentProvince);
     },
     canTap() {
       if (this.isCanActive) {
@@ -72,5 +72,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-d8c429a1"], ["__file", "D:/uniapp/petApp/pages/planet/planet.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-d8c429a1"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/planet/planet.vue"]]);
 wx.createPage(MiniProgramPage);

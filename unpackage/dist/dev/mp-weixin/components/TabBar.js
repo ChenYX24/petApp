@@ -29,22 +29,22 @@ const _sfc_main = {
         this.tab = tab;
         switch (tab) {
           case "memo":
-            wx.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/notebook/notebook?tab=${tab}`
             });
             break;
           case "planet":
-            wx.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/planet/planet?tab=${tab}`
             });
             break;
           case "activity":
-            wx.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/activity/activity?tab=${tab}`
             });
             break;
           case "home":
-            wx.redirectTo({
+            common_vendor.wx$1.redirectTo({
               url: `/pages/home/home?tab=${tab}`
             });
             break;
@@ -63,17 +63,17 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: $props.activeTab === "memo" ? "/static/tabbar/notebook.png" : "/static/tabbar/notebook2.png",
+    a: $props.activeTab === "memo" ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/notebook.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/notebook2.png",
     b: $props.activeTab === "memo" ? 1 : "",
     c: common_vendor.o(($event) => $options.switchTab("memo")),
-    d: $props.activeTab === "planet" ? "/static/tabbar/planet.png" : "/static/tabbar/planet2.png",
+    d: $props.activeTab === "planet" ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/planet.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/planet2.png",
     e: $props.activeTab === "planet" ? 1 : "",
     f: common_vendor.o(($event) => $options.switchTab("planet")),
     g: common_vendor.o(($event) => $options.switchTab("add")),
-    h: $props.activeTab === "activity" ? "/static/tabbar/activity.png" : "/static/tabbar/activity2.png",
+    h: $props.activeTab === "activity" ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/activity.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/activity2.png",
     i: $props.activeTab === "activity" ? 1 : "",
     j: common_vendor.o(($event) => $options.switchTab("activity")),
-    k: $props.activeTab === "home" ? "/static/tabbar/home.png" : "/static/tabbar/home2.png",
+    k: $props.activeTab === "home" ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/home.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/tabbar/home2.png",
     l: $props.activeTab === "home" ? 1 : "",
     m: common_vendor.o(($event) => $options.switchTab("home")),
     n: $data.isAdd ? 1 : "",
@@ -83,5 +83,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-89ca1f91"], ["__file", "D:/uniapp/petApp/components/TabBar.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-89ca1f91"], ["__file", "D:/school/团小萌/团小萌/petApp/components/TabBar.vue"]]);
 wx.createComponent(Component);

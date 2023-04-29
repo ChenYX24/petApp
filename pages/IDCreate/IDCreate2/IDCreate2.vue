@@ -45,10 +45,10 @@
 				isActive: false,
                 leftSelected: false,
 			    rightSelected: false,
-			    leftImageUrl: '/static/IDCreate/selectDogOrCat/leftNS.png',
-			    rightImageUrl: '/static/IDCreate/selectDogOrCat/rightNS.png',
-			    thirdImageUrl: '/static/IDCreate/selectDogOrCat/leftS.png',
-				fourthImageUrl: '/static/IDCreate/selectDogOrCat/rightS.png'
+			    leftImageUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/leftNS.png',
+			    rightImageUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/rightNS.png',
+			    thirdImageUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/leftS.png',
+				fourthImageUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/rightS.png'
 			};
 		},
 		  methods: {
@@ -95,10 +95,10 @@
 		  
 		        if (this.leftSelected) {
 		          this.leftImageUrl = this.thirdImageUrl;
-				  this.rightImageUrl = '/static/IDCreate/selectDogOrCat/rightNS.png';
+				  this.rightImageUrl = 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/rightNS.png';
 		        } 
 				else{
-				  this.leftImageUrl='/static/IDCreate/selectDogOrCat/leftNS.png';
+				  this.leftImageUrl='https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/leftNS.png';
 				}
 		      },
 		      selectRight() {
@@ -108,10 +108,10 @@
 		  
 		        if (this.rightSelected) {
 		          this.rightImageUrl = this.fourthImageUrl;
-				  this.leftImageUrl = '/static/IDCreate/selectDogOrCat/leftNS.png';
+				  this.leftImageUrl = 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/leftNS.png';
 		        } 
 				else{
-				  this.rightImageUrl='/static/IDCreate/selectDogOrCat/rightNS.png';
+				  this.rightImageUrl='https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectDogOrCat/rightNS.png';
 				}
 		      },
 		    },

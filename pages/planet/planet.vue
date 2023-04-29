@@ -6,11 +6,11 @@
          <picker mode="selector" :range="provinces" @change="onProvinceChange" class="picker">
            <view class="picker-text">{{ currentProvince }}</view>
          </picker>
-		 <image src="/static/planet/position.png" mode="aspectFill" ></image>
+		 <image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png" mode="aspectFill" ></image>
 		</view>
 		<view class="button2" :class="{ active: isActive }" @tap="canTap">
 			<view class="catAndDog">
-				<image src="/static/planet/cat.png" mode="aspectFill" class="image"></image>
+				<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/cat.png" mode="aspectFill" class="image"></image>
 			</view>
 			<view class="page" :class="{ active: isActive }">
 				<text v-if="!isActive" >
@@ -18,11 +18,11 @@
 				</text>
 				<text v-if="isActive">扫描二维码</text><br />
 				<text v-if="isActive">立即加入{{trueProvince}}星球~</text>
-				<image src="/static/planet/code.jpg" mode="aspectFill" v-if="isActive"  class="code"> </image>
+				<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/code.jpg" mode="aspectFill" v-if="isActive"  class="code"> </image>
 			</view>
 
 			<view class="catAndDog">
-				<image src="/static/planet/dog.png" mode="aspectFill" class="image"></image>
+				<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/dog.png" mode="aspectFill" class="image"></image>
 			</view>
 		</view>
 		

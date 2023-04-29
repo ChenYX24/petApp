@@ -3,10 +3,10 @@
 		<nav-bar :text="Text"></nav-bar>
 		<view class="pageContent">
 			<view class="cameraInput">
-				<image :src="imageSrc?imageSrc:'/static/IDCreate/picture&name/camera.png'" mode="aspectFit" class="camera" @tap="chooseImage"></image><!--@tap是点击事件，一旦点击则将chooseimage进行响应-->
+				<image :src="imageSrc?imageSrc:'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png'" mode="aspectFit" class="camera" @tap="chooseImage"></image><!--@tap是点击事件，一旦点击则将chooseimage进行响应-->
 				<view class="inputBox">
 					<input type="text" placeholder="请输入ta的名字" class="input" placeholder-style="color:#cea697;" v-model="inputValue"> <!--v-model是双向绑定，将文本框的值与inputvalue绑定-->
-					<image src="/static/IDCreate/picture&name/pen.png" mode="aspectFill"></image>
+					<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/pen.png" mode="aspectFill"></image>
 				</view>
 			</view>
 			

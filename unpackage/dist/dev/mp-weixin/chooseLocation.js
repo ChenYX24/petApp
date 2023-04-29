@@ -6,9 +6,10 @@ const _sfc_main = {
   props: {},
   data() {
     return {
-      NowLocation: "\u534E\u5357\u7406\u5DE5\u5927\u5B66C10",
+      NowLocation: "华南理工大学C10",
       amapPlugin: null,
       key: "53142a6ebba0f0d52481e81910658876",
+      //高德key
       keywords: "",
       tipLocations: []
     };
@@ -40,7 +41,7 @@ const _sfc_main = {
         key: this.key
       });
       common_vendor.index.showLoading({
-        title: "\u83B7\u53D6\u4FE1\u606F\u4E2D"
+        title: "获取信息中"
       });
       this.amapPlugin.getRegeo({
         success: (data) => {
@@ -57,7 +58,7 @@ const _sfc_main = {
         key: this.key
       });
       common_vendor.index.showLoading({
-        title: "\u83B7\u53D6\u4FE1\u606F\u4E2D"
+        title: "获取信息中"
       });
       const that = this;
       this.amapPlugin.getInputtips({
@@ -87,5 +88,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/chooseLocation.vue"]]);
-exports.Component = Component;
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/chooseLocation.vue"]]);
+exports.MiniProgramPage = MiniProgramPage;

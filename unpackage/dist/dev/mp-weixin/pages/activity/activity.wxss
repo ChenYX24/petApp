@@ -104,3 +104,8 @@
   line-height: 27rpx;
   color: #cea697;
 }
+.flex-row.data-v-da48f91d {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}

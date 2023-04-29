@@ -5,43 +5,43 @@
 	 
     <view class="flex-col group space-y-27" :style="{marginTop:navH + 'px' }">
         <view class="flex-row items-center">
-          <image class="image" src="/static//activity/location.png"/>
+          <image class="image" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/location.png"/>
           <text class="text">{{city}}</text>
         </view>
         <view class="flex-col justify-start items-end search">
 			<input type="text" />
-          <image mode="aspectFill" class="image_2" src="/static//activity//search.png"/>
+          <image mode="aspectFill" class="image_2" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/search.png"/>
         </view>
     </view>
 	
 	<view class="flex-col group_2 space-y-10">
-	  <image class="image_3" src="/static//activity/helloanimal.png"/>
+	  <image class="image_3" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/helloanimal.png"/>
 	</view>
 	<!--四个图标-->
 	<view class=" space-y-14">
 	<view class="flex-row equal-division space-x-8">
 	  <view class="flex-col items-center equal-division-item space-y-8">
-	    <image class="image_4" src="/static//activity/party.png"/>
+	    <image class="image_4" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/party.png"/>
 	    <text class="font_1">派对</text>
 	  </view>
 	  <view class="flex-col items-center equal-division-item space-y-8">
 	    <image
 	      class="image_4"
-	      src="/static//activity//outdoors.png"
+	      src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/outdoors.png"
 	    />
 	    <text class="font_1">户外</text>
 	  </view>
 	  <view class="flex-col items-center equal-division-item space-y-8">
 	    <image
 	      class="image_4"
-	      src="/static//activity///exercise.png"
+	      src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/exercise.png"
 	    />
 	    <text class="font_1">运动</text>
 	  </view>
 	  <view class="flex-col items-center equal-division-item space-y-8">
 	    <image
 	      class="image_4"
-	      src="/static//activity///travel.png"
+	      src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/travel.png"
 	    />
 	    <text class="font_1">旅行</text>
 	  </view>
@@ -84,7 +84,7 @@ export default {
   data() {
   	return {
   		tab: '',
-		src:"/static//activity/dog.png",
+		src:"https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/dog.png",
 		tag:["春日派对","夏日对派"],
 		navH:null,
 		city:"未知",
@@ -208,5 +208,10 @@ export default {
     font-family: HappyZcool;
     line-height: 27rpx;
     color: #cea697;
+  }
+  .flex-row{
+	      display: flex;
+	      align-content: center;
+	      align-items: center;
   }
 </style>
