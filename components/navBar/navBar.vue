@@ -43,7 +43,7 @@
 		backClick() {
 			if(this.Nav)
 			{
-				uni.navigateTo({
+				uni.redirectTo({
 					url:`${this.Nav}`
 				})
 			}
