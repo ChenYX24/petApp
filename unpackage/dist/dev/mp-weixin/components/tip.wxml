@@ -1,1 +1,1 @@
-<view wx:for="{{a}}" wx:for-item="item" wx:key="b" class="{{['tips', 'tips', b]}}"><text class="Text">{{item.a}}</text></view>
+<view wx:for="{{a}}" wx:for-item="item" wx:key="c" class="{{['tips', 'tips', b]}}" bindtap="{{item.d}}"><image src="/static/notebook//删除.png" class="img" catchtap="{{item.a}}"></image><text class="Text">{{item.b}}</text></view>

@@ -19,7 +19,8 @@
     "pages/setting/setting",
     "pages/petList/petList",
     "pages/makeIcon/makeIcon",
-    "pages/fovIcon/fovIcon"
+    "pages/fovIcon/fovIcon",
+    "pages/infoEdit/infoEdit"
   ],
   "window": {
     "navigationStyle": "custom"

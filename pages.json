@@ -180,6 +180,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/infoEdit/infoEdit",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"

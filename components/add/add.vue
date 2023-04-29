@@ -41,6 +41,11 @@
 				})
 			},
 			addNote(){
+				
+				const item = ['', '', '', '', '']; // 初始化为五个空字符串的数组
+				const index = -1; // 初始化为 -1
+				
+				wx.setStorageSync('myData', { item, index });
 				this.$emit('updateAdd');
 				uni.navigateTo({
 					 url: `/pages/notebook/notebookForm`,

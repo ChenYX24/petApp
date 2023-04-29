@@ -72,7 +72,7 @@ const _sfc_main = {
                   const code = loginRes.code;
                   console.log(code);
                   common_vendor.index.request({
-                    url: "https://mock.apifox.cn/m1/2440038-0-default/user/login/",
+                    url: "https://mock.apifox.cn/m1/2440038-0-default/user/login",
                     method: "GET",
                     data: {
                       code
@@ -101,8 +101,11 @@ const _sfc_main = {
               ;
           }
         });
+      } else {
+        common_vendor.index.navigateTo({
+          url: "/pages/infoEdit/infoEdit"
+        });
       }
-      console.log("login");
     },
     goMake() {
       common_vendor.index.navigateTo({

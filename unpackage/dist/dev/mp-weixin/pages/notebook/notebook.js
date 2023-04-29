@@ -25,14 +25,25 @@ const _sfc_main = {
   },
   onLoad(options) {
     this.tab = options.tab;
-    const { data, leftSelected, rightSelected } = options;
+    const { data, leftSelected, rightSelected, indexInForm } = options;
     const decodedData = decodeURIComponent(data).replace(/%0A/g, "\n");
+    console.log(indexInForm);
     if (leftSelected === "1") {
-      this.listremind.push(decodedData);
-      common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.listremind));
+      if (indexInForm != -1) {
+        this.listremind[indexInForm] = decodedData;
+        common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.listremind));
+      } else if (indexInForm == -1) {
+        this.listremind.push(decodedData);
+        common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.listremind));
+      }
     }
     if (rightSelected === "1") {
-      this.list.push(decodedData), common_vendor.wx$1.setStorageSync("list", JSON.stringify(this.list));
+      if (indexInForm != -1) {
+        this.list[indexInForm] = decodedData;
+        common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.list));
+      } else if (indexInForm == -1) {
+        this.list.push(decodedData), common_vendor.wx$1.setStorageSync("list", JSON.stringify(this.list));
+      }
     }
   },
   methods: {

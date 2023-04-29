@@ -8,6 +8,22 @@ const _sfc_main = {
       // 存储来自父组件的text属性的值
     };
   },
+  methods: {
+    tipchange(item, index) {
+      common_vendor.wx$1.setStorageSync("myData", { item, index });
+      common_vendor.index.navigateTo({
+        url: `/pages/notebook/notebookForm`,
+        // 传递参数 
+        success: function() {
+          common_vendor.index.$emit("tipchange", { item, index });
+        }
+      });
+    },
+    remove(index) {
+      console.log(index);
+      this.list.splice(index, 1);
+    }
+  },
   props: {
     list: {
       type: String,
@@ -28,8 +44,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.f($props.list, (item, index, i0) => {
       return {
-        a: common_vendor.t(item),
-        b: index
+        a: common_vendor.o(($event) => $options.remove(index), index),
+        b: common_vendor.t(item),
+        c: index,
+        d: common_vendor.o(($event) => $options.tipchange(item, index), index)
       };
     }),
     b: common_vendor.n({

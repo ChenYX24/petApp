@@ -22,6 +22,7 @@ if (!Math) {
   "./pages/petList/petList.js";
   "./pages/makeIcon/makeIcon.js";
   "./pages/fovIcon/fovIcon.js";
+  "./pages/infoEdit/infoEdit.js";
 }
 const _sfc_main = {
   data() {
