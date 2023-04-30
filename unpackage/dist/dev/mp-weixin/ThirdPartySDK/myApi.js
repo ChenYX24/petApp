@@ -7,10 +7,6 @@ async function request(url, data) {
       data,
       header: {
         Authorization: common_vendor.index.getStorageSync("token")
-<<<<<<< HEAD
-=======
-        //请求的token
->>>>>>> 9beaf6f83207c32d34bd381b90b2e66c6eddaa44
       },
       success: (res) => {
         resolve(res.data);
