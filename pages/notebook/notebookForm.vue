@@ -1,7 +1,7 @@
 <template>
 	<view class="notebookForm">
 		
-		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
+		<nav-bar :text="Text"></nav-bar>
    <view class="form">
        <view class="input-container">
 		<image class="icon" src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/pet.png" mode="aspectFill" />
@@ -66,7 +66,7 @@
 				items: [],
 				inputValue: '',
 				text1:'',
-				Nav:"/pages/notebook/notebook?tab=memo",
+				// Nav:"/pages/notebook/notebook?tab=memo",
 				text2:'',
 				text3:'',
 				text4:'',

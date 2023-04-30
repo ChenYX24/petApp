@@ -7,13 +7,15 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u7F16\u8F91\u8D44\u6599",
+      Text: "编辑资料",
       inputValue: "",
       text1: "",
       Nav: "/pages/home/home?tab=home",
       text2: "",
       text3: "",
-      text4: ""
+      text4: "",
+      imageSrc: "",
+      avatarUrl: ""
     };
   },
   computed: {
@@ -21,18 +23,65 @@ const _sfc_main = {
       return this.inputValue.trim() !== "" || this.text1.trim() !== "" || this.text2.trim() !== "" || this.text3.trim() !== "" || this.text4.trim() !== "";
     }
   },
+  created() {
+    common_vendor.index.request({
+      url: "http://43.140.198.154:88/user/info/",
+      method: "GET",
+      data: {
+        "userId": common_vendor.index.getStorageSync("userId")
+      },
+      header: {
+        "Content-Type": "application/json",
+        "Authorization": common_vendor.index.getStorageSync("token")
+      },
+      success: (res) => {
+        console.log(res.data);
+        this.inputValue = res.data.user.nickname;
+        this.text1 = res.data.user.phone;
+        this.text2 = res.data.user.birthday;
+        this.text3 = res.data.user.sex;
+        this.text4 = res.data.user.city;
+      }
+    });
+  },
   methods: {
     chooseImage() {
       common_vendor.index.chooseImage({
         count: 1,
+        // 最多选择的图片数量，此处为1
         sizeType: ["compressed"],
+        // 压缩图片
         sourceType: ["album", "camera"],
+        // 可以从相册选择或拍照
         success: (res) => {
           this.imageSrc = res.tempFilePaths[0];
         }
       });
     },
     buttonClicked() {
+      common_vendor.index.request({
+        url: "http://43.140.198.154:88/user/update/",
+        method: "POST",
+        data: {
+          "userId": common_vendor.index.getStorageSync("userId"),
+          "nickname": this.inputValue,
+          "backgroundImage": ""
+        },
+        header: {
+          "Content-Type": "application/json",
+          "Authorization": common_vendor.index.getStorageSync("token")
+        },
+        success: (res) => {
+          console.log(res.data);
+          common_vendor.index.setStorageSync("nickName", this.inputValue);
+          common_vendor.index.setStorageSync("nickName", this.inputValue);
+        },
+        complete() {
+          common_vendor.index.navigateTo({
+            url: `/pages/home/home`
+          });
+        }
+      });
     }
   }
 };
@@ -46,7 +95,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       text: $data.Text,
       Nav: $data.Nav
     }),
-    b: _ctx.imageSrc ? _ctx.imageSrc : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png",
+    b: $data.imageSrc ? $data.imageSrc : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png",
     c: common_vendor.o((...args) => $options.chooseImage && $options.chooseImage(...args)),
     d: $data.inputValue,
     e: common_vendor.o(($event) => $data.inputValue = $event.detail.value),
@@ -66,5 +115,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     s: common_vendor.o((...args) => $options.buttonClicked && $options.buttonClicked(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/infoEdit/infoEdit.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/infoEdit/infoEdit.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -12,9 +12,9 @@ const _sfc_main = {
     },
     city() {
       if (!this.dataList.city) {
-        return "\u4F4D\u7F6E \u672A\u77E5";
+        return "位置 未知";
       } else {
-        return "\u4F4D\u7F6E " + this.dataList.city;
+        return "位置 " + this.dataList.city;
       }
     },
     sexImg() {
@@ -33,9 +33,9 @@ const _sfc_main = {
     },
     sex() {
       if (this.dataList.sex == 1) {
-        return "\u6027\u522B \u5F1F\u5F1F";
+        return "性别 弟弟";
       } else {
-        return "\u6027\u522B \u59B9\u59B9";
+        return "性别 妹妹";
       }
     },
     textColor() {
@@ -50,7 +50,7 @@ const _sfc_main = {
       let a = birthday.getFullYear();
       let b = this.padZero(birthday.getMonth() + 1);
       let c = this.padZero(birthday.getDate());
-      let day = "\u751F\u65E5 " + a + "\u5E74  " + b + "\u6708  " + c + "\u65E5";
+      let day = "生日 " + a + "年  " + b + "月  " + c + "日";
       return day;
     },
     Image() {
@@ -82,5 +82,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => _ctx.click && _ctx.click(...args))
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/IDCard/IDCard.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/IDCard/IDCard.vue"]]);
 wx.createComponent(Component);

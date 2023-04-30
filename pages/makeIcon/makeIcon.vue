@@ -1,6 +1,6 @@
 <template>
 	<view class="IDBG">
-		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
+		<nav-bar :text="Text"></nav-bar>
 		<view class="pageContent">
 			<view class="imgContainer">
 				 <image v-if="selectedImage" :src="selectedImage" class="selectedImage"></image>
