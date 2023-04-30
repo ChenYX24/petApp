@@ -154,7 +154,7 @@ export default {
 					  //将获取的信息上传到后端的服务器中
 					  
 					  uni.request({
-					      url: 'http://localhost:88/user/update/',
+					      url: 'http://43.140.198.154:88/user/update/',
 					  	  method:'POST',
 					      data: {
 					        userId: uni.getStorageSync('userId'),
