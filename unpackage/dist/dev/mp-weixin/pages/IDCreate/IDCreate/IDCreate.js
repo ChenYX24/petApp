@@ -47,8 +47,7 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
-      text: $data.Text,
-      Nav: $data.Nav
+      text: $data.Text
     }),
     b: $data.imageSrc ? $data.imageSrc : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png",
     c: common_vendor.o((...args) => $options.chooseImage && $options.chooseImage(...args)),

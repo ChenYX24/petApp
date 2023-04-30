@@ -56,7 +56,7 @@ export default {
 	switchTab(tab) {
 	  if (tab === 'add') {
 	    // 点击加号按钮跳转到相应页面
-	    // wx.redirectTo({
+	    // wx.reLaunch({
 	    //   url: '/pages/add/add',
 	    // });
 		console.log(this.tab,this.activeTab)
@@ -67,22 +67,22 @@ export default {
 	    // 根据选中的tab跳转到相应页面
 	    switch (tab) {
 	      case 'memo':
-	        wx.redirectTo({
+	        wx.reLaunch({
 	          url: `/pages/notebook/notebook?tab=${tab}`,
 	        });
 	        break;
 	      case 'planet':
-	        wx.redirectTo({
+	        wx.reLaunch({
 	          url: `/pages/planet/planet?tab=${tab}`,
 	        });
 	        break;
 	      case 'activity':
-	        wx.redirectTo({
+	        wx.reLaunch({
 	          url: `/pages/activity/activity?tab=${tab}`,
 	        });
 	        break;
 	      case 'home':
-	        wx.redirectTo({
+	        wx.reLaunch({
 	          url: `/pages/home/home?tab=${tab}`,
 	        });
 	        break;
@@ -94,7 +94,7 @@ export default {
 	switchTab(tab) {
 	  if (tab === 'add') {
 	    // 点击加号按钮跳转到相应页面
-	    // uni.redirectTo({
+	    // uni.reLaunch({
 	    //   url: '/pages/add/add',
 	    // });
 		this.isAdd=!this.isAdd
@@ -105,22 +105,22 @@ export default {
 	    // 根据选中的tab跳转到相应页面
 	    switch (tab) {
 	      case 'memo':
-	        uni.redirectTo({
+	        uni.reLaunch({
 	          url: `/pages/notebook/notebook?tab=${tab}`,
 	        });
 	        break;
 	      case 'planet':
-	        uni.redirectTo({
+	        uni.reLaunch({
 	          url: `/pages/planet/planet?tab=${tab}`,
 	        });
 	        break;
 	      case 'activity':
-	        uni.redirectTo({
+	        uni.reLaunch({
 	          url: `/pages/activity/activity?tab=${tab}`,
 	        });
 	        break;
 	      case 'home':
-	        uni.redirectTo({
+	        uni.reLaunch({
 	          url: `/pages/home/home?tab=${tab}`,
 	        });
 	        break;

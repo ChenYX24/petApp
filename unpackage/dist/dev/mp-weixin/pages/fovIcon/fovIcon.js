@@ -73,8 +73,7 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.p({
-      text: $data.Text,
-      Nav: $data.Nav
+      text: $data.Text
     }),
     b: $data.selectedImage
   }, $data.selectedImage ? {

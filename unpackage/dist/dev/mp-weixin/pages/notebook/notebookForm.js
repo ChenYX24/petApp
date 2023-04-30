@@ -12,7 +12,6 @@ const _sfc_main = {
       items: [],
       inputValue: "",
       text1: "",
-      Nav: "/pages/notebook/notebook?tab=memo",
       text2: "",
       text3: "",
       text4: "",
@@ -126,8 +125,7 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
-      text: $data.Text,
-      Nav: $data.Nav
+      text: $data.Text
     }),
     b: $data.text1 !== "" ? 1 : "",
     c: $data.text1,

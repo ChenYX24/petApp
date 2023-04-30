@@ -1,6 +1,6 @@
 <template>
 	<view class="IDBG">
-		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
+		<nav-bar :text="Text"></nav-bar>
 		<view class="pageContent">
 			<view class="cameraInput">
 				<image :src="imageSrc?imageSrc:'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/picture&name/camera.png'" mode="aspectFit" class="camera" @tap="chooseImage"></image><!--@tap是点击事件，一旦点击则将chooseimage进行响应-->

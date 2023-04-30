@@ -157,7 +157,3 @@
   flex-direction: row;
   justify-content: left;
 }
-.textarea {
-  width: 100%;
-  height: 100%;
-}
