@@ -210,7 +210,7 @@ export default {
 								console.log(that.token);
 
 								//除了token，userId也要保存，方便后面请求
-								uni.setStorageSync('token', res.data.userId);
+								uni.setStorageSync('userId', res.data.userId);
 								
 								//#endif
 						      },

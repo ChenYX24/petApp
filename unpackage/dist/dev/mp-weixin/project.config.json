@@ -7,7 +7,7 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "postcss": false,
+    "postcss": true,
     "minified": true,
     "newFeature": true,
     "bigPackageSizeSupport": true,
@@ -15,8 +15,7 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "condition": false
+    }
   },
   "compileType": "miniprogram",
   "libVersion": "",

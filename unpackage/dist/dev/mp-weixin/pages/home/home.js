@@ -89,7 +89,7 @@ const _sfc_main = {
             common_vendor.index.setStorageSync("nickName", this.nickName);
             common_vendor.index.setStorageSync("hasUserInfo", this.hasUserInfo);
             common_vendor.index.request({
-              url: "http://localhost:88/user/update/",
+              url: "http://43.140.198.154:88/user/update/",
               method: "POST",
               data: {
                 userId: common_vendor.index.getStorageSync("userId"),
@@ -140,7 +140,7 @@ const _sfc_main = {
                       common_vendor.index.setStorageSync("token", res2.data.token);
                       that2.token = common_vendor.index.getStorageSync("token");
                       console.log(that2.token);
-                      common_vendor.index.setStorageSync("token", res2.data.userId);
+                      common_vendor.index.setStorageSync("userId", res2.data.userId);
                     },
                     fail: function(res2) {
                       common_vendor.index.showToast({

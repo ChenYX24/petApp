@@ -100,10 +100,36 @@ const _sfc_main = {
         });
       }
     },
+    awaituploadFrom() {
+      common_vendor.index.request({
+        url: "http://43.140.198.154:88/activityThought/save",
+        method: "POST",
+        data: {
+          content: this.inputValue,
+          data: "['1','2']",
+          location: this.trueLocation,
+          activityName: this.currentActivity,
+          userId: 1
+        },
+        params: { interfaceState: "state" },
+        header: {
+          "Content-Type": "application/json",
+          "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc"
+        },
+        success: (res) => {
+          console.log(res.data);
+        },
+        complete: () => {
+          common_vendor.index.navigateTo({
+            url: `/pages/notebook/notebook`
+          });
+        }
+      });
+    },
     async pushActivityThought() {
       var signatureRes = {};
       try {
-        const a = await ThirdPartySDK_myApi.request("http://localhost:88/thirdParty/getUploadSignature/", {});
+        const a = await ThirdPartySDK_myApi.request("http://43.140.198.154:88/thirdParty/getUploadSignature/", {});
         signatureRes = a;
       } catch (err) {
         console.error(err);
@@ -117,30 +143,9 @@ const _sfc_main = {
       var policy = signatureRes.data.policy;
       try {
         const bs = await this.awaitUploadFile(host, signature, ossAccessKeyId, policy);
-        common_vendor.index.request({
-          url: "http://localhost:88/activityThought/save",
-          method: "POST",
-          data: {
-            content: this.inputValue,
-            data: this.imageUrls,
-            location: this.trueLocation,
-            activityName: this.currentActivity,
-            userId: 1
-          },
-          params: { interfaceState: "state" },
-          header: {
-            "Content-Type": "application/json",
-            "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc"
-          },
-          success: (res) => {
-            console.log(res.data);
-          },
-          complete: () => {
-            common_vendor.index.navigateTo({
-              url: `/pages/notebook/notebook`
-            });
-          }
-        });
+        console.log(bs);
+        ;
+        this.awaituploadFrom();
       } catch (err) {
         console.error(err);
       }

@@ -45,6 +45,65 @@ export default {
 	TopBar,
 	notebookform
   },
+  created() {
+	  //实现一进入小程序就登录
+	  console.log("登录");
+	  var that=this;
+	  if(!uni.getStorageSync('token')){
+	  	uni.showModal({
+	  		mask:true,
+	  		title:'温馨提示',
+	  		content:'授权微信登录后才能正常使用',
+	  		success(res) {
+	  			if(res.confirm){
+	  				uni.login({
+	  				  provider: 'weixin',
+	  				  success: function(loginRes) {
+	  				    const code = loginRes.code;
+	  					console.log(code);
+	  				    // 将登录凭证发送到后端服务器进行验证和处理
+	  				    uni.request({
+	  				      url: 'http://43.140.198.154:88/user/login',
+	  				      method: 'GET',
+	  				      data: {
+	  				        code: code
+	  				      },
+	  				      success: function(res) {
+	  				        // 登录成功，将自定义登录态存储在本地
+	  						//#ifdef MP-WEIXIN
+	  						console.log(res);
+	  				        uni.setStorageSync('token', res.data.token);
+	  						that.token=uni.getStorageSync('token');
+	  						console.log(that.token);
+	  
+	  						//除了token，userId也要保存，方便后面请求
+	  						uni.setStorageSync('userId', res.data.userId);
+	  						
+	  						//#endif
+	  				      },
+	  				      fail: function(res) {
+	  				        // 登录失败，提示用户
+	  				        uni.showToast({
+	  				          title: '登录失败',
+	  				          icon: 'none'
+	  				        });
+	  				      }
+	  				    });
+	  				  },
+	  				  fail: function(loginRes) {
+	  				    // 登录失败，提示用户
+	  				    uni.showToast({
+	  				      title: '登录失败',
+	  				      icon: 'none'
+	  				    });
+	  				  }
+	  				});
+	  		}else if(res.cancel){}
+	  		}
+	  	});
+	  }
+  	
+  },
   data() {
 
   	 const storedList = uni.getStorageSync('list');

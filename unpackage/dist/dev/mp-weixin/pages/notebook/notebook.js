@@ -11,6 +11,55 @@ const _sfc_main = {
     TopBar,
     notebookform
   },
+  created() {
+    console.log("\u767B\u5F55");
+    var that = this;
+    if (!common_vendor.index.getStorageSync("token")) {
+      common_vendor.index.showModal({
+        mask: true,
+        title: "\u6E29\u99A8\u63D0\u793A",
+        content: "\u6388\u6743\u5FAE\u4FE1\u767B\u5F55\u540E\u624D\u80FD\u6B63\u5E38\u4F7F\u7528",
+        success(res) {
+          if (res.confirm) {
+            common_vendor.index.login({
+              provider: "weixin",
+              success: function(loginRes) {
+                const code = loginRes.code;
+                console.log(code);
+                common_vendor.index.request({
+                  url: "http://43.140.198.154:88/user/login",
+                  method: "GET",
+                  data: {
+                    code
+                  },
+                  success: function(res2) {
+                    console.log(res2);
+                    common_vendor.index.setStorageSync("token", res2.data.token);
+                    that.token = common_vendor.index.getStorageSync("token");
+                    console.log(that.token);
+                    common_vendor.index.setStorageSync("userId", res2.data.userId);
+                  },
+                  fail: function(res2) {
+                    common_vendor.index.showToast({
+                      title: "\u767B\u5F55\u5931\u8D25",
+                      icon: "none"
+                    });
+                  }
+                });
+              },
+              fail: function(loginRes) {
+                common_vendor.index.showToast({
+                  title: "\u767B\u5F55\u5931\u8D25",
+                  icon: "none"
+                });
+              }
+            });
+          } else if (res.cancel)
+            ;
+        }
+      });
+    }
+  },
   data() {
     const storedList = common_vendor.index.getStorageSync("list");
     const storedListRemind = common_vendor.index.getStorageSync("listremind");
