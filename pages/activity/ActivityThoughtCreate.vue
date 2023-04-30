@@ -1,14 +1,12 @@
 <template>
-
 	<view class="ActivityThoughtCreate" v-if="!isChooseLocation">
-		<nav-bar :text="Text"></nav-bar>
+		<nav-bar :text="Text" :Nav="Nav"></nav-bar>
 		<view class="Separator S0" :style="S0Height">
 			<view v-for="(item,index) in imageSrc" :key="index">
 				<div>
 					<image :src="item" class="image" mode="aspectFit"></image>
 <!-- 						<image 
-						src="../..
-https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png" 
+						src="../../static/planet/position.png" 
 						@click="deleteImage(index)"
 						class="imageDelete Location">
 						</image> -->
@@ -29,10 +27,13 @@ https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png"
 		</view>
 		
 		<span class="Separator S2">	
-			<input v-model="inputValue"
+			<textarea v-model="inputValue"
 			:class="{ 'active': inputValue === ''}" 
+			class="text textarea"
 			type="text" placeholder="记录下此刻的感受吧……" 
-			placeholder-class="text" />
+			placeholder-class="text">
+				
+			</textarea>
 		</span>
 		
 		<view class="Location Separator" @tap="toChooseLocation">
@@ -53,6 +54,9 @@ https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png"
 </template>
 	
 <script>
+	// import 'react-native-get-random-values'; 
+	// import { v4 as uuidv4 } from 'uuid';
+	import {request} from '../../ThirdPartySDK/myApi.js'
 	import navBar from '/components//navBar/navBar.vue';
 	import chooseLocation from '../../components/chooseLocation.vue';
 	export default {
@@ -62,29 +66,44 @@ https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png"
 		},
 		data() {
 			return{	
+				Nav:'/pages/notebook/notebook',
 				Text:'新建朋友圈',
 				activities:[
 						'coding',
 						'coding',
 						'coding'
 					],
-				// Nav:"/pages/activity/activity?tab=activity",
 				currentActivity:'请选择你参加的活动',
 				tureActivity:'xx',
 				inputValue: '',
 				imageSrc: [],
 				isChooseLocation: false,
 				trueLocation: '您所在位置',
-				imageUrls: []
+				imageUrls: [],
+				uuid: '',//伪随机数
 			}
 		},
 		mounted(){
 				//钩子函数
 				//在页面加载完成的时候，获取后端的活动
 				this.activities=['code'];
-				
 		},
 		methods:{
+			generateUUID() {
+			  let d = new Date().getTime();
+			  if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+				d += performance.now(); // use high-precision timer if available
+			  }
+			  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+				const r = (d + Math.random() * 16) % 16 | 0;
+				d = Math.floor(d / 16);
+				return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+			  });
+			  this.uuid = uuid;
+			},
+			generateNewUUID() {
+			  this.generateUUID();
+			},
 			 radioChange: function(evt) {
 						for (let i = 0; i < this.items.length; i++) {
 							if (this.items[i].value === evt.detail.value) {
@@ -109,89 +128,48 @@ https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png"
 			        }
 			      })
 			},
-
-			async pushActivityThought(){
-				//上传活动任务，并返回首页   
-				//先把用户已经确定的图片遍历上传到服务器中  将服务器回调的URL存在data中
+			awaitUploadFile(host,signature,ossAccessKeyId,policy){
+				const filePath = this.imageSrc;
+				const date = new Date();
+				const year = date.getFullYear();
+				const month = (date.getMonth() + 1).toString().padStart(2, "0");
+				const day = date.getDate().toString().padStart(2, "0");	
+				const formattedDate = `${year}-${month}-${day}`;
 				
-				//获取签名数据
 				
-				async function request(url, data) {
-					//异步请求的封装
-				  return new Promise((resolve, reject) => {
-					uni.request({
-					  url,
-					  data,
-					  header:{
-						  Authorization: uni.getStorageSync('token'),//请求的token
+				for (var i = 0; i < filePath.length; i++) {
+					this.generateNewUUID();
+					const key = `${formattedDate}/`+this.uuid+'.jpg';
+					uni.uploadFile({
+					  url: host,
+					  filePath: filePath[i],
+					  name: "file",
+					  formData: {
+					    key,
+					    policy: policy,
+					    OSSAccessKeyId: ossAccessKeyId,
+					    signature: signature
+					    // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
 					  },
-					  success: (res) => {
-						resolve(res.data);
-					  },
-					  fail: (error) => {
-						  //请求签名错误   提示用户服务器异常
-						reject(error);
-					  }
-					})
-				  })
-				};
-				
-
-					var signatureRes= {};
-					try{
-						const a=await request('http://localhost:88/thirdParty/getUploadSignature/',{});
-						signatureRes=a;
-					}catch(err){
-						console.error(err);
-					}
-					console.log(signatureRes);
-					console.log(signatureRes.data);
-					var host = signatureRes.data.host;
-					var signature = signatureRes.data.signature;
-					var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
-					var policy = signatureRes.data.policy;
-					// var securityToken = signatureRes.data.data.securityToken;
-					const filePath = this.imageSrc;
-					const date = new Date();
-					const year = date.getFullYear();
-					const month = (date.getMonth() + 1).toString().padStart(2, "0");
-					const day = date.getDate().toString().padStart(2, "0");
-					const formattedDate = `${year}-${month}-${day}`;
-					
-					
-					for (var i = 0; i < filePath.length; i++) {
-						const key = `${formattedDate}/`+'nanoid'+'.jpg';
+					  success: (uploadFileRes) => {
+						this.imageUrls.push(host + '/'+key);
 						console.log(host + key);
-						uni.uploadFile({
-						  url: host,
-						  filePath: filePath[i],
-						  name: "file",
-						  formData: {
-						    key,
-						    policy: policy,
-						    OSSAccessKeyId: ossAccessKeyId,
-						    signature: signature
-						    // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
-						  },
-						  success: (uploadFileRes) => {
-							this.imageUrls.push(host + key);
-						    console.log(uploadFileRes);
-						    console.log(111);
-						  },
-						  fail: function(err) {
-						    console.log(that.filePath);
-						  }
-						});
-					}
-
-				
-				//再上传图片路径
+					    console.log(uploadFileRes);
+					  },
+					  fail: function(err) {
+					    console.log(err);
+					  }
+					});
+				}
+			},
+			awaituploadFrom(){
+				//这里写死了  防止报错
 				uni.request({
-				    url: 'http://localhost:88/activityThought/save',
+				    url: 'http://43.140.198.154:88/activityThought/save',
 					method:'POST',
 				    data: {
 				        content: this.inputValue,
-						data: this.imageUrls,
+						data: "['1','2']",//
 						location: this.trueLocation,
 						activityName: this.currentActivity,
 						userId: 1
@@ -210,6 +188,47 @@ https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png"
 						})
 					  }
 				});
+			},
+
+			async pushActivityThought(){
+				
+				//上传活动任务，并返回首页   
+				//先把用户已经确定的图片遍历上传到服务器中  将服务器回调的URL存在data中
+				
+				//获取签名数据
+				
+				
+
+					var signatureRes= {};
+					//下面两个也有先后顺序
+					try{
+						const a=await request('http://43.140.198.154:88/thirdParty/getUploadSignature/',{});
+						signatureRes=a;
+					}catch(err){
+						console.error(err);
+						//TODO 不知道为什么第一次总是失败的   现在直接返回
+						return;
+					}
+					console.log(signatureRes);
+					console.log(signatureRes.data);
+					var host = signatureRes.data.host;
+					var signature = signatureRes.data.signature;
+					var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
+					var policy = signatureRes.data.policy;
+					
+					//下面两个也有先后顺序  this.imageUrls要等前面那个函数付完值   否则服务器会解析错误
+					try{
+						const bs=await this.awaitUploadFile(host,signature,ossAccessKeyId,policy);
+						// if(this.imageUrls.length===this.imageSrc.length)
+						console.log(bs);;
+						//再上传图片路径
+						this.awaituploadFrom();
+					
+					}catch(err){
+						console.error(err);
+					}
+				
+
 			},
 			onActivityChange(event){
 				const activityIndex = event.detail.value
@@ -423,5 +442,9 @@ https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/position.png"
 		display: flex;
 		flex-direction: row;
 		justify-content: left;
+	}
+	.textarea{
+		width: 100%;
+		height: 100%;
 	}
 </style>

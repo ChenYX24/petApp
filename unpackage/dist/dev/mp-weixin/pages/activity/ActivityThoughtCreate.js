@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const ThirdPartySDK_myApi = require("../../ThirdPartySDK/myApi.js");
 const navBar = () => "../../components/navBar/navBar.js";
 const chooseLocation = () => "../../components/chooseLocation2.js";
 const _sfc_main = {
@@ -9,26 +10,43 @@ const _sfc_main = {
   },
   data() {
     return {
+      Nav: "/pages/notebook/notebook",
       Text: "新建朋友圈",
       activities: [
         "coding",
         "coding",
         "coding"
       ],
-      // Nav:"/pages/activity/activity?tab=activity",
       currentActivity: "请选择你参加的活动",
       tureActivity: "xx",
       inputValue: "",
       imageSrc: [],
       isChooseLocation: false,
       trueLocation: "您所在位置",
-      imageUrls: []
+      imageUrls: [],
+      uuid: ""
+      //伪随机数
     };
   },
   mounted() {
     this.activities = ["code"];
   },
   methods: {
+    generateUUID() {
+      let d = new Date().getTime();
+      if (typeof performance !== "undefined" && typeof performance.now === "function") {
+        d += performance.now();
+      }
+      const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+        const r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c === "x" ? r : r & 3 | 8).toString(16);
+      });
+      this.uuid = uuid;
+    },
+    generateNewUUID() {
+      this.generateUUID();
+    },
     radioChange: function(evt) {
       for (let i = 0; i < this.items.length; i++) {
         if (this.items[i].value === evt.detail.value) {
@@ -55,38 +73,7 @@ const _sfc_main = {
         }
       });
     },
-    async pushActivityThought() {
-      async function request(url, data) {
-        return new Promise((resolve, reject) => {
-          common_vendor.index.request({
-            url,
-            data,
-            header: {
-              Authorization: common_vendor.index.getStorageSync("token")
-              //请求的token
-            },
-            success: (res) => {
-              resolve(res.data);
-            },
-            fail: (error) => {
-              reject(error);
-            }
-          });
-        });
-      }
-      var signatureRes = {};
-      try {
-        const a = await request("http://localhost:88/thirdParty/getUploadSignature/", {});
-        signatureRes = a;
-      } catch (err) {
-        console.error(err);
-      }
-      console.log(signatureRes);
-      console.log(signatureRes.data);
-      var host = signatureRes.data.host;
-      var signature = signatureRes.data.signature;
-      var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
-      var policy = signatureRes.data.policy;
+    awaitUploadFile(host, signature, ossAccessKeyId, policy) {
       const filePath = this.imageSrc;
       const date = new Date();
       const year = date.getFullYear();
@@ -94,8 +81,8 @@ const _sfc_main = {
       const day = date.getDate().toString().padStart(2, "0");
       const formattedDate = `${year}-${month}-${day}`;
       for (var i = 0; i < filePath.length; i++) {
-        const key = `${formattedDate}/nanoid.jpg`;
-        console.log(host + key);
+        this.generateNewUUID();
+        const key = `${formattedDate}/` + this.uuid + ".jpg";
         common_vendor.index.uploadFile({
           url: host,
           filePath: filePath[i],
@@ -108,21 +95,24 @@ const _sfc_main = {
             // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
           },
           success: (uploadFileRes) => {
-            this.imageUrls.push(host + key);
+            this.imageUrls.push(host + "/" + key);
+            console.log(host + key);
             console.log(uploadFileRes);
-            console.log(111);
           },
           fail: function(err) {
-            console.log(that.filePath);
+            console.log(err);
           }
         });
       }
+    },
+    awaituploadFrom() {
       common_vendor.index.request({
-        url: "http://localhost:88/activityThought/save",
+        url: "http://43.140.198.154:88/activityThought/save",
         method: "POST",
         data: {
           content: this.inputValue,
-          data: this.imageUrls,
+          data: "['1','2']",
+          //
           location: this.trueLocation,
           activityName: this.currentActivity,
           userId: 1
@@ -141,6 +131,30 @@ const _sfc_main = {
           });
         }
       });
+    },
+    async pushActivityThought() {
+      var signatureRes = {};
+      try {
+        const a = await ThirdPartySDK_myApi.request("http://43.140.198.154:88/thirdParty/getUploadSignature/", {});
+        signatureRes = a;
+      } catch (err) {
+        console.error(err);
+        return;
+      }
+      console.log(signatureRes);
+      console.log(signatureRes.data);
+      var host = signatureRes.data.host;
+      var signature = signatureRes.data.signature;
+      var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
+      var policy = signatureRes.data.policy;
+      try {
+        const bs = await this.awaitUploadFile(host, signature, ossAccessKeyId, policy);
+        console.log(bs);
+        ;
+        this.awaituploadFrom();
+      } catch (err) {
+        console.error(err);
+      }
     },
     onActivityChange(event) {
       const activityIndex = event.detail.value;
@@ -185,7 +199,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: !$data.isChooseLocation
   }, !$data.isChooseLocation ? common_vendor.e({
     b: common_vendor.p({
-      text: $data.Text
+      text: $data.Text,
+      Nav: $data.Nav
     }),
     c: common_vendor.f($data.imageSrc, (item, index, i0) => {
       return {
