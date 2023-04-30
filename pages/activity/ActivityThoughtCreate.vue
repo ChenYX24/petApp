@@ -134,7 +134,7 @@
 				const date = new Date();
 				const year = date.getFullYear();
 				const month = (date.getMonth() + 1).toString().padStart(2, "0");
-				const day = date.getDate().toString().padStart(2, "0");
+				const day = date.getDate().toString().padStart(2, "0");	
 				const formattedDate = `${year}-${month}-${day}`;
 				
 				
@@ -163,6 +163,33 @@
 					});
 				}
 			},
+			awaituploadFrom(){
+				//这里写死了  防止报错
+				uni.request({
+				    url: 'http://43.140.198.154:88/activityThought/save',
+					method:'POST',
+				    data: {
+				        content: this.inputValue,
+						data: "['1','2']",//
+						location: this.trueLocation,
+						activityName: this.currentActivity,
+						userId: 1
+				    },
+					params: {interfaceState:'state'},
+				    header: {
+						"Content-Type": 'application/json',
+						"Authorization": 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc'
+				    },
+				    success: (res) => {
+				        console.log(res.data);
+				    },
+					  complete: () => {
+						uni.navigateTo({
+							 url: `/pages/notebook/notebook`,
+						})
+					  }
+				});
+			},
 
 			async pushActivityThought(){
 				
@@ -176,7 +203,7 @@
 					var signatureRes= {};
 					//下面两个也有先后顺序
 					try{
-						const a=await request('http://localhost:88/thirdParty/getUploadSignature/',{});
+						const a=await request('http://43.140.198.154:88/thirdParty/getUploadSignature/',{});
 						signatureRes=a;
 					}catch(err){
 						console.error(err);
@@ -194,33 +221,10 @@
 					try{
 						const bs=await this.awaitUploadFile(host,signature,ossAccessKeyId,policy);
 						// if(this.imageUrls.length===this.imageSrc.length)
+						console.log(bs);;
 						//再上传图片路径
-						uni.request({
-						    url: 'http://localhost:88/activityThought/save',
-							method:'POST',
-						    data: {
-						        content: this.inputValue,
-								data: this.imageUrls,
-								location: this.trueLocation,
-								activityName: this.currentActivity,
-								userId: 1
-						    },
-							params: {interfaceState:'state'},
-						    header: {
-								"Content-Type": 'application/json',
-								"Authorization": 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc'
-						    },
-						    success: (res) => {
-						        console.log(res.data);
-						    },
-							  complete: () => {
-								uni.navigateTo({
-									 url: `/pages/notebook/notebook`,
-								})
-							  }
-						});
-						
-
+						this.awaituploadFrom();
+					
 					}catch(err){
 						console.error(err);
 					}

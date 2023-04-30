@@ -51,6 +51,8 @@
 				text2:'',
 				text3:'',
 				text4:'',
+				imageSrc:'',
+				avatarUrl:''
 			}
 		},
 		computed: {
@@ -58,6 +60,29 @@
 			     return (this.inputValue.trim() !== '')||(this.text1.trim() !== '')||(this.text2.trim() !== '')||(this.text3.trim() !== '')||(this.text4.trim() !== '');
 			   }
 			 },
+		created() {
+			//获取信息进行回显
+			uni.request({
+			     url: 'http://43.140.198.154:88/user/info/',
+			     method:'GET',
+			        data: {
+			             "userId": uni.getStorageSync('userId'),
+			        },
+			        header: {
+			      "Content-Type": 'application/json',
+			      "Authorization": uni.getStorageSync('token'),
+			        },
+			        success: (res) => {
+			            console.log(res.data);
+						this.inputValue=res.data.user.nickname;
+						this.text1=res.data.user.phone;
+						this.text2=res.data.user.birthday;
+						this.text3=res.data.user.sex;
+						this.text4=res.data.user.city;
+			        }
+			         
+			    });
+		},
 		methods: {
 			chooseImage() {
 			      uni.chooseImage({
@@ -70,6 +95,36 @@
 			      })
 			    },
 			buttonClicked(){
+				//发送并保存用户信息
+				
+				//TODO 差上传图片到服务器   而且进来应该要回显
+				
+				
+				uni.request({
+				     url: 'http://43.140.198.154:88/user/update/',
+				     method:'POST',
+				        data: {
+				             "userId": uni.getStorageSync('userId'),
+				             "nickname": this.inputValue,
+				             "backgroundImage": '',
+				        },
+				        header: {
+				      "Content-Type": 'application/json',
+				      "Authorization": uni.getStorageSync('token'),
+				        },
+				        success: (res) => {
+				            console.log(res.data);
+							uni.setStorageSync('nickName',this.inputValue);
+							uni.setStorageSync('nickName',this.inputValue);
+				        },
+						complete() {
+							uni.navigateTo({
+								 url: `/pages/home/home`,
+							})
+						}
+				         
+				    });
+				
 			   
 			},
 			
