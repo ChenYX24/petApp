@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u7F16\u8F91\u8D44\u6599",
+      Text: "编辑资料",
       inputValue: "",
       text1: "",
       Nav: "/pages/home/home?tab=home",
@@ -48,8 +48,11 @@ const _sfc_main = {
     chooseImage() {
       common_vendor.index.chooseImage({
         count: 1,
+        // 最多选择的图片数量，此处为1
         sizeType: ["compressed"],
+        // 压缩图片
         sourceType: ["album", "camera"],
+        // 可以从相册选择或拍照
         success: (res) => {
           this.imageSrc = res.tempFilePaths[0];
         }
@@ -112,5 +115,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     s: common_vendor.o((...args) => $options.buttonClicked && $options.buttonClicked(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/infoEdit/infoEdit.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/infoEdit/infoEdit.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,0 +1,1 @@
+<view class="commentForBlog"><view class="UserCommentImage1" bindtap="{{b}}"><image src="{{a}}" class="UseImage1"></image></view><view class="commentInformation"><text class="UserName">{{c}}</text><text class="UserComment">{{d}}</text></view></view>

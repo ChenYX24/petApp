@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u9009\u62E9\u6027\u522B",
+      Text: "选择性别",
       isActive: false,
       leftSelected: false,
       rightSelected: false,
@@ -29,9 +29,9 @@ const _sfc_main = {
     nextpage() {
       if (this.isActive) {
         if (this.leftSelected) {
-          wx.setStorageSync("sex", 1);
+          common_vendor.wx$1.setStorageSync("sex", 1);
         } else if (this.rightSelected) {
-          wx.setStorageSync("sex", 2);
+          common_vendor.wx$1.setStorageSync("sex", 2);
         }
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate4/IDCreate4`
@@ -87,5 +87,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-61e445bc"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate3/IDCreate3.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-61e445bc"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/IDCreate/IDCreate3/IDCreate3.vue"]]);
 wx.createPage(MiniProgramPage);

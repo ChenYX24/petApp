@@ -1,7 +1,7 @@
 <template>
   <view class="flex-wrap">
     <view class="flex-col relative equal-division-item space-y-6" >
-      <image class="image_5" :src="imageSrc" />
+      <image class="image_5" :src="imageSrc"  @click="clickActivity" />
       <view class="flex-row items-center space-x-6">
 		<view class="tag" v-if="tag && tag.length > 0">#{{ tag[0] }}</view>
         <image class="image_6" :class="{heart_animation:isAnimation}" :src="heartIcon" @tap="toggleHeart"/>
@@ -43,6 +43,12 @@ export default {
         }, 1000);
       }
     },
+	clickActivity(){
+		uni.navigateTo({
+		    url: `/pages/activity/activityPage/activityPage`,
+		    
+		  })
+	}
   },
 };
 </script>

@@ -198,6 +198,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/activity/activityPage/activityPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"

@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
 if (!Math) {
   "./pages/notebook/notebook.js";
@@ -24,6 +24,7 @@ if (!Math) {
   "./pages/fovIcon/fovIcon.js";
   "./pages/infoEdit/infoEdit.js";
   "./pages/settingLanguage/settingLanguage.js";
+  "./pages/activity/activityPage/activityPage.js";
 }
 const _sfc_main = {
   data() {
@@ -33,7 +34,7 @@ const _sfc_main = {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};
 }
-const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/App.vue"]]);
+const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   return {

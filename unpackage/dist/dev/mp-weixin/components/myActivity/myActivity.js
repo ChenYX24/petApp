@@ -14,7 +14,7 @@ const _sfc_main = {
   },
   computed: {
     heartIcon() {
-      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/\u70B9\u8D5E.png";
+      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/点赞.png";
     }
   },
   methods: {
@@ -28,20 +28,26 @@ const _sfc_main = {
           this.isAnimation = false;
         }, 1e3);
       }
+    },
+    clickActivity() {
+      common_vendor.index.navigateTo({
+        url: `/pages/activity/activityPage/activityPage`
+      });
     }
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $props.imageSrc,
-    b: $props.tag && $props.tag.length > 0
+    b: common_vendor.o((...args) => $options.clickActivity && $options.clickActivity(...args)),
+    c: $props.tag && $props.tag.length > 0
   }, $props.tag && $props.tag.length > 0 ? {
-    c: common_vendor.t($props.tag[0])
+    d: common_vendor.t($props.tag[0])
   } : {}, {
-    d: $data.isAnimation ? 1 : "",
-    e: $options.heartIcon,
-    f: common_vendor.o((...args) => $options.toggleHeart && $options.toggleHeart(...args))
+    e: $data.isAnimation ? 1 : "",
+    f: $options.heartIcon,
+    g: common_vendor.o((...args) => $options.toggleHeart && $options.toggleHeart(...args))
   });
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/myActivity/myActivity.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/components/myActivity/myActivity.vue"]]);
 wx.createComponent(Component);
