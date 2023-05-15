@@ -24,6 +24,7 @@
 					<text class="Text3">{{ text3 }}</text>
 				</view>
              <view class="scroll-view-content" >
+				 
 			   <view class="commentForBlog">
 			   	  <view class="UserCommentImage1" @tap="getUser">
 			   	    <image :src="avatarUrl1" class="UseImage1"></image>
@@ -43,6 +44,7 @@
 				  </view>
 			   </view>
 			   <view class="commentForBlog">
+				   
 			   	  <view class="UserCommentImage1" @tap="getUser">
 			   	    <image :src="avatarUrl2" class="UseImage1"></image>
 			   	  </view>
@@ -51,9 +53,12 @@
 			   				  		<text class="UserComment">可以一起去吖~</text>				
 			   				  </view>
 			   </view>
+			   
+			   
+			   
 			   <comments :text="123456"></comments>
 			  <view v-for="(comment, index) in commentsarr" :key="index">
-			    <comments :text="comment.text"></comments>
+			    <comments :text="comment.text" :avatarUrl="comment.avatarUrl" :username="comment.username"></comments>
 			  </view>
            </view>
 		   
@@ -71,12 +76,14 @@
 <script>
 	import comments from '/components///comments.vue';
 
+	var socket=null;
 	export default {
         components: {
           comments,
         },
 		data() {
 			return {
+				activityThoughtId:'1',
 				text:'',
 				Text:'新建朋友圈',
 				commentsarr: [],
@@ -110,44 +117,154 @@
 				})
 			},
 			handleEnterKey() {
-				 console.log('评论已存储：');
-				  const comment = {
-				    text: this.text
-				  };
-				  this.commentsarr.push(comment);
-				      
-			      // 在这里处理按下回车键的事件
-			      const key = 'commentByUser'; // 存储的键名
-			      const value = this.text; // 存储的键值
-			      
-			      // 判断当前运行环境，选择合适的存储方式
-			      //#ifdef MP-WEIXIN
-			      wx.setStorageSync(key, value);
-			      //#endif
-			      
-			      //#ifndef MP-WEIXIN
-			      localStorage.setItem(key, value);
-			      //#endif
-			      this.text = '';
-			      console.log('评论已存储：', key, value);
+			 console.log('评论已存储：');
+			  const comment = {
+				text: this.text,
+				avatarUrl:uni.getStorageSync("avatarUrl"),
+				username:uni.getStorageSync("nickName")
+			  };
+			  this.commentsarr.push(comment);
+				  
+			  // 在这里处理按下回车键的事件
+			  const key = 'commentByUser'; // 存储的键名
+			  const value = this.text; // 存储的键值
+			  
+			  // 判断当前运行环境，选择合适的存储方式
+			  //#ifdef MP-WEIXIN
+			  wx.setStorageSync(key, value);
+			  //#endif
+			  
+			  //#ifndef MP-WEIXIN
+			  localStorage.setItem(key, value);
+			  //#endif
+			  
+			  console.log('评论已存储：', key, value);
+			  
+			  
+			  var message = {
+				username: 2,//userId
+				to: "每一个活动笔记",//连接该活动的所有人
+				message: this.text,
+				activityThought: 1//活动笔记Id
+			}
+			  // uni.sendSocketMessage(message); 
+
+			  //及时通信的逻辑	
+			  uni.sendSocketMessage({
+			    data: JSON.stringify(message)
+			  });
+			  //保存评论消息actionType
+			  uni.request({
+			      url: "http://localhost:88/interaction/comment/action?actionType="+"0"+"&commentText="+this.text+
+				  "&activityThoughtId="+this.activityThoughtId+"&userId="+uni.getStorageSync("userId"),
+			  	  method:'POST',
+			      header: {
+			  		"Content-Type": 'application/json',
+			  		"Authorization": uni.getStorageSync("token")
+			      },
+			      success: (res) => {
+			          console.log(res);
+			      },
+				  fail: (res) => {
+					  console.log(res);
+				  }
+			  });
+			  
+			  
+			  
+			  //还原输入框
+			  this.text = '';
+			  
+			  
+			  
+			},
+			handleKey(){
+				console.log('评论已存储：');
+			},
+			initData() {
+	      // 从本地缓存或本地存储中获取数据，并初始化页面属性
+	     // #ifdef MP-WEIXIN
+	      this.swiperList = wx.getStorageSync('imageSrc') || this.swiperList
+	      this.text2 = wx.getStorageSync('inputValue') || this.text2
+	      //#endif
+	      //#ifndef MP-WEIXIN
+	      this.swiperList = JSON.parse(localStorage.getItem('imageSrc')) || []
+	      this.text2 = localStorage.getItem('inputValue') || ''
+	      //#endif
+	    },
+		},
+		onLoad(){
+			var that=this;
+			uni.request({
+			    url: "http://localhost:88/interaction/comment/listById/?activityThoughtId="+this.activityThoughtId,
+				  method:'GET',
+			    header: {
+					"Content-Type": 'application/json',
+					"Authorization": uni.getStorageSync("token")
 			    },
 				
-				initData() {
-				      // 从本地缓存或本地存储中获取数据，并初始化页面属性
-				     // #ifdef MP-WEIXIN
-				      this.swiperList = wx.getStorageSync('imageSrc') || this.swiperList
-				      this.text2 = wx.getStorageSync('inputValue') || this.text2
-				      //#endif
-				      //#ifndef MP-WEIXIN
-				      this.swiperList = JSON.parse(localStorage.getItem('imageSrc')) || []
-				      this.text2 = localStorage.getItem('inputValue') || ''
-				      //#endif
-				    },
-				   
-				handleKey(){
-					console.log('评论已存储：');
+			    success: (res) => {
+					var arr=res.data.commentList
+					for (let i = 0; i < arr.length; i++) {
+						var comment={
+							text: arr[i].comment,
+							avatarUrl:arr[i].avatarUrl,
+							username:arr[i].username
+						}
+						
+						this.commentsarr.push(comment)
+					}
+			        console.log(res);
+					console.log(this.commentsarr)
+					console.log(that.commentsarr)
+			    },
+			  fail: (res) => {
+				  console.log(res);
+			  }
+			});
+		},
+		onShow() {
+			const userId =uni.getStorageSync('userId')
+			socket = uni.connectSocket({ 
+			            url: 'wss://localhost:15002/websocket/'+this.activityThoughtId+"/"+userId, //仅为示例，并非真实接口地址。  第一个参数是活动笔记的ID 第二个是用户ID
+			            complete: ()=> {}
+			        });
+			socket.onOpen(()=>{
+				console.log('conn')
+				// socket.send(()=>{
+				// 				  // data: JSON.stringify(message)	
+				// 				  data: 	
+				// })
+			});
+			var that=this;
+			socket.onMessage(res=>{
+				console.log(res.data)
+				var msg=JSON.parse(res.data)
+				console.log(msg)
+				
+				//处理接收到的别人的数据
+				if(msg.fromusername!=userId&&msg.textMessage!=undefined){
+					//说明这是别人发的消息  并且不是空的
+					
+					//还要获取别人的信息
+					const comment = {
+						text:msg.textMessage,
+					};
+					that.commentsarr.push(comment);
 				}
+				
+				
+				
+			});//获取服务器传来的数据，做相应处理
+			
+			
+			socket.onClose(()=>{console.log('close')});
+			socket.onError((err)=>{console.log(err)});
+		},
+		onHide(){
+			socket.close();
 		}
+		
 	}
 </script>
 

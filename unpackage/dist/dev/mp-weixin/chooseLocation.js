@@ -9,11 +9,10 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "返回新建",
+      Text: "\u8FD4\u56DE\u65B0\u5EFA",
       Nav: "/pages/activity/ActivityThoughtCreate",
       amapPlugin: null,
       key: "53142a6ebba0f0d52481e81910658876",
-      //高德key
       keywords: "",
       tipLocations: []
     };
@@ -45,7 +44,7 @@ const _sfc_main = {
         key: this.key
       });
       common_vendor.index.showLoading({
-        title: "获取信息中"
+        title: "\u83B7\u53D6\u4FE1\u606F\u4E2D"
       });
       this.amapPlugin.getRegeo({
         success: (data) => {
@@ -62,7 +61,7 @@ const _sfc_main = {
         key: this.key
       });
       common_vendor.index.showLoading({
-        title: "获取信息中"
+        title: "\u83B7\u53D6\u4FE1\u606F\u4E2D"
       });
       const that = this;
       this.amapPlugin.getInputtips({
@@ -100,5 +99,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/components/chooseLocation.vue"]]);
-exports.MiniProgramPage = MiniProgramPage;
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/chooseLocation.vue"]]);
+exports.Component = Component;

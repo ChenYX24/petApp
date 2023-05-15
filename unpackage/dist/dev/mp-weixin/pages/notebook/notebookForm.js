@@ -8,20 +8,19 @@ const _sfc_main = {
   data() {
     return {
       tapchangeReceived: false,
-      Text: "新建提醒/记录",
+      Text: "\u65B0\u5EFA\u63D0\u9192/\u8BB0\u5F55",
       items: [],
       inputValue: "",
       text1: "",
-      // Nav:"/pages/notebook/notebook?tab=memo",
       text2: "",
       text3: "",
       text4: "",
       leftSelected: true,
       rightSelected: false,
-      leftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png",
-      rightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png",
-      thirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png",
-      fourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png",
+      leftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
+      rightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png",
+      thirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
+      fourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
       indexInForm: -1
     };
   },
@@ -81,9 +80,9 @@ ${this.inputValue}`;
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.leftSelected) {
         this.leftImageUrl = this.thirdImageUrl;
-        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       } else {
-        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       }
     },
     selectRight() {
@@ -92,9 +91,9 @@ ${this.inputValue}`;
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.rightSelected) {
         this.rightImageUrl = this.fourthImageUrl;
-        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       } else {
-        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       }
     }
   },
@@ -104,7 +103,7 @@ ${this.inputValue}`;
     });
   },
   onLoad() {
-    const data = common_vendor.wx$1.getStorageSync("myData");
+    const data = wx.getStorageSync("myData");
     this.indexInForm = data.index;
     const items = data.item.split("\n");
     this.text1 = items[0] || "";
@@ -153,5 +152,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     y: common_vendor.o((...args) => $options.buttonClicked && $options.buttonClicked(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/notebook/notebookForm.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/notebook/notebookForm.vue"]]);
 wx.createPage(MiniProgramPage);

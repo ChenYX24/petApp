@@ -12,13 +12,13 @@ const _sfc_main = {
     notebookform
   },
   created() {
-    console.log("登录");
+    console.log("\u767B\u5F55");
     var that = this;
     if (!common_vendor.index.getStorageSync("token")) {
       common_vendor.index.showModal({
         mask: true,
-        title: "温馨提示",
-        content: "授权微信登录后才能正常使用",
+        title: "\u6E29\u99A8\u63D0\u793A",
+        content: "\u6388\u6743\u5FAE\u4FE1\u767B\u5F55\u540E\u624D\u80FD\u6B63\u5E38\u4F7F\u7528",
         success(res) {
           if (res.confirm) {
             common_vendor.index.login({
@@ -41,7 +41,7 @@ const _sfc_main = {
                   },
                   fail: function(res2) {
                     common_vendor.index.showToast({
-                      title: "登录失败",
+                      title: "\u767B\u5F55\u5931\u8D25",
                       icon: "none"
                     });
                   }
@@ -49,7 +49,7 @@ const _sfc_main = {
               },
               fail: function(loginRes) {
                 common_vendor.index.showToast({
-                  title: "登录失败",
+                  title: "\u767B\u5F55\u5931\u8D25",
                   icon: "none"
                 });
               }
@@ -65,10 +65,10 @@ const _sfc_main = {
     const storedListRemind = common_vendor.index.getStorageSync("listremind");
     return {
       tab: "",
-      texts: ["提醒", "记录"],
+      texts: ["\u63D0\u9192", "\u8BB0\u5F55"],
       index: 0,
-      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
-      list: storedList ? JSON.parse(storedList) : ["写代码", "吃饭饭", "睡觉觉"],
+      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["\u5199\u4EE3\u7801", "\u5403\u996D", "\u7761\u89C9", "\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A\u554A"],
+      list: storedList ? JSON.parse(storedList) : ["\u5199\u4EE3\u7801", "\u5403\u996D\u996D", "\u7761\u89C9\u89C9"],
       isshow: false
     };
   },
@@ -80,18 +80,18 @@ const _sfc_main = {
     if (leftSelected === "1") {
       if (indexInForm != -1) {
         this.listremind[indexInForm] = decodedData;
-        common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.listremind));
+        wx.setStorageSync("listremind", JSON.stringify(this.listremind));
       } else if (indexInForm == -1) {
         this.listremind.push(decodedData);
-        common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.listremind));
+        wx.setStorageSync("listremind", JSON.stringify(this.listremind));
       }
     }
     if (rightSelected === "1") {
       if (indexInForm != -1) {
         this.list[indexInForm] = decodedData;
-        common_vendor.wx$1.setStorageSync("listremind", JSON.stringify(this.list));
+        wx.setStorageSync("listremind", JSON.stringify(this.list));
       } else if (indexInForm == -1) {
-        this.list.push(decodedData), common_vendor.wx$1.setStorageSync("list", JSON.stringify(this.list));
+        this.list.push(decodedData), wx.setStorageSync("list", JSON.stringify(this.list));
       }
     }
   },
@@ -99,13 +99,10 @@ const _sfc_main = {
     toWhere(key) {
       this.index = key;
     },
-    // 起点
     touchStart(event) {
       this.startTime = Date.now();
       this.startPosition = event.changedTouches[0].clientX;
     },
-    // 终点,计算移动距离
-    // 终点,计算移动距离
     touchEnd(event) {
       const endTime = Date.now();
       if (endTime - this.startTime > 2e3) {
@@ -165,5 +162,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     j: $data.isshow
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/notebook/notebook.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-17181d6d"], ["__file", "D:/uniapp/petApp/pages/notebook/notebook.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,7 +1,7 @@
 <template>
 	<view class="commentForBlog">
 		  <view class="UserCommentImage1" @tap="getUser">
-		    <image :src="avatarUrl1" class="UseImage1"></image>
+		    <image :src="avatarUrl" class="UseImage1"></image>
 		  </view>
 			 <view class="commentInformation"  >
 					  	<text class="UserName">{{ username }}</text>
@@ -17,12 +17,19 @@
 		    text: {
 		      type: String,
 		      default: ""
-		    }
+		    },
+			avatarUrl:
+			{
+				type:String,
+				default:"https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/dog.png"
+			},
+			username:{
+				type: String,
+				default: "团小萌"
+			},
 		  },
 		data() {
 			return {
-				avatarUrl1:"https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/dog.png",
-				username:"团小萌",
 				
 			};
 		}
