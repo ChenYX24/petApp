@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u9009\u62E9\u7EDD\u80B2\u72B6\u51B5",
+      Text: "选择绝育状况",
       isActive: false,
       leftSelected: false,
       rightSelected: false,
@@ -29,9 +29,9 @@ const _sfc_main = {
     nextpage() {
       if (this.isActive) {
         if (this.leftSelected) {
-          wx.setStorageSync("xx", 1);
+          common_vendor.wx$1.setStorageSync("xx", 1);
         } else if (this.rightSelected) {
-          wx.setStorageSync("xx", 2);
+          common_vendor.wx$1.setStorageSync("xx", 2);
         }
         common_vendor.index.navigateTo({
           url: `/pages/IDCreate/IDCreate5/IDCreate5`
@@ -87,5 +87,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9f89f8c9"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate4/IDCreate4.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9f89f8c9"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate4/IDCreate4.vue"]]);
 wx.createPage(MiniProgramPage);

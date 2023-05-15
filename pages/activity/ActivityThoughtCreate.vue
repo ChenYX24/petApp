@@ -57,8 +57,8 @@
 	// import 'react-native-get-random-values'; 
 	// import { v4 as uuidv4 } from 'uuid';
 	import {request} from '../../ThirdPartySDK/myApi.js'
-	import navBar from '/components//navBar/navBar.vue';
-	import chooseLocation from '../../components/chooseLocation.vue';
+	import navBar from '/components/navBar/navBar.vue';
+	import chooseLocation from '/components/chooseLocation.vue'
 	export default {
 		components: {
 		  navBar,

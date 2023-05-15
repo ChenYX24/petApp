@@ -11,20 +11,21 @@ const _sfc_main = {
   data() {
     return {
       Nav: "/pages/notebook/notebook",
-      Text: "\u65B0\u5EFA\u670B\u53CB\u5708",
+      Text: "新建朋友圈",
       activities: [
         "coding",
         "coding",
         "coding"
       ],
-      currentActivity: "\u8BF7\u9009\u62E9\u4F60\u53C2\u52A0\u7684\u6D3B\u52A8",
+      currentActivity: "请选择你参加的活动",
       tureActivity: "xx",
       inputValue: "",
       imageSrc: [],
       isChooseLocation: false,
-      trueLocation: "\u60A8\u6240\u5728\u4F4D\u7F6E",
+      trueLocation: "您所在位置",
       imageUrls: [],
       uuid: ""
+      //伪随机数
     };
   },
   mounted() {
@@ -62,8 +63,11 @@ const _sfc_main = {
     chooseImage() {
       common_vendor.index.chooseImage({
         count: 9,
+        // 最多选择的图片数量，此处为1
         sizeType: ["compressed"],
+        // 压缩图片
         sourceType: ["album", "camera"],
+        // 可以从相册选择或拍照
         success: (res) => {
           this.imageSrc.push(...res.tempFilePaths);
         }
@@ -88,6 +92,7 @@ const _sfc_main = {
             policy,
             OSSAccessKeyId: ossAccessKeyId,
             signature
+            // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
           },
           success: (uploadFileRes) => {
             this.imageUrls.push(host + "/" + key);
@@ -107,6 +112,7 @@ const _sfc_main = {
         data: {
           content: this.inputValue,
           data: "['1','2']",
+          //
           location: this.trueLocation,
           activityName: this.currentActivity,
           userId: 1
@@ -153,7 +159,7 @@ const _sfc_main = {
     onActivityChange(event) {
       const activityIndex = event.detail.value;
       this.currentActivity = this.activities[activityIndex];
-      if (this.currentActivity !== "\u8BF7\u9009\u62E9\u4F60\u53C2\u52A0\u7684\u6D3B\u52A8") {
+      if (this.currentActivity !== "请选择你参加的活动") {
         this.trueActivity = this.currentActivity;
       }
     },
@@ -223,5 +229,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     r: common_vendor.o($options.getTrueLocation)
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/activity/ActivityThoughtCreate.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/activity/ActivityThoughtCreate.vue"]]);
 wx.createPage(MiniProgramPage);

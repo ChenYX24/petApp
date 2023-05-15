@@ -8,7 +8,7 @@ const _sfc_main = {
     idCard
   },
   onLoad: function() {
-    this.name = "\u59D3\u540D " + common_vendor.index.getStorageSync("petName");
+    this.name = "姓名 " + common_vendor.index.getStorageSync("petName");
     this.breed = common_vendor.index.getStorageSync("breed");
     this.sex = common_vendor.index.getStorageSync("sex");
     this.city = common_vendor.index.getStorageSync("city");
@@ -17,14 +17,14 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u521B\u5EFA\u5B8C\u6210",
+      Text: "创建完成",
       name: "",
       breed: "",
       sex: "",
       birthdayY: "",
       birthdayM: "",
       birthdayD: "",
-      city: "\u672A\u77E5",
+      city: "未知",
       Image: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png",
       ImgBackground: "",
       textColor: "",
@@ -42,7 +42,7 @@ const _sfc_main = {
         this.idCardList = temp;
         this.idCardList.push(this.dataOb);
       }
-      wx.setStorageSync("idCardList", this.idCardList);
+      common_vendor.wx$1.setStorageSync("idCardList", this.idCardList);
       common_vendor.index.reLaunch({
         url: `/pages/petList/petList`
       });
@@ -71,5 +71,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     d: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-87750e9b"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate7/IDCreate7.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-87750e9b"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate7/IDCreate7.vue"]]);
 wx.createPage(MiniProgramPage);
