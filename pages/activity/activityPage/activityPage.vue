@@ -12,16 +12,16 @@
 			 </view>
 			   <swiper :indicator-dots="true" :current="current" class="swiper">
 			            <swiper-item v-for="(item, index) in swiperList" :key="index">
-			           <image :src="item.imgUrl" mode="aspectFill" style="height: 80vh; width: 100%;"></image>
+			           <image :src="item" mode="aspectFill" style="height: 80vh; width: 100%;"></image>
 			         </swiper-item>
 			   </swiper>
 		</view>
 		
 		<view class="comment">
 			    <view  class="Text">
-					<text class="Text1"> #春日派对</text>
-					<text class="Text2">今天小柴探索森林新地图去咯~~</text>
-					<text class="Text3">2023-05-16</text>
+					<text class="Text1"> {{ text1 }}</text>
+					<text class="Text2">{{ text2 }}</text>
+					<text class="Text3">{{ text3 }}</text>
 				</view>
              <view class="scroll-view-content" >
 			   <view class="commentForBlog">
@@ -80,17 +80,24 @@
 				text:'',
 				Text:'新建朋友圈',
 				commentsarr: [],
+				text1: '#春日派对',
+				text2: '今天小柴探索森林新地图去咯~~',
+				text3: '2023-05-16',
 				avatarUrl:"https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/dog.png",
 				avatarUrl1:"/static/activity/头像1.jpg",
 				avatarUrl2:"/static/activity/头像2.jpeg",
 				swiperList: [
-				        { imgUrl: '/static//activity/柴犬.jpg' },
-				        { imgUrl: "/static//activity/柴犬2.jpg" },
-				        { imgUrl: '/static//activity/柴犬3.jpg' },
+				           '/static//activity/柴犬.jpg',
+				            '/static//activity/柴犬2.jpg',
+				            '/static//activity/柴犬3.jpg'
 
 				      ],
 			}
 		},
+		
+		mounted() {
+		    this.initData()
+		  },
 		methods: {
 			backToActivity(){
 				uni.navigateTo({
@@ -125,7 +132,18 @@
 			      console.log('评论已存储：', key, value);
 			    },
 				
-				
+				initData() {
+				      // 从本地缓存或本地存储中获取数据，并初始化页面属性
+				     // #ifdef MP-WEIXIN
+				      this.swiperList = wx.getStorageSync('imageSrc') || this.swiperList
+				      this.text2 = wx.getStorageSync('inputValue') || this.text2
+				      //#endif
+				      //#ifndef MP-WEIXIN
+				      this.swiperList = JSON.parse(localStorage.getItem('imageSrc')) || []
+				      this.text2 = localStorage.getItem('inputValue') || ''
+				      //#endif
+				    },
+				   
 				handleKey(){
 					console.log('评论已存储：');
 				}
@@ -324,3 +342,4 @@
 	}
 }
 </style>
+
