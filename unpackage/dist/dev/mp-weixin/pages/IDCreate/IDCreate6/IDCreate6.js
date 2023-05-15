@@ -87,14 +87,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     d: $options.startDate,
     e: $options.endDate,
     f: common_vendor.o((...args) => $options.bindDateChange && $options.bindDateChange(...args)),
-    g: this.breed == 1 ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectTime/dogHome.png" : this.breed == 2 ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate//selectTime/catHome.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate//selectTime/dogHome.png",
+    g: this.breed == 1 ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectTime/dogHome.png" : this.breed == 2 ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectTime/catHome.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/IDCreate/selectTime/dogHome.png",
     h: common_vendor.t($data.name),
     i: common_vendor.t($data.trueDate),
     j: $options.isActive ? 1 : "",
     k: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9dcc425f"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate6/IDCreate6.vue"]]);
-
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9dcc425f"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/IDCreate/IDCreate6/IDCreate6.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -237,7 +237,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     r: common_vendor.o($options.getTrueLocation)
   } : {});
 }
-
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/activity/ActivityThoughtCreate.vue"]]);
-
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/activity/ActivityThoughtCreate.vue"]]);
 wx.createPage(MiniProgramPage);
