@@ -1,7 +1,1 @@
-<<<<<<< HEAD
 <view class="topBackground"><view class="Background"><button bindtap="{{a}}">创建新组件</button><block wx:for="{{b}}" wx:for-item="component" wx:key="b"><tip u-i="{{component.a}}" bind:__l="__l"/></block></view><tab-bar wx:if="{{c}}" u-i="023b432e-1" bind:__l="__l" u-p="{{c}}"></tab-bar><add u-i="023b432e-2" bind:__l="__l"></add></view>
-=======
-
-<view class="topBackground"><view class="Background"><button bindtap="{{a}}">创建新组件</button><block wx:for="{{b}}" wx:for-item="component" wx:key="b"><tip u-i="{{component.a}}" bind:__l="__l"/></block></view><tab-bar wx:if="{{c}}" u-i="2af107eb-1" bind:__l="__l" u-p="{{c}}"></tab-bar><add u-i="2af107eb-2" bind:__l="__l"></add></view>
-
->>>>>>> 5a03e5de44b8c705eb331b32e15462729622c0db

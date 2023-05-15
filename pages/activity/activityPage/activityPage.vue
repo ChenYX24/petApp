@@ -191,7 +191,7 @@
 	      this.swiperList = JSON.parse(localStorage.getItem('imageSrc')) || []
 	      this.text2 = localStorage.getItem('inputValue') || ''
 	      //#endif
-	    },
+			},
 		},
 		onLoad(){
 			var that=this;
