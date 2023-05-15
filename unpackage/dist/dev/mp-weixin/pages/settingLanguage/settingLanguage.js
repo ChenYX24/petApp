@@ -7,10 +7,10 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "设置语言",
+      Text: "\u8BBE\u7F6E\u8BED\u8A00",
       Nav: "/pages/setting/setting",
       isActive: 0,
-      name: ["跟随系统", "简体中文", "繁体中文", "English", "日本語", "한국어"]
+      name: ["\u8DDF\u968F\u7CFB\u7EDF", "\u7B80\u4F53\u4E2D\u6587", "\u7E41\u4F53\u4E2D\u6587", "English", "\u65E5\u672C\u8A9E", "\uD55C\uAD6D\uC5B4"]
     };
   },
   methods: {
@@ -54,5 +54,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     d: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-a1fcc329"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/settingLanguage/settingLanguage.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-a1fcc329"], ["__file", "D:/uniapp/petApp/pages/settingLanguage/settingLanguage.vue"]]);
 wx.createPage(MiniProgramPage);

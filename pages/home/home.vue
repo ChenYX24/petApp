@@ -196,7 +196,7 @@ export default {
 							console.log(code);
 						    // 将登录凭证发送到后端服务器进行验证和处理
 						    uni.request({
-						      url: 'https://mock.apifox.cn/m1/2440038-0-default/user/login',
+						      url: 'http://localhost:88/user/login',
 						      method: 'GET',
 						      data: {
 						        code: code
