@@ -40,7 +40,7 @@
 			   	  </view>
 				  <view class="commentInformation">
 				  		<text class="UserName">用户10002</text>
-				  		<text class="UserComment">可以一起去吖~</text>				
+				  		<text class="UserComment">这是哪里呀~</text>				
 				  </view>
 			   </view>
 			   <view class="commentForBlog">

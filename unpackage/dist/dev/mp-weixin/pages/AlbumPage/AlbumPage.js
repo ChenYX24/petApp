@@ -22,8 +22,8 @@ const _sfc_main = {
               },
               fail() {
                 common_vendor.index.showModal({
-                  title: "\u63D0\u793A",
-                  content: "\u60A8\u62D2\u7EDD\u4E86\u8BBF\u95EE\u76F8\u518C\u7684\u6743\u9650\uFF0C\u65E0\u6CD5\u52A0\u8F7D\u56FE\u7247\u3002",
+                  title: "提示",
+                  content: "您拒绝了访问相册的权限，无法加载图片。",
                   showCancel: false
                 });
               }
@@ -60,5 +60,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_vendor.o((...args) => $options.getImages && $options.getImages(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/AlbumPage/AlbumPage.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/AlbumPage/AlbumPage.vue"]]);
 wx.createPage(MiniProgramPage);

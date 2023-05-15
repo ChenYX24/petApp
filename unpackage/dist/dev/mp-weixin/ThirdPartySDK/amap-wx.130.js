@@ -1,16 +1,17 @@
 "use strict";
+const common_vendor = require("../common/vendor.js");
 function AMapWX(a) {
   this.key = a.key;
   this.requestConfig = { key: a.key, s: "rsx", platform: "WXJS", appname: a.key, sdkversion: "1.2.0", logversion: "2.0" };
   this.MeRequestConfig = { key: a.key, serviceName: "https://restapi.amap.com/rest/me" };
 }
 AMapWX.prototype.getWxLocation = function(a, b) {
-  wx.getLocation({ type: "gcj02", success: function(c) {
+  common_vendor.wx$1.getLocation({ type: "gcj02", success: function(c) {
     c = c.longitude + "," + c.latitude;
-    wx.setStorage({ key: "userLocation", data: c });
+    common_vendor.wx$1.setStorage({ key: "userLocation", data: c });
     b(c);
   }, fail: function(c) {
-    wx.getStorage({ key: "userLocation", success: function(d) {
+    common_vendor.wx$1.getStorage({ key: "userLocation", success: function(d) {
       d.data && b(d.data);
     } });
     a.fail({ errCode: "0", errMsg: c.errMsg || "" });
@@ -18,7 +19,7 @@ AMapWX.prototype.getWxLocation = function(a, b) {
 };
 AMapWX.prototype.getMEKeywordsSearch = function(a) {
   if (!a.options)
-    return a.fail({ errCode: "0", errMsg: "\u7F3A\u5C11\u5FC5\u8981\u53C2\u6570" });
+    return a.fail({ errCode: "0", errMsg: "缺少必要参数" });
   var b = a.options, c = this.MeRequestConfig, d = { key: c.key, s: "rsx", platform: "WXJS", appname: a.key, sdkversion: "1.2.0", logversion: "2.0" };
   b.layerId && (d.layerId = b.layerId);
   b.keywords && (d.keywords = b.keywords);
@@ -28,7 +29,7 @@ AMapWX.prototype.getMEKeywordsSearch = function(a) {
   b.pageNum && (d.pageNum = b.pageNum);
   b.pageSize && (d.pageSize = b.pageSize);
   b.sig && (d.sig = b.sig);
-  wx.request({ url: c.serviceName + "/cpoint/datasearch/local", data: d, method: "GET", header: { "content-type": "application/json" }, success: function(e) {
+  common_vendor.wx$1.request({ url: c.serviceName + "/cpoint/datasearch/local", data: d, method: "GET", header: { "content-type": "application/json" }, success: function(e) {
     (e = e.data) && e.status && "1" === e.status && 0 === e.code ? a.success(e.data) : a.fail({ errCode: "0", errMsg: e });
   }, fail: function(e) {
     a.fail({ errCode: "0", errMsg: e.errMsg || "" });
@@ -36,12 +37,12 @@ AMapWX.prototype.getMEKeywordsSearch = function(a) {
 };
 AMapWX.prototype.getMEIdSearch = function(a) {
   if (!a.options)
-    return a.fail({ errCode: "0", errMsg: "\u7F3A\u5C11\u5FC5\u8981\u53C2\u6570" });
+    return a.fail({ errCode: "0", errMsg: "缺少必要参数" });
   var b = a.options, c = this.MeRequestConfig, d = { key: c.key, s: "rsx", platform: "WXJS", appname: a.key, sdkversion: "1.2.0", logversion: "2.0" };
   b.layerId && (d.layerId = b.layerId);
   b.id && (d.id = b.id);
   b.sig && (d.sig = b.sig);
-  wx.request({ url: c.serviceName + "/cpoint/datasearch/id", data: d, method: "GET", header: { "content-type": "application/json" }, success: function(e) {
+  common_vendor.wx$1.request({ url: c.serviceName + "/cpoint/datasearch/id", data: d, method: "GET", header: { "content-type": "application/json" }, success: function(e) {
     (e = e.data) && e.status && "1" === e.status && 0 === e.code ? a.success(e.data) : a.fail({ errCode: "0", errMsg: e });
   }, fail: function(e) {
     a.fail({ errCode: "0", errMsg: e.errMsg || "" });
@@ -49,7 +50,7 @@ AMapWX.prototype.getMEIdSearch = function(a) {
 };
 AMapWX.prototype.getMEPolygonSearch = function(a) {
   if (!a.options)
-    return a.fail({ errCode: "0", errMsg: "\u7F3A\u5C11\u5FC5\u8981\u53C2\u6570" });
+    return a.fail({ errCode: "0", errMsg: "缺少必要参数" });
   var b = a.options, c = this.MeRequestConfig, d = { key: c.key, s: "rsx", platform: "WXJS", appname: a.key, sdkversion: "1.2.0", logversion: "2.0" };
   b.layerId && (d.layerId = b.layerId);
   b.keywords && (d.keywords = b.keywords);
@@ -59,7 +60,7 @@ AMapWX.prototype.getMEPolygonSearch = function(a) {
   b.pageNum && (d.pageNum = b.pageNum);
   b.pageSize && (d.pageSize = b.pageSize);
   b.sig && (d.sig = b.sig);
-  wx.request({ url: c.serviceName + "/cpoint/datasearch/polygon", data: d, method: "GET", header: { "content-type": "application/json" }, success: function(e) {
+  common_vendor.wx$1.request({ url: c.serviceName + "/cpoint/datasearch/polygon", data: d, method: "GET", header: { "content-type": "application/json" }, success: function(e) {
     (e = e.data) && e.status && "1" === e.status && 0 === e.code ? a.success(e.data) : a.fail({ errCode: "0", errMsg: e });
   }, fail: function(e) {
     a.fail({ errCode: "0", errMsg: e.errMsg || "" });
@@ -67,7 +68,7 @@ AMapWX.prototype.getMEPolygonSearch = function(a) {
 };
 AMapWX.prototype.getMEaroundSearch = function(a) {
   if (!a.options)
-    return a.fail({ errCode: "0", errMsg: "\u7F3A\u5C11\u5FC5\u8981\u53C2\u6570" });
+    return a.fail({ errCode: "0", errMsg: "缺少必要参数" });
   var b = a.options, c = this.MeRequestConfig, d = { key: c.key, s: "rsx", platform: "WXJS", appname: a.key, sdkversion: "1.2.0", logversion: "2.0" };
   b.layerId && (d.layerId = b.layerId);
   b.keywords && (d.keywords = b.keywords);
@@ -78,7 +79,7 @@ AMapWX.prototype.getMEaroundSearch = function(a) {
   b.pageNum && (d.pageNum = b.pageNum);
   b.pageSize && (d.pageSize = b.pageSize);
   b.sig && (d.sig = b.sig);
-  wx.request({ url: c.serviceName + "/cpoint/datasearch/around", data: d, method: "GET", header: { "content-type": "application/json" }, success: function(e) {
+  common_vendor.wx$1.request({ url: c.serviceName + "/cpoint/datasearch/around", data: d, method: "GET", header: { "content-type": "application/json" }, success: function(e) {
     (e = e.data) && e.status && "1" === e.status && 0 === e.code ? a.success(e.data) : a.fail({ errCode: "0", errMsg: e });
   }, fail: function(e) {
     a.fail({ errCode: "0", errMsg: e.errMsg || "" });
@@ -91,7 +92,7 @@ AMapWX.prototype.getGeo = function(a) {
   c.city && (b.city = c.city);
   c.batch && (b.batch = c.batch);
   c.sig && (b.sig = c.sig);
-  wx.request({ url: "https://restapi.amap.com/v3/geocode/geo", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(d) {
+  common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/geocode/geo", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(d) {
     (d = d.data) && d.status && "1" === d.status ? a.success(d) : a.fail({
       errCode: "0",
       errMsg: d
@@ -103,12 +104,12 @@ AMapWX.prototype.getGeo = function(a) {
 AMapWX.prototype.getRegeo = function(a) {
   function b(d) {
     var e = c.requestConfig;
-    wx.request({ url: "https://restapi.amap.com/v3/geocode/regeo", data: { key: c.key, location: d, extensions: "all", s: e.s, platform: e.platform, appname: c.key, sdkversion: e.sdkversion, logversion: e.logversion }, method: "GET", header: { "content-type": "application/json" }, success: function(g) {
+    common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/geocode/regeo", data: { key: c.key, location: d, extensions: "all", s: e.s, platform: e.platform, appname: c.key, sdkversion: e.sdkversion, logversion: e.logversion }, method: "GET", header: { "content-type": "application/json" }, success: function(g) {
       if (g.data.status && "1" == g.data.status) {
         g = g.data.regeocode;
-        var h = g.addressComponent, f = [], k = g.roads[0].name + "\u9644\u8FD1", m = d.split(",")[0], n = d.split(",")[1];
+        var h = g.addressComponent, f = [], k = g.roads[0].name + "附近", m = d.split(",")[0], n = d.split(",")[1];
         if (g.pois && g.pois[0]) {
-          k = g.pois[0].name + "\u9644\u8FD1";
+          k = g.pois[0].name + "附近";
           var l = g.pois[0].location;
           l && (m = parseFloat(l.split(",")[0]), n = parseFloat(l.split(",")[1]));
         }
@@ -136,18 +137,18 @@ AMapWX.prototype.getWeather = function(a) {
   function b(g) {
     var h = "base";
     a.type && "forecast" == a.type && (h = "all");
-    wx.request({ url: "https://restapi.amap.com/v3/weather/weatherInfo", data: { key: d.key, city: g, extensions: h, s: e.s, platform: e.platform, appname: d.key, sdkversion: e.sdkversion, logversion: e.logversion }, method: "GET", header: { "content-type": "application/json" }, success: function(f) {
+    common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/weather/weatherInfo", data: { key: d.key, city: g, extensions: h, s: e.s, platform: e.platform, appname: d.key, sdkversion: e.sdkversion, logversion: e.logversion }, method: "GET", header: { "content-type": "application/json" }, success: function(f) {
       if (f.data.status && "1" == f.data.status)
         if (f.data.lives) {
           if ((f = f.data.lives) && 0 < f.length) {
             f = f[0];
             var k = {
-              city: { text: "\u57CE\u5E02", data: f.city },
-              weather: { text: "\u5929\u6C14", data: f.weather },
-              temperature: { text: "\u6E29\u5EA6", data: f.temperature },
-              winddirection: { text: "\u98CE\u5411", data: f.winddirection + "\u98CE" },
-              windpower: { text: "\u98CE\u529B", data: f.windpower + "\u7EA7" },
-              humidity: { text: "\u6E7F\u5EA6", data: f.humidity + "%" }
+              city: { text: "城市", data: f.city },
+              weather: { text: "天气", data: f.weather },
+              temperature: { text: "温度", data: f.temperature },
+              winddirection: { text: "风向", data: f.winddirection + "风" },
+              windpower: { text: "风力", data: f.windpower + "级" },
+              humidity: { text: "湿度", data: f.humidity + "%" }
             };
             k.liveData = f;
             a.success(k);
@@ -161,7 +162,7 @@ AMapWX.prototype.getWeather = function(a) {
     } });
   }
   function c(g) {
-    wx.request({
+    common_vendor.wx$1.request({
       url: "https://restapi.amap.com/v3/geocode/regeo",
       data: { key: d.key, location: g, extensions: "all", s: e.s, platform: e.platform, appname: d.key, sdkversion: e.sdkversion, logversion: e.logversion },
       method: "GET",
@@ -192,7 +193,7 @@ AMapWX.prototype.getPoiAround = function(a) {
     e = { key: c.key, location: e, s: d.s, platform: d.platform, appname: c.key, sdkversion: d.sdkversion, logversion: d.logversion };
     a.querytypes && (e.types = a.querytypes);
     a.querykeywords && (e.keywords = a.querykeywords);
-    wx.request({ url: "https://restapi.amap.com/v3/place/around", data: e, method: "GET", header: { "content-type": "application/json" }, success: function(g) {
+    common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/place/around", data: e, method: "GET", header: { "content-type": "application/json" }, success: function(g) {
       if (g.data.status && "1" == g.data.status) {
         if ((g = g.data) && g.pois) {
           for (var h = [], f = 0; f < g.pois.length; f++) {
@@ -244,7 +245,7 @@ AMapWX.prototype.getInputtips = function(a) {
   a.type && (b.type = a.type);
   a.city && (b.city = a.city);
   a.citylimit && (b.citylimit = a.citylimit);
-  wx.request({ url: "https://restapi.amap.com/v3/assistant/inputtips", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
+  common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/assistant/inputtips", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
     c && c.data && c.data.tips && a.success({ tips: c.data.tips });
   }, fail: function(c) {
     a.fail({ errCode: "0", errMsg: c.errMsg || "" });
@@ -258,7 +259,7 @@ AMapWX.prototype.getDrivingRoute = function(a) {
   a.waypoints && (b.waypoints = a.waypoints);
   a.avoidpolygons && (b.avoidpolygons = a.avoidpolygons);
   a.avoidroad && (b.avoidroad = a.avoidroad);
-  wx.request({ url: "https://restapi.amap.com/v3/direction/driving", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
+  common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/direction/driving", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
     c && c.data && c.data.route && a.success({
       paths: c.data.route.paths,
       taxi_cost: c.data.route.taxi_cost || ""
@@ -271,7 +272,7 @@ AMapWX.prototype.getWalkingRoute = function(a) {
   var b = Object.assign({}, this.requestConfig);
   a.origin && (b.origin = a.origin);
   a.destination && (b.destination = a.destination);
-  wx.request({ url: "https://restapi.amap.com/v3/direction/walking", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
+  common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/direction/walking", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
     c && c.data && c.data.route && a.success({ paths: c.data.route.paths });
   }, fail: function(c) {
     a.fail({ errCode: "0", errMsg: c.errMsg || "" });
@@ -284,7 +285,7 @@ AMapWX.prototype.getTransitRoute = function(a) {
   a.strategy && (b.strategy = a.strategy);
   a.city && (b.city = a.city);
   a.cityd && (b.cityd = a.cityd);
-  wx.request({ url: "https://restapi.amap.com/v3/direction/transit/integrated", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
+  common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/direction/transit/integrated", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
     c && c.data && c.data.route && (c = c.data.route, a.success({ distance: c.distance || "", taxi_cost: c.taxi_cost || "", transits: c.transits }));
   }, fail: function(c) {
     a.fail({ errCode: "0", errMsg: c.errMsg || "" });
@@ -294,7 +295,7 @@ AMapWX.prototype.getRidingRoute = function(a) {
   var b = Object.assign({}, this.requestConfig);
   a.origin && (b.origin = a.origin);
   a.destination && (b.destination = a.destination);
-  wx.request({ url: "https://restapi.amap.com/v3/direction/riding", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
+  common_vendor.wx$1.request({ url: "https://restapi.amap.com/v3/direction/riding", data: b, method: "GET", header: { "content-type": "application/json" }, success: function(c) {
     c && c.data && c.data.route && a.success({ paths: c.data.route.paths });
   }, fail: function(c) {
     a.fail({ errCode: "0", errMsg: c.errMsg || "" });
