@@ -11,11 +11,11 @@ const _sfc_main = {
     this.tab = options.tab;
     this.city = common_vendor.index.getStorageSync("city");
     if (!this.city) {
-      this.city = "\u672A\u77E5";
+      this.city = "未知";
     }
   },
   mounted() {
-    const firstImage = JSON.parse(wx.getStorageSync("firstImage"));
+    const firstImage = JSON.parse(common_vendor.wx$1.getStorageSync("firstImage"));
     this.imageSrcArr.push(firstImage);
     common_vendor.wx$1.setStorageSync("imageSrcArr", JSON.stringify(this.imageSrcArr));
   },
@@ -27,11 +27,11 @@ const _sfc_main = {
     return {
       tab: "",
       src: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/dog.png",
-      src1: "/static//activity/\u67F4\u72AC.jpg",
+      src1: "/static//activity/柴犬.jpg",
       imageSrcArr: [],
-      tag: ["\u6625\u65E5\u6D3E\u5BF9", "\u590F\u65E5\u5BF9\u6D3E"],
+      tag: ["春日派对", "夏日对派"],
       navH: null,
-      city: "\u672A\u77E5"
+      city: "未知"
     };
   },
   created() {
@@ -97,5 +97,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-da48f91d"], ["__file", "D:/uniapp/petApp/pages/activity/activity.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-da48f91d"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/activity/activity.vue"]]);
 wx.createPage(MiniProgramPage);

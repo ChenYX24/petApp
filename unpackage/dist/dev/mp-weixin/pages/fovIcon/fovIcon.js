@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u5DF2\u6536\u85CF",
+      Text: "已收藏",
       Nav: "/pages/home/home?tab=home",
       isHeartActive: false,
       isAnimation: false,
@@ -23,7 +23,7 @@ const _sfc_main = {
     let temp = common_vendor.index.getStorageSync("likeIcon");
     if (!temp) {
       this.likeIcon = [];
-      wx.setStorageSync("likeIcon", this.likeIcon);
+      common_vendor.wx$1.setStorageSync("likeIcon", this.likeIcon);
     } else {
       this.likeIcon = temp;
     }
@@ -34,7 +34,7 @@ const _sfc_main = {
   },
   computed: {
     heartIcon() {
-      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/\u70B9\u8D5E.png";
+      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/点赞.png";
     }
   },
   methods: {
@@ -53,7 +53,7 @@ const _sfc_main = {
       } else {
         this.likeIcon.push(this.selectedImage);
       }
-      wx.setStorageSync("likeIcon", this.likeIcon);
+      common_vendor.wx$1.setStorageSync("likeIcon", this.likeIcon);
     },
     showImage(image) {
       this.selectedImage = image;
@@ -91,5 +91,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-f5798b04"], ["__file", "D:/uniapp/petApp/pages/fovIcon/fovIcon.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-f5798b04"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/fovIcon/fovIcon.vue"]]);
 wx.createPage(MiniProgramPage);
