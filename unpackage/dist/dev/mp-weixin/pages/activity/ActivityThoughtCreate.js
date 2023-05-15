@@ -127,6 +127,13 @@ const _sfc_main = {
       });
     },
     async pushActivityThought() {
+      const firstImage = this.imageSrc[0];
+      wx.setStorageSync("firstImage", JSON.stringify(firstImage));
+      wx.setStorageSync("imageSrc", this.imageSrc);
+      wx.setStorageSync("inputValue", this.inputValue);
+      common_vendor.index.navigateTo({
+        url: "/pages/activity/activityPage/activityPage"
+      });
       var signatureRes = {};
       try {
         const a = await ThirdPartySDK_myApi.request("http://43.140.198.154:88/thirdParty/getUploadSignature/", {});
@@ -149,6 +156,7 @@ const _sfc_main = {
       } catch (err) {
         console.error(err);
       }
+      console.log("\u6B63\u5E38\u6267\u884C");
     },
     onActivityChange(event) {
       const activityIndex = event.detail.value;

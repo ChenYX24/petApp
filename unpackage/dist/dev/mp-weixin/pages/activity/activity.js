@@ -14,10 +14,16 @@ const _sfc_main = {
       this.city = "\u672A\u77E5";
     }
   },
+  mounted() {
+    const firstImage = JSON.parse(wx.getStorageSync("firstImage"));
+    this.imageSrcArr.push(firstImage);
+  },
   data() {
     return {
       tab: "",
       src: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/dog.png",
+      src1: "/static//activity/\u67F4\u72AC.jpg",
+      imageSrcArr: [],
       tag: ["\u6625\u65E5\u6D3E\u5BF9", "\u590F\u65E5\u5BF9\u6D3E"],
       navH: null,
       city: "\u672A\u77E5"
@@ -41,25 +47,33 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.t($data.city),
     b: $data.navH + "px",
-    c: common_vendor.p({
-      imageSrc: $data.src,
-      tag: $data.tag
+    c: common_vendor.f($data.imageSrcArr, (imagesrc, index, i0) => {
+      return {
+        a: "da48f91d-0-" + i0,
+        b: common_vendor.p({
+          imageSrc: imagesrc,
+          tag: $data.tag
+        }),
+        c: index
+      };
     }),
     d: common_vendor.p({
-      imageSrc: $data.src
+      imageSrc: $data.src1,
+      tag: $data.tag
     }),
     e: common_vendor.p({
-      imageSrc: $data.src
-    }),
-    f: common_vendor.p({
       imageSrc: $data.src,
       tag: $data.tag
+    }),
+    f: common_vendor.p({
+      imageSrc: $data.src
     }),
     g: common_vendor.p({
       imageSrc: $data.src
     }),
     h: common_vendor.p({
-      imageSrc: $data.src
+      imageSrc: $data.src,
+      tag: $data.tag
     }),
     i: common_vendor.p({
       imageSrc: $data.src
@@ -68,6 +82,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       imageSrc: $data.src
     }),
     k: common_vendor.p({
+      imageSrc: $data.src
+    }),
+    l: common_vendor.p({
+      imageSrc: $data.src
+    }),
+    m: common_vendor.p({
       activeTab: $data.tab
     })
   };

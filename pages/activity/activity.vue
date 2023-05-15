@@ -49,6 +49,10 @@
 	</view>
 	
 	<view class="gridBox">
+		<view v-for="(imagesrc, index) in imageSrcArr" :key="index">
+		  <myActivity :imageSrc="imagesrc" :tag="tag"></myActivity>
+		</view>
+		<myActivity :imageSrc="src1" :tag="tag"></myActivity>
 		<myActivity :imageSrc="src" :tag="tag"></myActivity>
 		<myActivity :imageSrc="src"></myActivity>
 		<myActivity :imageSrc="src"></myActivity>
@@ -81,10 +85,25 @@ export default {
 		this.city="未知"
 	}
   },
+  mounted() {
+      // 获取存储的图像数组第一个元素
+      //#ifdef MP-WEIXIN
+      const firstImage = JSON.parse(wx.getStorageSync('firstImage'));
+      //#endif
+  
+      //#ifndef MP-WEIXIN
+      const firstImage = JSON.parse(localStorage.getItem('firstImage'));
+      //#endif
+  
+      // 将第一个元素添加到数组中
+      this.imageSrcArr.push(firstImage);
+    },
   data() {
   	return {
   		tab: '',
 		src:"https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/dog.png",
+		src1:"/static//activity/柴犬.jpg",
+		imageSrcArr: [],
 		tag:["春日派对","夏日对派"],
 		navH:null,
 		city:"未知",

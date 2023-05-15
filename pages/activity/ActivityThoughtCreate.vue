@@ -57,8 +57,8 @@
 	// import 'react-native-get-random-values'; 
 	// import { v4 as uuidv4 } from 'uuid';
 	import {request} from '../../ThirdPartySDK/myApi.js'
-	import navBar from '/components//navBar/navBar.vue';
-	import chooseLocation from '../../components/chooseLocation.vue';
+	import navBar from '/components/navBar/navBar.vue';
+	import chooseLocation from '/components/chooseLocation.vue'
 	export default {
 		components: {
 		  navBar,
@@ -194,10 +194,31 @@
 				
 				//上传活动任务，并返回首页   
 				//先把用户已经确定的图片遍历上传到服务器中  将服务器回调的URL存在data中
+				 // 获取图像数组的第一个元素
+				      const firstImage = this.imageSrc[0];
 				
+				      // 根据编译器类型进行存储
+				      //#ifdef MP-WEIXIN
+				      wx.setStorageSync('firstImage', JSON.stringify(firstImage));
+				      //#endif
+				
+				      //#ifndef MP-WEIXIN
+				      localStorage.setItem('firstImage', JSON.stringify(firstImage));
+				      //#endif
 				//获取签名数据
-				
-				
+				// 存储数据到本地缓存或本地存储中
+				  //#ifdef MP-WEIXIN
+				   wx.setStorageSync('imageSrc', this.imageSrc)
+				   wx.setStorageSync('inputValue', this.inputValue)
+				    //#endif
+				   //#ifndef MP-WEIXIN
+				   localStorage.setItem('imageSrc', JSON.stringify(this.imageSrc))
+				   localStorage.setItem('inputValue', this.inputValue)
+				   //#endif
+				// 跳转到下一个页面
+				uni.navigateTo({
+				  url: '/pages/activity/activityPage/activityPage',
+				})
 
 					var signatureRes= {};
 					//下面两个也有先后顺序
@@ -216,6 +237,8 @@
 					var ossAccessKeyId = signatureRes.data.ossAccessKeyId;
 					var policy = signatureRes.data.policy;
 					
+					   
+					   
 					//下面两个也有先后顺序  this.imageUrls要等前面那个函数付完值   否则服务器会解析错误
 					try{
 						const bs=await this.awaitUploadFile(host,signature,ossAccessKeyId,policy);
@@ -227,8 +250,8 @@
 					}catch(err){
 						console.error(err);
 					}
-				
-
+				  console.log("正常执行");
+               
 			},
 			onActivityChange(event){
 				const activityIndex = event.detail.value

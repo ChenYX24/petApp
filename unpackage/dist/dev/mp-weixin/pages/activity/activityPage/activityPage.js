@@ -12,15 +12,21 @@ const _sfc_main = {
       text: "",
       Text: "\u65B0\u5EFA\u670B\u53CB\u5708",
       commentsarr: [],
+      text1: "#\u6625\u65E5\u6D3E\u5BF9",
+      text2: "\u4ECA\u5929\u5C0F\u67F4\u63A2\u7D22\u68EE\u6797\u65B0\u5730\u56FE\u53BB\u54AF~~",
+      text3: "2023-05-16",
       avatarUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/dog.png",
       avatarUrl1: "/static/activity/\u5934\u50CF1.jpg",
       avatarUrl2: "/static/activity/\u5934\u50CF2.jpeg",
       swiperList: [
-        { imgUrl: "/static//activity/\u67F4\u72AC.jpg" },
-        { imgUrl: "/static//activity/\u67F4\u72AC2.jpg" },
-        { imgUrl: "/static//activity/\u67F4\u72AC3.jpg" }
+        "/static//activity/\u67F4\u72AC.jpg",
+        "/static//activity/\u67F4\u72AC2.jpg",
+        "/static//activity/\u67F4\u72AC3.jpg"
       ]
     };
+  },
+  mounted() {
+    this.initData();
   },
   methods: {
     backToActivity() {
@@ -72,6 +78,10 @@ const _sfc_main = {
     },
     handleKey() {
       console.log("\u8BC4\u8BBA\u5DF2\u5B58\u50A8\uFF1A");
+    },
+    initData() {
+      this.swiperList = wx.getStorageSync("imageSrc") || this.swiperList;
+      this.text2 = wx.getStorageSync("inputValue") || this.text2;
     }
   },
   onLoad() {
@@ -146,21 +156,24 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
     d: common_vendor.f($data.swiperList, (item, index, i0) => {
       return {
-        a: item.imgUrl,
+        a: item,
         b: index
       };
     }),
     e: _ctx.current,
-    f: $data.avatarUrl1,
-    g: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
-    h: $data.avatarUrl2,
-    i: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
-    j: $data.avatarUrl2,
-    k: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
-    l: common_vendor.p({
+    f: common_vendor.t($data.text1),
+    g: common_vendor.t($data.text2),
+    h: common_vendor.t($data.text3),
+    i: $data.avatarUrl1,
+    j: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
+    k: $data.avatarUrl2,
+    l: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
+    m: $data.avatarUrl2,
+    n: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
+    o: common_vendor.p({
       text: 123456
     }),
-    m: common_vendor.f($data.commentsarr, (comment, index, i0) => {
+    p: common_vendor.f($data.commentsarr, (comment, index, i0) => {
       return {
         a: "7cc80e78-1-" + i0,
         b: common_vendor.p({
@@ -171,10 +184,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         c: index
       };
     }),
-    n: common_vendor.o((...args) => $options.handleKey && $options.handleKey(...args)),
-    o: common_vendor.o((...args) => $options.handleEnterKey && $options.handleEnterKey(...args)),
-    p: $data.text,
-    q: common_vendor.o(($event) => $data.text = $event.detail.value)
+    q: common_vendor.o((...args) => $options.handleKey && $options.handleKey(...args)),
+    r: common_vendor.o((...args) => $options.handleEnterKey && $options.handleEnterKey(...args)),
+    s: $data.text,
+    t: common_vendor.o(($event) => $data.text = $event.detail.value)
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/activity/activityPage/activityPage.vue"]]);
