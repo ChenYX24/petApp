@@ -91,5 +91,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   });
 }
+
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-f5798b04"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/fovIcon/fovIcon.vue"]]);
+
 wx.createPage(MiniProgramPage);

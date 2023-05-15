@@ -1,0 +1,37 @@
+.commentForBlog {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  width: 90vw;
+  border-bottom: 2px solid rgba(206, 166, 151, 0.15);
+}
+.UserCommentImage1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 5vw;
+}
+.UserCommentImage1 .UseImage1 {
+  width: 15vw;
+  height: 15vw;
+  opacity: 1;
+  border: 2px solid #7d5b5b;
+  border-radius: 50%;
+  background: #fffdf7;
+}
+.commentInformation {
+  margin-left: 5vw;
+  display: flex;
+  flex-direction: column;
+}
+.commentInformation .UserName {
+  position: absolute;
+  top: 1.5vh;
+  color: #bfb4a9;
+}
+.commentInformation .UserComment {
+  position: absolute;
+  bottom: 2vh;
+  color: #bfb4a9;
+}

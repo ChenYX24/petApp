@@ -21,7 +21,8 @@
     "pages/makeIcon/makeIcon",
     "pages/fovIcon/fovIcon",
     "pages/infoEdit/infoEdit",
-    "pages/settingLanguage/settingLanguage"
+    "pages/settingLanguage/settingLanguage",
+    "pages/activity/activityPage/activityPage"
   ],
   "window": {
     "navigationStyle": "custom"

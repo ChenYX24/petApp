@@ -82,5 +82,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => _ctx.click && _ctx.click(...args))
   };
 }
+
 const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/IDCard/IDCard.vue"]]);
+
 wx.createComponent(Component);
