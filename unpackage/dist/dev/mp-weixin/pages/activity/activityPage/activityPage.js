@@ -75,7 +75,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     m: common_vendor.f($data.commentsarr, (comment, index, i0) => {
       return {
-        a: "498e323e-1-" + i0,
+        a: "b883b432-1-" + i0,
         b: common_vendor.p({
           text: comment.text
         }),
@@ -88,5 +88,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     q: common_vendor.o(($event) => $data.text = $event.detail.value)
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/activity/activityPage/activityPage.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/activity/activityPage/activityPage.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -154,7 +154,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     C: common_vendor.o(($event) => $data.isEdit = false)
   } : {});
 }
-
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9a8299cf"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/makeIcon/makeIcon.vue"]]);
-
 wx.createPage(MiniProgramPage);
