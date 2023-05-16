@@ -14,7 +14,7 @@
 		</view>
 		<view class="imgAndText">
 			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/add/addPetIcon.png" mode="widthFix" class="addImg face imgNote" @tap="icon"></image>
-			<text class="Text notbookT">新建萌宠表情</text>
+			<text class="Text notbookT">聊天室与通知</text>
 		</view>
 	</view>
 </template>
@@ -37,7 +37,7 @@
 			icon(){
 				this.$emit('updateAdd');
 				uni.navigateTo({
-					 url: `/pages/makeIcon/makeIcon`,
+					 url: `/pages/chatMessage/chatMessage`,
 				})
 			},
 			IDCreate() {

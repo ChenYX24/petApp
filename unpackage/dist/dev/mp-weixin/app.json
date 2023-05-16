@@ -24,7 +24,8 @@
     "pages/settingLanguage/settingLanguage",
     "pages/activity/activityPage/activityPage",
     "pages/chatchat/chatchat",
-    "pages/otherHome/otherHome"
+    "pages/otherHome/otherHome",
+    "pages/chatMessage/chatMessage"
   ],
   "window": {
     "navigationStyle": "custom"

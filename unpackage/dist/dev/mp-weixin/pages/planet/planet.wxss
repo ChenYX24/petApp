@@ -23,6 +23,7 @@
 }
 .advantage.data-v-d8c429a1 {
   display: flex;
+  overflow: auto;
   width: 90%;
   height: 80vh;
   position: relative;

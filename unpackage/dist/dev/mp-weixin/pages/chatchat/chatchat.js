@@ -8,17 +8,21 @@ const _sfc_main = {
   data() {
     return {
       messages: [],
+      // 存储聊天消息
       messageText: "",
+      // 输入框中的消息文本
       selectedImage: null,
+      // 已选择的图片
       socket: null,
-      Text: "\u5C18",
+      // WebSocket对象
+      Text: "尘",
       clientId: ""
     };
   },
   mounted() {
     this.socket = new WebSocket("ws://localhost:2333");
     this.socket.onopen = () => {
-      console.log("WebSocket\u8FDE\u63A5\u5DF2\u6253\u5F00");
+      console.log("WebSocket连接已打开");
     };
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
@@ -29,10 +33,10 @@ const _sfc_main = {
       }
     };
     this.socket.onclose = () => {
-      console.log("WebSocket\u8FDE\u63A5\u5DF2\u5173\u95ED");
+      console.log("WebSocket连接已关闭");
     };
     this.socket.onerror = (error) => {
-      console.error("WebSocket\u53D1\u751F\u9519\u8BEF", error);
+      console.error("WebSocket发生错误", error);
     };
   },
   methods: {
@@ -40,6 +44,7 @@ const _sfc_main = {
       const newMessage = {
         content: this.messageText,
         senderId: this.clientId,
+        // 添加senderId字段
         isMine: true,
         type: "text"
       };
@@ -48,7 +53,7 @@ const _sfc_main = {
       if (this.socket && this.socket.readyState === WebSocket.OPEN) {
         this.socket.send(JSON.stringify(newMessage));
       } else {
-        console.error("WebSocket\u8FDE\u63A5\u672A\u5EFA\u7ACB\u6216\u5DF2\u5173\u95ED");
+        console.error("WebSocket连接未建立或已关闭");
       }
     },
     shouldAddMargin(index, isMine) {
@@ -70,7 +75,7 @@ const _sfc_main = {
     },
     sendImage(imageFile) {
       if (!imageFile) {
-        console.error("\u672A\u9009\u62E9\u56FE\u7247\u6587\u4EF6");
+        console.error("未选择图片文件");
         return;
       }
       const reader = new FileReader();
@@ -85,12 +90,12 @@ const _sfc_main = {
         if (this.socket && this.socket.readyState === WebSocket.OPEN) {
           this.socket.send(JSON.stringify(imageMessage));
         } else {
-          console.error("WebSocket\u8FDE\u63A5\u672A\u5EFA\u7ACB\u6216\u5DF2\u5173\u95ED");
+          console.error("WebSocket连接未建立或已关闭");
         }
         this.messages.push(imageMessage);
       };
       reader.onerror = (error) => {
-        console.error("\u8BFB\u53D6\u56FE\u7247\u6587\u4EF6\u5931\u8D25:", error);
+        console.error("读取图片文件失败:", error);
       };
       reader.readAsDataURL(imageFile);
     },
@@ -133,5 +138,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     i: common_vendor.o((...args) => $options.startCall && $options.startCall(...args))
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/chatchat/chatchat.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/chatchat/chatchat.vue"]]);
 wx.createPage(MiniProgramPage);

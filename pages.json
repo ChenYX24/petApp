@@ -208,15 +208,15 @@
             
         }
         ,{
-            "path" : "pages/chatchat/chatchat",
+       "path" : "pages/chatchat/chatchat",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+              "enablePullDownRefresh": false
             }
             
         },
-		,{
+		{
             "path" : "pages/otherHome/otherHome",
             "style" :                                                                                    
             {
@@ -224,7 +224,16 @@
                 "enablePullDownRefresh": false
             }
             
-        }
+        },
+		{
+		    "path" : "pages/chatMessage/chatMessage",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
 		
     ],
 	"globalStyle": {
