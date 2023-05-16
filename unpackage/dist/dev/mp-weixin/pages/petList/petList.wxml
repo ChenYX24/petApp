@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 <view class="IDBG"><nav-bar wx:if="{{a}}" u-i="69e0eab4-0" bind:__l="__l" u-p="{{a}}"></nav-bar><view class="cardContainer"><view class="cardScroll"><id-card wx:for="{{b}}" wx:for-item="item" wx:key="a" u-i="{{item.b}}" bind:__l="__l" u-p="{{item.c}}"></id-card><view class="icon make" bindtap="{{c}}"><view class="makeText"> + </view></view><view class="block"></view></view></view></view>
-=======
-<view class="IDBG"><nav-bar wx:if="{{a}}" u-i="4a474263-0" bind:__l="__l" u-p="{{a}}"></nav-bar><view class="cardContainer"><view class="cardScroll"><id-card wx:for="{{b}}" wx:for-item="item" wx:key="a" u-i="{{item.b}}" bind:__l="__l" u-p="{{item.c}}"></id-card><view class="icon make" bindtap="{{c}}"><view class="makeText"> + </view></view><view class="block"></view></view></view></view>
->>>>>>> 9bf6815ccd4a81c3b76f7e91d73cd9a59b748797

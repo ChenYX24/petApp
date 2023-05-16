@@ -29,6 +29,12 @@ const _sfc_main = {
     this.initData();
   },
   methods: {
+    toOtherHome(userId) {
+      console.log(userId);
+      common_vendor.index.navigateTo({
+        url: "/pages/otherHome/otherHome?userId=" + userId
+      });
+    },
     backToActivity() {
       common_vendor.index.navigateTo({
         url: "/pages/activity/activity"
@@ -44,7 +50,8 @@ const _sfc_main = {
       const comment = {
         text: this.text,
         avatarUrl: common_vendor.index.getStorageSync("avatarUrl"),
-        username: common_vendor.index.getStorageSync("nickName")
+        username: common_vendor.index.getStorageSync("nickName"),
+        userId: common_vendor.index.getStorageSync("userId")
       };
       this.commentsarr.push(comment);
       const key = "commentByUser";
@@ -99,7 +106,8 @@ const _sfc_main = {
           var comment = {
             text: arr[i].comment,
             avatarUrl: arr[i].avatarUrl,
-            username: arr[i].username
+            username: arr[i].username,
+            userId: arr[i].userId
           };
           this.commentsarr.push(comment);
         }
@@ -127,7 +135,10 @@ const _sfc_main = {
       console.log(msg);
       if (msg.fromusername != userId && msg.textMessage != void 0) {
         const comment = {
-          text: msg.textMessage
+          text: msg.textMessage,
+          avatarUrl: "arr[i].avatarUrl",
+          username: "arr[i].username",
+          userId: "arr[i].userId"
         };
         that.commentsarr.push(comment);
       }
@@ -164,13 +175,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     h: common_vendor.t($data.text3),
     i: common_vendor.f($data.commentsarr, (comment, index, i0) => {
       return {
-        a: "7cc80e78-0-" + i0,
-        b: common_vendor.p({
+        a: common_vendor.o(($event) => $options.toOtherHome(comment.userId), comment.userId),
+        b: "7cc80e78-0-" + i0,
+        c: common_vendor.p({
           text: comment.text,
           avatarUrl: comment.avatarUrl,
           username: comment.username
         }),
-        c: index
+        d: comment.userId
       };
     }),
     j: common_vendor.o((...args) => $options.handleKey && $options.handleKey(...args)),

@@ -23,7 +23,8 @@
     "pages/infoEdit/infoEdit",
     "pages/settingLanguage/settingLanguage",
     "pages/activity/activityPage/activityPage",
-    "pages/chatchat/chatchat"
+    "pages/chatchat/chatchat",
+    "pages/otherHome/otherHome"
   ],
   "window": {
     "navigationStyle": "custom"

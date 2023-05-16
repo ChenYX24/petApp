@@ -215,7 +215,17 @@
                 "enablePullDownRefresh": false
             }
             
+        },
+		,{
+            "path" : "pages/otherHome/otherHome",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
         }
+		
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"
