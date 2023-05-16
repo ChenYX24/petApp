@@ -9,7 +9,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "\u5BA0\u7269\u8EAB\u4EFD\u8BC1",
+      Text: "宠物身份证",
       Nav: "/pages/home/home?tab=home"
     };
   },
@@ -40,9 +40,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_vendor.f($options.idCardList, (item, index, i0) => {
       return {
         a: index,
-
         b: "4a474263-1-" + i0,
-
         c: common_vendor.p({
           dataList: item
         })
@@ -51,7 +49,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: common_vendor.o((...args) => $options.addCard && $options.addCard(...args))
   };
 }
-
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/petList/petList.vue"]]);
-
 wx.createPage(MiniProgramPage);

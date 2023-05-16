@@ -27,7 +27,7 @@ const _sfc_main = {
                 const code = loginRes.code;
                 console.log(code);
                 common_vendor.index.request({
-                  url: "http://43.140.198.154:88/user/login",
+                  url: getApp().globalData.host + "/user/login",
                   method: "GET",
                   data: {
                     code
@@ -67,7 +67,7 @@ const _sfc_main = {
       tab: "",
       texts: ["提醒", "记录"],
       index: 0,
-      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
+      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉"],
       list: storedList ? JSON.parse(storedList) : ["写代码", "吃饭饭", "睡觉觉"],
       isshow: false
     };

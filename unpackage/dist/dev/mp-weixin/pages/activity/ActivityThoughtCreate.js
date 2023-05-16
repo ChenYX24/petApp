@@ -29,7 +29,7 @@ const _sfc_main = {
     };
   },
   mounted() {
-    this.activities = ["code"];
+    this.activities = ["春日派对"];
   },
   methods: {
     generateUUID() {
@@ -107,7 +107,7 @@ const _sfc_main = {
     },
     awaituploadFrom() {
       common_vendor.index.request({
-        url: "http://43.140.198.154:88/activityThought/save",
+        url: getApp().globalData.host + "/activityThought/save",
         method: "POST",
         data: {
           content: this.inputValue,
@@ -142,7 +142,7 @@ const _sfc_main = {
       });
       var signatureRes = {};
       try {
-        const a = await ThirdPartySDK_myApi.request("http://43.140.198.154:88/thirdParty/getUploadSignature/", {});
+        const a = await ThirdPartySDK_myApi.request(getApp().globalData.host + "/thirdParty/getUploadSignature/", {});
         signatureRes = a;
       } catch (err) {
         console.error(err);

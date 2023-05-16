@@ -42,7 +42,7 @@ ${this.inputValue}`;
       const rightSelected = this.rightSelected ? "1" : "0";
       const indexInForm = this.indexInForm;
       common_vendor.index.request({
-        url: "http://43.140.198.154:88/reminder/save/",
+        url: getApp().globalData.host + "/reminder/save/",
         method: "POST",
         data: {
           "reminderId": 0,

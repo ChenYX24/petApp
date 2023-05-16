@@ -16,7 +16,9 @@ const _sfc_main = {
   },
   mounted() {
     const firstImage = JSON.parse(common_vendor.wx$1.getStorageSync("firstImage"));
-    this.imageSrcArr.push(firstImage);
+    if (!this.imageSrcArr.includes(firstImage)) {
+      this.imageSrcArr.push(firstImage);
+    }
     common_vendor.wx$1.setStorageSync("imageSrcArr", JSON.stringify(this.imageSrcArr));
   },
   onShow() {

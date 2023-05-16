@@ -25,7 +25,7 @@ const _sfc_main = {
   },
   created() {
     common_vendor.index.request({
-      url: "http://43.140.198.154:88/user/info/",
+      url: getApp().globalData.host + "/user/info/",
       method: "GET",
       data: {
         "userId": common_vendor.index.getStorageSync("userId")
@@ -60,7 +60,7 @@ const _sfc_main = {
     },
     buttonClicked() {
       common_vendor.index.request({
-        url: "http://43.140.198.154:88/user/update/",
+        url: getApp().globalData.host + "/user/update/",
         method: "POST",
         data: {
           "userId": common_vendor.index.getStorageSync("userId"),

@@ -45,7 +45,8 @@ const _sfc_main = {
         content: this.messageText,
         senderId: this.clientId,
         // 添加senderId字段
-        isMine: true
+        isMine: true,
+        type: "text"
       };
       this.messages.push(newMessage);
       this.messageText = "";
@@ -63,8 +64,48 @@ const _sfc_main = {
       return previousMessage.isMine !== isMine;
     },
     chooseImage() {
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.accept = "image/*";
+      fileInput.addEventListener("change", (event) => {
+        const imageFile = event.target.files[0];
+        this.sendImage(imageFile);
+      });
+      fileInput.click();
+    },
+    sendImage(imageFile) {
+      if (!imageFile) {
+        console.error("未选择图片文件");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const imageData = event.target.result;
+        const imageMessage = {
+          type: "image",
+          content: imageData,
+          senderId: this.clientId,
+          isMine: true
+        };
+        if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+          this.socket.send(JSON.stringify(imageMessage));
+        } else {
+          console.error("WebSocket连接未建立或已关闭");
+        }
+        this.messages.push(imageMessage);
+      };
+      reader.onerror = (error) => {
+        console.error("读取图片文件失败:", error);
+      };
+      reader.readAsDataURL(imageFile);
     },
     startCall() {
+      const roomId = 999;
+      const encodedRoomId = encodeURIComponent(roomId);
+      const fullUrl = `https://meliveta.scutbot.icu/?&roomId=${encodedRoomId}`;
+      common_vendor.index.navigateTo({
+        url: `/pages/videoChat/videoChat?url=${encodeURIComponent(fullUrl)}`
+      });
     }
   }
 };
@@ -78,13 +119,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       text: $data.Text
     }),
     b: common_vendor.f($data.messages, (message, index, i0) => {
-      return {
-        a: common_vendor.t(message.content),
-        b: index,
-        c: message.isMine ? 1 : "",
-        d: !message.isMine ? 1 : "",
-        e: $options.shouldAddMargin(index, message.isMine) ? 1 : ""
-      };
+      return common_vendor.e({
+        a: message.type === "text"
+      }, message.type === "text" ? {
+        b: common_vendor.t(message.content)
+      } : message.type === "image" ? {
+        d: message.content
+      } : {}, {
+        c: message.type === "image",
+        e: index,
+        f: message.isMine ? 1 : "",
+        g: !message.isMine ? 1 : "",
+        h: $options.shouldAddMargin(index, message.isMine) ? 1 : ""
+      });
     }),
     c: $data.selectedImage
   }, $data.selectedImage ? {

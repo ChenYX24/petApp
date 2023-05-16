@@ -8,7 +8,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      activityThoughtId: "1",
+      activityThoughtId: "3",
       text: "",
       Text: "新建朋友圈",
       commentsarr: [],
@@ -64,7 +64,7 @@ const _sfc_main = {
         data: JSON.stringify(message)
       });
       common_vendor.index.request({
-        url: "http://localhost:88/interaction/comment/action?actionType=0&commentText=" + this.text + "&activityThoughtId=" + this.activityThoughtId + "&userId=" + common_vendor.index.getStorageSync("userId"),
+        url: getApp().globalData.host + "/interaction/comment/action?actionType=0&commentText=" + this.text + "&activityThoughtId=" + this.activityThoughtId + "&userId=" + common_vendor.index.getStorageSync("userId"),
         method: "POST",
         header: {
           "Content-Type": "application/json",
@@ -88,9 +88,9 @@ const _sfc_main = {
     }
   },
   onLoad() {
-    var that = this;
+    console.log(getApp().globalData);
     common_vendor.index.request({
-      url: "http://localhost:88/interaction/comment/listById/?activityThoughtId=" + this.activityThoughtId,
+      url: getApp().globalData.host + "/interaction/comment/listById?activityThoughtId=" + this.activityThoughtId,
       method: "GET",
       header: {
         "Content-Type": "application/json",
@@ -107,8 +107,6 @@ const _sfc_main = {
           this.commentsarr.push(comment);
         }
         console.log(res);
-        console.log(this.commentsarr);
-        console.log(that.commentsarr);
       },
       fail: (res) => {
         console.log(res);
@@ -118,7 +116,7 @@ const _sfc_main = {
   onShow() {
     const userId = common_vendor.index.getStorageSync("userId");
     socket = common_vendor.index.connectSocket({
-      url: "wss://localhost:15002/websocket/" + this.activityThoughtId + "/" + userId,
+      url: getApp().globalData.webSocketHost + "/websocket/" + this.activityThoughtId + "/" + userId,
       //仅为示例，并非真实接口地址。  第一个参数是活动笔记的ID 第二个是用户ID
       complete: () => {
       }
@@ -168,18 +166,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_vendor.t($data.text1),
     g: common_vendor.t($data.text2),
     h: common_vendor.t($data.text3),
-    i: $data.avatarUrl1,
-    j: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
-    k: $data.avatarUrl2,
-    l: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
-    m: $data.avatarUrl2,
-    n: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
-    o: common_vendor.p({
-      text: 123456
-    }),
-    p: common_vendor.f($data.commentsarr, (comment, index, i0) => {
+    i: common_vendor.f($data.commentsarr, (comment, index, i0) => {
       return {
-        a: "b883b432-1-" + i0,
+        a: "b883b432-0-" + i0,
         b: common_vendor.p({
           text: comment.text,
           avatarUrl: comment.avatarUrl,
@@ -188,10 +177,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         c: index
       };
     }),
-    q: common_vendor.o((...args) => $options.handleKey && $options.handleKey(...args)),
-    r: common_vendor.o((...args) => $options.handleEnterKey && $options.handleEnterKey(...args)),
-    s: $data.text,
-    t: common_vendor.o(($event) => $data.text = $event.detail.value)
+    j: common_vendor.o((...args) => $options.handleKey && $options.handleKey(...args)),
+    k: common_vendor.o((...args) => $options.handleEnterKey && $options.handleEnterKey(...args)),
+    l: $data.text,
+    m: common_vendor.o(($event) => $data.text = $event.detail.value)
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/activity/activityPage/activityPage.vue"]]);

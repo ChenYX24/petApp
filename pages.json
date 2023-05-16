@@ -216,6 +216,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/videoChat/videoChat",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"
