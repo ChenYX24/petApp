@@ -14,10 +14,21 @@ const _sfc_main = {
       this.city = "未知";
     }
   },
+  mounted() {
+    const firstImage = JSON.parse(common_vendor.wx$1.getStorageSync("firstImage"));
+    this.imageSrcArr.push(firstImage);
+    common_vendor.wx$1.setStorageSync("imageSrcArr", JSON.stringify(this.imageSrcArr));
+  },
+  onShow() {
+    const imageSrcArr = JSON.parse(common_vendor.wx$1.getStorageSync("imageSrcArr"));
+    this.imageSrcArr = imageSrcArr || [];
+  },
   data() {
     return {
       tab: "",
       src: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/dog.png",
+      src1: "/static//activity/柴犬.jpg",
+      imageSrcArr: [],
       tag: ["春日派对", "夏日对派"],
       navH: null,
       city: "未知"
@@ -41,25 +52,33 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.t($data.city),
     b: $data.navH + "px",
-    c: common_vendor.p({
-      imageSrc: $data.src,
-      tag: $data.tag
+    c: common_vendor.f($data.imageSrcArr, (imagesrc, index, i0) => {
+      return {
+        a: "da48f91d-0-" + i0,
+        b: common_vendor.p({
+          imageSrc: imagesrc,
+          tag: $data.tag
+        }),
+        c: index
+      };
     }),
     d: common_vendor.p({
-      imageSrc: $data.src
+      imageSrc: $data.src1,
+      tag: $data.tag
     }),
     e: common_vendor.p({
-      imageSrc: $data.src
-    }),
-    f: common_vendor.p({
       imageSrc: $data.src,
       tag: $data.tag
+    }),
+    f: common_vendor.p({
+      imageSrc: $data.src
     }),
     g: common_vendor.p({
       imageSrc: $data.src
     }),
     h: common_vendor.p({
-      imageSrc: $data.src
+      imageSrc: $data.src,
+      tag: $data.tag
     }),
     i: common_vendor.p({
       imageSrc: $data.src
@@ -68,6 +87,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       imageSrc: $data.src
     }),
     k: common_vendor.p({
+      imageSrc: $data.src
+    }),
+    l: common_vendor.p({
+      imageSrc: $data.src
+    }),
+    m: common_vendor.p({
       activeTab: $data.tab
     })
   };

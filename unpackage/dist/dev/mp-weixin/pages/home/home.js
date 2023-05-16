@@ -132,7 +132,7 @@ const _sfc_main = {
                   const code = loginRes.code;
                   console.log(code);
                   common_vendor.index.request({
-                    url: "https://mock.apifox.cn/m1/2440038-0-default/user/login",
+                    url: "http://localhost:88/user/login",
                     method: "GET",
                     data: {
                       code
