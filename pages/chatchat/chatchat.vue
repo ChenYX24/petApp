@@ -13,7 +13,12 @@
           'with-margin': shouldAddMargin(index, message.isMine)
         }"
       >
-        {{ message.content }}
+         <template v-if="message.type === 'text'">
+           {{ message.content }}
+         </template>
+         <template v-else-if="message.type === 'image'">
+           <image :src="message.content" mode="aspectFill" />
+         </template>
       </view>
     </view>
 
@@ -101,7 +106,8 @@ export default {
 	  const newMessage = {
 		content: this.messageText,
 		senderId: this.clientId,// 添加senderId字段
-		isMine:true
+		isMine:true,
+		type:'text'
 	  };
 
 	  this.messages.push(newMessage);
@@ -121,10 +127,46 @@ export default {
       const previousMessage = this.messages[index - 1];
       return previousMessage.isMine !== isMine;
     },
-    chooseImage() {
-      // 选择图片的逻辑
-      // 使用uni-app的API获取用户选择的图片，并将其赋值给selectedImage变量
-    },
+	chooseImage() {
+		  const fileInput = document.createElement('input');
+		  fileInput.type = 'file';
+		  fileInput.accept = 'image/*';
+		  fileInput.addEventListener('change', (event) => {
+		    const imageFile = event.target.files[0];
+		    this.sendImage(imageFile);
+		  });
+		  fileInput.click();
+		},
+	sendImage(imageFile) {
+		
+	  if (!imageFile) {
+	    console.error('未选择图片文件');
+	    return;
+	  }
+	  const reader = new FileReader();
+	  reader.onload = (event) => {
+	    const imageData =  event.target.result;;
+	    const imageMessage = {
+	      type: 'image',
+	      content: imageData,
+	      senderId: this.clientId,
+	      isMine: true
+	    };
+	    // 将图片消息发送给服务器
+	    if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+	      this.socket.send(JSON.stringify(imageMessage));
+	    } else {
+	      console.error('WebSocket连接未建立或已关闭');
+	    }
+	
+	    // 将图片消息添加到自己的消息列表中
+	    this.messages.push(imageMessage);
+	  };
+	  reader.onerror = (error) => {
+	    console.error('读取图片文件失败:', error);
+	  };
+	  reader.readAsDataURL(imageFile);
+	},
     startCall() {
       // 开始通话的逻辑
       // 根据你选择的音视频通信组件或第三方插件的API来实现通话功能
