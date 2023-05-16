@@ -1,10 +1,9 @@
 <template>
   <view class="topBackground">
     <!-- 页面内容 -->
-
+			<nav-bar :text="Text"></nav-bar>
 
     <view class="Background">
-			<nav-bar :text="Text"></nav-bar>
 <!-- 		<view class="login" @tap="wxLogin">
 			登陆
 		</view> -->
