@@ -31,7 +31,7 @@
 			this.sex=uni.getStorageSync('sex')
 			this.city=uni.getStorageSync('city')
 			let birthday=new Date(uni.getStorageSync('birthday'))
-			this.dataOb={'name':this.name,'breed':this.breed,'sex':this.sex,'city':this.city,'birthday':birthday,'Image':this.Image}
+			this.dataOb={'name':this.name,'breed':this.breed,'sex':this.sex,'city':this.city,'birthday':birthday,'Image':uni.getStorageSync("petImageMatting")}
 		},
 		data() {
 			return {
@@ -70,6 +70,13 @@
 				  //#ifndef MP-WEIXIN
 				  localStorage.setItem('idCardList', this.idCardList);
 				  //#endif
+				  
+				  //执行保存宠物信息的逻辑
+				  console.log(this.dataOb)
+				  
+
+				  
+				  
 					  uni.reLaunch({
 					   url: `/pages/petList/petList`,
 					  })  

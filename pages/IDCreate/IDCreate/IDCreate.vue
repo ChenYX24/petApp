@@ -37,7 +37,16 @@
 				Nav:"/pages/home/home?tab=home",
 				placeholderText:"#cea697",
 				inputValue: '',
-				imageSrc: ''
+				imageSrc: '',
+				uuid:'',//伪随机数
+				
+				
+				
+				host:'',
+				signature:'',
+				ossAccessKeyId:'',
+				policy:"",
+				securityToken:""
 			};
 		},
 		 computed: {
@@ -46,7 +55,87 @@
 		    }
 		  },
 		  methods:{
-			  nextpage(){
+			  generateUUID() {
+				let d = new Date().getTime();
+				if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+				d += performance.now(); // use high-precision timer if available
+				}
+				const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+				const r = (d + Math.random() * 16) % 16 | 0;
+				d = Math.floor(d / 16);
+				return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+				});
+				this.uuid = uuid;
+			  },
+			  async nextpage(){
+				  //在按下确定的时候  保存到OSS上
+				  console.log(this.imageSrc)
+				  //有宠物头像才进行上传
+				if(this.imageSrc!=""){
+					const that = this;
+					try {
+					  const signatureRes = await uni.request({
+						url: getApp().globalData.host+"/thirdParty/getUploadSignature/",
+						method: "GET",
+						header: {
+						  Authorization: uni.getStorageSync("token")
+						}
+					  });
+					  console.log(signatureRes);
+					  this.host = signatureRes.data.data.host;
+					  this.signature = signatureRes.data.data.signature;
+					  this.ossAccessKeyId = signatureRes.data.data.ossAccessKeyId;
+					  this.policy = signatureRes.data.data.policy;
+					  this.securityToken = signatureRes.data.data.securityToken;
+					} catch (err) {
+					  console.log("请求签名失败", err);
+					}
+					const filePath = this.imageSrc;
+					const date = new Date();
+					const year = date.getFullYear();
+					const month = (date.getMonth() + 1).toString().padStart(2, "0");
+					const day = date.getDate().toString().padStart(2, "0");
+					const formattedDate = `${year}-${month}-${day}`;
+					this.generateUUID();//生成伪随机数
+					const key = `${formattedDate}/`+this.uuid+".jpg";
+					console.log(that.host + key);
+					uni.uploadFile({
+					  url: that.host,
+					  //仅为示例，非真实的接口地址
+					  filePath,
+					  name: "file",
+					  formData: {
+						key,
+						policy: that.policy,
+						OSSAccessKeyId: that.ossAccessKeyId,
+						signature: that.signature
+						// 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
+					  },
+					  success: (uploadFileRes) => {
+						console.log(uploadFileRes);
+						if (uploadFileRes.statusCode === 204) {
+						  console.log("上传成功");
+						  console.log(that.host + "/"+key);
+						  var petImage=that.host + "/"+key;
+						  
+						  
+						  //设置宠物的头像地址
+						  //#ifdef MP-WEIXIN
+						  wx.setStorageSync('petImage', petImage);
+						  //#endif
+						  //#ifndef MP-WEIXIN
+						  localStorage.setItem('petImage', petImage)
+						  //#endif
+						  
+						}
+					  },
+					  fail: function(err) {
+						console.log(that.filePath);
+					  }
+					});
+				}
+
+				
 				  if(this.isActive){
 					  //#ifdef MP-WEIXIN
 					  wx.setStorageSync('petName', this.inputValue);
@@ -131,7 +220,8 @@
 			  //         }
 			  //       });
 			  //     },
-		  }
+		  },
+
 	}
 </script>
 

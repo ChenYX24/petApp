@@ -41,6 +41,7 @@ const _sfc_main = {
         this.text2 = res.data.user.birthday;
         this.text3 = res.data.user.sex;
         this.text4 = res.data.user.city;
+        this.imageSrc = res.data.user.backgroundImage;
       }
     });
   },
@@ -70,7 +71,7 @@ const _sfc_main = {
         },
         success: (res) => {
           console.log(res.data);
-          common_vendor.index.setStorageSync("nickName", this.inputValue);
+          common_vendor.index.setStorageSync("avatarUrl", this.imageSrc);
           common_vendor.index.setStorageSync("nickName", this.inputValue);
         },
         complete() {

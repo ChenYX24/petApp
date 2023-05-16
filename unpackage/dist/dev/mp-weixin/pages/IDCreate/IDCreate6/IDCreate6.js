@@ -62,14 +62,42 @@ const _sfc_main = {
       const days = Math.floor(diff / 864e5);
       return days;
     },
-    nextpage() {
+    async nextpage() {
       if (this.isActive) {
         console.log(this.date);
         wx.setStorageSync("homeday", this.date);
-        common_vendor.index.navigateTo({
-          url: `/pages/IDCreate/IDCreate7/IDCreate7`
-        });
       }
+      await common_vendor.index.request({
+        url: getApp().globalData.host + "/pet/save/",
+        method: "POST",
+        data: {
+          "userId": common_vendor.index.getStorageSync("userId"),
+          "age": common_vendor.index.getStorageSync("breed"),
+          "weight": "",
+          "address": common_vendor.index.getStorageSync("city"),
+          "imageMatting": "",
+          "petName": common_vendor.index.getStorageSync("petName"),
+          "isSterilization": common_vendor.index.getStorageSync("xx"),
+          "dateOfArrival": common_vendor.index.getStorageSync("homeday"),
+          "sex": common_vendor.index.getStorageSync("sex"),
+          "petPhoto": common_vendor.index.getStorageSync("petImage"),
+          "birthday": common_vendor.index.getStorageSync("birthday"),
+          "petType": ""
+        },
+        header: {
+          "Content-Type": "application/json",
+          "Authorization": common_vendor.index.getStorageSync("token")
+        },
+        success: (res) => {
+          console.log(res.data.pet.imageMatting);
+          wx.setStorageSync("petImageMatting", res.data.pet.imageMatting);
+        },
+        complete: () => {
+          common_vendor.index.navigateTo({
+            url: `/pages/IDCreate/IDCreate7/IDCreate7`
+          });
+        }
+      });
     }
   }
 };

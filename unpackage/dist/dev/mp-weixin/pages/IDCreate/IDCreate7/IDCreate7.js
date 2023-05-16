@@ -13,7 +13,7 @@ const _sfc_main = {
     this.sex = common_vendor.index.getStorageSync("sex");
     this.city = common_vendor.index.getStorageSync("city");
     let birthday = new Date(common_vendor.index.getStorageSync("birthday"));
-    this.dataOb = { "name": this.name, "breed": this.breed, "sex": this.sex, "city": this.city, "birthday": birthday, "Image": this.Image };
+    this.dataOb = { "name": this.name, "breed": this.breed, "sex": this.sex, "city": this.city, "birthday": birthday, "Image": common_vendor.index.getStorageSync("petImageMatting") };
   },
   data() {
     return {
@@ -43,6 +43,7 @@ const _sfc_main = {
         this.idCardList.push(this.dataOb);
       }
       wx.setStorageSync("idCardList", this.idCardList);
+      console.log(this.dataOb);
       common_vendor.index.reLaunch({
         url: `/pages/petList/petList`
       });
