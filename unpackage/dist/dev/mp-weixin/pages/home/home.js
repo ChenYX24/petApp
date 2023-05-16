@@ -165,6 +165,11 @@ const _sfc_main = {
         });
       }
     },
+    goChat() {
+      common_vendor.index.navigateTo({
+        url: "/pages/chat/chat"
+      });
+    },
     goMake() {
       common_vendor.index.navigateTo({
         url: "/pages/makeIcon/makeIcon"
@@ -195,9 +200,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.o(($event) => $options.customTap(index), index)
       };
     }),
-    f: common_vendor.o((...args) => $options.goMake && $options.goMake(...args)),
-    g: common_vendor.o((...args) => $options.goCollect && $options.goCollect(...args)),
-    h: common_vendor.p({
+    f: common_vendor.o((...args) => $options.goChat && $options.goChat(...args)),
+    g: common_vendor.o((...args) => $options.goMake && $options.goMake(...args)),
+    h: common_vendor.o((...args) => $options.goCollect && $options.goCollect(...args)),
+    i: common_vendor.p({
       activeTab: $data.tab
     })
   };

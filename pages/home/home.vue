@@ -29,6 +29,14 @@
 		      </view>
 		      
 		    </view>
+		<view class="icon chat" @tap="goChat">
+			<image src="/static/home/chat.png" class="collectImg"></image>
+			<view class="collectText">
+				<view class="line2">进入</view>
+				<view class="line2">宠主聊天室</view>
+				<view class="line2">《</view>
+			</view>
+		</view>
 		<view class="icon make" @tap="goMake">
 			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/dog.png" class="makeImg"></image>
 			  <view class="makeText">
@@ -237,6 +245,11 @@ export default {
 		}
 		
 	},
+	goChat(){
+		uni.navigateTo({
+			url:'/pages/chat/chat'
+		})
+	},
 	goMake(){
 		uni.navigateTo({
 			url:"/pages/makeIcon/makeIcon"
@@ -351,7 +364,7 @@ export default {
 	
 .Background{
     width: 100%;
-    height: calc(100vh - 30vh);
+    height: calc(100vh - 16vh);
     background-color: #fffdf7;
     position: relative;
     top: 30vh;
@@ -381,7 +394,20 @@ export default {
 	float: none;
 	margin: 0 auto;
 }
+.icon.chat{
+	margin-top: 30px;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: row;
+		width: 332px;
+		height: 165px;
+		opacity: 1;
+		border-radius: 25px;
+		background: linear-gradient(270deg, rgba(255, 243, 202, 1) 0%, rgba(255, 253, 247, 1) 100%);
+		box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
+}
 .icon.make{
+	margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
     width: 332px;
@@ -394,15 +420,15 @@ export default {
 	}
 .icon.collect{
 	margin-top: 20px;
+	margin-bottom: 30px;
     display: flex;
 	flex-direction: row;
-		width: 332px;
-		height: 165px;
-		opacity: 1;
-		border-radius: 25px;
-		background: linear-gradient(270deg, rgba(255, 243, 202, 1) 0%, rgba(255, 253, 247, 1) 100%);
-		box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
-
+	width: 332px;
+	height: 165px;
+	opacity: 1;
+	border-radius: 25px;
+	background: linear-gradient(270deg, rgba(255, 243, 202, 1) 0%, rgba(255, 253, 247, 1) 100%);
+	box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
 	}
 .makeText{
 	margin-top: 2%;
