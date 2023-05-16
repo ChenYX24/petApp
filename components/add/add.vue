@@ -13,7 +13,7 @@
 			<text class="Text">新建宠物身份证</text>
 		</view>
 		<view class="imgAndText">
-			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/add/addPetIcon.png" mode="widthFix" class="addImg face imgNote"></image>
+			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/add/addPetIcon.png" mode="widthFix" class="addImg face imgNote" @tap="icon"></image>
 			<text class="Text notbookT">新建萌宠表情</text>
 		</view>
 	</view>
@@ -34,6 +34,12 @@
 			},
 		},
 		methods: {
+			icon(){
+				this.$emit('updateAdd');
+				uni.navigateTo({
+					 url: `/pages/makeIcon/makeIcon`,
+				})
+			},
 			IDCreate() {
 				this.$emit('updateAdd');
 				uni.navigateTo({

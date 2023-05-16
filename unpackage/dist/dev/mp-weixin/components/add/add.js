@@ -12,6 +12,12 @@ const _sfc_main = {
     }
   },
   methods: {
+    icon() {
+      this.$emit("updateAdd");
+      common_vendor.index.navigateTo({
+        url: `/pages/makeIcon/makeIcon`
+      });
+    },
     IDCreate() {
       this.$emit("updateAdd");
       common_vendor.index.navigateTo({
@@ -40,8 +46,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: common_vendor.o((...args) => $options.addNote && $options.addNote(...args)),
     b: common_vendor.o((...args) => $options.ActivityThoughtCreate && $options.ActivityThoughtCreate(...args)),
     c: common_vendor.o((...args) => $options.IDCreate && $options.IDCreate(...args)),
-    d: $props.isShow ? 1 : ""
+    d: common_vendor.o((...args) => $options.icon && $options.icon(...args)),
+    e: $props.isShow ? 1 : ""
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/components/add/add.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/add/add.vue"]]);
 wx.createComponent(Component);
