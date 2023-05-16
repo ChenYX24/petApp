@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "编辑资料",
+      Text: "\u7F16\u8F91\u8D44\u6599",
       inputValue: "",
       text1: "",
       Nav: "/pages/home/home?tab=home",
@@ -25,7 +25,7 @@ const _sfc_main = {
   },
   created() {
     common_vendor.index.request({
-      url: "http://43.140.198.154:88/user/info/",
+      url: getApp().globalData.host + "/user/info/",
       method: "GET",
       data: {
         "userId": common_vendor.index.getStorageSync("userId")
@@ -48,11 +48,8 @@ const _sfc_main = {
     chooseImage() {
       common_vendor.index.chooseImage({
         count: 1,
-        // 最多选择的图片数量，此处为1
         sizeType: ["compressed"],
-        // 压缩图片
         sourceType: ["album", "camera"],
-        // 可以从相册选择或拍照
         success: (res) => {
           this.imageSrc = res.tempFilePaths[0];
         }
@@ -60,7 +57,7 @@ const _sfc_main = {
     },
     buttonClicked() {
       common_vendor.index.request({
-        url: "http://43.140.198.154:88/user/update/",
+        url: getApp().globalData.host + "/user/update/",
         method: "POST",
         data: {
           "userId": common_vendor.index.getStorageSync("userId"),
@@ -115,5 +112,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     s: common_vendor.o((...args) => $options.buttonClicked && $options.buttonClicked(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/infoEdit/infoEdit.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/infoEdit/infoEdit.vue"]]);
 wx.createPage(MiniProgramPage);

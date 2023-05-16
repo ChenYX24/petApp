@@ -14,7 +14,7 @@ const _sfc_main = {
   },
   computed: {
     heartIcon() {
-      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/点赞.png";
+      return this.isHeartActive ? "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/myActivity/redHeart.png" : "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/\u70B9\u8D5E.png";
     }
   },
   methods: {
@@ -49,5 +49,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     g: common_vendor.o((...args) => $options.toggleHeart && $options.toggleHeart(...args))
   });
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/components/myActivity/myActivity.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/myActivity/myActivity.vue"]]);
 wx.createComponent(Component);

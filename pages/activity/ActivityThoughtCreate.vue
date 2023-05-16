@@ -86,7 +86,7 @@
 		mounted(){
 				//钩子函数
 				//在页面加载完成的时候，获取后端的活动
-				this.activities=['code'];
+				this.activities=['春日派对'];
 		},
 		methods:{
 			generateUUID() {
@@ -165,7 +165,7 @@
 			awaituploadFrom(){
 				//这里写死了  防止报错
 				uni.request({
-				    url: 'http://43.140.198.154:88/activityThought/save',
+				    url: getApp().globalData.host+'/activityThought/save',
 					method:'POST',
 				    data: {
 				        content: this.inputValue,
@@ -223,7 +223,7 @@
 					var signatureRes= {};
 					//下面两个也有先后顺序
 					try{
-						const a=await request('http://43.140.198.154:88/thirdParty/getUploadSignature/',{});
+						const a=await request(getApp().globalData.host+'/thirdParty/getUploadSignature/',{});
 						signatureRes=a;
 					}catch(err){
 						console.error(err);

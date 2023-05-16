@@ -11,25 +11,24 @@ const _sfc_main = {
   data() {
     return {
       Nav: "/pages/notebook/notebook",
-      Text: "新建朋友圈",
+      Text: "\u65B0\u5EFA\u670B\u53CB\u5708",
       activities: [
         "coding",
         "coding",
         "coding"
       ],
-      currentActivity: "请选择你参加的活动",
+      currentActivity: "\u8BF7\u9009\u62E9\u4F60\u53C2\u52A0\u7684\u6D3B\u52A8",
       tureActivity: "xx",
       inputValue: "",
       imageSrc: [],
       isChooseLocation: false,
-      trueLocation: "您所在位置",
+      trueLocation: "\u60A8\u6240\u5728\u4F4D\u7F6E",
       imageUrls: [],
       uuid: ""
-      //伪随机数
     };
   },
   mounted() {
-    this.activities = ["code"];
+    this.activities = ["\u6625\u65E5\u6D3E\u5BF9"];
   },
   methods: {
     generateUUID() {
@@ -63,11 +62,8 @@ const _sfc_main = {
     chooseImage() {
       common_vendor.index.chooseImage({
         count: 9,
-        // 最多选择的图片数量，此处为1
         sizeType: ["compressed"],
-        // 压缩图片
         sourceType: ["album", "camera"],
-        // 可以从相册选择或拍照
         success: (res) => {
           this.imageSrc.push(...res.tempFilePaths);
         }
@@ -92,7 +88,6 @@ const _sfc_main = {
             policy,
             OSSAccessKeyId: ossAccessKeyId,
             signature
-            // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
           },
           success: (uploadFileRes) => {
             this.imageUrls.push(host + "/" + key);
@@ -107,12 +102,11 @@ const _sfc_main = {
     },
     awaituploadFrom() {
       common_vendor.index.request({
-        url: "http://43.140.198.154:88/activityThought/save",
+        url: getApp().globalData.host + "/activityThought/save",
         method: "POST",
         data: {
           content: this.inputValue,
           data: "['1','2']",
-          //
           location: this.trueLocation,
           activityName: this.currentActivity,
           userId: 1
@@ -134,15 +128,15 @@ const _sfc_main = {
     },
     async pushActivityThought() {
       const firstImage = this.imageSrc[0];
-      common_vendor.wx$1.setStorageSync("firstImage", JSON.stringify(firstImage));
-      common_vendor.wx$1.setStorageSync("imageSrc", this.imageSrc);
-      common_vendor.wx$1.setStorageSync("inputValue", this.inputValue);
+      wx.setStorageSync("firstImage", JSON.stringify(firstImage));
+      wx.setStorageSync("imageSrc", this.imageSrc);
+      wx.setStorageSync("inputValue", this.inputValue);
       common_vendor.index.navigateTo({
         url: "/pages/activity/activityPage/activityPage"
       });
       var signatureRes = {};
       try {
-        const a = await ThirdPartySDK_myApi.request("http://43.140.198.154:88/thirdParty/getUploadSignature/", {});
+        const a = await ThirdPartySDK_myApi.request(getApp().globalData.host + "/thirdParty/getUploadSignature/", {});
         signatureRes = a;
       } catch (err) {
         console.error(err);
@@ -162,12 +156,12 @@ const _sfc_main = {
       } catch (err) {
         console.error(err);
       }
-      console.log("正常执行");
+      console.log("\u6B63\u5E38\u6267\u884C");
     },
     onActivityChange(event) {
       const activityIndex = event.detail.value;
       this.currentActivity = this.activities[activityIndex];
-      if (this.currentActivity !== "请选择你参加的活动") {
+      if (this.currentActivity !== "\u8BF7\u9009\u62E9\u4F60\u53C2\u52A0\u7684\u6D3B\u52A8") {
         this.trueActivity = this.currentActivity;
       }
     },
@@ -237,5 +231,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     r: common_vendor.o($options.getTrueLocation)
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/activity/ActivityThoughtCreate.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/activity/ActivityThoughtCreate.vue"]]);
 wx.createPage(MiniProgramPage);

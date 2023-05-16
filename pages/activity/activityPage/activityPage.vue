@@ -25,7 +25,7 @@
 				</view>
              <view class="scroll-view-content" >
 				 
-			   <view class="commentForBlog">
+<!-- 			   <view class="commentForBlog">
 			   	  <view class="UserCommentImage1" @tap="getUser">
 			   	    <image :src="avatarUrl1" class="UseImage1"></image>
 			   	  </view>
@@ -52,11 +52,11 @@
 			   				  		<text class="UserName">用户10002</text>
 			   				  		<text class="UserComment">可以一起去吖~</text>				
 			   				  </view>
-			   </view>
+			   </view> -->
 			   
 			   
 			   
-			   <comments :text="123456"></comments>
+			   
 			  <view v-for="(comment, index) in commentsarr" :key="index">
 			    <comments :text="comment.text" :avatarUrl="comment.avatarUrl" :username="comment.username"></comments>
 			  </view>
@@ -83,7 +83,7 @@
         },
 		data() {
 			return {
-				activityThoughtId:'1',
+				activityThoughtId:'3',
 				text:'',
 				Text:'新建朋友圈',
 				commentsarr: [],
@@ -155,7 +155,7 @@
 			  });
 			  //保存评论消息actionType
 			  uni.request({
-			      url: "http://localhost:88/interaction/comment/action?actionType="+"0"+"&commentText="+this.text+
+			      url: getApp().globalData.host+"/interaction/comment/action?actionType="+"0"+"&commentText="+this.text+
 				  "&activityThoughtId="+this.activityThoughtId+"&userId="+uni.getStorageSync("userId"),
 			  	  method:'POST',
 			      header: {
@@ -194,10 +194,11 @@
 			},
 		},
 		onLoad(){
+			console.log(getApp().globalData)
 			var that=this;
 			uni.request({
-			    url: "http://localhost:88/interaction/comment/listById/?activityThoughtId="+this.activityThoughtId,
-				  method:'GET',
+			    url: getApp().globalData.host+"/interaction/comment/listById?activityThoughtId="+this.activityThoughtId,
+				method:'GET',
 			    header: {
 					"Content-Type": 'application/json',
 					"Authorization": uni.getStorageSync("token")
@@ -215,8 +216,6 @@
 						this.commentsarr.push(comment)
 					}
 			        console.log(res);
-					console.log(this.commentsarr)
-					console.log(that.commentsarr)
 			    },
 			  fail: (res) => {
 				  console.log(res);
@@ -226,7 +225,7 @@
 		onShow() {
 			const userId =uni.getStorageSync('userId')
 			socket = uni.connectSocket({ 
-			            url: 'wss://localhost:15002/websocket/'+this.activityThoughtId+"/"+userId, //仅为示例，并非真实接口地址。  第一个参数是活动笔记的ID 第二个是用户ID
+			            url: getApp().globalData.webSocketHost+'/websocket/'+this.activityThoughtId+"/"+userId, //仅为示例，并非真实接口地址。  第一个参数是活动笔记的ID 第二个是用户ID
 			            complete: ()=> {}
 			        });
 			socket.onOpen(()=>{
