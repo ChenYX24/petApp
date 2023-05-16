@@ -4,7 +4,7 @@
 			<view class="back-container" @click="backToActivity">
 			  <image src="/static/activity/返回活动图.png" class="back"></image>
 			</view>
-			<view class="wechatImageWrapper" @tap="getUser">
+			<view class="wechatImageWrapper" @tap="toOtherHome(this.activityThoughtUserId)">
 			  <image :src="avatarUrl" class="wechatImage"></image>
 			</view>
 			 <view class="zhuanfa-container">
@@ -57,8 +57,8 @@
 			   
 			   
 			   
-			  <view v-for="(comment, index) in commentsarr" :key="index">
-			    <comments :text="comment.text" :avatarUrl="comment.avatarUrl" :username="comment.username"></comments>
+			  <view v-for="(comment, index) in commentsarr" :key="comment.userId" >
+			    <comments :text="comment.text" :avatarUrl="comment.avatarUrl" :username="comment.username" @tap="toOtherHome(comment.userId)"></comments>
 			  </view>
            </view>
 		   
@@ -83,7 +83,15 @@
         },
 		data() {
 			return {
+				//活动相关信息
 				activityThoughtId:'3',
+				activityThoughtUserId:'3',
+				activityThoughtUserName:"",
+				activityThoughtUserAvtarUrl:"",
+				
+				
+				
+				
 				text:'',
 				Text:'新建朋友圈',
 				commentsarr: [],
@@ -106,14 +114,21 @@
 		    this.initData()
 		  },
 		methods: {
+			toOtherHome(userId){
+				
+			  console.log(userId)
+			  uni.navigateTo({
+				url: '/pages/otherHome/otherHome?userId='+userId
+			  })
+			  
+				
+				
+				
+				
+			},
 			backToActivity(){
 				uni.navigateTo({
 					url:"/pages/activity/activity"
-				})
-			},
-			getUser(){
-				uni.navigateTo({
-					url:"/pages/home/home"
 				})
 			},
 			handleEnterKey() {
@@ -121,7 +136,8 @@
 			  const comment = {
 				text: this.text,
 				avatarUrl:uni.getStorageSync("avatarUrl"),
-				username:uni.getStorageSync("nickName")
+				username:uni.getStorageSync("nickName"),
+				userId:uni.getStorageSync("userId")
 			  };
 			  this.commentsarr.push(comment);
 				  
@@ -210,7 +226,8 @@
 						var comment={
 							text: arr[i].comment,
 							avatarUrl:arr[i].avatarUrl,
-							username:arr[i].username
+							username:arr[i].username,
+							userId:arr[i].userId
 						}
 						
 						this.commentsarr.push(comment)
@@ -245,9 +262,12 @@
 				if(msg.fromusername!=userId&&msg.textMessage!=undefined){
 					//说明这是别人发的消息  并且不是空的
 					
-					//还要获取别人的信息
+					//还要获取别人的信息  封装别人评论的comment
 					const comment = {
 						text:msg.textMessage,
+						avatarUrl:"arr[i].avatarUrl",
+						username:"arr[i].username",
+						userId:"arr[i].userId"
 					};
 					that.commentsarr.push(comment);
 				}

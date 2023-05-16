@@ -13,7 +13,7 @@ const _sfc_main = {
     },
     username: {
       type: String,
-      default: "团小萌"
+      default: "\u56E2\u5C0F\u840C"
     }
   },
   data() {
@@ -28,5 +28,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     d: common_vendor.t($props.text)
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/comments.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/comments.vue"]]);
 wx.createComponent(Component);

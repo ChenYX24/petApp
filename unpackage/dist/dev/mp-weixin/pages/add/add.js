@@ -12,18 +12,16 @@ const _sfc_main = {
   data() {
     return {
       tips: []
-      // 存储已经创建的组件实例
     };
   },
   methods: {
     createNewComponent() {
-      console.log("创建新组件");
+      console.log("\u521B\u5EFA\u65B0\u7EC4\u4EF6");
       const newComponent = new tip();
       this.tips.push(newComponent.$mount());
     }
   },
   metaInfo: {
-    // 页面标题
     title: "add"
   }
 };
@@ -42,7 +40,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: common_vendor.o((...args) => $options.createNewComponent && $options.createNewComponent(...args)),
     b: common_vendor.f(_ctx.components, (component, index, i0) => {
       return {
-        a: "2af107eb-0-" + i0,
+        a: "023b432e-0-" + i0,
         b: index
       };
     }),
@@ -51,5 +49,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/pages/add/add.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/add/add.vue"]]);
 wx.createPage(MiniProgramPage);

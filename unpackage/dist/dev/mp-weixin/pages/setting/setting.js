@@ -32,5 +32,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_vendor.o((...args) => $options.goLanguage && $options.goLanguage(...args))
   };
 }
+<<<<<<< HEAD
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-018cdf56"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/setting/setting.vue"]]);
+=======
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-018cdf56"], ["__file", "D:/uniapp/petApp/pages/setting/setting.vue"]]);
+>>>>>>> 13e6c8af8b2fc39a1d5ecdde4e07435f451bf23f
 wx.createPage(MiniProgramPage);

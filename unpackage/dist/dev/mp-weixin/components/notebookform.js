@@ -7,7 +7,7 @@ const _sfc_main = {
   },
   data() {
     return {
-      Text: "新建提醒/记录",
+      Text: "\u65B0\u5EFA\u63D0\u9192/\u8BB0\u5F55",
       inputValue: "",
       text1: "",
       text2: "",
@@ -15,10 +15,10 @@ const _sfc_main = {
       text4: "",
       leftSelected: true,
       rightSelected: false,
-      leftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png",
-      rightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png",
-      thirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png",
-      fourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_已选择.png"
+      leftImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
+      rightImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png",
+      thirdImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png",
+      fourthImageUrl: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u5DF2\u9009\u62E9.png"
     };
   },
   onShow() {
@@ -51,9 +51,9 @@ ${this.inputValue}`;
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.leftSelected) {
         this.leftImageUrl = this.thirdImageUrl;
-        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       } else {
-        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       }
     },
     selectRight() {
@@ -62,9 +62,9 @@ ${this.inputValue}`;
       this.isActive = this.leftSelected || this.rightSelected;
       if (this.rightSelected) {
         this.rightImageUrl = this.fourthImageUrl;
-        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png";
+        this.leftImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       } else {
-        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/选择_未选择.png";
+        this.rightImageUrl = "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/notebook/\u9009\u62E9_\u672A\u9009\u62E9.png";
       }
     }
   },
@@ -108,5 +108,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     y: common_vendor.o((...args) => $options.buttonClicked && $options.buttonClicked(...args))
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/components/notebookform.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/notebookform.vue"]]);
 wx.createComponent(Component);

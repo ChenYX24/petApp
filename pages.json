@@ -9,88 +9,88 @@
 			"navigationBarHidden": true
             
         },
-		{
-		    "path" : "pages/planet/planet",
-		    "style" :                                                                                    
-		    {
-				"navigationStyle": "custom"
-		    },
-		    "navigationBarHidden": true
-		}
+    	{
+    	    "path" : "pages/planet/planet",
+    	    "style" :                                                                                    
+    	    {
+    			"navigationStyle": "custom"
+    	    },
+    	    "navigationBarHidden": true
+    	}
         ,{
             "path" : "pages/activity/activity",
             "style" :                                                                                    
             {
-				"navigationStyle": "custom"
-				
+    			"navigationStyle": "custom"
+    			
             },
-			"navigationBarHidden": true
+    		"navigationBarHidden": true
         },
-		{
-			"path": "pages/home/home",
-			"style": 
-			{
-				"navigationStyle": "custom"
-			},
-			"navigationBarHidden": true
-		}
-		
+    	{
+    		"path": "pages/home/home",
+    		"style": 
+    		{
+    			"navigationStyle": "custom"
+    		},
+    		"navigationBarHidden": true
+    	}
+    	
         ,{
             "path" : "pages/add/add",
-			"style": 
-			{
-				"navigationStyle": "custom"
-			},
-			"navigationBarHidden": true
+    		"style": 
+    		{
+    			"navigationStyle": "custom"
+    		},
+    		"navigationBarHidden": true
             
         }
-		,{
+    	,{
             "path" : "pages/IDCreate/IDCreate/IDCreate",
-			"style": 
-			{
-				"navigationStyle": "custom"
-			},
-			"navigationBarHidden": true
+    		"style": 
+    		{
+    			"navigationStyle": "custom"
+    		},
+    		"navigationBarHidden": true
             
         }
-		
+    	
         ,{
             "path" : "pages/IDCreate/IDCreate2/IDCreate2",
-			"style": 
-			{
-				"navigationStyle": "custom"
-			},
-			"navigationBarHidden": true
+    		"style": 
+    		{
+    			"navigationStyle": "custom"
+    		},
+    		"navigationBarHidden": true
             
         }
         ,{
             "path" : "pages/IDCreate/IDCreate3/IDCreate3",
-			"style": 
-			{
-				"navigationStyle": "custom"
-			},
-			"navigationBarHidden": true
+    		"style": 
+    		{
+    			"navigationStyle": "custom"
+    		},
+    		"navigationBarHidden": true
             
         }
         ,{
             "path" : "pages/IDCreate/IDCreate4/IDCreate4",
-			"style": 
-			{
-				"navigationStyle": "custom"
-			},
-			"navigationBarHidden": true
+    		"style": 
+    		{
+    			"navigationStyle": "custom"
+    		},
+    		"navigationBarHidden": true
             
         }
         ,{
             "path" : "pages/IDCreate/IDCreate5/IDCreate5",
-			"style": 
-			{
-				"navigationStyle": "custom"
-			},
-			"navigationBarHidden": true
+    		"style": 
+    		{
+    			"navigationStyle": "custom"
+    		},
+    		"navigationBarHidden": true
             
         },
-		{
+    	{
             "path" : "pages/IDCreate/IDCreate6/IDCreate6",
             "style" :                                                                                    
             {
@@ -117,23 +117,23 @@
             }
             
         }
-		,{
-			"path" : "pages/activity/ActivityThoughtCreate",
-			"style" :                                                                                    
-			{
-			    "navigationBarTitleText": "",
-			    "enablePullDownRefresh": false
-			}
-			
-		}
-		,{
-			"path" : "components/chooseLocation",
-			"style" :                                                                                    
-			{
-			    "navigationBarTitleText": "",
-			    "enablePullDownRefresh": false
-			}
-		}
+    	,{
+    		"path" : "pages/activity/ActivityThoughtCreate",
+    		"style" :                                                                                    
+    		{
+    		    "navigationBarTitleText": "",
+    		    "enablePullDownRefresh": false
+    		}
+    		
+    	}
+    	,{
+    		"path" : "components/chooseLocation",
+    		"style" :                                                                                    
+    		{
+    		    "navigationBarTitleText": "",
+    		    "enablePullDownRefresh": false
+    		}
+    	}
        
         ,{
             "path" : "pages/IDCreate/IDCreate7/IDCreate7",
@@ -215,7 +215,17 @@
                 "enablePullDownRefresh": false
             }
             
+        },
+    	,{
+            "path" : "pages/otherHome/otherHome",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
         }
+
         ,{
             "path" : "pages/videoChat/videoChat",
             "style" :                                                                                    
@@ -225,6 +235,7 @@
             }
             
         }
+
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"
@@ -234,7 +245,7 @@
 		// "navigationBarTextStyle": "black",
 		// "navigationBarBackgroundColor": "#ffb776",
 		// "backgroundColor": "#ffb776"
-		
+
 	},
 		// "tabBar": {
 		// 	"color":"#ffffff",

@@ -95,7 +95,7 @@
 				    const days = Math.floor(diff / 86400000); // 将时间差的毫秒数转换为天数
 				    return days;
 				  },
-			  nextpage(){
+			  async nextpage(){
 				  if(this.isActive){
 					  console.log(this.date)
 					  //#ifdef MP-WEIXIN
@@ -104,10 +104,49 @@
 					  //#ifndef MP-WEIXIN
 					  localStorage.setItem('homeday', this.date);
 					  //#endif
-					  uni.navigateTo({
-					  	 url: `/pages/IDCreate/IDCreate7/IDCreate7`,
-					  })
 				  }
+				  
+				  
+				  //保存宠物的信息
+				  await uni.request({
+				      url: getApp().globalData.host+'/pet/save/',
+					  method:'POST',
+				      data: {	
+						"userId": uni.getStorageSync("userId"),
+						"age": uni.getStorageSync("breed"),
+						"weight": "",
+						"address": uni.getStorageSync("city"),
+						"imageMatting": "",
+						"petName": uni.getStorageSync("petName"),
+						"isSterilization": uni.getStorageSync("xx"),//1表示未绝育  2表示已经绝育
+						"dateOfArrival": uni.getStorageSync("homeday"),
+						"sex": uni.getStorageSync("sex"),//性别1表示男  2表示已经女
+						"petPhoto": uni.getStorageSync("petImage"),
+						"birthday": uni.getStorageSync("birthday"),
+						"petType": "",
+				      },
+				      header: {
+				  		"Content-Type": 'application/json',
+				  		"Authorization": uni.getStorageSync("token")
+				      },
+				      success: (res) => {
+				          console.log(res.data.pet.imageMatting);
+						  //#ifdef MP-WEIXIN
+						  wx.setStorageSync('petImageMatting', res.data.pet.imageMatting);
+						  //#endif
+						  //#ifndef MP-WEIXIN
+						  localStorage.setItem('petImageMatting', res.data.pet.imageMatting)
+						  //#endif
+				      },
+				  	  complete: () => {
+						  uni.navigateTo({
+						  	 url: `/pages/IDCreate/IDCreate7/IDCreate7`,
+						  })
+						  
+						  
+				  	  }
+				  });
+				  
 			  },
 		  }
 	}

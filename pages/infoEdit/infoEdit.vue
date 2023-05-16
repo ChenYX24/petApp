@@ -79,6 +79,7 @@
 						this.text2=res.data.user.birthday;
 						this.text3=res.data.user.sex;
 						this.text4=res.data.user.city;
+						this.imageSrc=res.data.user.backgroundImage;
 			        }
 			         
 			    });
@@ -114,7 +115,7 @@
 				        },
 				        success: (res) => {
 				            console.log(res.data);
-							uni.setStorageSync('nickName',this.inputValue);
+							uni.setStorageSync('avatarUrl',this.imageSrc);
 							uni.setStorageSync('nickName',this.inputValue);
 				        },
 						complete() {

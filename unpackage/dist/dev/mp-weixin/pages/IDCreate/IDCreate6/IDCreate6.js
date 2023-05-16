@@ -10,13 +10,13 @@ const _sfc_main = {
       format: true
     });
     return {
-      Text: "选择到家日期",
+      Text: "\u9009\u62E9\u5230\u5BB6\u65E5\u671F",
       placeholderText: "#cea697",
       inputValue: "",
       imageSrc: "",
       breed: "",
       name: "",
-      date: "请选择ta的到家日期",
+      date: "\u8BF7\u9009\u62E9ta\u7684\u5230\u5BB6\u65E5\u671F",
       trueDate: "xx",
       currentDate
     };
@@ -62,14 +62,42 @@ const _sfc_main = {
       const days = Math.floor(diff / 864e5);
       return days;
     },
-    nextpage() {
+    async nextpage() {
       if (this.isActive) {
         console.log(this.date);
-        common_vendor.wx$1.setStorageSync("homeday", this.date);
-        common_vendor.index.navigateTo({
-          url: `/pages/IDCreate/IDCreate7/IDCreate7`
-        });
+        wx.setStorageSync("homeday", this.date);
       }
+      await common_vendor.index.request({
+        url: getApp().globalData.host + "/pet/save/",
+        method: "POST",
+        data: {
+          "userId": common_vendor.index.getStorageSync("userId"),
+          "age": common_vendor.index.getStorageSync("breed"),
+          "weight": "",
+          "address": common_vendor.index.getStorageSync("city"),
+          "imageMatting": "",
+          "petName": common_vendor.index.getStorageSync("petName"),
+          "isSterilization": common_vendor.index.getStorageSync("xx"),
+          "dateOfArrival": common_vendor.index.getStorageSync("homeday"),
+          "sex": common_vendor.index.getStorageSync("sex"),
+          "petPhoto": common_vendor.index.getStorageSync("petImage"),
+          "birthday": common_vendor.index.getStorageSync("birthday"),
+          "petType": ""
+        },
+        header: {
+          "Content-Type": "application/json",
+          "Authorization": common_vendor.index.getStorageSync("token")
+        },
+        success: (res) => {
+          console.log(res.data.pet.imageMatting);
+          wx.setStorageSync("petImageMatting", res.data.pet.imageMatting);
+        },
+        complete: () => {
+          common_vendor.index.navigateTo({
+            url: `/pages/IDCreate/IDCreate7/IDCreate7`
+          });
+        }
+      });
     }
   }
 };
@@ -94,5 +122,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     k: common_vendor.o((...args) => $options.nextpage && $options.nextpage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9dcc425f"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/IDCreate/IDCreate6/IDCreate6.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9dcc425f"], ["__file", "D:/uniapp/petApp/pages/IDCreate/IDCreate6/IDCreate6.vue"]]);
 wx.createPage(MiniProgramPage);
