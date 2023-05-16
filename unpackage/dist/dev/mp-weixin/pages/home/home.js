@@ -165,7 +165,7 @@ const _sfc_main = {
     },
     goChat() {
       common_vendor.index.navigateTo({
-        url: "/pages/chat/chat"
+        url: "/pages/chatchat/chatchat"
       });
     },
     goMake() {

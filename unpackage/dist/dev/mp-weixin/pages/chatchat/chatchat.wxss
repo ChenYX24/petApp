@@ -1,0 +1,70 @@
+
+.mine {
+  align-self: flex-start;
+}
+.theirs {
+  align-self: flex-end;
+}
+.with-margin {
+  margin-top: 10px;
+}
+.chat-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.message-list {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.message-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.mine {
+  background-color: #e0f7ef;
+  align-self: flex-end;
+}
+.theirs {
+  background-color: #f1f1f1;
+  align-self: flex-start;
+}
+.input-area {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+.selected-image {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+.text-input {
+  flex: 1;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.send-button,
+.image-button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  background-color: #007aff;
+  color: #fff;
+}
+.call-button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  background-color: #ff3b30;
+  color: #fff;
+}
+

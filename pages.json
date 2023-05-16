@@ -208,7 +208,7 @@
             
         }
         ,{
-            "path" : "pages/chat/chat",
+            "path" : "pages/chatchat/chatchat",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
