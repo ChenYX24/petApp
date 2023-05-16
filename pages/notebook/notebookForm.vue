@@ -98,7 +98,7 @@
 			const indexInForm=this.indexInForm
 			
 			uni.request({
-			     url: 'http://43.140.198.154:88/reminder/save/',
+			     url: getApp().globalData.host+'/reminder/save/',
 			     method:'POST',
 			        data: {
 			           

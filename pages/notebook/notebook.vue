@@ -63,7 +63,7 @@ export default {
 	  					console.log(code);
 	  				    // 将登录凭证发送到后端服务器进行验证和处理
 	  				    uni.request({
-	  				      url: 'http://43.140.198.154:88/user/login',
+	  				      url: getApp().globalData.host+'/user/login',
 	  				      method: 'GET',
 	  				      data: {
 	  				        code: code
@@ -112,7 +112,7 @@ export default {
   	      tab: '',
   	      texts: ["提醒", "记录"],
   	      index: 0,
-  	      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
+  	      listremind: storedListRemind ? JSON.parse(storedListRemind) : ["写代码", "吃饭", "睡觉"],
   	      list: storedList ? JSON.parse(storedList) : ["写代码", "吃饭饭", "睡觉觉"],
   	      isshow: false
   	    }

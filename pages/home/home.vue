@@ -162,7 +162,7 @@ export default {
 					  //将获取的信息上传到后端的服务器中
 					  
 					  uni.request({
-					      url: 'http://43.140.198.154:88/user/update/',
+					      url: getApp().globalData.host+'/user/update/',
 					  	  method:'POST',
 					      data: {
 					        userId: uni.getStorageSync('userId'),
@@ -204,7 +204,7 @@ export default {
 							console.log(code);
 						    // 将登录凭证发送到后端服务器进行验证和处理
 						    uni.request({
-						      url: 'http://localhost:88/user/login',
+						      url: getApp().globalData.host+'/user/login',
 						      method: 'GET',
 						      data: {
 						        code: code

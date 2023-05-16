@@ -96,7 +96,15 @@ export default {
         //#endif
       
         // 将第一个元素添加到数组中
-        this.imageSrcArr.push(firstImage);
+		if(!this.imageSrcArr.includes(firstImage)){
+			//如果不存在才加
+			//正规的图片的ID是唯一的
+			this.imageSrcArr.push(firstImage);
+			
+		}
+
+		
+		// firstImage=undefined;
       
         // 存储图像数组到本地
         //#ifdef MP-WEIXIN

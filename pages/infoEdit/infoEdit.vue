@@ -63,7 +63,7 @@
 		created() {
 			//获取信息进行回显
 			uni.request({
-			     url: 'http://43.140.198.154:88/user/info/',
+			     url: getApp().globalData.host+'/user/info/',
 			     method:'GET',
 			        data: {
 			             "userId": uni.getStorageSync('userId'),
@@ -101,7 +101,7 @@
 				
 				
 				uni.request({
-				     url: 'http://43.140.198.154:88/user/update/',
+				     url: getApp().globalData.host+'/user/update/',
 				     method:'POST',
 				        data: {
 				             "userId": uni.getStorageSync('userId'),
