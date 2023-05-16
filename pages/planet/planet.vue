@@ -27,9 +27,15 @@
 		</view>
 		
 		<view class="advantage">
-			<text >加入星球的四点好处~
+			<text>尊敬的宠物主人：\n\n
+			您好！感谢您抽出时间阅读这封信。我们是一款致力于提供全方位服务的宠物APP，我们相信，您的宠物是您生活中最为重要的事物之一，因此我们想通过这样一个社群，为您和您的宠物提供更好、更全面的服务。\n\n
+			我们的社群有许多优势与特色，让我们帮您介绍一下：\n\n
+			1. 每日实时更新优惠、降价、团购链接。我们了解您和您的宠物对购物的需求，因此我们一直在不断地寻找并为您提供更好的购物方案，希望通过我们的社群，您和您的宠物能够更加舒适地享受生活。\n\n
+			2. 新品/试用装免费领取。相信各位宠物主人都追求更多的选择，因此我们定期推出宠物市场中的最新产品及试用装，并且在社群中向您提供免费领取的机会，希望您和您的宠物可以一同体验最新、最优质的产品。\n\n
+			3. 抢先一步报名人宠活动。我们为您和您的宠物定期举办不同的活动，比如宠物健康讲座、高质量海外宠物游等等，通过我们的社群，您能够第一时间获取活动信息并报名参加，与其他宠物主人一起共享有趣的宠物生活。\n\n
+			4. 宠主人交流论坛。除了上述优势之外，我们还为您打造了一个全新的宠物主人交流论坛，您可以与其他宠物主人交流心得
 			</text>
-			xxxxxxxxxxxxxxxxxxxxxx
+			
 		</view>
 
     <!-- 引用自定义tabbar组件 -->
@@ -123,16 +129,20 @@ export default {
 	
 	width: 90%;
     height: 80vh;
-    background-color: #efdbd0;
+
     position: relative;
     top: 5.5vh;
 	color: #cea697;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-    box-shadow: 0px -20px 10px -4px rgb(239 219 208 / 50%);
+
     flex-direction: column;
     align-items: center;
-
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 5px 5px 12px 0px rgba(237, 216, 200, 0.5);
+	text{
+		width: 80%;   
+	}
 }
 .inputBox{
 		margin-top: 0px;

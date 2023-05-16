@@ -22,7 +22,8 @@
     "pages/fovIcon/fovIcon",
     "pages/infoEdit/infoEdit",
     "pages/settingLanguage/settingLanguage",
-    "pages/activity/activityPage/activityPage"
+    "pages/activity/activityPage/activityPage",
+    "pages/chat/chat"
   ],
   "window": {
     "navigationStyle": "custom"

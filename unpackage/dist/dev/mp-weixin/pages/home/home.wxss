@@ -91,7 +91,7 @@
 }
 .Background.data-v-07e72d3c {
   width: 100%;
-  height: calc(100vh - 30vh);
+  height: calc(100vh - 16vh);
   background-color: #fffdf7;
   position: relative;
   top: 30vh;
@@ -121,7 +121,20 @@
   float: none;
   margin: 0 auto;
 }
+.icon.chat.data-v-07e72d3c {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 332px;
+  height: 165px;
+  opacity: 1;
+  border-radius: 25px;
+  background: linear-gradient(270deg, #fff3ca 0%, #fffdf7 100%);
+  box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
+}
 .icon.make.data-v-07e72d3c {
+  margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   width: 332px;
@@ -134,6 +147,7 @@
 }
 .icon.collect.data-v-07e72d3c {
   margin-top: 20px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: row;
   width: 332px;
