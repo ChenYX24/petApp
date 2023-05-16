@@ -9,6 +9,9 @@ const _sfc_main = {
   data() {
     return {
       activityThoughtId: "3",
+      activityThoughtUserId: "3",
+      activityThoughtUserName: "",
+      activityThoughtUserAvtarUrl: "",
       text: "",
       Text: "\u65B0\u5EFA\u670B\u53CB\u5708",
       commentsarr: [],
@@ -38,11 +41,6 @@ const _sfc_main = {
     backToActivity() {
       common_vendor.index.navigateTo({
         url: "/pages/activity/activity"
-      });
-    },
-    getUser() {
-      common_vendor.index.navigateTo({
-        url: "/pages/home/home"
       });
     },
     handleEnterKey() {
@@ -162,7 +160,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.o((...args) => $options.backToActivity && $options.backToActivity(...args)),
     b: $data.avatarUrl,
-    c: common_vendor.o((...args) => $options.getUser && $options.getUser(...args)),
+    c: common_vendor.o(($event) => $options.toOtherHome(this.activityThoughtUserId)),
     d: common_vendor.f($data.swiperList, (item, index, i0) => {
       return {
         a: item,

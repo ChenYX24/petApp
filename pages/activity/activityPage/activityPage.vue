@@ -4,7 +4,7 @@
 			<view class="back-container" @click="backToActivity">
 			  <image src="/static/activity/返回活动图.png" class="back"></image>
 			</view>
-			<view class="wechatImageWrapper" @tap="getUser">
+			<view class="wechatImageWrapper" @tap="toOtherHome(this.activityThoughtUserId)">
 			  <image :src="avatarUrl" class="wechatImage"></image>
 			</view>
 			 <view class="zhuanfa-container">
@@ -83,7 +83,15 @@
         },
 		data() {
 			return {
+				//活动相关信息
 				activityThoughtId:'3',
+				activityThoughtUserId:'3',
+				activityThoughtUserName:"",
+				activityThoughtUserAvtarUrl:"",
+				
+				
+				
+				
 				text:'',
 				Text:'新建朋友圈',
 				commentsarr: [],
@@ -121,11 +129,6 @@
 			backToActivity(){
 				uni.navigateTo({
 					url:"/pages/activity/activity"
-				})
-			},
-			getUser(){
-				uni.navigateTo({
-					url:"/pages/home/home"
 				})
 			},
 			handleEnterKey() {
