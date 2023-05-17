@@ -17,7 +17,7 @@
            {{ message.content }}
          </template>
          <template v-else-if="message.type === 'image'">
-           <image :src="message.content" mode="aspectFill" />
+           <image :src="message.content" mode="heightFix" />
          </template>
       </view>
     </view>
@@ -176,13 +176,7 @@ export default {
 </script>
 <style>
 
-.mine {
-  align-self: flex-start;
-}
 
-.theirs {
-  align-self: flex-end;
-}
 
 .with-margin {
   margin-top: 10px;
@@ -191,6 +185,8 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 244, 242, 1);
+
 }
 
 .message-list {
@@ -198,6 +194,8 @@ export default {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 244, 242, 1);
+  overflow-y: scroll;
 }
 
 .message-item {
@@ -205,15 +203,18 @@ export default {
   padding: 10px;
   border-radius: 5px;
   display: inline-block;
+  max-width: 70vw;
 }
 
 .mine {
-  background-color: #e0f7ef;
   align-self: flex-end;
+  background: rgba(255, 232, 207, 1);
+  border-radius: 20px 20px 0px 20px;
 }
 
 .theirs {
-  background-color: #f1f1f1;
+  background: rgba(253, 252, 251, 1);
+  border-radius: 20px 20px 20px 0px;
   align-self: flex-start;
 }
 
@@ -222,6 +223,7 @@ export default {
   align-items: center;
   padding: 10px;
   background-color: #f8f8f8;
+
 }
 
 .selected-image {
@@ -235,8 +237,8 @@ export default {
   height: 40px;
   padding: 0 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
+  border-radius: 20.5px;
+  background: rgba(235, 219, 210, 0.5);
 }
 
 .send-button,
