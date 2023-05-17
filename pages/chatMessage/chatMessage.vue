@@ -63,27 +63,20 @@
 					        username: "喵喵-小萌家",
 							messagetime:"19:00"
 					      },
-						  {
-						          userId: 1,
-						          text: "好呀，下次我们一起去约会吧~",
-						          avatarUrl: "/static/activity/头像5.jpg",
-						          username: "狐狸li",
-								  messagetime:"晚上7：07"
-						        },
-								{
-								        userId: 1,
-								        text: "小鸟的话一般吃小米比较多呢亲",
-								        avatarUrl: "/static/activity/头像6.jpg",
-								        username: "走地鸡",
-										messagetime:"昨天"
-								      },
-									  {
-									          userId: 1,
-									          text: "#接龙 汪汪大学习 小花 报名",
-									          avatarUrl: "/static/activity/头像7.jpg",
-									          username: "汪家活动群",
-											  messagetime:"4月30日"
-									        },
+							{
+								userId: 1,
+								text: "多带他出去散散步吧",
+								avatarUrl: "/static/activity/头像6.jpg",
+								username: "狗狗医生",
+								messagetime:"昨天"
+							  },
+							  {
+									  userId: 1,
+									  text: "#接龙 汪汪大学习 小花 报名",
+									  avatarUrl: "/static/activity/头像7.jpg",
+									  username: "汪家活动群",
+									  messagetime:"4月30日"
+									},
 											
 											
 						
@@ -98,7 +91,7 @@
 					      },
 						  {
 						          userId: 1,
-						          text: "评论：下次叫我！！",
+						          text: "请求添加好友",
 						          avatarUrl: "/static/activity/头像5.jpg",
 						          username: "狐狸li",
 								  messagetime:"昨天"
@@ -223,10 +216,11 @@ nav-bar{
 	}
 	.contextBox.C{
 	display: flex;
+	
 	width: 100%;
 	height: 100%;
 	max-height: 100vh;
-	z-index: 2;
+	z-index: 3;
 	background-color: #ffffff;
 	position: relative;
 	top: 5%;
