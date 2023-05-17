@@ -35,3 +35,11 @@
   bottom: 2vh;
   color: #bfb4a9;
 }
+.like {
+  width: 80rpx;
+  height: 80rpx;
+  transition: all 0.3s;
+  position: absolute;
+  bottom: 50%;
+  right: 5%;
+}

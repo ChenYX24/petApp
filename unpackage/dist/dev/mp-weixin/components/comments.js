@@ -17,7 +17,9 @@ const _sfc_main = {
     }
   },
   data() {
-    return {};
+    return {
+      isAnimation: false
+    };
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -25,7 +27,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: $props.avatarUrl,
     b: common_vendor.o((...args) => _ctx.getUser && _ctx.getUser(...args)),
     c: common_vendor.t($props.username),
-    d: common_vendor.t($props.text)
+    d: common_vendor.t($props.text),
+    e: _ctx.heartIcon,
+    f: common_vendor.o((...args) => _ctx.toggleHeart && _ctx.toggleHeart(...args)),
+    g: $data.isAnimation ? 1 : ""
   };
 }
 const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/components/comments.vue"]]);

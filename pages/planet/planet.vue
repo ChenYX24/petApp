@@ -126,7 +126,7 @@ export default {
 }
 .advantage{
 	display: flex;
-	
+	overflow: auto;
 	width: 90%;
     height: 80vh;
 

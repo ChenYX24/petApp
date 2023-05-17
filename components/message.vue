@@ -1,19 +1,21 @@
 <template>
 	<view class="commentForBlog">
-		  <view class="UserCommentImage1" @tap="getUser">
+		  <view class="UserCommentImage1" @tap.stop="toOtherHome(userId)">
 		    <image :src="avatarUrl" class="UseImage1"></image>
 		  </view>
 			 <view class="commentInformation"  >
 					  	<text class="UserName">{{ username }}</text>
 						<text class="UserComment">{{ text }}</text>				
 			 </view> 
-			 <image class="like" :src="heartIcon" mode="aspectFit" @tap="toggleHeart" :class="{heart_animation:isAnimation}"></image>
+			 <view class="Time">
+				  <text class="time">{{messagetime}}</text>
+			 </view>
 	</view>
 </template>
 
 <script>
 	export default {
-		name:"comments",
+		name:"message",
 		props: {
 		    text: {
 		      type: String,
@@ -28,11 +30,24 @@
 				type: String,
 				default: "团小萌"
 			},
+			messagetime:{
+				type: String,
+				default: "现在"
+			}
 		  },
 		data() {
 			return {
-				isAnimation:false,
+				
 			};
+		},
+		methods:{
+			toOtherHome(userId){
+				
+			  console.log(userId)
+			  uni.navigateTo({
+				url: '/pages/otherHome/otherHome?userId='+userId
+			  })
+			},
 		}
 	}
 </script>
@@ -44,9 +59,12 @@
   	flex-direction: row;
   	height:10vh;
   	width:90vw;
-  	border-bottom: 2px solid rgba(206, 166, 151, 0.15);
-  	
+	border-radius: 25px;
+	background: linear-gradient(47deg, #f5ecc5 0%, #fffdf7 100%);
+	margin:0.5vh;
+  	margin-top:0.7vh;
   }
+  
   .UserCommentImage1{
   	display: flex;
   	justify-content: space-between;
@@ -67,21 +85,27 @@
       flex-direction: column;
   	.UserName{
   		position:absolute;
+
   		top:1.5vh;
-  		color: rgba(191, 180, 169, 1);
+  		font-size: 30px;
+  		    font-weight: 800;
+  		    line-height: 24px;
+  		    color: rgba(130, 65, 0, 0.7);
+  		    top: 1.5vh;
+  		    color: #efb681;
   	}
   	.UserComment{
   		position:absolute;
-  		bottom:2vh;
+  		bottom:1.5vh;
   		color: rgba(191, 180, 169, 1);
   	}
   }
-.like{
-    width: 80rpx;
-    height: 80rpx;
-    transition: all 0.3s;
-    position: absolute;
-    bottom: 50%;
-    right: 5%;
- }
+  .Time{
+	  .time{
+		  position:absolute;
+		  top:1vh;
+		  right:1vh;
+		  color: rgba(191, 180, 169, 1);
+	  }
+  }
 </style>

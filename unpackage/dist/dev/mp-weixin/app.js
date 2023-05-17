@@ -27,6 +27,8 @@ if (!Math) {
   "./pages/activity/activityPage/activityPage.js";
   "./pages/chatchat/chatchat.js";
   "./pages/otherHome/otherHome.js";
+  "./pages/chatMessage/chatMessage.js";
+  "./pages/videoChat/videoChat.js";
 }
 const _sfc_main = {
   globalData: {

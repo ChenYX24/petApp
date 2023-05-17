@@ -1,10 +1,3 @@
-
-.mine {
-  align-self: flex-start;
-}
-.theirs {
-  align-self: flex-end;
-}
 .with-margin {
   margin-top: 10px;
 }
@@ -12,32 +5,58 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #fff4f2;
 }
 .message-list {
   flex: 1;
-  padding: 20px;
+  padding: 20px 20px 20vh 20px;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  background: #fff4f2;
 }
 .message-item {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
   display: inline-block;
+  max-width: 70vw;
 }
 .mine {
-  background-color: #e0f7ef;
   align-self: flex-end;
+  background: #ffe8cf;
+  border-radius: 20px 20px 0px 20px;
 }
 .theirs {
-  background-color: #f1f1f1;
+  background: #fdfcfb;
+  border-radius: 20px 20px 20px 0px;
   align-self: flex-start;
+}
+.controlBox {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 5px 5px 12px 0px rgba(237, 216, 200, 0.5);
 }
 .input-area {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: #f8f8f8;
+  position: relative;
+  justify-content: space-between;
+}
+.input-area::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  border-bottom: 1px solid #e6d1c6;
 }
 .selected-image {
   width: 80px;
@@ -49,22 +68,81 @@
   height: 40px;
   padding: 0 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
+  border-radius: 20.5px;
+  background: rgba(235, 219, 210, 0.5);
+  max-width: 60vw;
 }
-.send-button,
-.image-button {
+.send-button {
   margin-left: 10px;
   padding: 6px 12px;
-  border-radius: 5px;
-  background-color: #007aff;
-  color: #fff;
+  color: #f5f5f5;
+  cursor: pointer;
+  border-radius: 20.5px;
+  background: #fdbf80;
+  width: 15vw;
+  margin-right: 3vw;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+.image-button {
+  width: 25vw;
+  height: 50%;
 }
 .call-button {
-  margin-left: 10px;
-  padding: 6px 12px;
-  border-radius: 5px;
-  background-color: #ff3b30;
-  color: #fff;
+  width: 25vw;
+  height: 50%;
 }
-
+.expand-button {
+  width: 10%;
+  margin-left: 10px;
+  text-align: center;
+}
+.expand-button image {
+  height: 10vw;
+  width: 10vw;
+}
+.emoji-button {
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.emoji-button image {
+  height: 10vw;
+  width: 10vw;
+}
+.expanded-content {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  flex-direction: row;
+  max-width: 100vw;
+  height: 20vh;
+}
+.emoji-area {
+  /* Add your styles for the emoji area here */
+  height: 20vh;
+}
+.contextBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  /* 视口高度 */
+  z-index: 2;
+  background-color: #ffffff;
+  position: relative;
+  top: 5%;
+  overflow-y: scroll;
+  /* 允许垂直滚动 */
+}
+.emoticon {
+  width: calc(100% / 3);
+  max-height: 34vw;
+}
+.placeholder {
+  height: 30%;
+  width: 100%;
+}

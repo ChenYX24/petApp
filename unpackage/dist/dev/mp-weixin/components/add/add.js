@@ -15,7 +15,7 @@ const _sfc_main = {
     icon() {
       this.$emit("updateAdd");
       common_vendor.index.navigateTo({
-        url: `/pages/makeIcon/makeIcon`
+        url: `/pages/chatMessage/chatMessage`
       });
     },
     IDCreate() {

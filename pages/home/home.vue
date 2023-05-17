@@ -247,7 +247,7 @@ export default {
 	},
 	goChat(){
 		uni.navigateTo({
-			url:'/pages/chatchat/chatchat'
+			url:'/pages/chatMessage/chatMessage'
 		})
 	},
 	goMake(){
