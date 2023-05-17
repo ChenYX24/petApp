@@ -33,15 +33,16 @@
 			  @confirm="sendTextMessage"
 			  @focus="handleInputFocus"
 			/>
-			<view class="emoji-button" @click="sendTextMessage">
-			  发送
+
+			<view class="send-button" v-if="messageText.trim() !== ''" @click="sendTextMessage">
+			      发送
 			</view>
-			<view class="emoji-button" @click="toggleEmojiArea">
-			  😃
+			<view class="emoji-button" v-if="messageText.trim() === ''" @click="toggleEmojiArea">
+			  <image src="/static/myActivity/redHeart.png" mode="aspectFit"></image>
 			</view>
 		  <!-- + 号按钮 -->
-		    <view class="expand-button" @click="toggleInputArea">
-		      +
+		    <view class="expand-button" v-if="messageText.trim() === ''" @click="toggleInputArea">
+		      <image src="/static/chatchat/more.png" mode="aspectFit"></image>
 		    </view>
 
 
@@ -50,14 +51,12 @@
 		<view class="expanded-content" v-if="expandInputArea">
 
 		  <!-- 图片选择按钮 -->
-		  <view class="image-button" @click="chooseImage">
-		    选择图片
-		  </view>
+		<image class="image-button" @click="chooseImage" src="/static/chatchat/img.png" mode="aspectFit"></image>
+
 
 		  <!-- 通话按钮 -->
-		  <view class="call-button" @click="startCall">
-		    视频通话
-		  </view>
+		<image class="call-button" @click="startCall" src="/static/chatchat/vid.png" mode="aspectFit"></image>
+
 		</view>
 		 <!-- 表情区域 -->
 		  <view class="emoji-area" v-if="expandEmojiArea">
@@ -287,7 +286,7 @@ export default {
       const roomId = 999;
       const encodedRoomId = encodeURIComponent(roomId);
       // const fullUrl = `https://meliveta.scutbot.icu/?&roomId=${encodedRoomId}`;
-	  const fullUrl = `https://meliveta.scutbot.icu`;
+	  const fullUrl = `https://ameliveta.scutbot.icu`;
       uni.navigateTo({
 		  url: `/pages/videoChat/videoChat?url=${encodeURIComponent(fullUrl)}`
       });
@@ -296,7 +295,7 @@ export default {
 };
   
 </script>
-<style>
+<style lang="less">
 .with-margin {
   margin-top: 10px;
 }
@@ -348,7 +347,8 @@ export default {
   display: flex;
   align-items: center;
   padding: 10px;
-      position: relative;
+  position: relative;
+  justify-content: space-between
 }
 .input-area::after {
   content: "";
@@ -370,38 +370,55 @@ export default {
   border: 1px solid #ccc;
   border-radius: 20.5px;
   background: rgba(235, 219, 210, 0.5);
+  max-width: 60vw;
 }
-.send-button,
-.image-button {
-  margin-left: 10px;
-  padding: 6px 12px;
-  border-radius: 5px;
-  background-color: #007aff;
-  color: #fff;
+.send-button{
+    margin-left: 10px;
+    padding: 6px 12px;
+    color: #f5f5f5;
+    cursor: pointer;
+    border-radius: 20.5px;
+    background: #fdbf80;
+    width: 15vw;
+    margin-right: 3vw;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
 }
-.call-button {
-  margin-left: 10px;
-  padding: 6px 12px;
-  border-radius: 5px;
-  background-color: #ff3b30;
-  color: #fff;
+
+.image-button{
+	width: 25vw;
+	height: 50%;
+}
+.call-button{
+	width:25vw;
+	height: 50%;
 }
 .expand-button{
-	    width: 10%;
-	    text-align: center;
+	width: 10%;
+	margin-left: 10px;
+	text-align: center;
+	image{
+	  height: 10vw;
+	  width: 10vw;
+	}
 }
 .emoji-button {
-  margin-left: 10px;
-  padding: 6px 12px;
-  border-radius: 5px;
-  background-color: #f5f5f5;
-  cursor: pointer;
+	margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+	image{
+	  height: 10vw;
+	  width: 10vw;
+	}
 }
 .expanded-content {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  height: 20vh;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    flex-direction: row;
+    max-width: 100vw;
+    height: 20vh;
 }
 .emoji-area {
   /* Add your styles for the emoji area here */
@@ -422,7 +439,8 @@ export default {
   }
   .emoticon {
       width: calc(100% / 3);
-  		  max-height: 34vw;
+	  max-height: 34vw;
+
   }
   .placeholder {
   		
