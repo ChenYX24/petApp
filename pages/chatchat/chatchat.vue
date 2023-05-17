@@ -92,7 +92,7 @@ export default {
       messageText: '', // 输入框中的消息文本
       selectedImage: null, // 已选择的图片
       socket: null, // WebSocket对象
-      Text: '尘',
+      Text: '狗狗医生',
 	  clientId:'',
 	  expandInputArea: false, // 控制输入区域展开和收起
 	  expandEmojiArea: false, // 控制表情区域展开和收起
