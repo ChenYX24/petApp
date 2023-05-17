@@ -28,6 +28,7 @@ if (!Math) {
   "./pages/chatchat/chatchat.js";
   "./pages/otherHome/otherHome.js";
   "./pages/chatMessage/chatMessage.js";
+  "./pages/videoChat/videoChat.js";
 }
 const _sfc_main = {
   globalData: {
@@ -44,7 +45,7 @@ const _sfc_main = {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};
 }
-const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/fjh28/Desktop/petApp/App.vue"]]);
+const App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/school/团小萌/团小萌/petApp/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   return {

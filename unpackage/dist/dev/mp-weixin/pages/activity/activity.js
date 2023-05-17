@@ -99,5 +99,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-da48f91d"], ["__file", "C:/Users/fjh28/Desktop/petApp/pages/activity/activity.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-da48f91d"], ["__file", "D:/school/团小萌/团小萌/petApp/pages/activity/activity.vue"]]);
 wx.createPage(MiniProgramPage);

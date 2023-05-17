@@ -25,7 +25,8 @@
     "pages/activity/activityPage/activityPage",
     "pages/chatchat/chatchat",
     "pages/otherHome/otherHome",
-    "pages/chatMessage/chatMessage"
+    "pages/chatMessage/chatMessage",
+    "pages/videoChat/videoChat"
   ],
   "window": {
     "navigationStyle": "custom"
