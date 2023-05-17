@@ -7,6 +7,7 @@
 					  	<text class="UserName">{{ username }}</text>
 						<text class="UserComment">{{ text }}</text>				
 			 </view> 
+			 <image class="like" :src="heartIcon" mode="aspectFit" @tap="toggleHeart" :class="{heart_animation:isAnimation}"></image>
 	</view>
 </template>
 
@@ -30,7 +31,7 @@
 		  },
 		data() {
 			return {
-				
+				isAnimation:false,
 			};
 		}
 	}
@@ -75,4 +76,12 @@
   		color: rgba(191, 180, 169, 1);
   	}
   }
+.like{
+    width: 80rpx;
+    height: 80rpx;
+    transition: all 0.3s;
+    position: absolute;
+    bottom: 50%;
+    right: 5%;
+ }
 </style>

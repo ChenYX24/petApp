@@ -24,14 +24,14 @@
 				  <view v-if="selectedTab === 'template'" class="contextBox T">
 					  <view class="scroll-view-content" >
 	                 <view v-for="(comment, index) in commentsarr" :key="comment.userId" >
-	                   <message :text="comment.text" :avatarUrl="comment.avatarUrl" :username="comment.username"  :messagetime="comment.messagetime" @tap="toOtherHome(comment.userId)"></message>
+	                   <message :text="comment.text" :avatarUrl="comment.avatarUrl" :username="comment.username"  :messagetime="comment.messagetime" @tap="toChat(comment.userId)"></message>
 	                 </view>
 					  </view>
 				  </view>
 				  <view v-if="selectedTab === 'creation'" class="contextBox C">
 					  <view class="scroll-view-content" >
 					  <view v-for="(comment, index) in commentsarr1" :key="comment.userId" >
-					    <message :text="comment.text" :avatarUrl="comment.avatarUrl" :username="comment.username" :messagetime="comment.messagetime" @tap="toOtherHome(comment.userId)"></message>
+					    <message :text="comment.text" :avatarUrl="comment.avatarUrl" :username="comment.username" :messagetime="comment.messagetime" @tap="toChat(comment.userId)"></message>
 					  </view>
 					  </view>
 					</view>
@@ -67,19 +67,22 @@
 						          userId: 1,
 						          text: "好呀，下次我们一起去约会吧~",
 						          avatarUrl: "/static/activity/头像5.jpg",
-						          username: "狐狸li"
+						          username: "狐狸li",
+								  messagetime:"晚上7：07"
 						        },
 								{
 								        userId: 1,
 								        text: "小鸟的话一般吃小米比较多呢亲",
 								        avatarUrl: "/static/activity/头像6.jpg",
-								        username: "走地鸡"
+								        username: "走地鸡",
+										messagetime:"昨天"
 								      },
 									  {
 									          userId: 1,
 									          text: "#接龙 汪汪大学习 小花 报名",
 									          avatarUrl: "/static/activity/头像7.jpg",
-									          username: "汪家活动群"
+									          username: "汪家活动群",
+											  messagetime:"4月30日"
 									        },
 											
 											
@@ -97,23 +100,20 @@
 						          userId: 1,
 						          text: "评论：下次叫我！！",
 						          avatarUrl: "/static/activity/头像5.jpg",
-						          username: "狐狸li"
+						          username: "狐狸li",
+								  messagetime:"昨天"
 						        },
 				],
 			}
 		},
 		methods: {
-			toOtherHome(userId){
+			toChat(userId){
 				
 			  console.log(userId)
 			  uni.navigateTo({
-				url: '/pages/otherHome/otherHome?userId='+userId
+				url: '/pages/chatchat/chatchat?userId='+userId
 			  })
-			  
-				
-				
-				
-				
+
 			},
 		}
 	}

@@ -1,6 +1,6 @@
 <template>
 	<view class="commentForBlog">
-		  <view class="UserCommentImage1" @tap="getUser">
+		  <view class="UserCommentImage1" @tap.stop="toOtherHome(userId)">
 		    <image :src="avatarUrl" class="UseImage1"></image>
 		  </view>
 			 <view class="commentInformation"  >
@@ -39,6 +39,15 @@
 			return {
 				
 			};
+		},
+		methods:{
+			toOtherHome(userId){
+				
+			  console.log(userId)
+			  uni.navigateTo({
+				url: '/pages/otherHome/otherHome?userId='+userId
+			  })
+			},
 		}
 	}
 </script>
