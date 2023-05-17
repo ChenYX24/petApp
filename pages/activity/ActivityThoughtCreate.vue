@@ -59,6 +59,7 @@
 	import {request} from '../../ThirdPartySDK/myApi.js'
 	import navBar from '/components/navBar/navBar.vue';
 	import chooseLocation from '/components/chooseLocation.vue'
+	import { toRaw } from 'vue';
 	export default {
 		components: {
 		  navBar,
@@ -128,7 +129,7 @@
 			        }
 			      })
 			},
-			awaitUploadFile(host,signature,ossAccessKeyId,policy){
+			async awaitUploadFile(host,signature,ossAccessKeyId,policy){
 				const filePath = this.imageSrc;
 				const date = new Date();
 				const year = date.getFullYear();
@@ -140,7 +141,7 @@
 				for (var i = 0; i < filePath.length; i++) {
 					this.generateNewUUID();
 					const key = `${formattedDate}/`+this.uuid+'.jpg';
-					uni.uploadFile({
+					await uni.uploadFile({
 					  url: host,
 					  filePath: filePath[i],
 					  name: "file",
@@ -151,43 +152,51 @@
 					    signature: signature
 					    // 'x-oss-security-token': this.securityToken // 使用STS签名时必传。
 					  },
-					  success: (uploadFileRes) => {
+					  // success: (uploadFileRes) => {
+					  // 						this.imageUrls.push(host + '/'+key);
+					  // 						console.log(host + key);
+					  //   console.log(uploadFileRes);
+					  // },
+					  // fail: function(err) {
+					  //   console.log(err);
+					  // }
+					}).then(res=>{
 						this.imageUrls.push(host + '/'+key);
-						console.log(host + key);
-					    console.log(uploadFileRes);
-					  },
-					  fail: function(err) {
-					    console.log(err);
-					  }
+						console.log(res)
+					}).catch(res=>{
+						console.log(res)
 					});
 				}
 			},
 			awaituploadFrom(){
-				//这里写死了  防止报错
 				uni.request({
 				    url: getApp().globalData.host+'/activityThought/save',
 					method:'POST',
 				    data: {
 				        content: this.inputValue,
-						data: "['1','2']",//
+						data: this.imageUrls,//
 						location: this.trueLocation,
 						activityName: this.currentActivity,
-						userId: 1
+						userId: uni.getStorageSync("userId")
 				    },
 					params: {interfaceState:'state'},
 				    header: {
 						"Content-Type": 'application/json',
-						"Authorization": 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc'
+						"Authorization": uni.getStorageSync("token")
 				    },
-				    success: (res) => {
-				        console.log(res.data);
-				    },
-					  complete: () => {
-						uni.navigateTo({
-							 url: `/pages/notebook/notebook`,
-						})
-					  }
-				});
+				  //   success: (res) => {
+				  //       console.log(res.data);
+				  //   },
+					 //  complete: () => {
+						// uni.navigateTo({
+						// 	 url: `/pages/notebook/notebook`,
+						// })
+					 //  }
+				}).then(res=>{
+						console.log(res)
+					}).catch(res=>{
+						console.log(res)
+					});
 			},
 
 			async pushActivityThought(){
@@ -215,10 +224,9 @@
 				   localStorage.setItem('imageSrc', JSON.stringify(this.imageSrc))
 				   localStorage.setItem('inputValue', this.inputValue)
 				   //#endif
-				// 跳转到下一个页面
-				uni.navigateTo({
-				  url: '/pages/activity/activityPage/activityPage',
-				})
+
+				
+				console.log("跳转之后仍能执行")
 
 					var signatureRes= {};
 					//下面两个也有先后顺序
@@ -251,6 +259,14 @@
 						console.error(err);
 					}
 				  console.log("正常执行");
+				  
+				  
+				  //最后再进行跳转
+				  // 跳转到下一个页面
+				  uni.navigateTo({
+					url: `/pages/activity/activityPage/activityPage?activityThoughtId=`+undefined+'&activityThoughtUserId='+uni.getStorageSync("userId"),
+				  })
+				  
                
 			},
 			onActivityChange(event){

@@ -1,10 +1,10 @@
 <template>
   <view class="topBackground">
     <!-- 页面内容 -->
-
+	<nav-bar :text="Text"></nav-bar>
 
     <view class="Background">
-			<nav-bar :text="Text"></nav-bar>
+
 <!-- 		<view class="login" @tap="wxLogin">
 			登陆
 		</view> -->
@@ -75,6 +75,7 @@ export default {
 	this.userId=options.userId
 	console.log(this.userId)
 	
+	//获取用户的头像和昵称
 	uni.request({
 	    url: getApp().globalData.host+"/user/info?userId="+this.userId,
 		method:'GET',
@@ -91,6 +92,17 @@ export default {
 			  console.log(res);
 		  }
 	});
+	
+	
+	//获取本地缓存的firends
+	var temp=uni.getStorageSync("friends");
+	if(temp==""||temp==undefined){
+		this.friends=[]
+	}
+	else{
+		this.friends=temp;
+	}
+	console.log(temp);
 	
 	
   },
@@ -110,6 +122,7 @@ export default {
 		userId:'',
 		Text:"返回",
 		Nav:"/pages/activity/activityPage/activityPage",
+		friends:[]
 		
   	}
   },
@@ -160,7 +173,22 @@ export default {
 		})
 	},
 	addFriend(){
-		
+		//存在本地
+		var friend={
+			userId:this.userId,
+			nickName: '用户名',
+			avatarUrl: 'https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png',
+		}
+		this.friends.push(friend)
+		//#ifdef MP-WEIXIN
+		 wx.setStorageSync('friends', this.friends)
+		  //#endif
+		 //#ifndef MP-WEIXIN
+		 localStorage.setItem('friends', JSON.stringify(this.friends))
+		 //#endif
+		 
+		 
+		 //跳转到好友列表那里
 	},
 	getOtherActivity(){
 		
@@ -269,7 +297,7 @@ export default {
 	
 .Background{
     width: 100%;
-    height: calc(100vh - 16vh);
+    height: calc(100vh - 30vh);
     background-color: #fffdf7;
     position: relative;
     top: 30vh;

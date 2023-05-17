@@ -5,7 +5,7 @@
 			  <image src="/static/activity/返回活动图.png" class="back"></image>
 			</view>
 			<view class="wechatImageWrapper" @tap="toOtherHome(this.activityThoughtUserId)">
-			  <image :src="avatarUrl" class="wechatImage"></image>
+			  <image :src="this.activityThoughtUserAvtarUrl" class="wechatImage"></image>
 			</view>
 			 <view class="zhuanfa-container">
 			        <image src="/static/activity/转发.png" class="zhuanfa"></image>
@@ -155,14 +155,13 @@
 			  //#endif
 			  
 			  console.log('评论已存储：', key, value);
-			  
-			  
+			   
 			  var message = {
-				username: 2,//userId
+				username: uni.getStorageSync('userId'),//userId
 				to: "每一个活动笔记",//连接该活动的所有人
 				message: this.text,
-				activityThought: 1//活动笔记Id
-			}
+				activityThought: this.activityThoughtId//活动笔记Id
+				}
 			  // uni.sendSocketMessage(message); 
 
 			  //及时通信的逻辑	
@@ -198,18 +197,64 @@
 				console.log('评论已存储：');
 			},
 			initData() {
-	      // 从本地缓存或本地存储中获取数据，并初始化页面属性
-	     // #ifdef MP-WEIXIN
-	      this.swiperList = wx.getStorageSync('imageSrc') || this.swiperList
-	      this.text2 = wx.getStorageSync('inputValue') || this.text2
-	      //#endif
-	      //#ifndef MP-WEIXIN
-	      this.swiperList = JSON.parse(localStorage.getItem('imageSrc')) || []
-	      this.text2 = localStorage.getItem('inputValue') || ''
-	      //#endif
+			  // 从本地缓存或本地存储中获取数据，并初始化页面属性
+			 // #ifdef MP-WEIXIN
+			  this.swiperList = wx.getStorageSync('imageSrc') || this.swiperList
+			  this.text2 = wx.getStorageSync('inputValue') || this.text2
+			  //#endif
+			  //#ifndef MP-WEIXIN
+			  this.swiperList = JSON.parse(localStorage.getItem('imageSrc')) || []
+			  this.text2 = localStorage.getItem('inputValue') || ''
+			  //#endif
 			},
 		},
-		onLoad(){
+		async onLoad(options){
+			this.activityThoughtUserId=options.activityThoughtUserId
+			this.activityThoughtId=options.activityThoughtId
+			
+			console.log(this.activityThoughtUserId)
+			console.log(this.activityThoughtId)
+			//获取活动笔记作者的信息
+			await uni.request({
+			     url: getApp().globalData.host+'/user/info/',
+			     method:'GET',
+			        data: {
+			             "userId": this.activityThoughtUserId,
+			        },
+			        header: {
+			      "Content-Type": 'application/json',
+			      "Authorization": uni.getStorageSync('token'),
+			        },
+			}).then(res=>{
+				console.log(res.data);
+				//活动笔记相关信息
+				this.activityThoughtUserName=res.data.user.nickname;
+				this.activityThoughtUserAvtarUrl=res.data.user.backgroundImage;
+			});
+			
+			
+			//通过活动笔记获取活动笔记————只在this.activityThoughtId存在时有效
+			await uni.request({
+			    url: getApp().globalData.host+"/activityThought/info"+"?activityThoughtId="+this.activityThoughtId,
+				  method:'POST',
+			    header: {
+					"Content-Type": 'application/json',
+					"Authorization": uni.getStorageSync("token")
+			    }
+			}).then(res=>{
+					  console.log(res.data.activityThought);
+					  var resActivityThought=res.data.activityThought;
+					  this.swiperList=res.data.activityThought.photos;
+			}).catch(res=>{
+					  console.log(res);
+			});
+
+			
+			
+			
+
+			
+			
 			console.log(getApp().globalData)
 			var that=this;
 			uni.request({
@@ -240,6 +285,7 @@
 			});
 		},
 		onShow() {
+			//websocket通信
 			const userId =uni.getStorageSync('userId')
 			socket = uni.connectSocket({ 
 			            url: getApp().globalData.webSocketHost+'/websocket/'+this.activityThoughtId+"/"+userId, //仅为示例，并非真实接口地址。  第一个参数是活动笔记的ID 第二个是用户ID

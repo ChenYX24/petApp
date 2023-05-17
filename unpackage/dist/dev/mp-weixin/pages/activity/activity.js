@@ -31,10 +31,36 @@ const _sfc_main = {
       src: "https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/dog.png",
       src1: "/static//activity/\u67F4\u72AC.jpg",
       imageSrcArr: [],
+      activityThoughtArr: [],
       tag: ["\u6625\u65E5\u6D3E\u5BF9", "\u590F\u65E5\u5BF9\u6D3E"],
       navH: null,
       city: "\u672A\u77E5"
     };
+  },
+  async onLoad() {
+    await common_vendor.index.request({
+      url: getApp().globalData.host + "/activityThought/listByUserId?userId=" + common_vendor.index.getStorageSync("userId"),
+      method: "POST",
+      header: {
+        "Content-Type": "application/json",
+        "Authorization": common_vendor.index.getStorageSync("token")
+      }
+    }).then((res) => {
+      console.log(res.data.activityThoughtList);
+      var resActivityThought = res.data.activityThoughtList;
+      console.log(resActivityThought);
+      for (var i = 0; i < resActivityThought.length; i++) {
+        var activityThought = {
+          imageSrc: resActivityThought[i].photos,
+          activityThoughtId: resActivityThought[i].activityThoughtId,
+          activityThoughtUserId: resActivityThought[i].userId
+        };
+        this.activityThoughtArr.push(activityThought);
+      }
+      console.log(this.activityThoughtArr);
+    }).catch((res) => {
+      console.log(res);
+    });
   },
   created() {
     const menuButtonInfo = common_vendor.index.getMenuButtonBoundingClientRect();
@@ -64,37 +90,40 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         c: index
       };
     }),
-    d: common_vendor.p({
+    d: common_vendor.f($data.activityThoughtArr, (activityThought, index, i0) => {
+      return {
+        a: "da48f91d-1-" + i0,
+        b: common_vendor.p({
+          imageSrc: activityThought.imageSrc[0],
+          tag: $data.tag,
+          activityThoughtId: activityThought.activityThoughtId,
+          activityThoughtUserId: activityThought.activityThoughtUserId
+        }),
+        c: index
+      };
+    }),
+    e: common_vendor.p({
       imageSrc: $data.src1,
       tag: $data.tag
     }),
-    e: common_vendor.p({
+    f: common_vendor.p({
       imageSrc: $data.src,
       tag: $data.tag
-    }),
-    f: common_vendor.p({
-      imageSrc: $data.src
     }),
     g: common_vendor.p({
       imageSrc: $data.src
     }),
     h: common_vendor.p({
-      imageSrc: $data.src,
-      tag: $data.tag
+      imageSrc: $data.src
     }),
     i: common_vendor.p({
-      imageSrc: $data.src
+      imageSrc: $data.src,
+      tag: $data.tag
     }),
     j: common_vendor.p({
       imageSrc: $data.src
     }),
     k: common_vendor.p({
-      imageSrc: $data.src
-    }),
-    l: common_vendor.p({
-      imageSrc: $data.src
-    }),
-    m: common_vendor.p({
       activeTab: $data.tab
     })
   };

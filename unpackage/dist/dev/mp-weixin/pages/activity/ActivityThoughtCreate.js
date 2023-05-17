@@ -69,7 +69,7 @@ const _sfc_main = {
         }
       });
     },
-    awaitUploadFile(host, signature, ossAccessKeyId, policy) {
+    async awaitUploadFile(host, signature, ossAccessKeyId, policy) {
       const filePath = this.imageSrc;
       const date = new Date();
       const year = date.getFullYear();
@@ -79,7 +79,7 @@ const _sfc_main = {
       for (var i = 0; i < filePath.length; i++) {
         this.generateNewUUID();
         const key = `${formattedDate}/` + this.uuid + ".jpg";
-        common_vendor.index.uploadFile({
+        await common_vendor.index.uploadFile({
           url: host,
           filePath: filePath[i],
           name: "file",
@@ -88,15 +88,12 @@ const _sfc_main = {
             policy,
             OSSAccessKeyId: ossAccessKeyId,
             signature
-          },
-          success: (uploadFileRes) => {
-            this.imageUrls.push(host + "/" + key);
-            console.log(host + key);
-            console.log(uploadFileRes);
-          },
-          fail: function(err) {
-            console.log(err);
           }
+        }).then((res) => {
+          this.imageUrls.push(host + "/" + key);
+          console.log(res);
+        }).catch((res) => {
+          console.log(res);
         });
       }
     },
@@ -106,24 +103,20 @@ const _sfc_main = {
         method: "POST",
         data: {
           content: this.inputValue,
-          data: "['1','2']",
+          data: this.imageUrls,
           location: this.trueLocation,
           activityName: this.currentActivity,
-          userId: 1
+          userId: common_vendor.index.getStorageSync("userId")
         },
         params: { interfaceState: "state" },
         header: {
           "Content-Type": "application/json",
-          "Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJvcGVuaWQiOiJvdVZjVzQwdGZzcmlmM3ZzQ3pmRjdFcjRqTm04Iiwic2Vzc2lvbl9rZXkiOiIyMDFCTkVBUFEzcENreDVra0E1aTB3PT0iLCJleHAiOjE2ODI1ODExMDF9.0XkPv_JsFnT5ByDqoJJ9WTbwcD5TGTPeUC5ZYy77zBc"
-        },
-        success: (res) => {
-          console.log(res.data);
-        },
-        complete: () => {
-          common_vendor.index.navigateTo({
-            url: `/pages/notebook/notebook`
-          });
+          "Authorization": common_vendor.index.getStorageSync("token")
         }
+      }).then((res) => {
+        console.log(res);
+      }).catch((res) => {
+        console.log(res);
       });
     },
     async pushActivityThought() {
@@ -131,9 +124,7 @@ const _sfc_main = {
       wx.setStorageSync("firstImage", JSON.stringify(firstImage));
       wx.setStorageSync("imageSrc", this.imageSrc);
       wx.setStorageSync("inputValue", this.inputValue);
-      common_vendor.index.navigateTo({
-        url: "/pages/activity/activityPage/activityPage"
-      });
+      console.log("\u8DF3\u8F6C\u4E4B\u540E\u4ECD\u80FD\u6267\u884C");
       var signatureRes = {};
       try {
         const a = await ThirdPartySDK_myApi.request(getApp().globalData.host + "/thirdParty/getUploadSignature/", {});
@@ -157,6 +148,9 @@ const _sfc_main = {
         console.error(err);
       }
       console.log("\u6B63\u5E38\u6267\u884C");
+      common_vendor.index.navigateTo({
+        url: `/pages/activity/activityPage/activityPage?activityThoughtId=` + void 0 + "&activityThoughtUserId=" + common_vendor.index.getStorageSync("userId")
+      });
     },
     onActivityChange(event) {
       const activityIndex = event.detail.value;

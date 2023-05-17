@@ -17,7 +17,9 @@
             "delay" : 0
         },
         /* 模块配置 */
-        "modules" : {},
+        "modules" : {
+            "Share" : {}
+        },
         /* 应用发布信息 */
         "distribute" : {
             /* android打包配置 */
@@ -43,7 +45,14 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {},
+            "sdkConfigs" : {
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wx72cce02fe11dc39f",
+                        "UniversalLinks" : ""
+                    }
+                }
+            },
             "splashscreen" : {
                 "useOriginalMsgbox" : true
             }
@@ -73,12 +82,12 @@
                 "desc" : "获取用户当前位置"
             }
         },
-	   "requiredPrivateInfos": [
-		  "getLocation",
-		  "onLocationChange",
-		  "startLocationUpdateBackground",
-		  "chooseAddress"
-		]
+        "requiredPrivateInfos" : [
+            "getLocation",
+            "onLocationChange",
+            "startLocationUpdateBackground",
+            "chooseAddress"
+        ]
     },
     "mp-alipay" : {
         "usingComponents" : true

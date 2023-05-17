@@ -4,7 +4,9 @@ const _sfc_main = {
   name: "myActivity",
   props: {
     imageSrc: String,
-    tag: Array
+    tag: Array,
+    activityThoughtId: String,
+    activityThoughtUserId: String
   },
   data() {
     return {
@@ -31,7 +33,7 @@ const _sfc_main = {
     },
     clickActivity() {
       common_vendor.index.navigateTo({
-        url: `/pages/activity/activityPage/activityPage`
+        url: `/pages/activity/activityPage/activityPage?activityThoughtId=` + this.activityThoughtId + "&activityThoughtUserId=" + this.activityThoughtUserId
       });
     }
   }

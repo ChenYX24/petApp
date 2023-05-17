@@ -49,8 +49,16 @@
 	</view>
 	
 	<view class="gridBox">
+		<!-- 前端在本地保存的信息 -->
 		<view v-for="(imagesrc, index) in imageSrcArr" :key="index">
 		  <myActivity :imageSrc="imagesrc" :tag="tag"></myActivity>
+		</view>
+		<!-- //后台获取的活动信息 -->
+		<view v-for="(activityThought, index) in activityThoughtArr" :key="index">
+		  <myActivity :imageSrc="activityThought.imageSrc[0]" 
+		  :tag="tag" 
+		  :activityThoughtId="activityThought.activityThoughtId" 
+		  :activityThoughtUserId="activityThought.activityThoughtUserId"></myActivity>
 		</view>
 		<myActivity :imageSrc="src1" :tag="tag"></myActivity>
 		<myActivity :imageSrc="src" :tag="tag"></myActivity>
@@ -58,9 +66,7 @@
 		<myActivity :imageSrc="src"></myActivity>
 		<myActivity :imageSrc="src" :tag="tag"></myActivity>
 		<myActivity :imageSrc="src"></myActivity>
-		<myActivity :imageSrc="src"></myActivity>
-		<myActivity :imageSrc="src"></myActivity>
-		<myActivity :imageSrc="src"></myActivity>
+
 	</view>
 	<!-- 引用自定义tabbar组件 -->
 	<tab-bar :activeTab="tab"></tab-bar>
@@ -133,10 +139,39 @@ export default {
 		src:"https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/activity/dog.png",
 		src1:"/static//activity/柴犬.jpg",
 		imageSrcArr: [],
+		activityThoughtArr:[],
 		tag:["春日派对","夏日对派"],
 		navH:null,
 		city:"未知",
   	}
+  },
+  async onLoad(){
+	  //保存评论消息actionType
+	  await uni.request({
+	      url: getApp().globalData.host+"/activityThought/listByUserId"+"?userId="+uni.getStorageSync("userId"),
+	  	  method:'POST',
+	      header: {
+	  		"Content-Type": 'application/json',
+	  		"Authorization": uni.getStorageSync("token")
+	      }
+	  }).then(res=>{
+		  console.log(res.data.activityThoughtList);
+		  var resActivityThought=res.data.activityThoughtList;
+		  console.log(resActivityThought)
+		  for (var i = 0; i < resActivityThought.length; i++) {
+		  	
+			var activityThought={
+			  imageSrc:resActivityThought[i].photos,
+			  activityThoughtId:resActivityThought[i].activityThoughtId,
+			  activityThoughtUserId:resActivityThought[i].userId
+			}
+			this.activityThoughtArr.push(activityThought)
+		  }
+
+		  console.log(this.activityThoughtArr)
+	  }).catch(res=>{
+		  console.log(res);
+	  });
   },
   created() {
   	//#ifdef MP-WEIXIN

@@ -17,6 +17,8 @@ export default {
   props: {
     imageSrc: String,
 	tag:Array,
+	activityThoughtId:String,
+	activityThoughtUserId:String,
   },
   data() {
     return {
@@ -45,8 +47,7 @@ export default {
     },
 	clickActivity(){
 		uni.navigateTo({
-		    url: `/pages/activity/activityPage/activityPage`,
-		    
+		    url: `/pages/activity/activityPage/activityPage?activityThoughtId=`+this.activityThoughtId+'&activityThoughtUserId='+this.activityThoughtUserId,
 		  })
 	}
   },

@@ -57,10 +57,10 @@ const _sfc_main = {
       wx.setStorageSync(key, value);
       console.log("\u8BC4\u8BBA\u5DF2\u5B58\u50A8\uFF1A", key, value);
       var message = {
-        username: 2,
+        username: common_vendor.index.getStorageSync("userId"),
         to: "\u6BCF\u4E00\u4E2A\u6D3B\u52A8\u7B14\u8BB0",
         message: this.text,
-        activityThought: 1
+        activityThought: this.activityThoughtId
       };
       common_vendor.index.sendSocketMessage({
         data: JSON.stringify(message)
@@ -89,7 +89,40 @@ const _sfc_main = {
       this.text2 = wx.getStorageSync("inputValue") || this.text2;
     }
   },
-  onLoad() {
+  async onLoad(options) {
+    this.activityThoughtUserId = options.activityThoughtUserId;
+    this.activityThoughtId = options.activityThoughtId;
+    console.log(this.activityThoughtUserId);
+    console.log(this.activityThoughtId);
+    await common_vendor.index.request({
+      url: getApp().globalData.host + "/user/info/",
+      method: "GET",
+      data: {
+        "userId": this.activityThoughtUserId
+      },
+      header: {
+        "Content-Type": "application/json",
+        "Authorization": common_vendor.index.getStorageSync("token")
+      }
+    }).then((res) => {
+      console.log(res.data);
+      this.activityThoughtUserName = res.data.user.nickname;
+      this.activityThoughtUserAvtarUrl = res.data.user.backgroundImage;
+    });
+    await common_vendor.index.request({
+      url: getApp().globalData.host + "/activityThought/info?activityThoughtId=" + this.activityThoughtId,
+      method: "POST",
+      header: {
+        "Content-Type": "application/json",
+        "Authorization": common_vendor.index.getStorageSync("token")
+      }
+    }).then((res) => {
+      console.log(res.data.activityThought);
+      res.data.activityThought;
+      this.swiperList = res.data.activityThought.photos;
+    }).catch((res) => {
+      console.log(res);
+    });
     console.log(getApp().globalData);
     common_vendor.index.request({
       url: getApp().globalData.host + "/interaction/comment/listById?activityThoughtId=" + this.activityThoughtId,
@@ -159,7 +192,7 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.o((...args) => $options.backToActivity && $options.backToActivity(...args)),
-    b: $data.avatarUrl,
+    b: this.activityThoughtUserAvtarUrl,
     c: common_vendor.o(($event) => $options.toOtherHome(this.activityThoughtUserId)),
     d: common_vendor.f($data.swiperList, (item, index, i0) => {
       return {
