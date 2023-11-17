@@ -1,183 +1,204 @@
-"use strict";
-const common_vendor = require("../../common/vendor.js");
-const navBar = () => "../../components/navBar/navBar.js";
+"use strict"
+const common_vendor = require("../../common/vendor.js")
+const navBar = () => "../../components/navBar/navBar.js"
 const _sfc_main = {
   components: {
     navBar
   },
-  data() {
+  data () {
     return {
-      messages: [],
+
+      messages: [
+        {
+          type: "text",
+          content: "你好，我是狗狗医生，很高兴为你服务！",
+          isMine: false
+        }
+        // {
+        // 		type:"text",
+        // 		  content:"你的狗狗情况我了解了",
+        // 		  isMine:false
+        // },
+        // {
+        // 		type:"text",
+        // 		  content:"多带他出去散散步吧",
+        // 		  isMine:false
+        // },
+      ],
+      // 存储聊天消息
       messageText: "",
       selectedImage: null,
       socket: null,
-      Text: "\u72D7\u72D7\u533B\u751F",
+
+      // WebSocket对象
+      Text: "狗狗医生",
+
       clientId: "",
       expandInputArea: false,
       expandEmojiArea: false,
       emoticons: []
-    };
+    }
   },
-  onLoad() {
-    this.emoticons = common_vendor.index.getStorageSync("likeIcon");
+  onLoad () {
+    this.emoticons = common_vendor.index.getStorageSync("likeIcon")
   },
-  mounted() {
-    this.socket = new WebSocket("ws://localhost:2333");
+  mounted () {
+    this.socket = new WebSocket("ws://localhost:2333")
     this.socket.onopen = () => {
-      console.log("WebSocket\u8FDE\u63A5\u5DF2\u6253\u5F00");
-    };
+      console.log("WebSocket\u8FDE\u63A5\u5DF2\u6253\u5F00")
+    }
     this.socket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
+      const data = JSON.parse(event.data)
       if (data.clientId) {
-        this.clientId = data.clientId;
+        this.clientId = data.clientId
       } else {
-        this.messages.push(data);
+        this.messages.push(data)
         if (data.type == "text") {
           this.$nextTick(() => {
-            const chatContainer = document.getElementById("chatContainer");
-            chatContainer.scrollTop = 1e4;
-          });
+            const chatContainer = document.getElementById("chatContainer")
+            chatContainer.scrollTop = 1e4
+          })
         }
         if (data.type == "image") {
           this.$nextTick(() => {
-            const chatContainer = document.getElementById("chatContainer");
-            const containerHeight = chatContainer.scrollHeight;
-            const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom);
-            const imageBottomOffset = containerHeight + containerPadding;
-            chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0;
-          });
+            const chatContainer = document.getElementById("chatContainer")
+            const containerHeight = chatContainer.scrollHeight
+            const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom)
+            const imageBottomOffset = containerHeight + containerPadding
+            chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0
+          })
         }
       }
-    };
+    }
     this.socket.onclose = () => {
-      console.log("WebSocket\u8FDE\u63A5\u5DF2\u5173\u95ED");
-    };
+      console.log("WebSocket\u8FDE\u63A5\u5DF2\u5173\u95ED")
+    }
     this.socket.onerror = (error) => {
-      console.error("WebSocket\u53D1\u751F\u9519\u8BEF", error);
-    };
+      console.error("WebSocket\u53D1\u751F\u9519\u8BEF", error)
+    }
   },
   methods: {
-    toggleEmojiArea() {
-      this.expandInputArea = false;
-      this.expandEmojiArea = !this.expandEmojiArea;
+    toggleEmojiArea () {
+      this.expandInputArea = false
+      this.expandEmojiArea = !this.expandEmojiArea
     },
-    toggleInputArea() {
-      this.expandEmojiArea = false;
-      this.expandInputArea = !this.expandInputArea;
+    toggleInputArea () {
+      this.expandEmojiArea = false
+      this.expandInputArea = !this.expandInputArea
     },
-    handleInputFocus() {
-      this.expandEmojiArea = false;
-      this.expandInputArea = false;
+    handleInputFocus () {
+      this.expandEmojiArea = false
+      this.expandInputArea = false
     },
-    sendTextMessage() {
+    sendTextMessage () {
       if (this.messageText.trim() !== "") {
         const newMessage = {
           content: this.messageText,
           senderId: this.clientId,
           isMine: true,
           type: "text"
-        };
-        this.messages.push(newMessage);
-        this.messageText = "";
+        }
+        this.messages.push(newMessage)
+        this.messageText = ""
         if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-          this.socket.send(JSON.stringify(newMessage));
+          this.socket.send(JSON.stringify(newMessage))
         } else {
-          console.error("WebSocket\u8FDE\u63A5\u672A\u5EFA\u7ACB\u6216\u5DF2\u5173\u95ED");
+          console.error("WebSocket\u8FDE\u63A5\u672A\u5EFA\u7ACB\u6216\u5DF2\u5173\u95ED")
         }
         this.$nextTick(() => {
-          const chatContainer = document.getElementById("chatContainer");
-          chatContainer.scrollTop = 1e4;
-        });
+          const chatContainer = document.getElementById("chatContainer")
+          chatContainer.scrollTop = 1e4
+        })
       }
     },
-    shouldAddMargin(index, isMine) {
+    shouldAddMargin (index, isMine) {
       if (index === 0) {
-        return false;
+        return false
       }
-      const previousMessage = this.messages[index - 1];
-      return previousMessage.isMine !== isMine;
+      const previousMessage = this.messages[index - 1]
+      return previousMessage.isMine !== isMine
     },
-    chooseImage() {
-      const fileInput = document.createElement("input");
-      fileInput.type = "file";
-      fileInput.accept = "image/*";
+    chooseImage () {
+      const fileInput = document.createElement("input")
+      fileInput.type = "file"
+      fileInput.accept = "image/*"
       fileInput.addEventListener("change", (event) => {
-        const imageFile = event.target.files[0];
-        this.sendImage(imageFile);
-      });
-      fileInput.click();
+        const imageFile = event.target.files[0]
+        this.sendImage(imageFile)
+      })
+      fileInput.click()
     },
-    sendImageMessage(image) {
+    sendImageMessage (image) {
       const newMessage = {
         type: "image",
         content: image,
         senderId: this.clientId,
         isMine: true
-      };
-      this.messages.push(newMessage);
+      }
+      this.messages.push(newMessage)
       if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-        this.socket.send(JSON.stringify(newMessage));
+        this.socket.send(JSON.stringify(newMessage))
       } else {
-        console.error("WebSocket\u8FDE\u63A5\u672A\u5EFA\u7ACB\u6216\u5DF2\u5173\u95ED");
+        console.error("WebSocket\u8FDE\u63A5\u672A\u5EFA\u7ACB\u6216\u5DF2\u5173\u95ED")
       }
       this.$nextTick(() => {
-        const chatContainer = document.getElementById("chatContainer");
-        const containerHeight = chatContainer.scrollHeight;
-        const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom);
-        const imageBottomOffset = containerHeight + containerPadding;
-        chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0;
-      });
+        const chatContainer = document.getElementById("chatContainer")
+        const containerHeight = chatContainer.scrollHeight
+        const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom)
+        const imageBottomOffset = containerHeight + containerPadding
+        chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0
+      })
     },
-    sendImage(imageFile) {
+    sendImage (imageFile) {
       if (!imageFile) {
-        console.error("\u672A\u9009\u62E9\u56FE\u7247\u6587\u4EF6");
-        return;
+        console.error("\u672A\u9009\u62E9\u56FE\u7247\u6587\u4EF6")
+        return
       }
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = (event) => {
-        const imageData = event.target.result;
+        const imageData = event.target.result
         const imageMessage = {
           type: "image",
           content: imageData,
           senderId: this.clientId,
           isMine: true
-        };
-        const image = new Image();
+        }
+        const image = new Image()
         image.onload = () => {
           this.$nextTick(() => {
-            const chatContainer = document.getElementById("chatContainer");
-            const containerHeight = chatContainer.scrollHeight;
-            const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom);
-            const imageBottomOffset = containerHeight + containerPadding;
-            chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0;
-          });
-        };
-        image.src = imageData;
-        if (this.socket && this.socket.readyState === WebSocket.OPEN) {
-          this.socket.send(JSON.stringify(imageMessage));
-        } else {
-          console.error("WebSocket\u8FDE\u63A5\u672A\u5EFA\u7ACB\u6216\u5DF2\u5173\u95ED");
+            const chatContainer = document.getElementById("chatContainer")
+            const containerHeight = chatContainer.scrollHeight
+            const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom)
+            const imageBottomOffset = containerHeight + containerPadding
+            chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0
+          })
         }
-        this.messages.push(imageMessage);
-      };
+        image.src = imageData
+        if (this.socket && this.socket.readyState === WebSocket.OPEN) {
+          this.socket.send(JSON.stringify(imageMessage))
+        } else {
+          console.error("WebSocket\u8FDE\u63A5\u672A\u5EFA\u7ACB\u6216\u5DF2\u5173\u95ED")
+        }
+        this.messages.push(imageMessage)
+      }
       reader.onerror = (error) => {
-        console.error("\u8BFB\u53D6\u56FE\u7247\u6587\u4EF6\u5931\u8D25:", error);
-      };
-      reader.readAsDataURL(imageFile);
+        console.error("\u8BFB\u53D6\u56FE\u7247\u6587\u4EF6\u5931\u8D25:", error)
+      }
+      reader.readAsDataURL(imageFile)
     },
-    startCall() {
-      const fullUrl = `https://ameliveta.scutbot.icu`;
+    startCall () {
+      const fullUrl = `https://ameliveta.scutbot.icu`
       common_vendor.index.navigateTo({
         url: `/pages/videoChat/videoChat?url=${encodeURIComponent(fullUrl)}`
-      });
+      })
     }
   }
-};
-if (!Array) {
-  const _component_nav_bar = common_vendor.resolveComponent("nav-bar");
-  _component_nav_bar();
 }
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+if (!Array) {
+  const _component_nav_bar = common_vendor.resolveComponent("nav-bar")
+  _component_nav_bar()
+}
+function _sfc_render (_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.p({
       text: $data.Text
@@ -195,7 +216,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         f: message.isMine ? 1 : "",
         g: !message.isMine ? 1 : "",
         h: $options.shouldAddMargin(index, message.isMine) ? 1 : ""
-      });
+      })
     }),
     c: common_vendor.o((...args) => $options.sendTextMessage && $options.sendTextMessage(...args)),
     d: common_vendor.o((...args) => $options.handleInputFocus && $options.handleInputFocus(...args)),
@@ -225,9 +246,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         a: index,
         b: image,
         c: common_vendor.o(($event) => $options.sendImageMessage(image), index)
-      };
+      }
     })
-  } : {});
+  } : {})
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/chatchat/chatchat.vue"]]);
-wx.createPage(MiniProgramPage);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "D:/uniapp/petApp/pages/chatchat/chatchat.vue"]])
+wx.createPage(MiniProgramPage)

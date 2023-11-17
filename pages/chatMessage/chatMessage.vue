@@ -65,7 +65,7 @@
 					      },
 							{
 								userId: 1,
-								text: "多带他出去散散步吧",
+								text: "你好，我是狗狗医生，很高兴为你服务！",
 								avatarUrl: "/static/activity/头像6.jpg",
 								username: "狗狗医生",
 								messagetime:"昨天"

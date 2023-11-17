@@ -98,6 +98,10 @@
   		position:absolute;
   		bottom:1.5vh;
   		color: rgba(191, 180, 169, 1);
+		width: 70%;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
   	}
   }
   .Time{

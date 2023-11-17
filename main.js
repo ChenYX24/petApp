@@ -4,6 +4,7 @@ import App from './App'
 import Vue from 'vue'
 import Vuex from 'vuex';
 import tabbar from '@/store/tabbar';
+
 Vue.config.productionTip = false
 Vue.use(Vuex);
 App.mpType = 'app'

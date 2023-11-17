@@ -88,7 +88,23 @@ export default {
   },
   data() {
     return {
-      messages: [], // 存储聊天消息
+      messages: [
+		  {
+		type:"text",
+		  content:"你好，我是狗狗医生，很高兴为你服务！",
+		  isMine:false
+	  },
+	  // {
+	  // 		type:"text",
+	  // 		  content:"你的狗狗情况我了解了",
+	  // 		  isMine:false
+	  // },
+	  // {
+	  // 		type:"text",
+	  // 		  content:"多带他出去散散步吧",
+	  // 		  isMine:false
+	  // },
+	  ], // 存储聊天消息
       messageText: '', // 输入框中的消息文本
       selectedImage: null, // 已选择的图片
       socket: null, // WebSocket对象
@@ -130,7 +146,9 @@ export default {
 		  {
 		  this.$nextTick(() => {
 				const chatContainer = document.getElementById('chatContainer');
+				console.log(chatContainer.scrollTop)
 					chatContainer.scrollTop = 10000;
+				console.log(chatContainer.scrollTop)
 			  });
 		  }
 		  if(data.type=='image')
@@ -233,6 +251,7 @@ export default {
 		    const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom);
 		    const imageBottomOffset = containerHeight + containerPadding;
 		    chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0;
+			console.log(containerHeight,chatContainer.scrollTop)
 		  });
 	},
 	sendImage(imageFile) {
