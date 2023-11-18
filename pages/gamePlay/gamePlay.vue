@@ -23,12 +23,19 @@
 			return {
 				Text:"小游戏",
 				url: 'sheep',
-				Nav:'/pages/home/home',
+				Nav:'/pages/home/home?tab=home',
+				urlList:["sheep","climb"]
 			};
 		},
 		computed: {
 		  fullUrl() {
-			return `/static/game/${this.url}.html`;
+			if(Number.isInteger(this.url) && this.url >= 0 && this.url<this.urlList.length)
+			{
+				return `/static/game/${this.urlList[this.url]}.html`;
+			}
+			else{
+				return `/static/game/sheep.html`;
+			}
 		  }
 		},
 		  methods:{
