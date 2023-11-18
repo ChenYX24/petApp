@@ -23,7 +23,7 @@
 			return {
 				Text:"小游戏",
 				url: 'sheep',
-				Nav:'/pages/home/home?tab=home',
+				Nav:'/pages/gameShow/gameShow',
 				urlList:["sheep","climb","catdrag"]
 			};
 		},

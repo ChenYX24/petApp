@@ -29,30 +29,42 @@
 		      </view>
 		      
 		    </view>
-		<view class="icon chat" @tap="goChat">
-			<image src="/static/home/chat.png" class="collectImg"></image>
-			<view class="collectText">
-				<view class="line2">进入</view>
-				<view class="line2">宠主聊天室</view>
-				<view class="line2">《</view>
-			</view>
-		</view>
-		<view class="icon make" @tap="goMake">
-			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/dog.png" class="makeImg"></image>
-			  <view class="makeText">
-			    <view class="line1">制作</view>
-			    <view class="line1">萌宠表情包</view>
-			    <view class="line1">》</view>
-			  </view>
-		</view>
-		<view class="icon collect" @tap="goCollect">
-			<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png" class="collectImg"></image>
-			<view class="collectText">
-				<view class="line2">查看</view>
-				<view class="line2">收藏表情包</view>
-				<view class="line2">《</view>
-			</view>
-		</view>
+			<!-- <view class="scroll-view"> -->
+				
+				<view class="icon chat" @tap="goChat">
+					<image src="/static/home/chat.png" class="collectImg"></image>
+					<view class="collectText">
+						<view class="line2">进入</view>
+						<view class="line2">宠主聊天室</view>
+						<view class="line2">《</view>
+					</view>
+				</view>
+				<view class="icon make" @tap="goMake">
+					<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/dog.png" class="makeImg"></image>
+					  <view class="makeText">
+					    <view class="line1">制作</view>
+					    <view class="line1">萌宠表情包</view>
+					    <view class="line1">》</view>
+					  </view>
+				</view>
+				<view class="icon collect" @tap="goCollect">
+					<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/home/cat.png" class="collectImg"></image>
+					<view class="collectText">
+						<view class="line2">查看</view>
+						<view class="line2">收藏表情包</view>
+						<view class="line2">《</view>
+					</view>
+				</view>
+				<view class="icon game" @tap="goGame">
+					<image src="/static/home/game.png" class="makeImg"></image>
+					<view class="makeText">
+					    <view class="line1">游玩</view>
+					    <view class="line1">宠物小游戏</view>
+					    <view class="line1">》</view>
+					</view>
+				</view>
+			<!-- </view> -->
+		
 		<!-- 引用自定义tabbar组件 -->
 		<tab-bar :activeTab="tab"></tab-bar>
 	</view>
@@ -259,13 +271,23 @@ export default {
 		uni.navigateTo({
 			url:"/pages/fovIcon/fovIcon"
 		})
-	}
+	},
+	goGame(){
+		uni.navigateTo({
+			url:"/pages/gameShow/gameShow"
+		})
+	},
   }
 
 };
 </script>
 
 <style scoped lang="less">
+	.scroll-view{
+		 height: 100vh; /* 设置视图高度为屏幕高度 */
+		  overflow-y: scroll; /* 允许垂直滚动 */
+		  margin-bottom:7rem ;
+	}
   .newWrapper {
     display: flex;
     flex-direction: column;
@@ -364,7 +386,7 @@ export default {
 	
 .Background{
     width: 100%;
-    height: calc(100vh - 16vh);
+    height: calc(100vh - 1vh);
     background-color: #fffdf7;
     position: relative;
     top: 30vh;
@@ -395,8 +417,8 @@ export default {
 	margin: 0 auto;
 }
 .icon.chat{
-	margin-top: 30px;
-	margin-bottom: 20px;
+	margin-top: 55px;
+	margin-bottom: 12px;
 	display: flex;
 	flex-direction: row;
 		width: 332px;
@@ -408,7 +430,7 @@ export default {
 }
 .icon.make{
 	margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     display: flex;
     width: 332px;
     height: 165px;
@@ -419,6 +441,18 @@ export default {
     flex-direction: row;
 	}
 .icon.collect{
+	margin-top: 20px;
+	margin-bottom: 12px;
+    display: flex;
+	flex-direction: row;
+	width: 332px;
+	height: 165px;
+	opacity: 1;
+	border-radius: 25px;
+	background: linear-gradient(270deg, rgba(255, 243, 202, 1) 0%, rgba(255, 253, 247, 1) 100%);
+	box-shadow: 5px 10px 5px 0px rgba(239, 219, 208, 0.25);
+	}
+.icon.game{
 	margin-top: 20px;
 	margin-bottom: 30px;
     display: flex;
