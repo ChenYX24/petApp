@@ -244,6 +244,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/gamePlay/gamePlay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationStyle": "custom"
