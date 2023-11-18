@@ -22,7 +22,7 @@
 		data() {//初始化数据
 			return {
 				Text:"小游戏",
-				url: 'sheep',
+				url: 1,
 				Nav:'/pages/gameShow/gameShow',
 				urlList:["sheep","climb","catdrag"]
 			};

@@ -7,18 +7,18 @@
 				  <myActivity :imageSrc="imagesrc" :tag="tag"></myActivity>
 				  
 				</view> -->
-				<myActivity :imageSrc="src1" :tag="tag"></myActivity>
-				<myActivity :imageSrc="src" :tag="tag"></myActivity>
-				<myActivity :imageSrc="src"></myActivity>
-				<myActivity :imageSrc="src"></myActivity>
-				<myActivity :imageSrc="src" :tag="tag"></myActivity>
-				<myActivity :imageSrc="src"></myActivity>
-				<myActivity :imageSrc="src1" :tag="tag"></myActivity>
-				<myActivity :imageSrc="src" :tag="tag"></myActivity>
-				<myActivity :imageSrc="src"></myActivity>
-				<myActivity :imageSrc="src"></myActivity>
-				<myActivity :imageSrc="src" :tag="tag"></myActivity>
-				<myActivity :imageSrc="src"></myActivity>
+				<view v-for="(imagesrc, index) in imageSrcArr" :key="index">
+				          <myGame :imageSrc="imageSrcArr[index]" :tag="tag[index]" :index=index></myGame>
+				</view>
+				<view v-for="(imagesrc, index) in imageSrcArr" :key="index">
+				          <myGame :imageSrc="imageSrcArr[index]" :tag="tag[index]" :index=index></myGame>
+				</view>
+				<view v-for="(imagesrc, index) in imageSrcArr" :key="index">
+				          <myGame :imageSrc="imageSrcArr[index]" :tag="tag[index]" :index=index></myGame>
+				</view>
+			
+
+
 			</view>
 		</view>
 
@@ -27,19 +27,22 @@
 
 <script>
 	import navBar from '/components//navBar/navBar.vue';
-	import myActivity from '/components/myActivity/myActivity.vue'
+	import myActivity from '/components/myActivity/myActivity.vue';
+	import myGame from '/components/myGame.vue';
 	export default {
 		components: {
 		  navBar,
 		  myActivity,
+		  myGame
 		},
 		data() {
 			return {
 				Text:"返回HOME",
 				
 				Nav:"/pages/home/home?tab=home",
-				imageSrcArr: [],
+				imageSrcArr: ["/static/gameimg/猫咪拖拽.png","/static/gameimg/猫咪拖拽.png","/static/gameimg/猫咪拖拽.png"],
 				activityThoughtArr:[],
+				tag:["开枪扫羊","纸牌接龙","猫猫拖拽"],
 			};
 		},
 		onLoad(){
@@ -72,7 +75,7 @@
 	position: relative;
 	top: 0rem;
 	height: 100%;
-	padding-top: 10%;
+	overflow-y: scroll; /* 设置垂直滚动条 */
 	}
 	.gridBox{
 		margin-top: 1vh;
