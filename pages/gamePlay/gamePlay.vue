@@ -24,12 +24,12 @@
 				Text:"小游戏",
 				url: 'sheep',
 				Nav:'/pages/home/home?tab=home',
-				urlList:["sheep","climb"]
+				urlList:["sheep","climb","catdrag"]
 			};
 		},
 		computed: {
 		  fullUrl() {
-			if(Number.isInteger(this.url) && this.url >= 0 && this.url<this.urlList.length)
+			if(this.url >= 0 && this.url<this.urlList.length)
 			{
 				return `/static/game/${this.urlList[this.url]}.html`;
 			}
