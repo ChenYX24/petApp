@@ -10,12 +10,7 @@
 				<view v-for="(imagesrc, index) in imageSrcArr" :key="index">
 				          <myGame :imageSrc="imageSrcArr[index]" :tag="tag[index]" :index=index></myGame>
 				</view>
-				<view v-for="(imagesrc, index) in imageSrcArr" :key="index">
-				          <myGame :imageSrc="imageSrcArr[index]" :tag="tag[index]" :index=index></myGame>
-				</view>
-				<view v-for="(imagesrc, index) in imageSrcArr" :key="index">
-				          <myGame :imageSrc="imageSrcArr[index]" :tag="tag[index]" :index=index></myGame>
-				</view>
+				
 			
 
 
@@ -40,9 +35,9 @@
 				Text:"返回HOME",
 				
 				Nav:"/pages/home/home?tab=home",
-				imageSrcArr: ["/static/gameimg/猫咪拖拽.png","/static/gameimg/猫咪拖拽.png","/static/gameimg/猫咪拖拽.png"],
+				imageSrcArr: ["/static/gameimg/sheep.png","/static/gameimg/catDrag.png","/static/gameimg/wheel.png","/static/gameimg/find.png","/static/gameimg/drogDump.png","/static/gameimg/clickMatch.png","/static/gameimg/catchSheep.png","/static/gameimg/puzzle.png"],
 				activityThoughtArr:[],
-				tag:["开枪扫羊","纸牌接龙","猫猫拖拽"],
+				tag:["开枪扫羊","猫猫拖拽","大转盘","找猫猫","狗狗跳一跳","猫猫点消","羊羊快跑","猫猫拼图"],
 			};
 		},
 		onLoad(){
@@ -74,7 +69,7 @@
 	align-items: center;
 	position: relative;
 	top: 0rem;
-	height: 100%;
+	height: 96%;
 	overflow-y: scroll; /* 设置垂直滚动条 */
 	}
 	.gridBox{

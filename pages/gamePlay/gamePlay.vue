@@ -24,7 +24,7 @@
 				Text:"小游戏",
 				url: 1,
 				Nav:'/pages/gameShow/gameShow',
-				urlList:["sheep","climb","catdrag"]
+				urlList:["sheep","catdrag","wheel","find","dogJump","clickMatch","catchSheep","puzzle"]
 			};
 		},
 		computed: {
