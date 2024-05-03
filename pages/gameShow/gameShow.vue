@@ -78,9 +78,4 @@
 		grid-template-columns: 1fr 1fr;
 		justify-items: center;
 	}
-	
-
-
-	
-	 
 </style>

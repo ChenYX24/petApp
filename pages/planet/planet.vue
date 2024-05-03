@@ -12,6 +12,7 @@
 			<view class="catAndDog">
 				<image src="https://tuanpet-cyx.oss-cn-guangzhou.aliyuncs.com/static/planet/cat.png" mode="aspectFill" class="image"></image>
 			</view>
+			
 			<view class="page" :class="{ active: isActive }">
 				<text v-if="!isActive" >
 					点击加入{{trueProvince}}星球
@@ -248,22 +249,7 @@ export default {
 	transition: height 2s ease-out;
 }
 
-.parent {
-  position: relative;
-  border: 2px solid #ccc;
-  height: 200px;
-  overflow: hidden;
-  transition: height 0.5s ease-out;
-}
 
-.child {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 0;
-  transition: height 0.5s ease-out;
-}
 
 
 </style>

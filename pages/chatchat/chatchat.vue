@@ -154,11 +154,12 @@ export default {
 		  if(data.type=='image')
 		  {
 			  this.$nextTick(() => {
-			    const chatContainer = document.getElementById('chatContainer');
-			    const containerHeight = chatContainer.scrollHeight;
-			    const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom);
-			    const imageBottomOffset = containerHeight + containerPadding;
-			    chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0;
+			    const chatContainer = document.getElementById('chatContainer');//
+			    const containerHeight = chatContainer.scrollHeight;//获取 chatContainer 元素的滚动高度，即元素内容的总高度，赋值给变量 containerHeight。
+			    const containerPadding = parseInt(getComputedStyle(chatContainer).paddingBottom);//使用 getComputedStyle 方法获取 chatContainer 元素的样式对象，然后获取其底部的内边距值，并将其转换为整数，赋值给变量 containerPadding。
+			    const imageBottomOffset = containerHeight + containerPadding;//计算图片底部相对于 chatContainer 元素顶部的偏移量，将滚动高度与底部内边距相加，将结果赋值给变量 imageBottomOffset。
+			    chatContainer.scrollTop = imageBottomOffset > 0 ? imageBottomOffset : 0;//如果 imageBottomOffset 大于 0，则将滚动条位置设置为 imageBottomOffset，否则将滚动条位置设置为 0，即滚动到顶部。
+				//实现了在 DOM 更新后获取 chatContainer 元素的滚动高度和底部内边距，并将滚动条位置设置为图片底部的偏移量，以确保滚动条始终在图片底部。这通常用于实现聊天界面中的自动滚动效果，使新消息显示时滚动条自动跟随到底部。
 			  });
 		  }
 		}
@@ -221,12 +222,12 @@ export default {
 	chooseImage() {
 		  const fileInput = document.createElement('input');
 		  fileInput.type = 'file';
-		  fileInput.accept = 'image/*';
+		  fileInput.accept = 'image/*';//只接受图片
 		  fileInput.addEventListener('change', (event) => {
 		    const imageFile = event.target.files[0];
 		    this.sendImage(imageFile);
 		  });
-		  fileInput.click();
+		  fileInput.click();//触发文件选择对话框的打开，让用户能够选择图像文件。
 		  
 		},
 	sendImageMessage(image){

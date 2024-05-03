@@ -52,7 +52,7 @@ wss.on('connection', function connection (ws) {
           type: "text"
         }
 
-        // 将回复消息发送给所有客户端
+        // 将回复消息发送给除了自己以外所有客户端
         wss.clients.forEach(client => {
           if (client !== ws && client.readyState === WebSocket.OPEN) {
             client.send(JSON.stringify(replyMessage))
